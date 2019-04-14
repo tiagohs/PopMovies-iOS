@@ -13,14 +13,14 @@
         <!--Perfil-->
         <scene sceneID="zqk-Qg-wfL">
             <objects>
-                <viewController id="Xsg-RH-Irj" userLabel="Perfil" sceneMemberID="viewController">
+                <viewController id="Xsg-RH-Irj" userLabel="Perfil" customClass="ProfileController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dBn-hk-Mdo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="seq-Vx-UfW"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Gkk-wA-NqW"/>
+                    <navigationItem key="navigationItem" title="Perfil" id="Gkk-wA-NqW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f0D-m9-Ot5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -29,14 +29,14 @@
         <!--Início-->
         <scene sceneID="8Mq-h9-j2e">
             <objects>
-                <viewController id="ap4-Hz-YNq" userLabel="Início" sceneMemberID="viewController">
+                <viewController id="ap4-Hz-YNq" userLabel="Início" customClass="HomeController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qru-RH-mje">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="DYc-Y3-B18"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jsW-cN-5VV"/>
+                    <navigationItem key="navigationItem" title="Inicio" id="jsW-cN-5VV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ygg-Hq-Sbl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

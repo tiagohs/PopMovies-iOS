@@ -1,0 +1,61 @@
+//
+//  Movie.swift
+//  popmovies
+//
+//  Created by Tiago Silva on 14/04/2019.
+//  Copyright © 2019 Tiago Silva. All rights reserved.
+//
+
+import Foundation
+import ObjectMapper
+
+class Movie: BaseModel {
+    var id: Int?
+    var adult: Bool?
+    var backdropPath: String?
+    var belongsToCollection: String?
+    var budget: Int?
+    var homepage: String?
+    var imdbID, originalLanguage, originalTitle, overview: String?
+    var popularity: Double?
+    var posterPath: String?
+    var revenue, runtime: Int?
+    var status, tagline, title: String?
+    var video: Bool?
+    var voteAverage: Double?
+    var voteCount: Int?
+    var releaseDate: Date?
+    
+    var genres: [Genre]?
+    var productionCompanies: [ProductionCompany]?
+    var productionCountries: [ProductionCountry]?
+    var spokenLanguages: [SpokenLanguage]?
+    
+    override func mapping(map: Map) {
+        adult                   <-  map["adult"]
+        backdropPath            <-  map["backdrop_path"]
+        belongsToCollection     <-  map["belongs_to_collection"]
+        budget                  <-  map["budget"]
+        homepage                <-  map["homepage"]
+        imdbID                  <-  map["imdb_id"]
+        originalLanguage        <-  map["original_language"]
+        originalTitle           <-  map["original_title"]
+        overview                <-  map["overview"]
+        popularity              <-  map["popularity"]
+        posterPath              <-  map["poster_path"]
+        revenue                 <-  map["revenue"]
+        runtime                 <-  map["runtime"]
+        status                  <-  map["status"]
+        tagline                 <-  map["tagline"]
+        title                   <-  map["title"]
+        video                   <-  map["video"]
+        voteAverage             <-  map["vote_average"]
+        voteCount               <-  map["vote_count"]
+        releaseDate             <-  (map["release_date"], DateTransform())
+        
+        productionCompanies     <-  map["production_companies"]
+        productionCountries     <-  map["production_countries"]
+        spokenLanguages         <-  map["spoken_languages"]
+    }
+    
+}

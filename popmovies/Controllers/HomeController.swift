@@ -8,10 +8,17 @@
 
 import UIKit
 
-class HomeController: UIViewController {
+class HomeController: UIViewController, IHomeView {
+    
+    var homePresenter: IHomePresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //
+        
+        homePresenter = HomePresenter(view: self)
+        
+        homePresenter?.fetchPopularMovies()
     }
+    
+
 }

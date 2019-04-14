@@ -9,6 +9,8 @@ target 'popmovies' do
   pod 'Alamofire', '~> 4.2'
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
+  pod 'ObjectMapper', '~> 3.4'
+  pod 'RxAlamofire'
   
   target 'popmoviesTests' do
     inherit! :search_paths
