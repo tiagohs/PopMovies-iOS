@@ -33,10 +33,96 @@
                     <view key="view" contentMode="scaleToFill" id="Qru-RH-mje">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7Bp-aI-7p7">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellIdentifier" rowHeight="300" id="YXL-Rg-ZCK" userLabel="FeaturesMovieCell" customClass="FeatureMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YXL-Rg-ZCK" id="6wP-Pd-9Op">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Sd7-bP-AHy">
+                                                    <rect key="frame" x="0.0" y="10" width="375" height="280"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="90U-f1-JqZ">
+                                                        <size key="itemSize" width="379" height="272"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeaturesCellIdentifier" id="MIO-Tx-jEC" customClass="MovieCell" customModule="popmovies" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="4" width="379" height="272"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="379" height="272"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B7q-ng-vwS">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="379" height="272"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="B7q-ng-vwS" secondAttribute="bottom" id="C8q-4a-Nsn"/>
+                                                                <constraint firstItem="B7q-ng-vwS" firstAttribute="top" secondItem="MIO-Tx-jEC" secondAttribute="top" id="JfZ-Od-6u5"/>
+                                                                <constraint firstAttribute="trailing" secondItem="B7q-ng-vwS" secondAttribute="trailing" id="PX2-lw-z9T"/>
+                                                                <constraint firstItem="B7q-ng-vwS" firstAttribute="leading" secondItem="MIO-Tx-jEC" secondAttribute="leading" id="eaX-gU-dpT"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="moviePoster" destination="B7q-ng-vwS" id="h1H-Oj-fLN"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="YXL-Rg-ZCK" id="xvq-eR-Kf1"/>
+                                                        <outlet property="delegate" destination="YXL-Rg-ZCK" id="Rlk-M6-P5R"/>
+                                                    </connections>
+                                                </collectionView>
+                                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="NXs-Le-kq2">
+                                                    <rect key="frame" x="15" y="247" width="345" height="37"/>
+                                                </pageControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Sd7-bP-AHy" secondAttribute="trailing" id="5O6-Jr-vwh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="NXs-Le-kq2" secondAttribute="bottom" constant="5" id="CqJ-tU-ffc"/>
+                                                <constraint firstItem="Sd7-bP-AHy" firstAttribute="top" secondItem="6wP-Pd-9Op" secondAttribute="top" constant="10" id="JHu-yn-8L5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="NXs-Le-kq2" secondAttribute="trailing" id="LTz-dd-8bn"/>
+                                                <constraint firstAttribute="bottom" secondItem="Sd7-bP-AHy" secondAttribute="bottom" constant="10" id="Rl6-M6-TbX"/>
+                                                <constraint firstItem="NXs-Le-kq2" firstAttribute="leading" secondItem="6wP-Pd-9Op" secondAttribute="leadingMargin" id="SEI-Mp-SnB"/>
+                                                <constraint firstItem="Sd7-bP-AHy" firstAttribute="leading" secondItem="6wP-Pd-9Op" secondAttribute="leading" id="XdX-ns-PLO"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="featureMoviesCollectionView" destination="Sd7-bP-AHy" id="Bnr-lz-ghz"/>
+                                            <outlet property="pageControl" destination="NXs-Le-kq2" id="ge9-hs-FF8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ap4-Hz-YNq" id="PTC-OU-V3T"/>
+                                    <outlet property="delegate" destination="ap4-Hz-YNq" id="mbA-tI-sgp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7Bp-aI-7p7" firstAttribute="bottom" secondItem="DYc-Y3-B18" secondAttribute="bottom" id="9Wj-8Z-Tqk"/>
+                            <constraint firstItem="7Bp-aI-7p7" firstAttribute="top" secondItem="DYc-Y3-B18" secondAttribute="top" id="Gmd-md-Mar"/>
+                            <constraint firstItem="7Bp-aI-7p7" firstAttribute="leading" secondItem="DYc-Y3-B18" secondAttribute="leading" id="aAr-eq-C79"/>
+                            <constraint firstItem="7Bp-aI-7p7" firstAttribute="trailing" secondItem="DYc-Y3-B18" secondAttribute="trailing" id="mbD-xs-xkU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DYc-Y3-B18"/>
                     </view>
                     <navigationItem key="navigationItem" title="Inicio" id="jsW-cN-5VV"/>
+                    <connections>
+                        <outlet property="tableView" destination="7Bp-aI-7p7" id="VRx-3o-p8Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ygg-Hq-Sbl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

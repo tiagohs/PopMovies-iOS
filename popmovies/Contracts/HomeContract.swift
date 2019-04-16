@@ -11,6 +11,7 @@ import RxSwift
 
 protocol IHomeView: IBaseView {
     
+    func bindFeatureMovies(featureMovies: [Movie])
 }
 
 protocol IHomePresenter: IBasePresenter {

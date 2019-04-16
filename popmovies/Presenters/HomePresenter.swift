@@ -23,8 +23,10 @@ class HomePresenter: BasePresenter, IHomePresenter {
     func fetchPopularMovies() {
         let disposible = interactor?.fetchPopularMovies(page: 1)
                                     .subscribe(onNext: { (results) in
-                                        for movie in results.results ?? [] {
-                                            print(movie.originalTitle!)
+                                        if results.results != nil {
+                                            let featureMovies = results.results![0..<5]
+                                            
+                                            self._view?.bindFeatureMovies(featureMovies: Array(featureMovies))
                                         }
                                     }, onError: { (error) in
                                         print(error)
