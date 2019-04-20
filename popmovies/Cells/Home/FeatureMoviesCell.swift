@@ -12,7 +12,6 @@ import UIKit
 class FeatureMoviesCell: UITableViewCell {
     let featuresCellIdentifier = "FeaturesCellIdentifier"
     
-    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var featureMoviesCollectionView: UICollectionView!
     
     var featureMovies: [Movie] = []
@@ -32,7 +31,6 @@ extension FeatureMoviesCell: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = self.featureMovies.count
-        pageControl.numberOfPages = count
         
         return count
     }
@@ -42,13 +40,9 @@ extension FeatureMoviesCell: UICollectionViewDelegate, UICollectionViewDataSourc
         
         let movie = featureMovies[indexPath.row]
         
-        cell.movie = movie
+        cell.bindMovieCellWithPoster(movie: movie)
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        self.pageControl.currentPage = indexPath.row
     }
 
 }
@@ -59,7 +53,7 @@ extension FeatureMoviesCell: UICollectionViewDelegateFlowLayout {
         let numberOfCell: CGFloat = 1
         let cellWidth = UIScreen.main.bounds.size.width / numberOfCell
         
-        return CGSize(width: cellWidth, height: 260.0)
+        return CGSize(width: cellWidth - 30, height: 230.0)
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

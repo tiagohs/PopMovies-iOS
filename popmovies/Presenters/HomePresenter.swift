@@ -6,27 +6,35 @@
 //  Copyright © 2019 Tiago Silva. All rights reserved.
 //
 
-import Foundation
+import RxSwift
 
 class HomePresenter: BasePresenter, IHomePresenter {
     
-    var _view: IHomeView?
+    var view: IHomeView?
     var interactor: IHomeInteractor?
     
     init(view: IHomeView) {
         super.init()
         
-        _view = view
-        interactor = HomeInteractor(homePresenter: self)
+        self.view = view
+        self.interactor = HomeInteractor(homePresenter: self)
+    }
+    
+    override func onDestroy() {
+        view = nil
+        interactor = nil
     }
     
     func fetchPopularMovies() {
         let disposible = interactor?.fetchPopularMovies(page: 1)
+                                    .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+                                    .observeOn(MainScheduler.instance)
                                     .subscribe(onNext: { (results) in
                                         if results.results != nil {
                                             let featureMovies = results.results![0..<5]
                                             
-                                            self._view?.bindFeatureMovies(featureMovies: Array(featureMovies))
+                                            self.view?.bindFeatureMovies(featureMovies: Array(featureMovies))
+                                            self.view?.bindWeekMovies(weekMovies: results.results!)
                                         }
                                     }, onError: { (error) in
                                         print(error)

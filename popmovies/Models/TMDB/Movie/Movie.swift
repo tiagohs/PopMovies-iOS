@@ -31,7 +31,19 @@ class Movie: BaseModel {
     var productionCountries: [ProductionCountry]?
     var spokenLanguages: [SpokenLanguage]?
     
+    // Append To Reponse
+    var alternativeTitles: [AlternativeTitle]?
+    var credits: MediaCreditList?
+    var images: [Image]?
+    var keywords: [KeywordResults]?
+    var releases: [Release]?
+    var videos: [VideoResult]?
+    var translations: [TranslationResults]?
+    var similiarMovies: [Movie]?
+    var reviews: [Review]?
+    
     override func mapping(map: Map) {
+        id                      <-  map["id"]
         adult                   <-  map["adult"]
         backdropPath            <-  map["backdrop_path"]
         belongsToCollection     <-  map["belongs_to_collection"]
@@ -52,10 +64,21 @@ class Movie: BaseModel {
         voteAverage             <-  map["vote_average"]
         voteCount               <-  map["vote_count"]
         releaseDate             <-  (map["release_date"], DateTransform())
+        genres                  <-  map["genres"]
         
         productionCompanies     <-  map["production_companies"]
         productionCountries     <-  map["production_countries"]
         spokenLanguages         <-  map["spoken_languages"]
+        
+        alternativeTitles       <- map["alternative_titles"]
+        credits                 <- map["credits"]
+        images                  <- map["images"]
+        keywords                <- map["keywords"]
+        releases                <- map["releases"]
+        videos                  <- map["videos"]
+        translations            <- map["translations"]
+        similiarMovies          <- map["similar_movies"]
+        reviews                 <- map["reviews"]
     }
     
 }

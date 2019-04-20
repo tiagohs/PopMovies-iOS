@@ -12,6 +12,7 @@ import RxSwift
 protocol IHomeView: IBaseView {
     
     func bindFeatureMovies(featureMovies: [Movie])
+    func bindWeekMovies(weekMovies: [Movie])
 }
 
 protocol IHomePresenter: IBasePresenter {

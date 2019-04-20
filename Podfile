@@ -12,6 +12,7 @@ target 'popmovies' do
   pod 'ObjectMapper', '~> 3.4'
   pod 'RxAlamofire'
   pod 'Kingfisher', '~> 5.0'
+  pod 'UIImageColors'
   
   target 'popmoviesTests' do
     inherit! :search_paths

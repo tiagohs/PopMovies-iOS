@@ -31,4 +31,17 @@ class MovieService: BaseService, IMovieService {
         return requestJSON(.get, url, parameters: parameters)
                     .mapObject(type: Results<Movie>.self)
     }
+    
+    func getDetails(movieId: Int, appendToResponse: [String]) -> Observable<Movie> {
+        let appendToResponse = createAppendToResponse(appendToResponse: appendToResponse)
+        let parameters = baseParameters.merge(with: [
+            "movie_id": String(movieId),
+            "append_to_response": appendToResponse
+        ])
+        let url = "\(serviceUrl)/\(movieId)"
+        
+        return requestJSON(.get, url, parameters: parameters)
+                    .debug()
+                    .mapObject(type: Movie.self)
+    }
 }

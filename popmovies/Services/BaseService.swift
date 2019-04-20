@@ -18,7 +18,11 @@ class BaseService {
         baseParameters =
                     [
                         Constants.TMDB.Parameters.apiKey: Constants.TMDB.API_KEY,
-                        Constants.TMDB.Parameters.language: "pt_BR"
+                        Constants.TMDB.Parameters.language: "pt-BR"
                     ]
+    }
+    
+    func createAppendToResponse(appendToResponse: [String]) -> String {
+        return appendToResponse.joined(separator: ",")
     }
 }

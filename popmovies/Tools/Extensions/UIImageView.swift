@@ -11,7 +11,7 @@ import Kingfisher
 
 extension UIImageView {
     
-    func setImage(imageUrl: String, contentMode: UIView.ContentMode?, placeholderImageName: String) {
+    func setImage(imageUrl: String, contentMode: UIView.ContentMode?, placeholderImageName: String, completionHandler: ((Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil) {
         let url = URL(string: imageUrl)
         
         let imageContentMode = contentMode == nil ? .scaleAspectFill : contentMode
@@ -23,6 +23,7 @@ extension UIImageView {
             options: [
                 .processor(DefaultImageProcessor.default),
                 .transition(.fade(1))
-            ])
+            ],
+            completionHandler: completionHandler)
     }
 }
