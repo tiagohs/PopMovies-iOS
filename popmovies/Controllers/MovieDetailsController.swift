@@ -12,6 +12,7 @@ import UIKit
 class MovieDetailsController: UIViewController {
     
     let movieDetailsHeaderCellIdentifier = "MovieDetailsHeaderCellIdentifier"
+    let movieDetailsMiddleCellIdentifier = "MovieDetailsMiddleCellIdentifier"
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,6 +27,9 @@ class MovieDetailsController: UIViewController {
         
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.barStyle = .black
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.backItem?.title = ""
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -55,7 +59,7 @@ extension MovieDetailsController: IMovieDetailsView {
 extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,6 +70,12 @@ extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
             
             cell.movie = self.movie
             
+            return cell
+        case 1:
+        let cell = tableView.dequeueReusableCell(withIdentifier: movieDetailsMiddleCellIdentifier, for: indexPath) as! MovieDetailsMiddleCell
+        
+            cell.movie = self.movie
+        
             return cell
         default:
             return UITableViewCell()

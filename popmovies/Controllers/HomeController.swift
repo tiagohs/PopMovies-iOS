@@ -38,6 +38,8 @@ class HomeController: UIViewController {
         nav?.setBackgroundImage(UIImage(), for: .default)
         nav?.shadowImage = UIImage()
         nav?.backgroundColor = .clear
+        
+        nav?.tintColor = UIColor.white
     }
     
     override func viewWillDisappear(_ animated: Bool) {

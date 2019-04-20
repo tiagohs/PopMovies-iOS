@@ -9,18 +9,10 @@
 import UIKit
 
 class UILabelView: UILabel {
-    var horizontalPadding = CGFloat(10.0)
-    var verticalPadding = CGFloat(10.0)
-    
-    override func sizeToFit() {
-        super.sizeToFit()
-        bounds.size.width += 2 * horizontalPadding
-        bounds.size.height += 2 * verticalPadding
-    }
     
     override func drawText(in rect: CGRect) {
-        print(rect)
-        super.drawText(in: rect.insetBy(dx: horizontalPadding, dy: verticalPadding))
-        invalidateIntrinsicContentSize()
+        let context = UIGraphicsGetCurrentContext()!
+        context.stroke(self.bounds.insetBy(dx: 1.0, dy: 1.0))
+        super.drawText(in: rect.insetBy(dx: 5.0, dy: 5.0))
     }
 }

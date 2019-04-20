@@ -20,6 +20,11 @@ class MovieDetailsHeaderCell: UITableViewCell {
     @IBOutlet weak var imdbRating: UILabel!
     @IBOutlet weak var tomatoesRating: UILabel!
     @IBOutlet weak var movieGenresCollectionView: UICollectionView!
+    @IBOutlet weak var movieGenresCollectionViewFlowLayout: UICollectionViewFlowLayout! {
+        didSet {
+            movieGenresCollectionViewFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
     @IBOutlet weak var headerBackground: UIView!
     
     var movie: Movie? {
@@ -85,21 +90,13 @@ extension MovieDetailsHeaderCell: UICollectionViewDelegate, UICollectionViewData
         
         if let genres = movie?.genres {
             let genre = genres[indexPath.row]
-            let color = movieColors?.primary ?? UIColor()
+            let textColor = movieColors?.primary ?? UIColor()
             
-            cell.bindSimpleItem(simpleItem: SimpleItem(id: genre.id!, text: genre.name!), color: color)
+            cell.bindSimpleItem(simpleItem: SimpleItem(id: genre.id!, text: genre.name!), color: textColor)
             return cell
         }
         
         return UICollectionViewCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let item = collectionView.cellForItem(at: indexPath) as! SimpleItemCell
-        
-        return CGSize(width: item.labelView.bounds.width, height: collectionView.bounds.size.height)
     }
     
     

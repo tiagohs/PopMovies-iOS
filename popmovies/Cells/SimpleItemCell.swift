@@ -2,25 +2,40 @@
 //  SimpleItemCell.swift
 //  popmovies
 //
-//  Created by Tiago Silva on 19/04/2019.
+//  Created by Tiago Silva on 20/04/2019.
 //  Copyright © 2019 Tiago Silva. All rights reserved.
 //
 
 import UIKit
 
 class SimpleItemCell: UICollectionViewCell {
-    
-    @IBOutlet weak var labelView: UILabel!
-    
+
+    @IBOutlet weak var buttonView: UIButton!
     var simpleItem: SimpleItem? = nil
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+                contentView.leftAnchor.constraint(equalTo: leftAnchor),
+                contentView.rightAnchor.constraint(equalTo: rightAnchor),
+                contentView.topAnchor.constraint(equalTo: topAnchor),
+                contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
     
     func bindSimpleItem(simpleItem: SimpleItem, color: UIColor) {
         self.simpleItem = simpleItem
         
-        labelView.text = "  \(String(simpleItem.text))  "
-        labelView.textColor = color
-        labelView.layer.borderColor = color.cgColor
-        labelView.layer.borderWidth = 1.0
-        labelView.sizeToFit()
+        buttonView.setTitle("\(String(simpleItem.text))", for: .normal)
+        buttonView.setTitleColor(color, for: .normal)
+        buttonView.sizeToFit()
+        buttonView.contentEdgeInsets = UIEdgeInsets(top: 5,left: 10,bottom: 5,right: 10)
+        buttonView.layer.borderColor = color.cgColor
+        buttonView.layer.borderWidth = 1.0
+        buttonView.layer.cornerRadius = 5.0
     }
+
 }
