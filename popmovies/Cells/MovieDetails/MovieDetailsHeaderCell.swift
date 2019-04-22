@@ -17,8 +17,16 @@ class MovieDetailsHeaderCell: UITableViewCell {
     @IBOutlet weak var moviePosterView: UIImageView!
     @IBOutlet weak var movieTitleView: UILabel!
     @IBOutlet weak var movieSubtitleInfoView: UILabel!
+    
     @IBOutlet weak var imdbRating: UILabel!
+    @IBOutlet weak var imdbTotalLabelView: UILabel!
+    @IBOutlet weak var imdbTitleLabelView: UILabel!
+    
     @IBOutlet weak var tomatoesRating: UILabel!
+    @IBOutlet weak var tomatoesLabelView: UILabel!
+    @IBOutlet weak var tomatoesTitleLabelView: UILabel!
+    
+    @IBOutlet weak var separatorView: UIView!
     @IBOutlet weak var movieGenresCollectionView: UICollectionView!
     @IBOutlet weak var movieGenresCollectionViewFlowLayout: UICollectionViewFlowLayout! {
         didSet {
@@ -31,34 +39,55 @@ class MovieDetailsHeaderCell: UITableViewCell {
         didSet { bindMovieHeader(movie: self.movie!) }
     }
     
+    var movieRanking: MovieOMDB? {
+        didSet { bindMovieRankings(movieRanking: movieRanking!) }
+    }
+    
     var movieColors: UIImageColors? = nil
+    
+    private func bindMovieRankings(movieRanking: MovieOMDB) {
+        
+        if let imdbRankingValue = movieRanking.imdbRating {
+            if imdbRankingValue != "N/A" {
+                self.imdbRating.text = imdbRankingValue
+            }
+        }
+        
+        if let ratings = movieRanking.ratings {
+            guard let tomatoesRating = ratings.first(where: { (rating) -> Bool in
+                return rating.source == "Rotten Tomatoes"
+            }) else {
+                return
+            }
+            
+            self.tomatoesRating.text = tomatoesRating.value?.replacingOccurrences(of: "%", with: "")
+        }
+    }
     
     private func bindMovieHeader(movie: Movie) {
         let backdropUrl = "https://image.tmdb.org/t/p/w780/" + movie.backdropPath!
         let posterUrl = "https://image.tmdb.org/t/p/w500/" + movie.posterPath!
         
-        movieBackdropView.setImage( imageUrl: backdropUrl, contentMode: .scaleAspectFill, placeholderImageName: "placeholder") { (result) in
-            let image = try? result.get().image
-            guard let colors = image?.getColors() else {
-                return
-            }
-            
-            self.movieColors = colors
-            
-            self.headerBackground.backgroundColor = colors.background
-            self.movieGenresCollectionView.backgroundColor = colors.background
-            self.movieTitleView.textColor = colors.primary
-            self.movieSubtitleInfoView.textColor = colors.primary
-            
-            let backgroundColor = colors.background
-            backgroundColor?.withAlphaComponent(0.6)
+        if (movieColors == nil) {
+            let color = UIColor.white
+            color.withAlphaComponent(0.6)
             
             self.movieBackdropView.updateColors(colors:
-                    [UIColor.clear.cgColor, backgroundColor!.cgColor]
+                [UIColor.clear.cgColor, color.cgColor]
             )
         }
         
-        moviePosterView.setImage( imageUrl: posterUrl, contentMode: .scaleAspectFill, placeholderImageName: "placeholder")
+        if movieBackdropView.image == nil {
+            movieBackdropView.setImage( imageUrl: backdropUrl, contentMode: .scaleAspectFill, placeholderImageName: "placeholder") { (result) in
+                let image = try? result.get().image
+                
+                self.updateHeaderColors(image: image)
+            }
+        }
+        
+        if moviePosterView.image == nil {
+            moviePosterView.setImage( imageUrl: posterUrl, contentMode: .scaleAspectFill, placeholderImageName: "placeholder")
+        }
         
         movieTitleView.text = movie.title
         
@@ -75,6 +104,40 @@ class MovieDetailsHeaderCell: UITableViewCell {
         movieSubtitleInfoView.text = movieSubtitle
         
         movieGenresCollectionView.reloadData()
+    }
+    
+    private func updateHeaderColors(image: UIImage?) {
+        guard let colors = image?.getColors() else {
+            return
+        }
+        
+        self.movieColors = colors
+        
+        let backgroundColor = colors.background
+        let textColor = colors.primary
+        
+        self.headerBackground.backgroundColor = backgroundColor
+        self.movieGenresCollectionView.backgroundColor = backgroundColor
+        self.movieTitleView.textColor = textColor
+        self.movieSubtitleInfoView.textColor = textColor
+        
+        self.imdbRating.textColor = textColor
+        self.tomatoesRating.textColor = textColor
+        
+        self.imdbTitleLabelView.textColor = textColor
+        self.tomatoesTitleLabelView.textColor = textColor
+        
+        self.imdbTotalLabelView.textColor = textColor
+        self.tomatoesLabelView.textColor = textColor
+        
+        self.separatorView.backgroundColor = textColor
+        
+        let backdropBackgroundColor = backgroundColor
+        backdropBackgroundColor?.withAlphaComponent(0.6)
+        
+        self.movieBackdropView.updateColors(colors:
+            [UIColor.clear.cgColor, backdropBackgroundColor!.cgColor]
+        )
     }
     
 }

@@ -10,8 +10,8 @@ import Foundation
 
 class BaseService {
     
-    let baseUrl: String
-    let baseParameters: [String : String]
+    var baseUrl: String
+    var baseParameters: [String : String]
     
     init() {
         baseUrl = Constants.TMDB.BASE_URL

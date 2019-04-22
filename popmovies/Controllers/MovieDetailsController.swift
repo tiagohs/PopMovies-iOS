@@ -13,10 +13,14 @@ class MovieDetailsController: UIViewController {
     
     let movieDetailsHeaderCellIdentifier = "MovieDetailsHeaderCellIdentifier"
     let movieDetailsMiddleCellIdentifier = "MovieDetailsMiddleCellIdentifier"
+    let movieDetailsMidiaCellIdentifier = "MovieDetailsMidiaCellIdentifier"
+    let movieDetailsFooterCellIdentifier = "MovieDetailsFooterCellIdentifier"
     
     @IBOutlet weak var tableView: UITableView!
     
     var movie: Movie? = nil
+    var movieRankings: MovieOMDB? = nil
+    
     var presenter: IMovieDetailsPresenter? = nil
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +47,9 @@ class MovieDetailsController: UIViewController {
         
         presenter = MovieDetailsPresenter(view: self)
         presenter?.fetchMovieDetails(movieId: movie?.id)
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 690
     }
 }
 
@@ -54,12 +61,22 @@ extension MovieDetailsController: IMovieDetailsView {
         self.tableView.reloadData()
     }
     
+    func bindMovieRankings(movie: MovieOMDB) {
+        self.movieRankings = movie
+        
+        let headerIndex = IndexPath(item: 0, section: 0)
+        let middleIndex = IndexPath(item: 1, section: 0)
+        let footerIndex = IndexPath(item: 3, section: 0)
+        
+        self.tableView.reloadRows(at: [headerIndex, middleIndex, footerIndex], with: .none)
+    }
+    
 }
 
 extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,14 +85,29 @@ extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: movieDetailsHeaderCellIdentifier, for: indexPath) as! MovieDetailsHeaderCell
             
-            cell.movie = self.movie
+            if (self.movie != nil) { cell.movie = self.movie }
+            if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
             
             return cell
         case 1:
-        let cell = tableView.dequeueReusableCell(withIdentifier: movieDetailsMiddleCellIdentifier, for: indexPath) as! MovieDetailsMiddleCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: movieDetailsMiddleCellIdentifier, for: indexPath) as! MovieDetailsMiddleCell
         
-            cell.movie = self.movie
+            if (self.movie != nil) { cell.movie = self.movie }
+            if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
         
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: movieDetailsMidiaCellIdentifier, for: indexPath) as! MovieDetailsMidiaCell
+
+            if (self.movie != nil) { cell.movie = self.movie }
+
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: movieDetailsFooterCellIdentifier, for: indexPath) as! MovieDetailsFooterCell
+
+            if (self.movie != nil) { cell.movie = self.movie }
+            if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
+
             return cell
         default:
             return UITableViewCell()

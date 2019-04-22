@@ -12,6 +12,8 @@ import RxAlamofire
 
 protocol IMovieService {
     func getPopularMovies(page: Int) -> Observable<Results<Movie>>
+    func getDetails(movieId: Int, appendToResponse: [String]) -> Observable<Movie>
+    func getMovieRankings(imdbId: String) -> Observable<MovieOMDB>
 }
 
 class MovieService: BaseService, IMovieService {
@@ -43,5 +45,18 @@ class MovieService: BaseService, IMovieService {
         return requestJSON(.get, url, parameters: parameters)
                     .debug()
                     .mapObject(type: Movie.self)
+    }
+    
+    func getMovieRankings(imdbId: String) -> Observable<MovieOMDB> {
+        let baseUrl = Constants.OMDB.BASE_URL
+        let parameters = [
+            Constants.OMDB.Parameters.apiKey: Constants.OMDB.API_KEY,
+            Constants.OMDB.Parameters.tomatoes: "true",
+            "i": imdbId
+        ]
+        
+        return requestJSON(.get, baseUrl, parameters: parameters)
+                        .debug()
+                        .mapObject(type: MovieOMDB.self)
     }
 }

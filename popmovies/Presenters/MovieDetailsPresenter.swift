@@ -26,18 +26,36 @@ class MovieDetailsPresenter: BasePresenter, IMovieDetailsPresenter {
     }
     
     func fetchMovieDetails(movieId: Int?) {
-        guard let id = movieId else { return }
-        
-        let disposible = interactor?.fetchMovieDetails(movieId: id)
+        if let id = movieId {
+            add(d:
+                interactor?.fetchMovieDetails(movieId: id)
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { (movie) in
                         self.view?.bindMovie(movie: movie)
+                        
+                        self.fetchMovieRankings(imdbId: movie.imdbID)
                     }, onError: { (error) in
                         //
                     })
+            )
+        }
         
-        add(d: disposible)
+    }
+    
+    private func fetchMovieRankings(imdbId: String?) {
+        if let imdb = imdbId {
+            add(d:
+                interactor?.fetchMovieRankings(imdbId: imdb)
+                    .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+                    .observeOn(MainScheduler.instance)
+                    .subscribe(onNext: { (movie) in
+                        self.view?.bindMovieRankings(movie: movie)
+                    }, onError: { (error) in
+                        //
+                    })
+            )
+        }
     }
     
     

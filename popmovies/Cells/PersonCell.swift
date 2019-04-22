@@ -24,10 +24,12 @@ class PersonCell: UICollectionViewCell {
             let pictureUrl = "https://image.tmdb.org/t/p/w185/" + pictureId
             
             personPictureView.setImage( imageUrl: pictureUrl, contentMode: .scaleAspectFill, placeholderImageName: "placeholder")
-            personPictureView.layer.cornerRadius = personPictureView.bounds.width / 2
-            personPictureView.layer.masksToBounds = true
-            
+        } else {
+            personPictureView.image = UIImage(named: "ProfilePlaceholder")
         }
+        
+        personPictureView.layer.cornerRadius = personPictureView.bounds.width / 2
+        personPictureView.layer.masksToBounds = true
         
         nameView.text = person.name
         subtitleView.text = person.subtitle

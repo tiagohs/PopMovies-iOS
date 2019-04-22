@@ -21,6 +21,16 @@ struct Constants {
         }
     }
     
+    struct OMDB {
+        static let API_KEY = "a04303a5"
+        static let BASE_URL = "http://www.omdbapi.com/"
+        
+        struct Parameters {
+            static let apiKey = "apikey"
+            static let tomatoes = "tomatoes"
+        }
+    }
+    
     
     
     //The header fields

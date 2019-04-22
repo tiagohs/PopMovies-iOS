@@ -11,6 +11,7 @@ import RxSwift
 protocol IMovieDetailsView: IBaseView {
     
     func bindMovie(movie: Movie)
+    func bindMovieRankings(movie: MovieOMDB)
 }
 
 protocol IMovieDetailsPresenter: IBasePresenter {
@@ -21,4 +22,5 @@ protocol IMovieDetailsPresenter: IBasePresenter {
 protocol IMovieDetailsInteractor {
     
     func fetchMovieDetails(movieId: Int) -> Observable<Movie>
+    func fetchMovieRankings(imdbId: String) -> Observable<MovieOMDB>
 }

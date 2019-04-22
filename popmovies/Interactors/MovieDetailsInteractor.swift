@@ -11,7 +11,7 @@ import RxSwift
 class MovieDetailsInteractor: IMovieDetailsInteractor {
     
     var presenter: IMovieDetailsPresenter? = nil
-    var movieService: MovieService
+    var movieService: IMovieService
     
     init(presenter: IMovieDetailsPresenter) {
         self.presenter = presenter
@@ -22,5 +22,9 @@ class MovieDetailsInteractor: IMovieDetailsInteractor {
         let appendToResponse = ["videos", "images", "keywords", "releases", "similar_movies", "credits"]
         
         return movieService.getDetails(movieId: movieId, appendToResponse: appendToResponse)
+    }
+    
+    func fetchMovieRankings(imdbId: String) -> Observable<MovieOMDB> {
+        return movieService.getMovieRankings(imdbId: imdbId) 
     }
 }
