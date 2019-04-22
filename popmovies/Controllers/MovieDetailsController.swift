@@ -56,7 +56,15 @@ class MovieDetailsController: UIViewController {
 extension MovieDetailsController: IMovieDetailsView {
     
     func bindMovie(movie: Movie) {
-        self.movie = movie
+        self.movie?.credits = movie.credits
+        self.movie?.keywords = movie.keywords
+        self.movie?.runtime = movie.runtime
+        self.movie?.videos = movie.videos
+        self.movie?.images = movie.images
+        self.movie?.homepage = movie.homepage
+        self.movie?.productionCompanies = movie.productionCompanies
+        self.movie?.productionCountries = movie.productionCountries
+        self.movie?.similiarMovies = movie.similiarMovies
         
         self.tableView.reloadData()
     }
@@ -69,6 +77,14 @@ extension MovieDetailsController: IMovieDetailsView {
         let footerIndex = IndexPath(item: 3, section: 0)
         
         self.tableView.reloadRows(at: [headerIndex, middleIndex, footerIndex], with: .none)
+    }
+    
+    func bindMovieImages(images: Images) {
+        self.movie?.images = images
+        
+        let index = IndexPath(item: 2, section: 0)
+        
+        self.tableView.reloadRows(at: [index], with: .none)
     }
     
 }

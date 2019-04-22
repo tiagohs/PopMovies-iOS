@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-class Image: BaseModel {
+class Images: BaseModel {
     var backdrops : [String]?
     var posters : [String]?
     

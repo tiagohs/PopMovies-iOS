@@ -34,10 +34,10 @@ class Movie: BaseModel {
     // Append To Reponse
     var alternativeTitles: [AlternativeTitle]?
     var credits: MediaCreditList?
-    var images: [Image]?
+    var images: Images?
     var keywords: [KeywordResults]?
     var releases: [Release]?
-    var videos: [VideoResult]?
+    var videos: VideoResult?
     var translations: [TranslationResults]?
     var similiarMovies: [Movie]?
     var reviews: [Review]?

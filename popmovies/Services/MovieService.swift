@@ -36,10 +36,11 @@ class MovieService: BaseService, IMovieService {
     
     func getDetails(movieId: Int, appendToResponse: [String]) -> Observable<Movie> {
         let appendToResponse = createAppendToResponse(appendToResponse: appendToResponse)
-        let parameters = baseParameters.merge(with: [
-            "movie_id": String(movieId),
+        let parameters = [
+            Constants.TMDB.Parameters.apiKey: Constants.TMDB.API_KEY,
+            Constants.TMDB.Parameters.language: "en_US",
             "append_to_response": appendToResponse
-        ])
+        ]
         let url = "\(serviceUrl)/\(movieId)"
         
         return requestJSON(.get, url, parameters: parameters)
