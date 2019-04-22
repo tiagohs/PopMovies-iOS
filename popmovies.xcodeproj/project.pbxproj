@@ -91,6 +91,8 @@
 		A2FE023B226E2DDA00BCB8AC /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE023A226E2DDA00BCB8AC /* ImageUtils.swift */; };
 		A2FE023D226E369F00BCB8AC /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2FE023C226E369F00BCB8AC /* MovieCell.xib */; };
 		A2FE0245226E3CF600BCB8AC /* MovieFeaturedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2FE0244226E3CF600BCB8AC /* MovieFeaturedCell.xib */; };
+		A2FE0247226E5E8400BCB8AC /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0246226E5E8400BCB8AC /* ViewUtils.swift */; };
+		A2FE024B226E6C4900BCB8AC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE024A226E6C4900BCB8AC /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +205,8 @@
 		A2FE023A226E2DDA00BCB8AC /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		A2FE023C226E369F00BCB8AC /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		A2FE0244226E3CF600BCB8AC /* MovieFeaturedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieFeaturedCell.xib; sourceTree = "<group>"; };
+		A2FE0246226E5E8400BCB8AC /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
+		A2FE024A226E6C4900BCB8AC /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		BF671210EF166C7A48E4C8AD /* Pods-popmoviesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-popmoviesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-popmoviesUITests/Pods-popmoviesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DBEE69AB622BE17688070CB2 /* Pods_popmovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_popmovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BC4F45CD951837539FAF96 /* Pods-popmoviesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-popmoviesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-popmoviesTests/Pods-popmoviesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -577,6 +581,7 @@
 				A27F1DB0225EA8F100B15976 /* HomeController.swift */,
 				A27F1DB2225EA90400B15976 /* ProfileController.swift */,
 				A22A91DD2268DF4000F74BD5 /* MovieDetailsController.swift */,
+				A2FE024A226E6C4900BCB8AC /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -641,6 +646,7 @@
 			isa = PBXGroup;
 			children = (
 				A2FE023A226E2DDA00BCB8AC /* ImageUtils.swift */,
+				A2FE0246226E5E8400BCB8AC /* ViewUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -886,6 +892,7 @@
 				A22A91E52268F9CD00F74BD5 /* MovieDetailsPresenter.swift in Sources */,
 				A21693C32263E76A009988F1 /* Dictionary.swift in Sources */,
 				A22A92072269215D00F74BD5 /* TranslationData.swift in Sources */,
+				A2FE024B226E6C4900BCB8AC /* TabBarViewController.swift in Sources */,
 				A27F4F85225FC6A700B15976 /* BasePresenter.swift in Sources */,
 				A21693AD2263D8A7009988F1 /* Movie.swift in Sources */,
 				A27F1D82225E923F00B15976 /* ViewController.swift in Sources */,
@@ -926,6 +933,7 @@
 				A22A91EB2269108700F74BD5 /* EnumTransformStringCaseInsensitive.swift in Sources */,
 				A2FE0225226BCBE200BCB8AC /* PersonCell.swift in Sources */,
 				A2FE022B226D076500BCB8AC /* MovieDetailsMidiaCell.swift in Sources */,
+				A2FE0247226E5E8400BCB8AC /* ViewUtils.swift in Sources */,
 				A27F1DB1225EA8F100B15976 /* HomeController.swift in Sources */,
 				A21693BE2263E4B3009988F1 /* ObservableType.swift in Sources */,
 				A22A91F922691BF000F74BD5 /* Image.swift in Sources */,

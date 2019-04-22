@@ -13,6 +13,7 @@ class FeatureMoviesCell: UITableViewCell {
     let featuresCellIdentifier = "FeaturesCellIdentifier"
     
     var featureMovies: [Movie] = []
+    var movieListCallback: MovieListCallback? = nil
     
     @IBOutlet weak var featureMoviesCollectionView: UICollectionView!
     
@@ -21,6 +22,7 @@ class FeatureMoviesCell: UITableViewCell {
             featureMoviesViewFlow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
     }
+    
     func updateFeatureMoviesCollection(featureMovies: [Movie]?) {
         let cellNib = UINib(nibName: "MovieFeaturedCell", bundle: nil)
         featureMoviesCollectionView.register(cellNib, forCellWithReuseIdentifier: featuresCellIdentifier)
@@ -47,9 +49,15 @@ extension FeatureMoviesCell: UICollectionViewDelegate, UICollectionViewDataSourc
         
         let movie = featureMovies[indexPath.row]
         
-        cell.bindMovieCellWithPoster(movie: movie)
+        cell.bindMovieCellWithBackdrop(movie: movie)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = featureMovies[indexPath.row]
+        
+        movieListCallback?.didSelectItem(index: indexPath.row, movie: movie)
     }
 
 }

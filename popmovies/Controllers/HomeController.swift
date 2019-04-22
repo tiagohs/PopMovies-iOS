@@ -21,6 +21,8 @@ class HomeController: UIViewController {
     var featureMovies: [Movie]              = []
     var weekMovies: [Movie]                 = []
     
+    var isNavbarColorPrimary = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,23 +36,66 @@ class HomeController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        
         let nav = self.navigationController?.navigationBar
-        
+//
         nav?.setBackgroundImage(UIImage(), for: .default)
         nav?.shadowImage = UIImage()
         nav?.backgroundColor = .clear
+        nav?.isTranslucent = true
+        nav?.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.Color.colorPrimary)
         
-        nav?.tintColor = UIColor.white
+        let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(HomeController.didSearchButtonTaped))
+        
+        var buttonSize = CGFloat(20)
+        if let navHeight = nav?.frame.size.height {
+            buttonSize = navHeight - CGFloat(10.0)
+        }
+        
+        let menuBtn = UIButton(type: .custom)
+        menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: buttonSize, height: buttonSize)
+        menuBtn.setImage(UIImage(named:"ProfilePlaceholder"), for: .normal)
+        
+        menuBtn.layer.cornerRadius = menuBtn.frame.size.height / 2
+        menuBtn.layer.masksToBounds = true
+        
+        let profileButton = UIBarButtonItem(customView: menuBtn)
+        let currWidth = profileButton.customView?.widthAnchor.constraint(equalToConstant: buttonSize)
+        currWidth?.isActive = true
+        let currHeight = profileButton.customView?.heightAnchor.constraint(equalToConstant: buttonSize)
+        currHeight?.isActive = true
+        
+        navigationItem.rightBarButtonItems = [profileButton, searchButton]
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    @objc func didSearchButtonTaped() {
         
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let nav = self.navigationController?.navigationBar
+        let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+        
+        if (scrollView.contentOffset.y > 10 && !isNavbarColorPrimary) {
+            nav?.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.Color.colorPrimary)
+            nav?.tintColor = UIColor.white
+            nav?.barTintColor = UIColor.white
+            nav?.barStyle = .blackTranslucent
+            
+            statusBar?.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.Color.colorPrimary)
+            
+            isNavbarColorPrimary = true
+        } else if scrollView.contentOffset.y <= 10 && isNavbarColorPrimary {
+            nav?.setBackgroundImage(UIImage(), for: .default)
+            nav?.shadowImage = UIImage()
+            nav?.backgroundColor = .clear
+            nav?.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.Color.colorPrimary)
+            nav?.barStyle = .default
+            
+            statusBar?.backgroundColor = UIColor.white
+            
+            isNavbarColorPrimary = false
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -97,13 +142,14 @@ extension HomeController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: featuresMovieCellIdentifier, for: indexPath) as! FeatureMoviesCell
             
+            cell.movieListCallback = self
             cell.updateFeatureMoviesCollection(featureMovies: featureMovies)
             
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: weekMoviesCellIdentifier, for: indexPath) as! WeekMoviesCell
             
-            cell.setMovieListCallback(movieListCallback: self)
+            cell.movieListCallback = self
             cell.updateWeekMoviesCollection(weekMovies: weekMovies)
             
             return cell

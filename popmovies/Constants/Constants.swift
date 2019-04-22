@@ -75,7 +75,13 @@ struct Constants {
         }
     }
     
-    
+    struct Color {
+        static let colorPrimary = "#673ab7"
+        static let colorPrimaryDark = "#4527a0"
+        static let colorPrimaryLight = "#7e57c2"
+        static let colorAccent = "#f44336"
+        
+    }
     
     //The header fields
     enum HttpHeaderField: String {

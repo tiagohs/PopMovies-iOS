@@ -17,6 +17,11 @@ class WeekMoviesCell: UITableViewCell {
     var weekMovies: [Movie] = []
     var movieListCallback: MovieListCallback? = nil
     
+    let shadowpath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:
+        35, height: 35), byRoundingCorners:
+        [.topRight, .bottomRight], cornerRadii: CGSize(width: 28.0, height: 0.0))
+    let shadowOffset = CGSize(width: 0.8, height: 0.4)
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -25,10 +30,6 @@ class WeekMoviesCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    func setMovieListCallback(movieListCallback: MovieListCallback) {
-        self.movieListCallback = movieListCallback
     }
     
     func updateWeekMoviesCollection(weekMovies: [Movie]?) {

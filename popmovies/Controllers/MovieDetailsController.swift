@@ -40,6 +40,9 @@ class MovieDetailsController: UIViewController {
         super.viewWillDisappear(animated)
         
         self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController?.navigationBar.isTranslucent = false
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.black
     }
 
     override func viewDidLoad() {

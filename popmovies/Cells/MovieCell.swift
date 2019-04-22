@@ -35,7 +35,7 @@ class MovieCell: UICollectionViewCell {
         super.prepareForReuse()
     }
     
-    func bindMovieCellWithPoster(movie: Movie) {
+    func bindMovieCellWithBackdrop(movie: Movie) {
         self.movie = movie
         
         if let backdropUrl = ImageUtils.formatImageUrl(imageID: movie.backdropPath, imageSize: Constants.TMDB.ImageSize.BACKDROP.w780) {
