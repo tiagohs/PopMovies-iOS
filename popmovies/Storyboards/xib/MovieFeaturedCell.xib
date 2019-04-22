@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MovieCell" customModule="popmovies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="294" height="190"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9r-xl-gbh">
+                    <rect key="frame" x="0.0" y="0.0" width="294" height="190"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y8u-61-9ro">
+                            <rect key="frame" x="5" y="5" width="284" height="180"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="284" id="4Zg-uw-9O6"/>
+                                <constraint firstAttribute="height" constant="180" id="d68-M4-win"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="y8u-61-9ro" firstAttribute="top" secondItem="C9r-xl-gbh" secondAttribute="top" constant="5" id="5VD-to-GsE"/>
+                        <constraint firstAttribute="trailing" secondItem="y8u-61-9ro" secondAttribute="trailing" constant="5" id="NpP-lP-jBd"/>
+                        <constraint firstItem="y8u-61-9ro" firstAttribute="centerX" secondItem="C9r-xl-gbh" secondAttribute="centerX" id="XpV-kk-tZc"/>
+                        <constraint firstItem="y8u-61-9ro" firstAttribute="leading" secondItem="C9r-xl-gbh" secondAttribute="leading" constant="5" id="c64-4l-rcu"/>
+                        <constraint firstAttribute="height" constant="190" id="oLG-s5-QKP"/>
+                        <constraint firstAttribute="width" constant="294" id="u1t-DT-jc3"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="C9r-xl-gbh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Dtv-RE-oH9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="C9r-xl-gbh" secondAttribute="trailing" id="b2E-8W-jI2"/>
+                <constraint firstItem="C9r-xl-gbh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="cwZ-Lg-Uz2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="C9r-xl-gbh" secondAttribute="bottom" id="gww-f2-zoB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="movieBackground" destination="y8u-61-9ro" id="ktq-Vz-eI5"/>
+            </connections>
+            <point key="canvasLocation" x="-11.199999999999999" y="-166.41679160419793"/>
+        </view>
+    </objects>
+</document>

@@ -26,6 +26,9 @@ class HomeController: UIViewController {
         
         homePresenter = HomePresenter(view: self)
         homePresenter?.fetchPopularMovies()
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 690
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +50,7 @@ class HomeController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

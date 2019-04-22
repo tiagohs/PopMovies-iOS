@@ -20,10 +20,9 @@ class PersonCell: UICollectionViewCell {
     
     private func bindPersonCellContent(person: PersonItem) {
         
-        if let pictureId = person.pictureId {
-            let pictureUrl = "https://image.tmdb.org/t/p/w185/" + pictureId
+        if let pictureUrl = ImageUtils.formatImageUrl(imageID: person.pictureId, imageSize: Constants.TMDB.ImageSize.PROFILE.w185) {
             
-            personPictureView.setImage( imageUrl: pictureUrl, contentMode: .scaleAspectFill, placeholderImageName: "placeholder")
+            personPictureView.setImage( imageUrl: pictureUrl, contentMode: .scaleAspectFill, placeholderImageName: "ProfilePlaceholder")
         } else {
             personPictureView.image = UIImage(named: "ProfilePlaceholder")
         }

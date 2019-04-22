@@ -17,11 +17,23 @@ class WeekMoviesCell: UITableViewCell {
     var weekMovies: [Movie] = []
     var movieListCallback: MovieListCallback? = nil
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     func setMovieListCallback(movieListCallback: MovieListCallback) {
         self.movieListCallback = movieListCallback
     }
     
     func updateWeekMoviesCollection(weekMovies: [Movie]?) {
+        let cellNib = UINib(nibName: "MovieCell", bundle: nil)
+        weekMoviesCollectionView.register(cellNib, forCellWithReuseIdentifier: weekMovieCellIdentifier)
         
         if (weekMovies != nil && !(weekMovies?.isEmpty)!) {
             self.weekMovies = weekMovies!

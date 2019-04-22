@@ -88,6 +88,9 @@
 		A2FE0234226D1ADA00BCB8AC /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0233226D1ADA00BCB8AC /* Rating.swift */; };
 		A2FE0236226D5D0100BCB8AC /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0235226D5D0100BCB8AC /* VideoCell.swift */; };
 		A2FE0238226D5D2A00BCB8AC /* WallpaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0237226D5D2A00BCB8AC /* WallpaperCell.swift */; };
+		A2FE023B226E2DDA00BCB8AC /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE023A226E2DDA00BCB8AC /* ImageUtils.swift */; };
+		A2FE023D226E369F00BCB8AC /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2FE023C226E369F00BCB8AC /* MovieCell.xib */; };
+		A2FE0245226E3CF600BCB8AC /* MovieFeaturedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2FE0244226E3CF600BCB8AC /* MovieFeaturedCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +200,9 @@
 		A2FE0233226D1ADA00BCB8AC /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		A2FE0235226D5D0100BCB8AC /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		A2FE0237226D5D2A00BCB8AC /* WallpaperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperCell.swift; sourceTree = "<group>"; };
+		A2FE023A226E2DDA00BCB8AC /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
+		A2FE023C226E369F00BCB8AC /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
+		A2FE0244226E3CF600BCB8AC /* MovieFeaturedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieFeaturedCell.xib; sourceTree = "<group>"; };
 		BF671210EF166C7A48E4C8AD /* Pods-popmoviesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-popmoviesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-popmoviesUITests/Pods-popmoviesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DBEE69AB622BE17688070CB2 /* Pods_popmovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_popmovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BC4F45CD951837539FAF96 /* Pods-popmoviesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-popmoviesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-popmoviesTests/Pods-popmoviesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -292,6 +298,7 @@
 		A21693BC2263E4A1009988F1 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A2FE0239226E2DCB00BCB8AC /* Utils */,
 				A21693C12263E750009988F1 /* Extensions */,
 				A22A91EA2269108700F74BD5 /* EnumTransformStringCaseInsensitive.swift */,
 			);
@@ -615,6 +622,8 @@
 		A2D6AF92226B7E74004254D4 /* xib */ = {
 			isa = PBXGroup;
 			children = (
+				A2FE023C226E369F00BCB8AC /* MovieCell.xib */,
+				A2FE0244226E3CF600BCB8AC /* MovieFeaturedCell.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -626,6 +635,14 @@
 				A2FE0233226D1ADA00BCB8AC /* Rating.swift */,
 			);
 			path = OMDB;
+			sourceTree = "<group>";
+		};
+		A2FE0239226E2DCB00BCB8AC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A2FE023A226E2DDA00BCB8AC /* ImageUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -738,6 +755,7 @@
 			files = (
 				A22A922F226A224800F74BD5 /* OpenSans-Regular.ttf in Resources */,
 				A22A9235226A225F00F74BD5 /* Oswald-Bold.ttf in Resources */,
+				A2FE023D226E369F00BCB8AC /* MovieCell.xib in Resources */,
 				A22A922D226A224800F74BD5 /* OpenSans-Italic.ttf in Resources */,
 				A27F1D8A225E924100B15976 /* LaunchScreen.storyboard in Resources */,
 				A22A923F226A227A00F74BD5 /* Roboto-Light.ttf in Resources */,
@@ -749,6 +767,7 @@
 				A22A922E226A224800F74BD5 /* OpenSans-Bold.ttf in Resources */,
 				A27F1D85225E923F00B15976 /* Main.storyboard in Resources */,
 				A22A91DC2268DE7D00F74BD5 /* Movie.storyboard in Resources */,
+				A2FE0245226E3CF600BCB8AC /* MovieFeaturedCell.xib in Resources */,
 				A22A923E226A227A00F74BD5 /* Roboto-Regular.ttf in Resources */,
 				A22A9230226A224800F74BD5 /* OpenSans-Light.ttf in Resources */,
 				A22A9237226A225F00F74BD5 /* Oswald-Light.ttf in Resources */,
@@ -920,6 +939,7 @@
 				A21693A62263D580009988F1 /* Constants.swift in Sources */,
 				A21693AA2263D700009988F1 /* MovieService.swift in Sources */,
 				A2FE0236226D5D0100BCB8AC /* VideoCell.swift in Sources */,
+				A2FE023B226E2DDA00BCB8AC /* ImageUtils.swift in Sources */,
 				A22A91F622691A7700F74BD5 /* CreditCrew.swift in Sources */,
 				A22A91FB22691C7B00F74BD5 /* Keyword.swift in Sources */,
 				A22A9251226AC32B00F74BD5 /* UIGradientImageView.swift in Sources */,
