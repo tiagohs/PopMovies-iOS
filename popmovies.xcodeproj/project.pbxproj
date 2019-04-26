@@ -95,6 +95,7 @@
 		A2FE0253226F7B9F00BCB8AC /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0252226F7B9F00BCB8AC /* OverviewViewController.swift */; };
 		A2FE0255226F8EE900BCB8AC /* MidiaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0254226F8EE900BCB8AC /* MidiaViewController.swift */; };
 		A2FE02572272982100BCB8AC /* MovieSmallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02562272982100BCB8AC /* MovieSmallCell.xib */; };
+		A2FE025922729CC100BCB8AC /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE025822729CC100BCB8AC /* UIImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +212,7 @@
 		A2FE0252226F7B9F00BCB8AC /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		A2FE0254226F8EE900BCB8AC /* MidiaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaViewController.swift; sourceTree = "<group>"; };
 		A2FE02562272982100BCB8AC /* MovieSmallCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieSmallCell.xib; sourceTree = "<group>"; };
+		A2FE025822729CC100BCB8AC /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BF671210EF166C7A48E4C8AD /* Pods-popmoviesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-popmoviesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-popmoviesUITests/Pods-popmoviesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DBEE69AB622BE17688070CB2 /* Pods_popmovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_popmovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BC4F45CD951837539FAF96 /* Pods-popmoviesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-popmoviesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-popmoviesTests/Pods-popmoviesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				A21693C22263E76A009988F1 /* Dictionary.swift */,
 				A216947722665974009988F1 /* UIImageView.swift */,
 				A22A9246226AA1F100F74BD5 /* Date.swift */,
+				A2FE025822729CC100BCB8AC /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -906,6 +909,7 @@
 				A22A91DA2267CBC600F74BD5 /* PopularMoviesCell.swift in Sources */,
 				A21694602263EFDE009988F1 /* SpokenLanguage.swift in Sources */,
 				A2FE0238226D5D2A00BCB8AC /* WallpaperCell.swift in Sources */,
+				A2FE025922729CC100BCB8AC /* UIImage.swift in Sources */,
 				A27F4F83225FC4AF00B15976 /* BaseContract.swift in Sources */,
 				A2FE0253226F7B9F00BCB8AC /* OverviewViewController.swift in Sources */,
 				A22A91E12268E1B900F74BD5 /* MovieListCallback.swift in Sources */,
