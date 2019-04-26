@@ -1,17 +1,18 @@
 //
-//  MovieDetailsMiddleCell.swift
+//  OverviewViewController.swift
 //  popmovies
 //
-//  Created by Tiago Silva on 20/04/2019.
+//  Created by Tiago Silva on 23/04/2019.
 //  Copyright © 2019 Tiago Silva. All rights reserved.
 //
 
 import UIKit
 
-class MovieDetailsMiddleCell: UITableViewCell {
+class OverviewViewController: UIViewController {
     
     let castCollectionViewIdentifier = "CastCollectionViewIdentifier"
     let crewCollectionViewIdentifier = "CrewCollectionViewIdentifier"
+    let relatedMoviesCollectioViewIdentifier = "RelatedMoviesCollectioViewIdentifier"
     let personCellIdentifier = "PersonCellIdentifier"
     
     @IBOutlet weak var movieOverviewView: UILabel!
@@ -21,19 +22,22 @@ class MovieDetailsMiddleCell: UITableViewCell {
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var crewCollectionView: UICollectionView!
     
-    
     var movie: Movie? {
         didSet { bindMovieContent(movie: self.movie!) }
     }
     
     var movieRanking: MovieOMDB? {
-        didSet { bindMovieRankings(movieRanking: movieRanking!) } 
+        didSet { bindMovieRankings(movieRanking: movieRanking!) }
     }
     
     let shadowpath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:
         35, height: 35), byRoundingCorners:
         [.topRight, .bottomRight], cornerRadii: CGSize(width: 28.0, height: 0.0))
     let shadowOffset = CGSize(width: 0.8, height: 0.4)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     private func bindMovieRankings(movieRanking: MovieOMDB) {
         
@@ -93,19 +97,24 @@ class MovieDetailsMiddleCell: UITableViewCell {
         view.layer.masksToBounds =  false
         view.layer.shadowPath = shadowpath.cgPath
     }
+    
+    
 }
 
-extension MovieDetailsMiddleCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension OverviewViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch collectionView.restorationIdentifier {
-            case castCollectionViewIdentifier:
-                return movie?.credits?.cast?.count ?? 0
-            case crewCollectionViewIdentifier:
-                return movie?.credits?.crew?.count ?? 0
-            default:
-                return 0
+        case castCollectionViewIdentifier:
+            return movie?.credits?.cast?.count ?? 0
+        case crewCollectionViewIdentifier:
+            return movie?.credits?.crew?.count ?? 0
+        case relatedMoviesCollectioViewIdentifier:
+            return 0
+            //return movie?.similiarMovies?.count ?? 0
+        default:
+            return 0
         }
     }
     
@@ -129,6 +138,8 @@ extension MovieDetailsMiddleCell: UICollectionViewDelegate, UICollectionViewData
                 
                 return setupCastCollectionViewCell(collectionView, cellForItemAt: indexPath, personItem: personItem)
             }
+        case relatedMoviesCollectioViewIdentifier:
+            return UICollectionViewCell()
         default:
             return UICollectionViewCell()
         }
@@ -144,6 +155,5 @@ extension MovieDetailsMiddleCell: UICollectionViewDelegate, UICollectionViewData
         
         return cell
     }
-    
     
 }

@@ -10,16 +10,16 @@ import UIKit
 
 class HomeController: UIViewController {
     
-    let featuresMovieCellIdentifier         = "FeaturesMovieCellIdentifier"
-    let weekMoviesCellIdentifier            = "WeekMoviesCellIdentifier"
-    let movieDetailsSegueIdentifier         = "MovieDetailsSegueIdentifier"
+    let nowPlayingMovieCellIdentifier           = "NowPlayingMovieCellIdentifier"
+    let popularMoviesCelldentifier              = "PopularMoviesCelldentifier"
+    let movieDetailsSegueIdentifier             = "MovieDetailsSegueIdentifier"
     
     @IBOutlet weak var tableView: UITableView!
     
     var homePresenter: IHomePresenter?
     
-    var featureMovies: [Movie]              = []
-    var weekMovies: [Movie]                 = []
+    var nowPlayingMovies: [Movie]              = []
+    var popularMovies: [Movie]                 = []
     
     var isNavbarColorPrimary = false
     
@@ -27,6 +27,8 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         
         homePresenter = HomePresenter(view: self)
+        
+        homePresenter?.fetchNowPlayingMovies()
         homePresenter?.fetchPopularMovies()
         
         tableView.rowHeight = UITableView.automaticDimension
@@ -112,15 +114,15 @@ class HomeController: UIViewController {
 
 extension HomeController: IHomeView {
     
-    func bindFeatureMovies(featureMovies: [Movie]) {
-        self.featureMovies = featureMovies
+    func bindNowPlayingMovies(movies: [Movie]) {
+        self.nowPlayingMovies = movies
         
         let indexPath = IndexPath(item: 0, section: 0)
         self.tableView.reloadRows(at: [indexPath], with: .left)
     }
     
-    func bindWeekMovies(weekMovies: [Movie]) {
-        self.weekMovies = weekMovies
+    func bindPopularMovies(movies: [Movie]) {
+        self.popularMovies = movies
         
         let indexPath = IndexPath(item: 1, section: 0)
         self.tableView.reloadRows(at: [indexPath], with: .left)
@@ -140,17 +142,16 @@ extension HomeController: UITableViewDataSource, UITableViewDelegate {
         
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: featuresMovieCellIdentifier, for: indexPath) as! FeatureMoviesCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: nowPlayingMovieCellIdentifier, for: indexPath) as! NowPlayingMoviesCell
             
             cell.movieListCallback = self
-            cell.updateFeatureMoviesCollection(featureMovies: featureMovies)
-            
+            cell.updateNowPlayingMoviesCollection(movies: nowPlayingMovies)
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: weekMoviesCellIdentifier, for: indexPath) as! WeekMoviesCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: popularMoviesCelldentifier, for: indexPath) as! PopularMoviesCell
             
             cell.movieListCallback = self
-            cell.updateWeekMoviesCollection(weekMovies: weekMovies)
+            cell.updatePopularMoviesCollection(movies: popularMovies)
             
             return cell
         default:

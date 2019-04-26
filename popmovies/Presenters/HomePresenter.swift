@@ -31,14 +31,28 @@ class HomePresenter: BasePresenter, IHomePresenter {
                                     .observeOn(MainScheduler.instance)
                                     .subscribe(onNext: { (results) in
                                         if results.results != nil {
-                                            let featureMovies = results.results![0..<5]
-                                            
-                                            self.view?.bindFeatureMovies(featureMovies: Array(featureMovies))
-                                            self.view?.bindWeekMovies(weekMovies: results.results!)
+                                            self.view?.bindPopularMovies(movies: results.results!)
                                         }
                                     }, onError: { (error) in
                                         print(error)
                                     })
+        
+        add(d: disposible)
+    }
+    
+    func fetchNowPlayingMovies() {
+        let disposible = interactor?.fetchNowPlayingMovies(page: 1)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (results) in
+                if results.results != nil {
+                    let movies = results.results![0..<5]
+                    
+                    self.view?.bindNowPlayingMovies(movies: Array(movies))
+                }
+            }, onError: { (error) in
+                print(error)
+            })
         
         add(d: disposible)
     }

@@ -11,14 +11,16 @@ import RxSwift
 
 protocol IHomeView: IBaseView {
     
-    func bindFeatureMovies(featureMovies: [Movie])
-    func bindWeekMovies(weekMovies: [Movie])
+    func bindNowPlayingMovies(movies: [Movie])
+    func bindPopularMovies(movies: [Movie])
 }
 
 protocol IHomePresenter: IBasePresenter {
     func fetchPopularMovies()
+    func fetchNowPlayingMovies()
 }
 
 protocol IHomeInteractor {
     func fetchPopularMovies(page: Int) -> Observable<Results<Movie>>
+    func fetchNowPlayingMovies(page: Int) -> Observable<Results<Movie>>
 }

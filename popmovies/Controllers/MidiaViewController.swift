@@ -1,14 +1,14 @@
 //
-//  MovieDetailsMidiaCell.swift
+//  MidiaViewController.swift
 //  popmovies
 //
-//  Created by Tiago Silva on 21/04/2019.
+//  Created by Tiago Silva on 23/04/2019.
 //  Copyright © 2019 Tiago Silva. All rights reserved.
 //
 
 import UIKit
 
-class MovieDetailsMidiaCell: UITableViewCell {
+class MidiaViewController: UIViewController {
     
     let videosCollectionViewIdentifier = "VideosCollectionViewIdentifier"
     let wallpapersCollectionViewIdentifier = "WallpapersCollectionViewIdentifier"
@@ -20,6 +20,10 @@ class MovieDetailsMidiaCell: UITableViewCell {
     
     var movie: Movie? {
         didSet { bindFooter(movie: movie!) }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     private func bindFooter(movie: Movie) {
@@ -35,7 +39,7 @@ class MovieDetailsMidiaCell: UITableViewCell {
     }
 }
 
-extension MovieDetailsMidiaCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MidiaViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch collectionView.restorationIdentifier {
@@ -77,9 +81,9 @@ extension MovieDetailsMidiaCell: UICollectionViewDelegate, UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: videoCellIdentifier, for: indexPath) as! WallpaperCell
         let image = allImages[indexPath.row]
         
-        cell.image = image 
+        cell.image = image
         
         return cell
     }
-    
+
 }

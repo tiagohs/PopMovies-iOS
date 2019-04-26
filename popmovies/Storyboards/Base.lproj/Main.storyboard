@@ -46,14 +46,14 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeaturesMovieCellIdentifier" rowHeight="191" id="YXL-Rg-ZCK" userLabel="FeaturesMovieCell" customClass="FeatureMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NowPlayingMovieCellIdentifier" rowHeight="191" id="YXL-Rg-ZCK" userLabel="NowPlayingMovieCell" customClass="NowPlayingMoviesCell" customModule="popmovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="191"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YXL-Rg-ZCK" id="6wP-Pd-9Op">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D9h-EU-ivI" userLabel="WeekMoviesCollection">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D9h-EU-ivI" userLabel="NowPlayingMoviesCollection">
                                                     <rect key="frame" x="0.0" y="11" width="375" height="190"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -80,18 +80,18 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="featureMoviesCollectionView" destination="D9h-EU-ivI" id="00p-Px-CFv"/>
-                                            <outlet property="featureMoviesViewFlow" destination="6VR-2U-L47" id="d0Q-Ce-ff0"/>
+                                            <outlet property="nowPlayingMoviesCollectionView" destination="D9h-EU-ivI" id="uGx-iy-ahU"/>
+                                            <outlet property="nowPlayingMoviesViewFlow" destination="6VR-2U-L47" id="fTa-Oy-6kD"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeekMoviesCellIdentifier" rowHeight="289" id="Sff-Bw-4Ab" userLabel="WeekMoviesCell" customClass="WeekMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopularMoviesCelldentifier" rowHeight="289" id="Sff-Bw-4Ab" userLabel="PopularMoviesCell" customClass="PopularMoviesCell" customModule="popmovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="219" width="375" height="289"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sff-Bw-4Ab" id="BhW-Hs-ccW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="289"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fdA-M6-zXJ" userLabel="WeekMoviesCollection">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fdA-M6-zXJ" userLabel="PopularMoviesCollection">
                                                     <rect key="frame" x="0.0" y="60.666666666666671" width="375" height="228.33333333333331"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -136,7 +136,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="weekMoviesCollectionView" destination="fdA-M6-zXJ" id="BNk-Od-HvM"/>
+                                            <outlet property="popularMoviesCollectionView" destination="fdA-M6-zXJ" id="W3m-7b-U8J"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="O8k-5F-Igb">
@@ -256,7 +256,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="HomeIcon" width="30" height="30"/>
-        <image name="PersonIcon" width="33" height="33"/>
+        <image name="HomeIcon" width="29" height="29"/>
+        <image name="PersonIcon" width="29" height="29"/>
     </resources>
 </document>

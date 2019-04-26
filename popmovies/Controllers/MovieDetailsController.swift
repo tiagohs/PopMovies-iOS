@@ -12,9 +12,7 @@ import UIKit
 class MovieDetailsController: UIViewController {
     
     let movieDetailsHeaderCellIdentifier = "MovieDetailsHeaderCellIdentifier"
-    let movieDetailsMiddleCellIdentifier = "MovieDetailsMiddleCellIdentifier"
-    let movieDetailsMidiaCellIdentifier = "MovieDetailsMidiaCellIdentifier"
-    let movieDetailsFooterCellIdentifier = "MovieDetailsFooterCellIdentifier"
+    let movieDetailsContentCellIdentifier = "MovieDetailsContentCellIdentifier"
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -77,15 +75,14 @@ extension MovieDetailsController: IMovieDetailsView {
         
         let headerIndex = IndexPath(item: 0, section: 0)
         let middleIndex = IndexPath(item: 1, section: 0)
-        let footerIndex = IndexPath(item: 3, section: 0)
         
-        self.tableView.reloadRows(at: [headerIndex, middleIndex, footerIndex], with: .none)
+        self.tableView.reloadRows(at: [headerIndex, middleIndex], with: .none)
     }
     
     func bindMovieImages(images: Images) {
         self.movie?.images = images
         
-        let index = IndexPath(item: 2, section: 0)
+        let index = IndexPath(item: 1, section: 0)
         
         self.tableView.reloadRows(at: [index], with: .none)
     }
@@ -95,7 +92,7 @@ extension MovieDetailsController: IMovieDetailsView {
 extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,24 +106,13 @@ extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: movieDetailsMiddleCellIdentifier, for: indexPath) as! MovieDetailsMiddleCell
-        
+            let cell = tableView.dequeueReusableCell(withIdentifier: movieDetailsContentCellIdentifier, for: indexPath) as! MovieDetailsContentCell
+            
+            cell.onInit()
+            
             if (self.movie != nil) { cell.movie = self.movie }
             if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
-        
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: movieDetailsMidiaCellIdentifier, for: indexPath) as! MovieDetailsMidiaCell
-
-            if (self.movie != nil) { cell.movie = self.movie }
-
-            return cell
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: movieDetailsFooterCellIdentifier, for: indexPath) as! MovieDetailsFooterCell
-
-            if (self.movie != nil) { cell.movie = self.movie }
-            if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
-
+            
             return cell
         default:
             return UITableViewCell()

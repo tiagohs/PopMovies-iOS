@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class WeekMoviesCell: UITableViewCell {
-    let weekMovieCellIdentifier = "WeekMovieCellIdentifier"
+class PopularMoviesCell: UITableViewCell {
+    let popularMoviesCelldentifier = "PopularMoviesCelldentifier"
     
-    @IBOutlet weak var weekMoviesCollectionView: UICollectionView!
+    @IBOutlet weak var popularMoviesCollectionView: UICollectionView!
     
-    var weekMovies: [Movie] = []
+    var movies: [Movie] = []
     var movieListCallback: MovieListCallback? = nil
     
     let shadowpath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:
@@ -32,30 +32,30 @@ class WeekMoviesCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    func updateWeekMoviesCollection(weekMovies: [Movie]?) {
+    func updatePopularMoviesCollection(movies: [Movie]?) {
         let cellNib = UINib(nibName: "MovieCell", bundle: nil)
-        weekMoviesCollectionView.register(cellNib, forCellWithReuseIdentifier: weekMovieCellIdentifier)
+        popularMoviesCollectionView.register(cellNib, forCellWithReuseIdentifier: popularMoviesCelldentifier)
         
-        if (weekMovies != nil && !(weekMovies?.isEmpty)!) {
-            self.weekMovies = weekMovies!
+        if (movies != nil && !(movies?.isEmpty)!) {
+            self.movies = movies!
         
-            self.weekMoviesCollectionView.reloadData()
+            self.popularMoviesCollectionView.reloadData()
         }
     }
     
 }
 
-extension WeekMoviesCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PopularMoviesCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return weekMovies.count
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: weekMovieCellIdentifier, for: indexPath) as! MovieCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: popularMoviesCelldentifier, for: indexPath) as! MovieCell
         
-        let movie = weekMovies[indexPath.row]
+        let movie = movies[indexPath.row]
         
         cell.bindMovieCellDefault(movie: movie)
         
@@ -63,7 +63,7 @@ extension WeekMoviesCell: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let movie = weekMovies[indexPath.row]
+        let movie = movies[indexPath.row]
         
         movieListCallback?.didSelectItem(index: indexPath.row, movie: movie)
     }
