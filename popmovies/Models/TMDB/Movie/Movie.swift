@@ -63,7 +63,7 @@ class Movie: BaseModel {
         video                   <-  map["video"]
         voteAverage             <-  map["vote_average"]
         voteCount               <-  map["vote_count"]
-        releaseDate             <-  (map["release_date"], DateTransform())
+        releaseDate             <-  (map["release_date"], DateFormatTransform("yyyy-MM-dd"))
         genres                  <-  map["genres"]
         
         productionCompanies     <-  map["production_companies"]
@@ -79,6 +79,7 @@ class Movie: BaseModel {
         translations            <- map["translations"]
         similiarMovies          <- map["similar_movies"]
         reviews                 <- map["reviews"]
+        
     }
     
 }

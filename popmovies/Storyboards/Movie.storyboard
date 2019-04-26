@@ -833,10 +833,16 @@
                     </view>
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
+                        <outlet property="awardsView" destination="KGe-m5-1d0" id="npV-e5-LQd"/>
+                        <outlet property="budgetView" destination="dMh-gp-CNf" id="DJc-rp-3eb"/>
                         <outlet property="castCollectionView" destination="jFa-xv-oh7" id="U7l-F9-UWU"/>
                         <outlet property="crewCollectionView" destination="TuF-uj-G0V" id="EPJ-CY-OGM"/>
                         <outlet property="imdbView" destination="AQI-2d-6RS" id="Spg-fc-3hq"/>
+                        <outlet property="inTheaterView" destination="kiq-mu-Ze0" id="AbK-55-n8m"/>
+                        <outlet property="languageView" destination="0iT-Wu-Kl8" id="sPH-tr-6MP"/>
                         <outlet property="movieOverviewView" destination="Etz-6v-a1Y" id="s7A-HE-lxP"/>
+                        <outlet property="originalTitleView" destination="z5T-Yi-TlG" id="qq1-Ab-fZj"/>
+                        <outlet property="revenueView" destination="yrd-mp-d0C" id="C0k-2G-Job"/>
                         <outlet property="tomatoesView" destination="9kX-9A-u7i" id="MSc-lv-DNM"/>
                         <outlet property="wikiView" destination="vwC-JC-oYP" id="AjP-gf-bRo"/>
                     </connections>

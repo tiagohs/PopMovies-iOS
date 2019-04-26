@@ -19,6 +19,14 @@ class OverviewViewController: UIViewController {
     @IBOutlet weak var imdbView: UIView!
     @IBOutlet weak var tomatoesView: UIView!
     @IBOutlet weak var wikiView: UIView!
+    
+    @IBOutlet weak var originalTitleView: UILabel!
+    @IBOutlet weak var inTheaterView: UILabel!
+    @IBOutlet weak var budgetView: UILabel!
+    @IBOutlet weak var revenueView: UILabel!
+    @IBOutlet weak var awardsView: UILabel!
+    @IBOutlet weak var languageView: UILabel!
+    
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var crewCollectionView: UICollectionView!
     
@@ -44,6 +52,9 @@ class OverviewViewController: UIViewController {
         let tomatoesLinkGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTomatoesLinkTaped))
         
         self.tomatoesView.addGestureRecognizer(tomatoesLinkGesture)
+        
+        self.awardsView.text = movieRanking.awards
+        self.budgetView.text = movieRanking.boxOffice != nil && movieRanking.boxOffice != "N/A" ? "$ \(movieRanking.boxOffice!)" : movieRanking.boxOffice
     }
     
     func bindMovieContent(movie: Movie) {
@@ -54,6 +65,11 @@ class OverviewViewController: UIViewController {
         
         self.wikiView.addGestureRecognizer(wikiLinkGesture)
         self.imdbView.addGestureRecognizer(imdbLinkGesture)
+        
+        self.originalTitleView.text = movie.originalTitle
+        self.inTheaterView.text = movie.releaseDate?.formatDate(pattner: "MMM d, yyyy")
+        self.languageView.text = movie.originalLanguage
+        self.revenueView.text = movie.revenue != nil ? "$ \(movie.revenue!)" : ""
         
         self.setupExternalLinkView(view: imdbView)
         self.setupExternalLinkView(view: tomatoesView)
@@ -97,7 +113,6 @@ class OverviewViewController: UIViewController {
         view.layer.masksToBounds =  false
         view.layer.shadowPath = shadowpath.cgPath
     }
-    
     
 }
 
