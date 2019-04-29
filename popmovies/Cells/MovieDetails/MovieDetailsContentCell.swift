@@ -70,8 +70,8 @@ class MovieDetailsContentCell: UITableViewCell, WormTabStripDelegate {
             viewPager.eyStyle.isWormEnable = true
             viewPager.eyStyle.spacingBetweenTabs = 15
             viewPager.eyStyle.dividerBackgroundColor = UIColor.white
-            viewPager.eyStyle.tabItemSelectedColor = ViewUtils.UIColorFromHEX(hex: Constants.Color.colorAccent)
-            viewPager.eyStyle.WormColor = ViewUtils.UIColorFromHEX(hex: Constants.Color.colorAccent)
+            viewPager.eyStyle.tabItemSelectedColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorAccent)
+            viewPager.eyStyle.WormColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorAccent)
             viewPager.eyStyle.topScrollViewBackgroundColor = UIColor.white
             viewPager.eyStyle.contentScrollViewBackgroundColor = UIColor.clear
             viewPager.eyStyle.tabItemDefaultColor = UIColor.black

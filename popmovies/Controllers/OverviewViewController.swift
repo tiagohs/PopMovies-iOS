@@ -8,18 +8,18 @@
 
 import UIKit
 
-class OverviewViewController: UIViewController {
+class OverviewViewController: BaseViewController {
     
-    let castCollectionViewIdentifier = "CastCollectionViewIdentifier"
-    let crewCollectionViewIdentifier = "CrewCollectionViewIdentifier"
-    let relatedMoviesCollectioViewIdentifier = "RelatedMoviesCollectioViewIdentifier"
-    let personCellIdentifier = "PersonCellIdentifier"
+    let castCollectionViewIdentifier                = "CastCollectionViewIdentifier"
+    let crewCollectionViewIdentifier                = "CrewCollectionViewIdentifier"
+    let relatedMoviesCollectioViewIdentifier        = "RelatedMoviesCollectioViewIdentifier"
+    let personCellIdentifier                        = "PersonCellIdentifier"
     
-    @IBOutlet weak var movieOverviewView: UILabel!
     @IBOutlet weak var imdbView: UIView!
     @IBOutlet weak var tomatoesView: UIView!
     @IBOutlet weak var wikiView: UIView!
     
+    @IBOutlet weak var movieOverviewView: UILabel!
     @IBOutlet weak var originalTitleView: UILabel!
     @IBOutlet weak var inTheaterView: UILabel!
     @IBOutlet weak var budgetView: UILabel!
@@ -30,6 +30,11 @@ class OverviewViewController: UIViewController {
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var crewCollectionView: UICollectionView!
     
+    let shadowpath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:
+        35, height: 35), byRoundingCorners:
+        [.topRight, .bottomRight], cornerRadii: CGSize(width: 28.0, height: 0.0))
+    let shadowOffset = CGSize(width: 0.8, height: 0.4)
+    
     var movie: Movie? {
         didSet { bindMovieContent(movie: self.movie!) }
     }
@@ -37,11 +42,6 @@ class OverviewViewController: UIViewController {
     var movieRanking: MovieOMDB? {
         didSet { bindMovieRankings(movieRanking: movieRanking!) }
     }
-    
-    let shadowpath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:
-        35, height: 35), byRoundingCorners:
-        [.topRight, .bottomRight], cornerRadii: CGSize(width: 28.0, height: 0.0))
-    let shadowOffset = CGSize(width: 0.8, height: 0.4)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +68,7 @@ class OverviewViewController: UIViewController {
         
         self.originalTitleView.text = movie.originalTitle
         self.inTheaterView.text = movie.releaseDate?.formatDate(pattner: "MMM d, yyyy")
-        self.languageView.text = movie.originalLanguage
+        self.languageView.text = Locale(identifier: "pt_BR").localizedString(forIdentifier: movie.originalLanguage!)
         self.revenueView.text = movie.revenue != nil ? "$ \(movie.revenue!)" : ""
         
         self.setupExternalLinkView(view: imdbView)
@@ -80,21 +80,21 @@ class OverviewViewController: UIViewController {
     }
     
     @objc func didImdbLinkTaped(sender : UITapGestureRecognizer) {
-        if let imdbId = movie?.imdbID {
-            openLink(link: "https://www.imdb.com/title/\(imdbId)")
-        }
+        guard let imdbURL = URLUtils.formatIMDBUrl(imdbId: movie?.imdbID) else { return }
+        
+        openLink(link: imdbURL)
     }
     
     @objc func didTomatoesLinkTaped(sender : UITapGestureRecognizer) {
-        if let tomatoURL = movieRanking?.tomatoURL {
-            openLink(link: tomatoURL)
-        }
+        guard let tomatoURL = movieRanking?.tomatoURL else { return }
+        
+        openLink(link: tomatoURL)
     }
     
     @objc func didWikiLinkTaped(sender : UITapGestureRecognizer) {
-        if let originalTitle = movie?.originalTitle {
-            openLink(link: "https://en.wikipedia.org/w/index.php?search=\(originalTitle)")
-        }
+        guard let wikiUrl = URLUtils.formatWikiUrl(wikiSearchTerm: movie?.originalTitle) else { return }
+        
+        openLink(link: wikiUrl)
     }
     
     private func openLink(link: String) {

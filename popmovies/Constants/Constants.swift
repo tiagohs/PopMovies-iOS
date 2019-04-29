@@ -23,44 +23,44 @@ struct Constants {
         
         struct ImageSize {
             struct BACKDROP {
-                static let w300 = "w300"
-                static let w780 = "w780"
-                static let w1280 = "w1280"
-                static let original = "original"
+                static let w300         = "w300"
+                static let w780         = "w780"
+                static let w1280        = "w1280"
+                static let original     = "original"
             }
             
             struct LOGO {
-                static let w45 = "w45"
-                static let w92 = "w92"
-                static let w154 = "w154"
-                static let w185 = "w185"
-                static let w300 = "w300"
-                static let w500 = "w500"
-                static let original = "original"
+                static let w45          = "w45"
+                static let w92          = "w92"
+                static let w154         = "w154"
+                static let w185         = "w185"
+                static let w300         = "w300"
+                static let w500         = "w500"
+                static let original     = "original"
             }
             
             struct POSTER {
-                static let w92 = "w92"
-                static let w154 = "w154"
-                static let w185 = "w185"
-                static let w342 = "w342"
-                static let w500 = "w500"
-                static let w780 = "w780"
-                static let original = "original"
+                static let w92          = "w92"
+                static let w154         = "w154"
+                static let w185         = "w185"
+                static let w342         = "w342"
+                static let w500         = "w500"
+                static let w780         = "w780"
+                static let original     = "original"
             }
             
             struct PROFILE {
-                static let w45 = "w45"
-                static let w185 = "w185"
-                static let w632 = "w632"
-                static let original = "original"
+                static let w45          = "w45"
+                static let w185         = "w185"
+                static let w632         = "w632"
+                static let original     = "original"
             }
             
             struct STILL {
-                static let w92 = "w92"
-                static let w185 = "w185"
-                static let w300 = "w300"
-                static let original = "original"
+                static let w92          = "w92"
+                static let w185         = "w185"
+                static let w300         = "w300"
+                static let original     = "original"
             }
         }
     }
@@ -75,24 +75,29 @@ struct Constants {
         }
     }
     
-    struct Color {
-        static let colorPrimary = "#673ab7"
-        static let colorPrimaryDark = "#4527a0"
-        static let colorPrimaryLight = "#7e57c2"
-        static let colorAccent = "#f44336"
-        
+    struct URL {
+        static let IMDB_URL             = "https://www.imdb.com/"
+        static let WIKI_URL             = "https://en.wikipedia.org/w/"
     }
     
-    //The header fields
-    enum HttpHeaderField: String {
-        case authentication = "Authorization"
-        case contentType = "Content-Type"
-        case acceptType = "Accept"
-        case acceptEncoding = "Accept-Encoding"
+    struct COLOR {
+        static let colorPrimary             = "#673ab7"
+        static let colorPrimaryDark         = "#4527a0"
+        static let colorPrimaryLight        = "#7e57c2"
+        static let colorAccent              = "#f44336"
     }
     
-    //The content type (JSON)
-    enum ContentType: String {
-        case json = "application/json"
+    struct IMAGES {
+        static let APP_ICON                             = "AppIcon"
+        static let PLACEHOLDER_BACKDROP_MOVIE           = "BackdropPlaceholder"
+        static let PLACEHOLDER_POSTER_MOVIE             = "MoviePlaceholder"
+        static let PLACEHOLDER_POSTER_PROFILE           = "ProfilePlaceholder"
+        static let ICON_HOME                            = "HomeIcon"
+        static let ICON_IMDB                            = "ImdbIcon-white"
+        static let ICON_PERSON                          = "PersonIcon"
+        static let ICON_SHARE                           = "ShareIcon"
+        static let ICON_TOMATOES                        = "TomatoesIcon-white"
+        static let ICON_WIKI                            = "WikiIcon-white"
     }
+    
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeController: UIViewController {
+class HomeController: BaseViewController {
     
     let nowPlayingMovieCellIdentifier           = "NowPlayingMovieCellIdentifier"
     let popularMoviesCelldentifier              = "PopularMoviesCelldentifier"
@@ -30,46 +30,42 @@ class HomeController: UIViewController {
         
         homePresenter?.fetchNowPlayingMovies()
         homePresenter?.fetchPopularMovies()
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 690
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let nav = self.navigationController?.navigationBar
-//
-        nav?.setBackgroundImage(UIImage(), for: .default)
-        nav?.shadowImage = UIImage()
-        nav?.backgroundColor = .clear
-        nav?.isTranslucent = true
-        nav?.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.Color.colorPrimary)
+        setupScreenTableView(tableView: self.tableView)
+        setupHomeNavigationBar()
+    }
+    
+    private func setupHomeNavigationBar() {
+        let searchButton = createNavigationBarButton(
+            systemIcon: UIBarButtonItem.SystemItem.search,
+            action: #selector(HomeController.didSearchButtonTaped))
+        let profileButton = createNavigationBarButton(
+            buttonBaseSize: 20,
+            rounded: true,
+            iconName: Constants.IMAGES.PLACEHOLDER_POSTER_PROFILE,
+            iconColor: nil,
+            action: #selector(HomeController.didProfileButtonTaped)
+        )
+        let appIcon = createNavigationBarButton(
+            buttonBaseSize: 40,
+            rounded: false,
+            iconName: Constants.IMAGES.APP_ICON,
+            iconColor: nil,
+            action: nil)
         
-        let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(HomeController.didSearchButtonTaped))
-        
-        var buttonSize = CGFloat(20)
-        if let navHeight = nav?.frame.size.height {
-            buttonSize = navHeight - CGFloat(10.0)
-        }
-        
-        let menuBtn = UIButton(type: .custom)
-        menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: buttonSize, height: buttonSize)
-        menuBtn.setImage(UIImage(named:"ProfilePlaceholder"), for: .normal)
-        
-        menuBtn.layer.cornerRadius = menuBtn.frame.size.height / 2
-        menuBtn.layer.masksToBounds = true
-        
-        let profileButton = UIBarButtonItem(customView: menuBtn)
-        let currWidth = profileButton.customView?.widthAnchor.constraint(equalToConstant: buttonSize)
-        currWidth?.isActive = true
-        let currHeight = profileButton.customView?.heightAnchor.constraint(equalToConstant: buttonSize)
-        currHeight?.isActive = true
-        
-        navigationItem.rightBarButtonItems = [profileButton, searchButton]
+        addRightButtonsToNavigationBar(buttons: [profileButton, searchButton])
+        addLeftButtonsToNavigationBar(buttons: [appIcon])
     }
     
     @objc func didSearchButtonTaped() {
+        
+    }
+    
+    @objc func didProfileButtonTaped() {
         
     }
     
@@ -78,22 +74,26 @@ class HomeController: UIViewController {
         let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
         
         if (scrollView.contentOffset.y > 10 && !isNavbarColorPrimary) {
-            nav?.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.Color.colorPrimary)
+            nav?.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
             nav?.tintColor = UIColor.white
             nav?.barTintColor = UIColor.white
             nav?.barStyle = .blackTranslucent
             
-            statusBar?.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.Color.colorPrimary)
+            statusBar?.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
+            
+            self.navigationController?.title = "PopMovies"
             
             isNavbarColorPrimary = true
         } else if scrollView.contentOffset.y <= 10 && isNavbarColorPrimary {
             nav?.setBackgroundImage(UIImage(), for: .default)
             nav?.shadowImage = UIImage()
             nav?.backgroundColor = .clear
-            nav?.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.Color.colorPrimary)
+            nav?.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
             nav?.barStyle = .default
             
             statusBar?.backgroundColor = UIColor.white
+            
+            self.navigationController?.title = ""
             
             isNavbarColorPrimary = false
         }
@@ -145,13 +145,14 @@ extension HomeController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: nowPlayingMovieCellIdentifier, for: indexPath) as! NowPlayingMoviesCell
             
             cell.movieListCallback = self
-            cell.updateNowPlayingMoviesCollection(movies: nowPlayingMovies)
+            cell.movies = nowPlayingMovies
+            
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: popularMoviesCelldentifier, for: indexPath) as! PopularMoviesCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: popularMoviesCelldentifier, for: indexPath) as! MovieListCell
             
             cell.movieListCallback = self
-            cell.updatePopularMoviesCollection(movies: popularMovies)
+            cell.movies = nowPlayingMovies
             
             return cell
         default:

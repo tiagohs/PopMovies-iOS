@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        setupNavigationBar()
+        setupStatusBar()
+        
         return true
     }
 
@@ -40,7 +43,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    private func setupNavigationBar() {
+        let navigationBar = UINavigationBar.appearance()
+        
+        navigationBar.isTranslucent = true
+        navigationBar.barStyle = .default
+        navigationBar.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+    }
+    
+    private func setupStatusBar() {
+        let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+        statusBar?.backgroundColor = UIColor.clear
+    }
+    
 
 }
 

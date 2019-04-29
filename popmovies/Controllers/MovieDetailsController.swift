@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class MovieDetailsController: UIViewController {
+class MovieDetailsController: BaseViewController {
     
-    let movieDetailsHeaderCellIdentifier = "MovieDetailsHeaderCellIdentifier"
-    let movieDetailsContentCellIdentifier = "MovieDetailsContentCellIdentifier"
+    let movieDetailsHeaderCellIdentifier        = "MovieDetailsHeaderCellIdentifier"
+    let movieDetailsContentCellIdentifier       = "MovieDetailsContentCellIdentifier"
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,55 +24,41 @@ class MovieDetailsController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
-        statusBar?.backgroundColor = UIColor.clear
-        
-        self.navigationController?.navigationBar.isTranslucent = true
+        setupScreenTableView(tableView: tableView)
+        setupMovieDetailsNavigationBar()
+    }
+    
+    private func setupMovieDetailsNavigationBar() {
         self.navigationController?.navigationBar.barStyle = .black
-        
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.backItem?.title = ""
         
-        var buttonSize = CGFloat(20)
-        if let navHeight = self.navigationController?.navigationBar.frame.size.height {
-            buttonSize = navHeight - CGFloat(10.0)
-        }
+        let shareIcon = createNavigationBarButton(
+            buttonBaseSize: 20,
+            rounded: false,
+            iconName: Constants.IMAGES.ICON_SHARE,
+            iconColor: UIColor.white,
+            action: #selector(MovieDetailsController.didShareButtonTaped)
+        )
         
-        let menuBtn = UIButton(type: .custom)
-        menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: buttonSize, height: buttonSize)
-        let image = UIImage(named:"ShareIcon")?.overlayImage(color: UIColor.white)
+        addRightButtonsToNavigationBar(buttons: [shareIcon])
+    }
+    
+    @objc func didShareButtonTaped() {
         
-        menuBtn.setImage(image, for: .normal)
-        
-        menuBtn.layer.cornerRadius = menuBtn.frame.size.height / 2
-        menuBtn.layer.masksToBounds = true
-        
-        let profileButton = UIBarButtonItem(customView: menuBtn)
-        let currWidth = profileButton.customView?.widthAnchor.constraint(equalToConstant: buttonSize)
-        currWidth?.isActive = true
-        let currHeight = profileButton.customView?.heightAnchor.constraint(equalToConstant: buttonSize)
-        currHeight?.isActive = true
-        
-        navigationItem.rightBarButtonItems = [profileButton]
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.navigationBar.isTranslucent = false
-        
-        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         presenter = MovieDetailsPresenter(view: self)
         presenter?.fetchMovieDetails(movieId: movie?.id)
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 690
     }
 }
 

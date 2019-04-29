@@ -80,8 +80,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="nowPlayingMoviesCollectionView" destination="D9h-EU-ivI" id="uGx-iy-ahU"/>
-                                            <outlet property="nowPlayingMoviesViewFlow" destination="6VR-2U-L47" id="fTa-Oy-6kD"/>
+                                            <outlet property="moviesCollectionView" destination="D9h-EU-ivI" id="7ZJ-qg-qGZ"/>
+                                            <outlet property="moviesCollectionViewViewFlow" destination="6VR-2U-L47" id="Ujc-S6-uOP"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopularMoviesCelldentifier" rowHeight="289" id="Sff-Bw-4Ab" userLabel="PopularMoviesCell" customClass="PopularMoviesCell" customModule="popmovies" customModuleProvider="target">
@@ -95,7 +95,6 @@
                                                     <rect key="frame" x="0.0" y="60.666666666666671" width="375" height="228.33333333333331"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="375" id="5vL-Yt-Ark"/>
                                                         <constraint firstAttribute="height" constant="228.33000000000001" id="9Hd-5f-upF"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="piy-Aj-ay3">
@@ -136,7 +135,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="popularMoviesCollectionView" destination="fdA-M6-zXJ" id="W3m-7b-U8J"/>
+                                            <outlet property="moviesCollectionView" destination="fdA-M6-zXJ" id="nM4-3d-N7J"/>
+                                            <outlet property="moviesCollectionViewViewFlow" destination="piy-Aj-ay3" id="nrg-jU-jpa"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="O8k-5F-Igb">

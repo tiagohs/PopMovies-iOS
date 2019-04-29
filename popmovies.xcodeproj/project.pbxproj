@@ -97,6 +97,10 @@
 		A2FE02572272982100BCB8AC /* MovieSmallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02562272982100BCB8AC /* MovieSmallCell.xib */; };
 		A2FE025922729CC100BCB8AC /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE025822729CC100BCB8AC /* UIImage.swift */; };
 		A2FE025B2272A7D800BCB8AC /* DateFormatTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE025A2272A7D800BCB8AC /* DateFormatTransform.swift */; };
+		A2FE025D2273996B00BCB8AC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE025C2273996B00BCB8AC /* BaseViewController.swift */; };
+		A2FE026022739D3700BCB8AC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE025F22739D3700BCB8AC /* UIView.swift */; };
+		A2FE026222763CBF00BCB8AC /* URLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE026122763CBF00BCB8AC /* URLUtils.swift */; };
+		A2FE0264227646B700BCB8AC /* MovieListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0263227646B700BCB8AC /* MovieListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,6 +219,10 @@
 		A2FE02562272982100BCB8AC /* MovieSmallCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieSmallCell.xib; sourceTree = "<group>"; };
 		A2FE025822729CC100BCB8AC /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		A2FE025A2272A7D800BCB8AC /* DateFormatTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatTransform.swift; sourceTree = "<group>"; };
+		A2FE025C2273996B00BCB8AC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		A2FE025F22739D3700BCB8AC /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		A2FE026122763CBF00BCB8AC /* URLUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLUtils.swift; sourceTree = "<group>"; };
+		A2FE0263227646B700BCB8AC /* MovieListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCell.swift; sourceTree = "<group>"; };
 		BF671210EF166C7A48E4C8AD /* Pods-popmoviesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-popmoviesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-popmoviesUITests/Pods-popmoviesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DBEE69AB622BE17688070CB2 /* Pods_popmovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_popmovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BC4F45CD951837539FAF96 /* Pods-popmoviesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-popmoviesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-popmoviesTests/Pods-popmoviesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -310,6 +318,7 @@
 		A21693BC2263E4A1009988F1 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A2FE025E22739D2000BCB8AC /* Enums */,
 				A2FE0239226E2DCB00BCB8AC /* Utils */,
 				A21693C12263E750009988F1 /* Extensions */,
 				A22A91EA2269108700F74BD5 /* EnumTransformStringCaseInsensitive.swift */,
@@ -349,6 +358,7 @@
 			children = (
 				A22A91D92267CBC600F74BD5 /* PopularMoviesCell.swift */,
 				A216947922666EF2009988F1 /* NowPlayingMoviesCell.swift */,
+				A2FE0263227646B700BCB8AC /* MovieListCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -593,6 +603,7 @@
 				A22A91DD2268DF4000F74BD5 /* MovieDetailsController.swift */,
 				A2FE0252226F7B9F00BCB8AC /* OverviewViewController.swift */,
 				A2FE0254226F8EE900BCB8AC /* MidiaViewController.swift */,
+				A2FE025C2273996B00BCB8AC /* BaseViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -659,8 +670,17 @@
 			children = (
 				A2FE023A226E2DDA00BCB8AC /* ImageUtils.swift */,
 				A2FE0246226E5E8400BCB8AC /* ViewUtils.swift */,
+				A2FE026122763CBF00BCB8AC /* URLUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A2FE025E22739D2000BCB8AC /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				A2FE025F22739D3700BCB8AC /* UIView.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -920,6 +940,7 @@
 				A2FE0227226BCF6000BCB8AC /* PersonItem.swift in Sources */,
 				A22A91DE2268DF4000F74BD5 /* MovieDetailsController.swift in Sources */,
 				A21693C62263EDC8009988F1 /* HomeInteractor.swift in Sources */,
+				A2FE025D2273996B00BCB8AC /* BaseViewController.swift in Sources */,
 				A22A91EF2269127300F74BD5 /* Title.swift in Sources */,
 				A22A9247226AA1F100F74BD5 /* Date.swift in Sources */,
 				A216947A22666EF2009988F1 /* NowPlayingMoviesCell.swift in Sources */,
@@ -940,6 +961,7 @@
 				A22A920C2269223100F74BD5 /* ReviewPerson.swift in Sources */,
 				A22A91ED2269122A00F74BD5 /* AlternativeTitle.swift in Sources */,
 				A27F1D80225E923F00B15976 /* AppDelegate.swift in Sources */,
+				A2FE0264227646B700BCB8AC /* MovieListCell.swift in Sources */,
 				A2FE0232226D1AA400BCB8AC /* MovieOMDB.swift in Sources */,
 				A21694762266556E009988F1 /* MovieCell.swift in Sources */,
 				A2FE025B2272A7D800BCB8AC /* DateFormatTransform.swift in Sources */,
@@ -960,10 +982,12 @@
 				A22A91E32268F51E00F74BD5 /* MovieDetailsContract.swift in Sources */,
 				A21693A62263D580009988F1 /* Constants.swift in Sources */,
 				A21693AA2263D700009988F1 /* MovieService.swift in Sources */,
+				A2FE026222763CBF00BCB8AC /* URLUtils.swift in Sources */,
 				A2FE0255226F8EE900BCB8AC /* MidiaViewController.swift in Sources */,
 				A2FE0236226D5D0100BCB8AC /* VideoCell.swift in Sources */,
 				A2FE023B226E2DDA00BCB8AC /* ImageUtils.swift in Sources */,
 				A22A91F622691A7700F74BD5 /* CreditCrew.swift in Sources */,
+				A2FE026022739D3700BCB8AC /* UIView.swift in Sources */,
 				A22A91FB22691C7B00F74BD5 /* Keyword.swift in Sources */,
 				A22A9251226AC32B00F74BD5 /* UIGradientImageView.swift in Sources */,
 				A2FE024D226F70A100BCB8AC /* MovieDetailsContentCell.swift in Sources */,
