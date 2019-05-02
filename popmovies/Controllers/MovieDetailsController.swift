@@ -16,6 +16,8 @@ class MovieDetailsController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var isTabMidiaConfigured = false
+    
     var movie: Movie? = nil
     var movieRankings: MovieOMDB? = nil
     
@@ -31,16 +33,17 @@ class MovieDetailsController: BaseViewController {
     private func setupMovieDetailsNavigationBar() {
         self.navigationController?.navigationBar.barStyle = .black
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
         
-        let shareIcon = createNavigationBarButton(
-            buttonBaseSize: 20,
-            rounded: false,
-            iconName: Constants.IMAGES.ICON_SHARE,
-            iconColor: UIColor.white,
-            action: #selector(MovieDetailsController.didShareButtonTaped)
-        )
-        
-        addRightButtonsToNavigationBar(buttons: [shareIcon])
+//        let shareIcon = createNavigationBarButton(
+//            buttonBaseSize: 20,
+//            rounded: false,
+//            iconName: Constants.IMAGES.ICON_SHARE,
+//            iconColor: UIColor.white,
+//            action: #selector(MovieDetailsController.didShareButtonTaped)
+//        )
+//
+//        addRightButtonsToNavigationBar(buttons: [shareIcon])
     }
     
     @objc func didShareButtonTaped() {
@@ -59,6 +62,30 @@ class MovieDetailsController: BaseViewController {
         
         presenter = MovieDetailsPresenter(view: self)
         presenter?.fetchMovieDetails(movieId: movie?.id)
+        
+        self.title = movie?.title
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        var offset = scrollView.contentOffset.y / 155
+        
+        if offset > 1 {
+            offset = 1
+            
+            updateStatusBarStyle(offset: offset, barStyle: .default)
+        } else {
+            updateStatusBarStyle(offset: offset, barStyle: .black)
+        }
+    }
+    
+    private func updateStatusBarStyle(offset: CGFloat, barStyle: UIBarStyle) {
+        let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+        
+        self.navigationController?.navigationBar.tintColor = UIColor(hue: 0.725, saturation: offset, brightness: 1, alpha: 1)
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: offset)
+        statusBar?.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: offset)
+        self.navigationController?.navigationBar.barStyle = barStyle
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: offset)]
     }
 }
 
@@ -88,11 +115,21 @@ extension MovieDetailsController: IMovieDetailsView {
     }
     
     func bindMovieImages(images: Images) {
-        self.movie?.images = images
+//        self.movie?.images = images
+//        
+//        let index = IndexPath(item: 1, section: 0)
+//        
+//        self.tableView.reloadRows(at: [index], with: .none)
+    }
+    
+}
+
+extension MovieDetailsController: TabBarCallback {
+    
+    func onTabBarSelect(index: Int) {
+        if index == 0 && isTabMidiaConfigured { return }
         
-        let index = IndexPath(item: 1, section: 0)
-        
-        self.tableView.reloadRows(at: [index], with: .none)
+        isTabMidiaConfigured = true
     }
     
 }

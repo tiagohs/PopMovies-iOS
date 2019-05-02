@@ -53,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)], for: .selected)
     }
     
     private func setupStatusBar() {

@@ -484,7 +484,7 @@ public class WormTabStrip: UIView,UIScrollViewDelegate {
      //MARK:  UIScrollView Delegate Calculations  start
      ******************************************/
     private  func getNextTotalWormingDistance(index:Int)->CGFloat{
-        let tab = tabs[index]
+        let tab = tabs[index - 1 < 0 ? 0 : index - 1]
         let nextTotal:CGFloat = eyStyle.spacingBetweenTabs + tab.frame.width
         return nextTotal
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MidiaViewController: UIViewController {
+class MidiaViewController: BaseViewController {
     
     let videosCollectionViewIdentifier = "VideosCollectionViewIdentifier"
     let wallpapersCollectionViewIdentifier = "WallpapersCollectionViewIdentifier"
@@ -16,24 +16,52 @@ class MidiaViewController: UIViewController {
     let videoCellIdentifier = "VideoCellIdentifier"
     let wallpaperCellIdentifier = "WallpaperCellIdentifier"
     
-    var allImages: [String] = []
+    @IBOutlet weak var imagesCollectionViewView: UICollectionView!
+    @IBOutlet weak var videosCollectionViewView: UICollectionView!
+    @IBOutlet weak var imagesCollectionViewViewFlow: UICollectionViewFlowLayout!  {
+        didSet {
+            imagesCollectionViewViewFlow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
+    @IBOutlet weak var videosCollectionViewViewFlow: UICollectionViewFlowLayout!  {
+        didSet {
+            videosCollectionViewViewFlow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
+    
+    var allImages: [Image] = []
+    var allVideos: [Video] = []
     
     var movie: Movie? {
-        didSet { bindFooter(movie: movie!) }
+        didSet { bindMidiaContent(movie: movie!) }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    private func bindFooter(movie: Movie) {
-        allImages = mergeImages(movie: movie)
         
+        configureNibs(collection: imagesCollectionViewView, nibName: "WallpaperCell", identifier: wallpaperCellIdentifier)
+        configureNibs(collection: videosCollectionViewView, nibName: "VideoCell", identifier: videoCellIdentifier) 
     }
     
-    private func mergeImages(movie: Movie) -> [String] {
+    private func bindMidiaContent(movie: Movie) {
+        allImages = mergeImages(movie: movie)
+        allVideos = movie.videos?.videoResults ?? []
+        
+        if allVideos.count > 6 {
+            allVideos = Array(allVideos[0..<6])
+        }
+        
+        self.imagesCollectionViewView.reloadData()
+        self.videosCollectionViewView.reloadData()
+    }
+    
+    private func mergeImages(movie: Movie) -> [Image] {
         let posters = movie.images?.backdrops ?? []
         let backdrop = movie.images?.posters ?? []
+        
+        if (posters.count > 3 && backdrop.count > 3) {
+            return Array(backdrop[0..<3]) + Array(posters[0..<3])
+        }
         
         return backdrop + posters
     }
@@ -44,7 +72,7 @@ extension MidiaViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         switch collectionView.restorationIdentifier {
         case videosCollectionViewIdentifier:
-            return movie?.videos?.videoResults?.count ?? 0
+            return allVideos.count
         case wallpapersCollectionViewIdentifier:
             return allImages.count
         default:
@@ -78,7 +106,7 @@ extension MidiaViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     private func setupWallpapersCollectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: videoCellIdentifier, for: indexPath) as! WallpaperCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: wallpaperCellIdentifier, for: indexPath) as! WallpaperCell
         let image = allImages[indexPath.row]
         
         cell.image = image

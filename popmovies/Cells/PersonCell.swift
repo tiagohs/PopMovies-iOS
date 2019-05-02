@@ -18,6 +18,19 @@ class PersonCell: UICollectionViewCell {
         didSet { bindPersonCellContent(person: person!) }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            contentView.leftAnchor.constraint(equalTo: leftAnchor),
+            contentView.rightAnchor.constraint(equalTo: rightAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+    }
+    
     private func bindPersonCellContent(person: PersonItem) {
         
         if let pictureUrl = ImageUtils.formatImageUrl(imageID: person.pictureId, imageSize: Constants.TMDB.ImageSize.PROFILE.w185) {

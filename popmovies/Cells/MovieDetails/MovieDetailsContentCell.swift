@@ -19,13 +19,17 @@ class MovieDetailsContentCell: UITableViewCell, WormTabStripDelegate {
     var isConfigurate = false
     
     var viewPager: WormTabStrip?
+    var tabBarCallback: TabBarCallback?
+    
+    var overviewViewController: OverviewViewController?
+    var midiaViewController: MidiaViewController?
     
     var movie: Movie? {
         didSet {
-            if let overviewTabController: OverviewViewController = tabs[0] as? OverviewViewController {
+            if let overviewTabController = self.overviewViewController, let midiaTabController = self.midiaViewController {
                 overviewTabController.movie = movie!
+                midiaTabController.movie = movie!
             }
-            
         }
     }
     
@@ -41,10 +45,11 @@ class MovieDetailsContentCell: UITableViewCell, WormTabStripDelegate {
     func onInit() {
         if !isConfigurate {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Movie", bundle:nil)
-            let overviewViewController = storyBoard.instantiateViewController(withIdentifier: overviewViewControllerIdentifier)
-            let midiaViewController = storyBoard.instantiateViewController(withIdentifier: midiaViewControllerIdentifier)
             
-            tabs = [overviewViewController, midiaViewController]
+            overviewViewController = storyBoard.instantiateViewController(withIdentifier: overviewViewControllerIdentifier) as? OverviewViewController
+            midiaViewController = storyBoard.instantiateViewController(withIdentifier: midiaViewControllerIdentifier) as? MidiaViewController
+            
+            tabs = [overviewViewController!, midiaViewController!]
             
             setUpViewPager()
             
@@ -120,17 +125,19 @@ class MovieDetailsContentCell: UITableViewCell, WormTabStripDelegate {
     }
     
     func WTSOnTabSelect(index: Int) {
+        tabBarCallback?.onTabBarSelect(index: index)
+        
         switch index {
         case 0:
             self.viewPager?.frame = CGRect(x: 0, y: 0, width: self.contentUIView.frame.size.width, height: 1300)
             tabs[0].view?.layoutIfNeeded()
             return
         case 1:
-            self.viewPager?.frame = CGRect(x: 0, y: 0, width: self.contentUIView.frame.size.width, height: 300)
+            self.viewPager?.frame = CGRect(x: 0, y: 0, width: self.contentUIView.frame.size.width, height: 800)
             tabs[0].view?.layoutIfNeeded()
             return
         default:
-            self.viewPager?.frame = CGRect(x: 0, y: 0, width: self.contentUIView.frame.size.width, height: 300)
+            self.viewPager?.frame = CGRect(x: 0, y: 0, width: self.contentUIView.frame.size.width, height: 800)
             return
         }
     }

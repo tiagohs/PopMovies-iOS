@@ -46,18 +46,18 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NowPlayingMovieCellIdentifier" rowHeight="191" id="YXL-Rg-ZCK" userLabel="NowPlayingMovieCell" customClass="NowPlayingMoviesCell" customModule="popmovies" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="191"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NowPlayingMovieCellIdentifier" rowHeight="216" id="YXL-Rg-ZCK" userLabel="NowPlayingMovieCell" customClass="NowPlayingMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="216"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YXL-Rg-ZCK" id="6wP-Pd-9Op">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D9h-EU-ivI" userLabel="NowPlayingMoviesCollection">
-                                                    <rect key="frame" x="0.0" y="11" width="375" height="190"/>
+                                                    <rect key="frame" x="0.0" y="11" width="375" height="215"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="190" id="DHj-2u-RXz"/>
+                                                        <constraint firstAttribute="height" constant="215" id="DHj-2u-RXz"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6VR-2U-L47">
                                                         <size key="itemSize" width="375" height="210.66666666666666"/>
@@ -84,18 +84,33 @@
                                             <outlet property="moviesCollectionViewViewFlow" destination="6VR-2U-L47" id="Ujc-S6-uOP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopularMoviesCelldentifier" rowHeight="289" id="Sff-Bw-4Ab" userLabel="PopularMoviesCell" customClass="PopularMoviesCell" customModule="popmovies" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="219" width="375" height="289"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopularMoviesCelldentifier" rowHeight="339" id="Sff-Bw-4Ab" userLabel="PopularMoviesCell" customClass="PopularMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="244" width="375" height="339"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sff-Bw-4Ab" id="BhW-Hs-ccW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="289"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sff-Bw-4Ab" id="BhW-Hs-ccW">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="339"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JQ-mC-aZN">
+                                                    <rect key="frame" x="10" y="10" width="64" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="xXe-v1-Sfm"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMJ-m7-eWl">
+                                                    <rect key="frame" x="79" y="14" width="50" height="29"/>
+                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fdA-M6-zXJ" userLabel="PopularMoviesCollection">
-                                                    <rect key="frame" x="0.0" y="60.666666666666671" width="375" height="228.33333333333331"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="280"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="228.33000000000001" id="9Hd-5f-upF"/>
+                                                        <constraint firstAttribute="height" constant="280" id="9Hd-5f-upF"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="piy-Aj-ay3">
                                                         <size key="itemSize" width="137" height="241"/>
@@ -109,29 +124,17 @@
                                                         <outlet property="delegate" destination="Sff-Bw-4Ab" id="C29-Vz-4jC"/>
                                                     </connections>
                                                 </collectionView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JQ-mC-aZN">
-                                                    <rect key="frame" x="10" y="20" width="64" height="30.666666666666671"/>
-                                                    <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMJ-m7-eWl">
-                                                    <rect key="frame" x="79" y="21" width="50" height="29.666666666666671"/>
-                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="fdA-M6-zXJ" firstAttribute="top" secondItem="1JQ-mC-aZN" secondAttribute="bottom" constant="10" id="5Pw-x3-rO6"/>
-                                                <constraint firstItem="fdA-M6-zXJ" firstAttribute="top" secondItem="kMJ-m7-eWl" secondAttribute="bottom" constant="10" id="BH7-67-Dzo"/>
+                                                <constraint firstItem="fdA-M6-zXJ" firstAttribute="top" secondItem="1JQ-mC-aZN" secondAttribute="bottom" constant="8" id="7FB-Rm-6YB"/>
+                                                <constraint firstItem="1JQ-mC-aZN" firstAttribute="top" secondItem="BhW-Hs-ccW" secondAttribute="top" constant="10" id="PhF-hH-R8T"/>
                                                 <constraint firstAttribute="trailing" secondItem="fdA-M6-zXJ" secondAttribute="trailing" id="U5w-Ny-Dqp"/>
-                                                <constraint firstItem="1JQ-mC-aZN" firstAttribute="top" secondItem="BhW-Hs-ccW" secondAttribute="top" constant="20" id="Wnu-eO-zKC"/>
+                                                <constraint firstAttribute="bottom" secondItem="fdA-M6-zXJ" secondAttribute="bottom" constant="11" id="Uyy-pj-1W9"/>
                                                 <constraint firstItem="1JQ-mC-aZN" firstAttribute="leading" secondItem="BhW-Hs-ccW" secondAttribute="leading" constant="10" id="a7S-mR-gol"/>
-                                                <constraint firstItem="kMJ-m7-eWl" firstAttribute="top" secondItem="BhW-Hs-ccW" secondAttribute="topMargin" constant="10" id="gKy-8Y-YVz"/>
+                                                <constraint firstItem="kMJ-m7-eWl" firstAttribute="top" secondItem="BhW-Hs-ccW" secondAttribute="topMargin" constant="3" id="gKy-8Y-YVz"/>
                                                 <constraint firstItem="kMJ-m7-eWl" firstAttribute="leading" secondItem="1JQ-mC-aZN" secondAttribute="trailing" constant="5" id="kxD-GO-Aji"/>
                                                 <constraint firstItem="fdA-M6-zXJ" firstAttribute="leading" secondItem="BhW-Hs-ccW" secondAttribute="leading" id="lWe-00-LNZ"/>
-                                                <constraint firstAttribute="bottom" secondItem="fdA-M6-zXJ" secondAttribute="bottom" id="vJ6-dw-Khu"/>
+                                                <constraint firstAttribute="bottom" secondItem="fdA-M6-zXJ" secondAttribute="bottom" constant="10" id="vJ6-dw-Khu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -139,29 +142,118 @@
                                             <outlet property="moviesCollectionViewViewFlow" destination="piy-Aj-ay3" id="nrg-jU-jpa"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="O8k-5F-Igb">
-                                        <rect key="frame" x="0.0" y="508" width="375" height="280"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopRatedMoviesCellIdentifier" rowHeight="288" id="hc6-Su-cz2" userLabel="TopRatedMoviesCell" customClass="TopRatedMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="583" width="375" height="288"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O8k-5F-Igb" id="1o2-I3-012">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hc6-Su-cz2" id="cxV-Ib-Cgy">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="288"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiM-q2-VgA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bh1-BO-Sv7" userLabel="TopRatedMoviesCollection">
+                                                    <rect key="frame" x="0.0" y="46.666666666666657" width="375" height="229.99999999999997"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="280" id="rTo-ed-XcA"/>
-                                                        <constraint firstAttribute="width" constant="375" id="s4d-Jt-zYF"/>
+                                                        <constraint firstAttribute="height" constant="230" id="zqp-63-nMJ"/>
                                                     </constraints>
-                                                </view>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d4R-hL-tsj">
+                                                        <size key="itemSize" width="137" height="241"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="hc6-Su-cz2" id="ARX-lj-bTn"/>
+                                                        <outlet property="delegate" destination="hc6-Su-cz2" id="RJf-Im-hAb"/>
+                                                    </connections>
+                                                </collectionView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Rated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mtc-jv-wVC">
+                                                    <rect key="frame" x="10" y="10.000000000000002" width="81.666666666666671" height="26.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-bW-Y7F">
+                                                    <rect key="frame" x="96.666666666666671" y="10.000000000000002" width="50.000000000000014" height="28.666666666666671"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28.670000000000002" id="OSp-7U-pDK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="XiM-q2-VgA" secondAttribute="bottom" id="60o-4r-kwV"/>
-                                                <constraint firstAttribute="trailing" secondItem="XiM-q2-VgA" secondAttribute="trailing" id="S7S-Qt-eAA"/>
-                                                <constraint firstItem="XiM-q2-VgA" firstAttribute="top" secondItem="1o2-I3-012" secondAttribute="top" id="aFb-re-KB5"/>
-                                                <constraint firstItem="XiM-q2-VgA" firstAttribute="leading" secondItem="1o2-I3-012" secondAttribute="leading" id="ac2-EO-GAV"/>
+                                                <constraint firstAttribute="bottom" secondItem="Bh1-BO-Sv7" secondAttribute="bottom" constant="11" id="BJC-1b-NCN"/>
+                                                <constraint firstAttribute="trailing" secondItem="Bh1-BO-Sv7" secondAttribute="trailing" id="Jbc-q7-FYh"/>
+                                                <constraint firstItem="Mtc-jv-wVC" firstAttribute="top" secondItem="cxV-Ib-Cgy" secondAttribute="top" constant="10" id="ORz-zE-Hp7"/>
+                                                <constraint firstItem="Jfd-bW-Y7F" firstAttribute="top" secondItem="cxV-Ib-Cgy" secondAttribute="top" constant="10" id="V3H-Z9-WdT"/>
+                                                <constraint firstItem="Bh1-BO-Sv7" firstAttribute="top" secondItem="Mtc-jv-wVC" secondAttribute="bottom" constant="10" id="VrL-5e-Xx8"/>
+                                                <constraint firstItem="Jfd-bW-Y7F" firstAttribute="leading" secondItem="Mtc-jv-wVC" secondAttribute="trailing" constant="5" id="hFA-kb-XOU"/>
+                                                <constraint firstItem="Mtc-jv-wVC" firstAttribute="leading" secondItem="cxV-Ib-Cgy" secondAttribute="leading" constant="10" id="iGJ-Gy-sZA"/>
+                                                <constraint firstItem="Bh1-BO-Sv7" firstAttribute="leading" secondItem="cxV-Ib-Cgy" secondAttribute="leading" id="rN9-IZ-Ssr"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="moviesCollectionView" destination="Bh1-BO-Sv7" id="uFE-ei-7Rz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UpcomingMoviesCellIdentifier" rowHeight="288" id="gdH-Ud-Rub" userLabel="UpcomingMoviesCell" customClass="UpcomingMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="871" width="375" height="288"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gdH-Ud-Rub" id="kG4-hJ-sD3">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="287.66666666666669"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dKk-sp-6ua" userLabel="UpcomingMoviesCollection">
+                                                    <rect key="frame" x="0.0" y="46.666666666666657" width="375" height="229.99999999999997"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="230" id="7qD-jn-R3N"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O6R-ir-cPY">
+                                                        <size key="itemSize" width="137" height="241"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="gdH-Ud-Rub" id="ing-8Z-Psl"/>
+                                                        <outlet property="delegate" destination="gdH-Ud-Rub" id="N4K-0V-EfZ"/>
+                                                    </connections>
+                                                </collectionView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBM-1o-z9F">
+                                                    <rect key="frame" x="10" y="10.000000000000002" width="81.666666666666671" height="26.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3Q-46-CAM">
+                                                    <rect key="frame" x="96.666666666666671" y="10.000000000000002" width="50.000000000000014" height="28.666666666666671"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28.670000000000002" id="uyO-MU-NYH"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dKk-sp-6ua" firstAttribute="top" secondItem="CBM-1o-z9F" secondAttribute="bottom" constant="10" id="1r7-qe-ohj"/>
+                                                <constraint firstAttribute="bottom" secondItem="dKk-sp-6ua" secondAttribute="bottom" constant="11" id="7Gh-lZ-y7V"/>
+                                                <constraint firstItem="CBM-1o-z9F" firstAttribute="leading" secondItem="kG4-hJ-sD3" secondAttribute="leading" constant="10" id="Aoe-pU-74V"/>
+                                                <constraint firstItem="dKk-sp-6ua" firstAttribute="leading" secondItem="kG4-hJ-sD3" secondAttribute="leading" id="Cjp-gb-lIT"/>
+                                                <constraint firstItem="U3Q-46-CAM" firstAttribute="leading" secondItem="CBM-1o-z9F" secondAttribute="trailing" constant="5" id="EOQ-Et-5Eg"/>
+                                                <constraint firstItem="U3Q-46-CAM" firstAttribute="top" secondItem="kG4-hJ-sD3" secondAttribute="top" constant="10" id="Hu4-o6-LjB"/>
+                                                <constraint firstItem="CBM-1o-z9F" firstAttribute="top" secondItem="kG4-hJ-sD3" secondAttribute="top" constant="10" id="KKg-rf-oeH"/>
+                                                <constraint firstAttribute="trailing" secondItem="dKk-sp-6ua" secondAttribute="trailing" id="vwN-Kb-EPV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="moviesCollectionView" destination="dKk-sp-6ua" id="wwt-TC-tuK"/>
+                                            <outlet property="moviesCollectionViewViewFlow" destination="O6R-ir-cPY" id="XEP-vd-ok0"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -206,6 +298,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.40392156862745099" green="0.22745098039215686" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="3BU-1j-Rq4" kind="relationship" relationship="viewControllers" id="Tqy-GF-946"/>

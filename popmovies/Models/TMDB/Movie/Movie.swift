@@ -39,7 +39,7 @@ class Movie: BaseModel {
     var releases: [Release]?
     var videos: VideoResult?
     var translations: [TranslationResults]?
-    var similiarMovies: [Movie]?
+    var similiarMovies: Results<Movie>?
     var reviews: [Review]?
     
     override func mapping(map: Map) {

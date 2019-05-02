@@ -15,6 +15,13 @@ class BaseViewController: UIViewController {
         tableView.estimatedRowHeight = 690
     }
     
+    func configureNibs(collection: UICollectionView, nibName: String, identifier: String) {
+        let cellNib = UINib(nibName: nibName, bundle: nil)
+        
+        collection.register(cellNib, forCellWithReuseIdentifier: identifier)
+        collection.reloadData()
+    }
+    
     func createNavigationBarButton(systemIcon: UIBarButtonItem.SystemItem, action: Selector?) -> UIBarButtonItem {
         return UIBarButtonItem(barButtonSystemItem: systemIcon, target: self, action: #selector(HomeController.didSearchButtonTaped))
     }

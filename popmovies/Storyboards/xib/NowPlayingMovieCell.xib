@@ -13,28 +13,40 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MovieCell" customModule="popmovies" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="294" height="190"/>
+            <rect key="frame" x="0.0" y="0.0" width="304" height="230"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9r-xl-gbh">
-                    <rect key="frame" x="0.0" y="0.0" width="294" height="190"/>
+                    <rect key="frame" x="0.0" y="0.0" width="304" height="230"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y8u-61-9ro">
-                            <rect key="frame" x="5" y="5" width="284" height="180"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LeC-r9-qyC">
+                            <rect key="frame" x="5" y="15" width="294" height="170"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="284" id="4Zg-uw-9O6"/>
-                                <constraint firstAttribute="height" constant="180" id="d68-M4-win"/>
+                                <constraint firstAttribute="height" constant="170" id="hhP-Oz-uqV"/>
+                                <constraint firstAttribute="width" constant="294" id="np1-VV-GwT"/>
+                            </constraints>
+                        </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y8u-61-9ro">
+                            <rect key="frame" x="5" y="15" width="294" height="170"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="294" id="a5E-Gc-ZF2"/>
+                                <constraint firstAttribute="height" constant="170" id="rQP-Eb-vnV"/>
                             </constraints>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="y8u-61-9ro" firstAttribute="top" secondItem="C9r-xl-gbh" secondAttribute="top" constant="5" id="5VD-to-GsE"/>
-                        <constraint firstAttribute="trailing" secondItem="y8u-61-9ro" secondAttribute="trailing" constant="5" id="NpP-lP-jBd"/>
-                        <constraint firstItem="y8u-61-9ro" firstAttribute="centerX" secondItem="C9r-xl-gbh" secondAttribute="centerX" id="XpV-kk-tZc"/>
-                        <constraint firstItem="y8u-61-9ro" firstAttribute="leading" secondItem="C9r-xl-gbh" secondAttribute="leading" constant="5" id="c64-4l-rcu"/>
-                        <constraint firstAttribute="height" constant="190" id="oLG-s5-QKP"/>
-                        <constraint firstAttribute="width" constant="294" id="u1t-DT-jc3"/>
+                        <constraint firstItem="y8u-61-9ro" firstAttribute="top" secondItem="C9r-xl-gbh" secondAttribute="top" constant="15" id="AcV-r6-y3A"/>
+                        <constraint firstAttribute="trailing" secondItem="y8u-61-9ro" secondAttribute="trailing" constant="5" id="Fwi-0K-Zro"/>
+                        <constraint firstAttribute="bottom" secondItem="y8u-61-9ro" secondAttribute="bottom" constant="45" id="Jds-6O-lIO"/>
+                        <constraint firstAttribute="trailing" secondItem="LeC-r9-qyC" secondAttribute="trailing" constant="5" id="KQO-sY-A8Y"/>
+                        <constraint firstAttribute="bottom" secondItem="LeC-r9-qyC" secondAttribute="bottom" constant="45" id="KTE-zv-iSD"/>
+                        <constraint firstItem="LeC-r9-qyC" firstAttribute="leading" secondItem="C9r-xl-gbh" secondAttribute="leading" constant="5" id="ML8-Tk-sfp"/>
+                        <constraint firstItem="LeC-r9-qyC" firstAttribute="top" secondItem="C9r-xl-gbh" secondAttribute="top" constant="15" id="c7O-e4-nwF"/>
+                        <constraint firstAttribute="height" constant="230" id="cDm-ej-fhg"/>
+                        <constraint firstItem="y8u-61-9ro" firstAttribute="leading" secondItem="C9r-xl-gbh" secondAttribute="leading" constant="5" id="lQN-PV-4cd"/>
+                        <constraint firstAttribute="width" constant="304" id="rdb-qu-wci"/>
                     </constraints>
                 </view>
             </subviews>
@@ -48,9 +60,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="imageShadowView" destination="LeC-r9-qyC" id="cR5-3Y-ckJ"/>
                 <outlet property="movieBackground" destination="y8u-61-9ro" id="ktq-Vz-eI5"/>
             </connections>
-            <point key="canvasLocation" x="-11.199999999999999" y="-166.41679160419793"/>
+            <point key="canvasLocation" x="12.800000000000001" y="-166.41679160419793"/>
         </view>
     </objects>
 </document>

@@ -18,6 +18,7 @@ class NowPlayingMoviesCell: MovieListCell {
     
     override func bindMovieCell(cell: MovieCell, movie: Movie, index: Int) -> UICollectionViewCell {
         cell.bindMovieCellWithBackdrop(movie: movie)
+        cell.setupImageShadow(cornerRadius: 20, shadowRect: CGRect(x: 10, y: 20, width: 230, height: 140))
         
         return cell
     }

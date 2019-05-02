@@ -8,12 +8,33 @@
 
 import ObjectMapper
 
-class Images: BaseModel {
-    var backdrops : [String]?
-    var posters : [String]?
+class Image: BaseModel {
+    var aspectRatio : Double?
+    var filePath : String?
+    var height : Int?
+    var language : Double?
+    var vote_average : Int?
+    var vote_count : Int?
+    var width : Int?
     
     override func mapping(map: Map) {
-        backdrops <- map["backdrops"]
-        posters <- map["posters"]
+        aspectRatio        <- map["aspect_ratio"]
+        filePath           <- map["file_path"]
+        height              <- map["height"]
+        language            <- map["iso_639_1"]
+        vote_average        <- map["vote_average"]
+        vote_count          <- map["vote_count"]
+        width               <- map["width"]
     }
 }
+
+class Images: BaseModel {
+    var backdrops : [Image]?
+    var posters : [Image]?
+    
+    override func mapping(map: Map) {
+        backdrops       <- map["backdrops"]
+        posters         <- map["posters"]
+    }
+}
+

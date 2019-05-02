@@ -21,4 +21,10 @@ class URLUtils {
         
         return "\(Constants.URL.WIKI_URL)index.php?search=\(search)"
     }
+    
+    static func formatYoutubeUrl(videoId: String?) -> String? {
+        guard let id = videoId else { return nil }
+        
+        return "https://i.ytimg.com/vi/\(id)/hqdefault.jpg"
+    }
 }

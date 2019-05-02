@@ -27,4 +27,11 @@ class HomeInteractor: IHomeInteractor {
         return movieService.getNowPlaying(page: page, region: "BR")
     }
     
+    func fetchTopRatedMovies(page: Int) -> Observable<Results<Movie>> {
+        return movieService.getTopRated(page: page, region: "BR")
+    }
+    
+    func fetchUpcomingMovies(page: Int) -> Observable<Results<Movie>> {
+        return movieService.getUpcoming(page: page, region: "US")
+    }
 }

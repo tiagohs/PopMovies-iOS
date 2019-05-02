@@ -25,7 +25,7 @@ class MovieListCell: UITableViewCell {
         didSet { bindMovieContent(movies: movies!) }
     }
     
-    func bindMovieContent(movies: [Movie]) {
+    private func bindMovieContent(movies: [Movie]) {
         let cellNib = UINib(nibName: nibName, bundle: nil)
         
         self.moviesCollectionView.register(cellNib, forCellWithReuseIdentifier: movieCellIdentifier)

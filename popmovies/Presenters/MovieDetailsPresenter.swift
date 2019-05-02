@@ -40,7 +40,6 @@ class MovieDetailsPresenter: BasePresenter, IMovieDetailsPresenter {
                     })
             )
         }
-        
     }
     
     private func fetchMovieRankings(imdbId: String?) {
@@ -58,5 +57,18 @@ class MovieDetailsPresenter: BasePresenter, IMovieDetailsPresenter {
         }
     }
     
-    
+    func fetchMovieImages(movieId: Int?) {
+        if let id = movieId {
+            add(d:
+                interactor?.fetchMovieImages(movieId: id)
+                    .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+                    .observeOn(MainScheduler.instance)
+                    .subscribe(onNext: { (images) in
+                        self.view?.bindMovieImages(images: images)
+                    }, onError: { (error) in
+                        //
+                    })
+            )
+        }
+    }
 }

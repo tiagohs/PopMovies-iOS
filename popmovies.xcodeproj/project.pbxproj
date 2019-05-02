@@ -48,18 +48,6 @@
 		A22A92072269215D00F74BD5 /* TranslationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22A92062269215D00F74BD5 /* TranslationData.swift */; };
 		A22A920A226921E900F74BD5 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22A9209226921E900F74BD5 /* Review.swift */; };
 		A22A920C2269223100F74BD5 /* ReviewPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22A920B2269223100F74BD5 /* ReviewPerson.swift */; };
-		A22A922D226A224800F74BD5 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22A9229226A224800F74BD5 /* OpenSans-Italic.ttf */; };
-		A22A922E226A224800F74BD5 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22A922A226A224800F74BD5 /* OpenSans-Bold.ttf */; };
-		A22A922F226A224800F74BD5 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22A922B226A224800F74BD5 /* OpenSans-Regular.ttf */; };
-		A22A9230226A224800F74BD5 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22A922C226A224800F74BD5 /* OpenSans-Light.ttf */; };
-		A22A9235226A225F00F74BD5 /* Oswald-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22A9232226A225F00F74BD5 /* Oswald-Bold.ttf */; };
-		A22A9236226A225F00F74BD5 /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22A9233226A225F00F74BD5 /* Oswald-Regular.ttf */; };
-		A22A9237226A225F00F74BD5 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22A9234226A225F00F74BD5 /* Oswald-Light.ttf */; };
-		A22A923E226A227A00F74BD5 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22A9239226A227900F74BD5 /* Roboto-Regular.ttf */; };
-		A22A923F226A227A00F74BD5 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22A923A226A227900F74BD5 /* Roboto-Light.ttf */; };
-		A22A9240226A227A00F74BD5 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22A923B226A227900F74BD5 /* Roboto-Thin.ttf */; };
-		A22A9241226A227A00F74BD5 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22A923C226A227900F74BD5 /* Roboto-Italic.ttf */; };
-		A22A9242226A227A00F74BD5 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22A923D226A227A00F74BD5 /* Roboto-Bold.ttf */; };
 		A22A9245226A791100F74BD5 /* MovieDetailsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22A9244226A791100F74BD5 /* MovieDetailsHeaderCell.swift */; };
 		A22A9247226AA1F100F74BD5 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22A9246226AA1F100F74BD5 /* Date.swift */; };
 		A22A9251226AC32B00F74BD5 /* UIGradientImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22A9250226AC32B00F74BD5 /* UIGradientImageView.swift */; };
@@ -101,6 +89,30 @@
 		A2FE026022739D3700BCB8AC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE025F22739D3700BCB8AC /* UIView.swift */; };
 		A2FE026222763CBF00BCB8AC /* URLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE026122763CBF00BCB8AC /* URLUtils.swift */; };
 		A2FE0264227646B700BCB8AC /* MovieListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0263227646B700BCB8AC /* MovieListCell.swift */; };
+		A2FE02892278E94B00BCB8AC /* Oswald-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02782278E94A00BCB8AC /* Oswald-Bold.ttf */; };
+		A2FE028A2278E94B00BCB8AC /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02792278E94A00BCB8AC /* Oswald-Light.ttf */; };
+		A2FE028B2278E94B00BCB8AC /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE027A2278E94A00BCB8AC /* SF-Pro-Display-Light.otf */; };
+		A2FE028C2278E94B00BCB8AC /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE027B2278E94A00BCB8AC /* Roboto-Italic.ttf */; };
+		A2FE028D2278E94B00BCB8AC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE027C2278E94A00BCB8AC /* OpenSans-Regular.ttf */; };
+		A2FE028E2278E94B00BCB8AC /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE027D2278E94A00BCB8AC /* Oswald-Regular.ttf */; };
+		A2FE028F2278E94B00BCB8AC /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE027E2278E94A00BCB8AC /* Roboto-Thin.ttf */; };
+		A2FE02902278E94B00BCB8AC /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE027F2278E94A00BCB8AC /* SF-Pro-Display-Regular.otf */; };
+		A2FE02912278E94B00BCB8AC /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02802278E94B00BCB8AC /* Roboto-Regular.ttf */; };
+		A2FE02922278E94B00BCB8AC /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02812278E94B00BCB8AC /* OpenSans-Italic.ttf */; };
+		A2FE02932278E94B00BCB8AC /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02822278E94B00BCB8AC /* OpenSans-Light.ttf */; };
+		A2FE02942278E94B00BCB8AC /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02832278E94B00BCB8AC /* Roboto-Bold.ttf */; };
+		A2FE02952278E94B00BCB8AC /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02842278E94B00BCB8AC /* SF-Pro-Display-Bold.otf */; };
+		A2FE02962278E94B00BCB8AC /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02852278E94B00BCB8AC /* Roboto-Light.ttf */; };
+		A2FE02972278E94B00BCB8AC /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02862278E94B00BCB8AC /* SF-Pro-Display-Semibold.otf */; };
+		A2FE02982278E94B00BCB8AC /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02872278E94B00BCB8AC /* SF-Pro-Display-Thin.otf */; };
+		A2FE02992278E94B00BCB8AC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02882278E94B00BCB8AC /* OpenSans-Bold.ttf */; };
+		A2FE029B227A22D600BCB8AC /* TopRatedMoviesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE029A227A22D600BCB8AC /* TopRatedMoviesCell.swift */; };
+		A2FE029D227A22F200BCB8AC /* UpcomingMoviesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE029C227A22F200BCB8AC /* UpcomingMoviesCell.swift */; };
+		A2FE029F227A4C7800BCB8AC /* RelatedMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE029E227A4C7800BCB8AC /* RelatedMovies.swift */; };
+		A2FE02A1227A7A0000BCB8AC /* TabBarCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE02A0227A7A0000BCB8AC /* TabBarCallback.swift */; };
+		A2FE02A5227A849C00BCB8AC /* WallpaperCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02A4227A849C00BCB8AC /* WallpaperCell.xib */; };
+		A2FE02A7227A84C200BCB8AC /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02A6227A84C200BCB8AC /* VideoCell.xib */; };
+		A2FE02A9227A9D2000BCB8AC /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2FE02A8227A9D2000BCB8AC /* PersonCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,18 +176,6 @@
 		A22A92062269215D00F74BD5 /* TranslationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationData.swift; sourceTree = "<group>"; };
 		A22A9209226921E900F74BD5 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		A22A920B2269223100F74BD5 /* ReviewPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPerson.swift; sourceTree = "<group>"; };
-		A22A9229226A224800F74BD5 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "popmovies/Resources/Fonts/Open_Sans/OpenSans-Italic.ttf"; sourceTree = SOURCE_ROOT; };
-		A22A922A226A224800F74BD5 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "popmovies/Resources/Fonts/Open_Sans/OpenSans-Bold.ttf"; sourceTree = SOURCE_ROOT; };
-		A22A922B226A224800F74BD5 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "popmovies/Resources/Fonts/Open_Sans/OpenSans-Regular.ttf"; sourceTree = SOURCE_ROOT; };
-		A22A922C226A224800F74BD5 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "popmovies/Resources/Fonts/Open_Sans/OpenSans-Light.ttf"; sourceTree = SOURCE_ROOT; };
-		A22A9232226A225F00F74BD5 /* Oswald-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-Bold.ttf"; path = "popmovies/Resources/Fonts/Oswald/Oswald-Bold.ttf"; sourceTree = SOURCE_ROOT; };
-		A22A9233226A225F00F74BD5 /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-Regular.ttf"; path = "popmovies/Resources/Fonts/Oswald/Oswald-Regular.ttf"; sourceTree = SOURCE_ROOT; };
-		A22A9234226A225F00F74BD5 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-Light.ttf"; path = "popmovies/Resources/Fonts/Oswald/Oswald-Light.ttf"; sourceTree = SOURCE_ROOT; };
-		A22A9239226A227900F74BD5 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "popmovies/Resources/Fonts/Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
-		A22A923A226A227900F74BD5 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "popmovies/Resources/Fonts/Roboto-Light.ttf"; sourceTree = SOURCE_ROOT; };
-		A22A923B226A227900F74BD5 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "popmovies/Resources/Fonts/Roboto-Thin.ttf"; sourceTree = SOURCE_ROOT; };
-		A22A923C226A227900F74BD5 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "popmovies/Resources/Fonts/Roboto-Italic.ttf"; sourceTree = SOURCE_ROOT; };
-		A22A923D226A227A00F74BD5 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "popmovies/Resources/Fonts/Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		A22A9244226A791100F74BD5 /* MovieDetailsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsHeaderCell.swift; sourceTree = "<group>"; };
 		A22A9246226AA1F100F74BD5 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		A22A9250226AC32B00F74BD5 /* UIGradientImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGradientImageView.swift; sourceTree = "<group>"; };
@@ -223,6 +223,30 @@
 		A2FE025F22739D3700BCB8AC /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		A2FE026122763CBF00BCB8AC /* URLUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLUtils.swift; sourceTree = "<group>"; };
 		A2FE0263227646B700BCB8AC /* MovieListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCell.swift; sourceTree = "<group>"; };
+		A2FE02782278E94A00BCB8AC /* Oswald-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Bold.ttf"; sourceTree = "<group>"; };
+		A2FE02792278E94A00BCB8AC /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
+		A2FE027A2278E94A00BCB8AC /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		A2FE027B2278E94A00BCB8AC /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		A2FE027C2278E94A00BCB8AC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		A2FE027D2278E94A00BCB8AC /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Regular.ttf"; sourceTree = "<group>"; };
+		A2FE027E2278E94A00BCB8AC /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		A2FE027F2278E94A00BCB8AC /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		A2FE02802278E94B00BCB8AC /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		A2FE02812278E94B00BCB8AC /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		A2FE02822278E94B00BCB8AC /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		A2FE02832278E94B00BCB8AC /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		A2FE02842278E94B00BCB8AC /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		A2FE02852278E94B00BCB8AC /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		A2FE02862278E94B00BCB8AC /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		A2FE02872278E94B00BCB8AC /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
+		A2FE02882278E94B00BCB8AC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		A2FE029A227A22D600BCB8AC /* TopRatedMoviesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedMoviesCell.swift; sourceTree = "<group>"; };
+		A2FE029C227A22F200BCB8AC /* UpcomingMoviesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesCell.swift; sourceTree = "<group>"; };
+		A2FE029E227A4C7800BCB8AC /* RelatedMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedMovies.swift; sourceTree = "<group>"; };
+		A2FE02A0227A7A0000BCB8AC /* TabBarCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCallback.swift; sourceTree = "<group>"; };
+		A2FE02A4227A849C00BCB8AC /* WallpaperCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallpaperCell.xib; sourceTree = "<group>"; };
+		A2FE02A6227A84C200BCB8AC /* VideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
+		A2FE02A8227A9D2000BCB8AC /* PersonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
 		BF671210EF166C7A48E4C8AD /* Pods-popmoviesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-popmoviesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-popmoviesUITests/Pods-popmoviesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DBEE69AB622BE17688070CB2 /* Pods_popmovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_popmovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BC4F45CD951837539FAF96 /* Pods-popmoviesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-popmoviesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-popmoviesTests/Pods-popmoviesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -359,6 +383,8 @@
 				A22A91D92267CBC600F74BD5 /* PopularMoviesCell.swift */,
 				A216947922666EF2009988F1 /* NowPlayingMoviesCell.swift */,
 				A2FE0263227646B700BCB8AC /* MovieListCell.swift */,
+				A2FE029A227A22D600BCB8AC /* TopRatedMoviesCell.swift */,
+				A2FE029C227A22F200BCB8AC /* UpcomingMoviesCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -367,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				A22A91E02268E1B900F74BD5 /* MovieListCallback.swift */,
+				A2FE02A0227A7A0000BCB8AC /* TabBarCallback.swift */,
 			);
 			path = Callbacks;
 			sourceTree = "<group>";
@@ -450,46 +477,25 @@
 		A22A920F226A1CC500F74BD5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				A22A923D226A227A00F74BD5 /* Roboto-Bold.ttf */,
-				A22A923C226A227900F74BD5 /* Roboto-Italic.ttf */,
-				A22A923A226A227900F74BD5 /* Roboto-Light.ttf */,
-				A22A9239226A227900F74BD5 /* Roboto-Regular.ttf */,
-				A22A923B226A227900F74BD5 /* Roboto-Thin.ttf */,
-				A22A9238226A226700F74BD5 /* Roboto */,
-				A22A9231226A225200F74BD5 /* Oswald */,
-				A22A9228226A223900F74BD5 /* OpenSans */,
+				A2FE02882278E94B00BCB8AC /* OpenSans-Bold.ttf */,
+				A2FE02812278E94B00BCB8AC /* OpenSans-Italic.ttf */,
+				A2FE02822278E94B00BCB8AC /* OpenSans-Light.ttf */,
+				A2FE027C2278E94A00BCB8AC /* OpenSans-Regular.ttf */,
+				A2FE02782278E94A00BCB8AC /* Oswald-Bold.ttf */,
+				A2FE02792278E94A00BCB8AC /* Oswald-Light.ttf */,
+				A2FE027D2278E94A00BCB8AC /* Oswald-Regular.ttf */,
+				A2FE02832278E94B00BCB8AC /* Roboto-Bold.ttf */,
+				A2FE027B2278E94A00BCB8AC /* Roboto-Italic.ttf */,
+				A2FE02852278E94B00BCB8AC /* Roboto-Light.ttf */,
+				A2FE02802278E94B00BCB8AC /* Roboto-Regular.ttf */,
+				A2FE027E2278E94A00BCB8AC /* Roboto-Thin.ttf */,
+				A2FE02842278E94B00BCB8AC /* SF-Pro-Display-Bold.otf */,
+				A2FE027A2278E94A00BCB8AC /* SF-Pro-Display-Light.otf */,
+				A2FE027F2278E94A00BCB8AC /* SF-Pro-Display-Regular.otf */,
+				A2FE02862278E94B00BCB8AC /* SF-Pro-Display-Semibold.otf */,
+				A2FE02872278E94B00BCB8AC /* SF-Pro-Display-Thin.otf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		A22A9228226A223900F74BD5 /* OpenSans */ = {
-			isa = PBXGroup;
-			children = (
-				A22A922A226A224800F74BD5 /* OpenSans-Bold.ttf */,
-				A22A9229226A224800F74BD5 /* OpenSans-Italic.ttf */,
-				A22A922C226A224800F74BD5 /* OpenSans-Light.ttf */,
-				A22A922B226A224800F74BD5 /* OpenSans-Regular.ttf */,
-			);
-			path = OpenSans;
-			sourceTree = "<group>";
-		};
-		A22A9231226A225200F74BD5 /* Oswald */ = {
-			isa = PBXGroup;
-			children = (
-				A22A9232226A225F00F74BD5 /* Oswald-Bold.ttf */,
-				A22A9234226A225F00F74BD5 /* Oswald-Light.ttf */,
-				A22A9233226A225F00F74BD5 /* Oswald-Regular.ttf */,
-			);
-			name = Oswald;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		A22A9238226A226700F74BD5 /* Roboto */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Roboto;
-			path = "New Group1";
 			sourceTree = "<group>";
 		};
 		A22A9243226A78FA00F74BD5 /* MovieDetails */ = {
@@ -497,6 +503,7 @@
 			children = (
 				A22A9244226A791100F74BD5 /* MovieDetailsHeaderCell.swift */,
 				A2FE024C226F70A100BCB8AC /* MovieDetailsContentCell.swift */,
+				A2FE029E227A4C7800BCB8AC /* RelatedMovies.swift */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -652,6 +659,9 @@
 				A2FE023C226E369F00BCB8AC /* MovieCell.xib */,
 				A2FE0244226E3CF600BCB8AC /* NowPlayingMovieCell.xib */,
 				A2FE02562272982100BCB8AC /* MovieSmallCell.xib */,
+				A2FE02A4227A849C00BCB8AC /* WallpaperCell.xib */,
+				A2FE02A6227A84C200BCB8AC /* VideoCell.xib */,
+				A2FE02A8227A9D2000BCB8AC /* PersonCell.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -791,25 +801,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A22A922F226A224800F74BD5 /* OpenSans-Regular.ttf in Resources */,
-				A22A9235226A225F00F74BD5 /* Oswald-Bold.ttf in Resources */,
+				A2FE028F2278E94B00BCB8AC /* Roboto-Thin.ttf in Resources */,
+				A2FE02942278E94B00BCB8AC /* Roboto-Bold.ttf in Resources */,
+				A2FE02992278E94B00BCB8AC /* OpenSans-Bold.ttf in Resources */,
+				A2FE028E2278E94B00BCB8AC /* Oswald-Regular.ttf in Resources */,
+				A2FE02912278E94B00BCB8AC /* Roboto-Regular.ttf in Resources */,
 				A2FE023D226E369F00BCB8AC /* MovieCell.xib in Resources */,
 				A2FE02572272982100BCB8AC /* MovieSmallCell.xib in Resources */,
-				A22A922D226A224800F74BD5 /* OpenSans-Italic.ttf in Resources */,
+				A2FE02952278E94B00BCB8AC /* SF-Pro-Display-Bold.otf in Resources */,
+				A2FE02A5227A849C00BCB8AC /* WallpaperCell.xib in Resources */,
 				A27F1D8A225E924100B15976 /* LaunchScreen.storyboard in Resources */,
-				A22A923F226A227A00F74BD5 /* Roboto-Light.ttf in Resources */,
-				A22A9241226A227A00F74BD5 /* Roboto-Italic.ttf in Resources */,
-				A22A9242226A227A00F74BD5 /* Roboto-Bold.ttf in Resources */,
+				A2FE02932278E94B00BCB8AC /* OpenSans-Light.ttf in Resources */,
+				A2FE02A9227A9D2000BCB8AC /* PersonCell.xib in Resources */,
+				A2FE028A2278E94B00BCB8AC /* Oswald-Light.ttf in Resources */,
+				A2FE02892278E94B00BCB8AC /* Oswald-Bold.ttf in Resources */,
+				A2FE02962278E94B00BCB8AC /* Roboto-Light.ttf in Resources */,
+				A2FE02982278E94B00BCB8AC /* SF-Pro-Display-Thin.otf in Resources */,
+				A2FE02A7227A84C200BCB8AC /* VideoCell.xib in Resources */,
 				A27F1D87225E924100B15976 /* Assets.xcassets in Resources */,
-				A22A9236226A225F00F74BD5 /* Oswald-Regular.ttf in Resources */,
-				A22A9240226A227A00F74BD5 /* Roboto-Thin.ttf in Resources */,
-				A22A922E226A224800F74BD5 /* OpenSans-Bold.ttf in Resources */,
+				A2FE028B2278E94B00BCB8AC /* SF-Pro-Display-Light.otf in Resources */,
 				A27F1D85225E923F00B15976 /* Main.storyboard in Resources */,
 				A22A91DC2268DE7D00F74BD5 /* Movie.storyboard in Resources */,
+				A2FE028C2278E94B00BCB8AC /* Roboto-Italic.ttf in Resources */,
+				A2FE02922278E94B00BCB8AC /* OpenSans-Italic.ttf in Resources */,
+				A2FE028D2278E94B00BCB8AC /* OpenSans-Regular.ttf in Resources */,
+				A2FE02902278E94B00BCB8AC /* SF-Pro-Display-Regular.otf in Resources */,
+				A2FE02972278E94B00BCB8AC /* SF-Pro-Display-Semibold.otf in Resources */,
 				A2FE0245226E3CF600BCB8AC /* NowPlayingMovieCell.xib in Resources */,
-				A22A923E226A227A00F74BD5 /* Roboto-Regular.ttf in Resources */,
-				A22A9230226A224800F74BD5 /* OpenSans-Light.ttf in Resources */,
-				A22A9237226A225F00F74BD5 /* Oswald-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,10 +983,12 @@
 				A2FE0232226D1AA400BCB8AC /* MovieOMDB.swift in Sources */,
 				A21694762266556E009988F1 /* MovieCell.swift in Sources */,
 				A2FE025B2272A7D800BCB8AC /* DateFormatTransform.swift in Sources */,
+				A2FE02A1227A7A0000BCB8AC /* TabBarCallback.swift in Sources */,
 				A22A91F422691A1500F74BD5 /* CreditCast.swift in Sources */,
 				A22A9255226AD83500F74BD5 /* UILabelView.swift in Sources */,
 				A22A91EB2269108700F74BD5 /* EnumTransformStringCaseInsensitive.swift in Sources */,
 				A2FE0225226BCBE200BCB8AC /* PersonCell.swift in Sources */,
+				A2FE029D227A22F200BCB8AC /* UpcomingMoviesCell.swift in Sources */,
 				A2FE0247226E5E8400BCB8AC /* ViewUtils.swift in Sources */,
 				A27F1DB1225EA8F100B15976 /* HomeController.swift in Sources */,
 				A21693BE2263E4B3009988F1 /* ObservableType.swift in Sources */,
@@ -988,9 +1008,11 @@
 				A2FE023B226E2DDA00BCB8AC /* ImageUtils.swift in Sources */,
 				A22A91F622691A7700F74BD5 /* CreditCrew.swift in Sources */,
 				A2FE026022739D3700BCB8AC /* UIView.swift in Sources */,
+				A2FE029F227A4C7800BCB8AC /* RelatedMovies.swift in Sources */,
 				A22A91FB22691C7B00F74BD5 /* Keyword.swift in Sources */,
 				A22A9251226AC32B00F74BD5 /* UIGradientImageView.swift in Sources */,
 				A2FE024D226F70A100BCB8AC /* MovieDetailsContentCell.swift in Sources */,
+				A2FE029B227A22D600BCB8AC /* TopRatedMoviesCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

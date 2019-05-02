@@ -21,33 +21,27 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MovieCell" customModule="popmovies" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="152" height="241"/>
+            <rect key="frame" x="0.0" y="0.0" width="164" height="270"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Y1-3z-xYt">
-                    <rect key="frame" x="0.0" y="0.0" width="152" height="241"/>
+                    <rect key="frame" x="0.0" y="0.0" width="164" height="270"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="puz-oH-pTZ">
-                            <rect key="frame" x="12.5" y="10" width="127" height="169"/>
+                            <rect key="frame" x="8" y="10" width="148" height="203"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="169" id="0zd-g2-nbl"/>
-                                <constraint firstAttribute="width" constant="127" id="soK-kX-08V"/>
+                                <constraint firstAttribute="width" constant="148" id="UoR-Pl-UK4"/>
+                                <constraint firstAttribute="height" constant="203" id="W23-IJ-e4N"/>
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Titulo Filme" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-MY-cuF">
-                            <rect key="frame" x="15" y="189" width="132" height="17"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="132" id="ELa-d0-JUh"/>
-                            </constraints>
+                            <rect key="frame" x="10" y="218" width="144" height="17"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Subitulo Filme" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Wwl-pq-pqL">
-                            <rect key="frame" x="15" y="211" width="132" height="12"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="132" id="LxB-W4-2o3"/>
-                            </constraints>
+                            <rect key="frame" x="10" y="240" width="144" height="12"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto Light" pointSize="10"/>
                             <textInputTraits key="textInputTraits"/>
@@ -55,25 +49,25 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="puz-oH-pTZ" firstAttribute="top" secondItem="2Y1-3z-xYt" secondAttribute="top" constant="10" id="LYu-cV-8iH"/>
-                        <constraint firstItem="puz-oH-pTZ" firstAttribute="centerX" secondItem="2Y1-3z-xYt" secondAttribute="centerX" id="LpL-r6-Wg7"/>
-                        <constraint firstItem="0Hd-MY-cuF" firstAttribute="top" secondItem="puz-oH-pTZ" secondAttribute="bottom" constant="10" id="S5p-nG-kbO"/>
-                        <constraint firstAttribute="height" constant="241" id="YWp-ZX-tve"/>
-                        <constraint firstItem="Wwl-pq-pqL" firstAttribute="leading" secondItem="2Y1-3z-xYt" secondAttribute="leading" constant="15" id="Zaj-Sr-cZD"/>
-                        <constraint firstAttribute="width" constant="152" id="cBp-R4-irG"/>
-                        <constraint firstItem="0Hd-MY-cuF" firstAttribute="leading" secondItem="2Y1-3z-xYt" secondAttribute="leading" constant="15" id="gG5-gr-zDc"/>
-                        <constraint firstItem="Wwl-pq-pqL" firstAttribute="top" secondItem="0Hd-MY-cuF" secondAttribute="bottom" constant="5" id="pqV-Kq-281"/>
-                        <constraint firstAttribute="trailing" secondItem="Wwl-pq-pqL" secondAttribute="trailing" constant="5" id="qWc-3p-e51"/>
-                        <constraint firstAttribute="trailing" secondItem="0Hd-MY-cuF" secondAttribute="trailing" constant="5" id="yfc-Su-UTH"/>
+                        <constraint firstAttribute="width" constant="164" id="MAu-BN-jOV"/>
+                        <constraint firstItem="0Hd-MY-cuF" firstAttribute="top" secondItem="puz-oH-pTZ" secondAttribute="bottom" constant="5" id="e8A-dc-I8F"/>
+                        <constraint firstAttribute="trailing" secondItem="0Hd-MY-cuF" secondAttribute="trailing" constant="10" id="gGu-96-RjA"/>
+                        <constraint firstAttribute="height" constant="270" id="m2q-BY-CET"/>
+                        <constraint firstAttribute="trailing" secondItem="Wwl-pq-pqL" secondAttribute="trailing" constant="10" id="nWf-Fv-bCj"/>
+                        <constraint firstItem="0Hd-MY-cuF" firstAttribute="leading" secondItem="2Y1-3z-xYt" secondAttribute="leading" constant="10" id="opW-D2-Of2"/>
+                        <constraint firstItem="Wwl-pq-pqL" firstAttribute="leading" secondItem="2Y1-3z-xYt" secondAttribute="leading" constant="10" id="pnX-Vz-2gW"/>
+                        <constraint firstItem="puz-oH-pTZ" firstAttribute="top" secondItem="2Y1-3z-xYt" secondAttribute="top" constant="10" id="qtq-7v-UH8"/>
+                        <constraint firstItem="puz-oH-pTZ" firstAttribute="centerX" secondItem="2Y1-3z-xYt" secondAttribute="centerX" id="t3Q-aB-WTp"/>
+                        <constraint firstItem="Wwl-pq-pqL" firstAttribute="top" secondItem="0Hd-MY-cuF" secondAttribute="bottom" constant="5" id="uzv-ns-jlU"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="2Y1-3z-xYt" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="9kE-ag-Xt9"/>
-                <constraint firstItem="2Y1-3z-xYt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="PrC-oH-Bmh"/>
-                <constraint firstAttribute="trailing" secondItem="2Y1-3z-xYt" secondAttribute="trailing" id="Q1e-4T-LIi"/>
-                <constraint firstItem="2Y1-3z-xYt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="TKK-F3-WDW"/>
+                <constraint firstItem="2Y1-3z-xYt" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="3x3-7c-PRL"/>
+                <constraint firstItem="2Y1-3z-xYt" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="A5z-WR-wgs"/>
+                <constraint firstItem="2Y1-3z-xYt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="q3F-Gb-kt2"/>
+                <constraint firstItem="2Y1-3z-xYt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="tcH-mV-Y0l"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -84,7 +78,7 @@
                 <outlet property="movieSubtitle" destination="Wwl-pq-pqL" id="1Dg-t9-QSd"/>
                 <outlet property="movieTitle" destination="0Hd-MY-cuF" id="lbi-Bf-dVf"/>
             </connections>
-            <point key="canvasLocation" x="-124.8" y="-88.605697151424295"/>
+            <point key="canvasLocation" x="-115.2" y="-75.562218890554732"/>
         </view>
     </objects>
 </document>

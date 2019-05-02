@@ -20,13 +20,13 @@ class Video: BaseModel {
     
     override func mapping(map: Map) {
         id <- map["id"]
-        id <- map["language"]
-        id <- map["country"]
-        id <- map["key"]
-        id <- map["name"]
-        id <- map["site"]
-        id <- map["size"]
-        id <- map["type"]
+        language <- map["iso_639_1"]
+        country <- map["iso_3166_1"]
+        key <- map["key"]
+        name <- map["name"]
+        site <- map["site"]
+        size <- map["size"]
+        type <- map["type"]
     }
 }
 

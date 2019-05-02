@@ -56,4 +56,34 @@ class HomePresenter: BasePresenter, IHomePresenter {
         
         add(d: disposible)
     }
+    
+    func fetchTopRatedMovies() {
+        let disposible = interactor?.fetchTopRatedMovies(page: 1)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (results) in
+                if results.results != nil {
+                    self.view?.bindTopRatedMovies(movies: results.results!)
+                }
+            }, onError: { (error) in
+                print(error)
+            })
+        
+        add(d: disposible)
+    }
+    
+    func fetchUpcomingMovies() {
+        let disposible = interactor?.fetchUpcomingMovies(page: 1)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (results) in
+                if results.results != nil {
+                    self.view?.bindUpcomingMovies(movies: results.results!)
+                }
+            }, onError: { (error) in
+                print(error)
+            })
+        
+        add(d: disposible)
+    }
 }

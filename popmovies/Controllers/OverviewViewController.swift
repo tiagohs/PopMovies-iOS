@@ -13,7 +13,9 @@ class OverviewViewController: BaseViewController {
     let castCollectionViewIdentifier                = "CastCollectionViewIdentifier"
     let crewCollectionViewIdentifier                = "CrewCollectionViewIdentifier"
     let relatedMoviesCollectioViewIdentifier        = "RelatedMoviesCollectioViewIdentifier"
+    
     let personCellIdentifier                        = "PersonCellIdentifier"
+    let movieCellIdentifier                         = "MovieCellIdentifier"
     
     @IBOutlet weak var imdbView: UIView!
     @IBOutlet weak var tomatoesView: UIView!
@@ -28,7 +30,23 @@ class OverviewViewController: BaseViewController {
     @IBOutlet weak var languageView: UILabel!
     
     @IBOutlet weak var castCollectionView: UICollectionView!
+    @IBOutlet weak var castCollectionViewViewFlow: UICollectionViewFlowLayout!  {
+        didSet {
+            castCollectionViewViewFlow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
     @IBOutlet weak var crewCollectionView: UICollectionView!
+    @IBOutlet weak var crewMoviesCollectionViewViewFlow: UICollectionViewFlowLayout!  {
+        didSet {
+            crewMoviesCollectionViewViewFlow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
+    @IBOutlet weak var relatedMoviesCollectionView: UICollectionView!
+    @IBOutlet weak var relatedMoviesCollectionViewViewFlow: UICollectionViewFlowLayout!  {
+        didSet {
+            relatedMoviesCollectionViewViewFlow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
     
     let shadowpath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:
         35, height: 35), byRoundingCorners:
@@ -45,6 +63,10 @@ class OverviewViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureNibs(collection: relatedMoviesCollectionView, nibName: "MovieSmallCell", identifier: movieCellIdentifier)
+        configureNibs(collection: castCollectionView, nibName: "PersonCell", identifier: personCellIdentifier)
+        configureNibs(collection: crewCollectionView, nibName: "PersonCell", identifier: personCellIdentifier)
     }
     
     private func bindMovieRankings(movieRanking: MovieOMDB) {
@@ -54,7 +76,7 @@ class OverviewViewController: BaseViewController {
         self.tomatoesView.addGestureRecognizer(tomatoesLinkGesture)
         
         self.awardsView.text = movieRanking.awards
-        self.budgetView.text = movieRanking.boxOffice != nil && movieRanking.boxOffice != "N/A" ? "$ \(movieRanking.boxOffice!)" : movieRanking.boxOffice
+        self.budgetView.text = movieRanking.boxOffice
     }
     
     func bindMovieContent(movie: Movie) {
@@ -67,9 +89,11 @@ class OverviewViewController: BaseViewController {
         self.imdbView.addGestureRecognizer(imdbLinkGesture)
         
         self.originalTitleView.text = movie.originalTitle
+        self.originalTitleView.sizeToFit()
+        self.originalTitleView.layoutIfNeeded()
         self.inTheaterView.text = movie.releaseDate?.formatDate(pattner: "MMM d, yyyy")
         self.languageView.text = Locale(identifier: "pt_BR").localizedString(forIdentifier: movie.originalLanguage!)
-        self.revenueView.text = movie.revenue != nil ? "$ \(movie.revenue!)" : ""
+        self.revenueView.text = movie.revenue != nil ? "$ \(movie.revenue!)" : "N/A"
         
         self.setupExternalLinkView(view: imdbView)
         self.setupExternalLinkView(view: tomatoesView)
@@ -77,6 +101,7 @@ class OverviewViewController: BaseViewController {
         
         self.castCollectionView.reloadData()
         self.crewCollectionView.reloadData()
+        self.relatedMoviesCollectionView.reloadData()
     }
     
     @objc func didImdbLinkTaped(sender : UITapGestureRecognizer) {
@@ -126,7 +151,7 @@ extension OverviewViewController: UICollectionViewDelegate, UICollectionViewData
         case crewCollectionViewIdentifier:
             return movie?.credits?.crew?.count ?? 0
         case relatedMoviesCollectioViewIdentifier:
-            return 0
+            return movie?.similiarMovies?.results?.count ?? 0
             //return movie?.similiarMovies?.count ?? 0
         default:
             return 0
@@ -154,7 +179,14 @@ extension OverviewViewController: UICollectionViewDelegate, UICollectionViewData
                 return setupCastCollectionViewCell(collectionView, cellForItemAt: indexPath, personItem: personItem)
             }
         case relatedMoviesCollectioViewIdentifier:
-            return UICollectionViewCell()
+            guard let movies = self.movie?.similiarMovies?.results else { return UICollectionViewCell() }
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: movieCellIdentifier, for: indexPath) as! MovieCell
+            let movie = movies[indexPath.row]
+            
+            cell.bindMovieCellDefault(movie: movie)
+            
+            return cell
         default:
             return UICollectionViewCell()
         }

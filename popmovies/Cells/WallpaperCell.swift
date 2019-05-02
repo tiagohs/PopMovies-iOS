@@ -10,9 +10,35 @@ import UIKit
 
 class WallpaperCell: UICollectionViewCell {
     
-    var image: String? {
+    @IBOutlet weak var wallpaperImageView: UIImageView!
+
+    var image: Image? {
         didSet {
-            
+            bindWallpaper(wallpaper: image!)
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            contentView.leftAnchor.constraint(equalTo: leftAnchor),
+            contentView.rightAnchor.constraint(equalTo: rightAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+    }
+    
+    private func bindWallpaper(wallpaper: Image) {
+        if let backdropUrl = ImageUtils.formatImageUrl(imageID: wallpaper.filePath, imageSize: Constants.TMDB.ImageSize.BACKDROP.w780) {
+            
+            wallpaperImageView.setImage( imageUrl: backdropUrl, contentMode: .scaleAspectFill, placeholderImageName: "BackdropPlaceholder")
+        } else {
+            wallpaperImageView.image = UIImage(named: "BackdropPlaceholder")
+        }
+        
+        wallpaperImageView.layer.cornerRadius = 8
     }
 }

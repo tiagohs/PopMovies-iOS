@@ -12,6 +12,9 @@ class HomeController: BaseViewController {
     
     let nowPlayingMovieCellIdentifier           = "NowPlayingMovieCellIdentifier"
     let popularMoviesCelldentifier              = "PopularMoviesCelldentifier"
+    let topRatedMoviesCellIdentifier            = "TopRatedMoviesCellIdentifier"
+    let upcomingMoviesCellIdentifier            = "UpcomingMoviesCellIdentifier"
+    
     let movieDetailsSegueIdentifier             = "MovieDetailsSegueIdentifier"
     
     @IBOutlet weak var tableView: UITableView!
@@ -20,6 +23,8 @@ class HomeController: BaseViewController {
     
     var nowPlayingMovies: [Movie]              = []
     var popularMovies: [Movie]                 = []
+    var topRatedMovies: [Movie]                = []
+    var upcomingMovies: [Movie]                = []
     
     var isNavbarColorPrimary = false
     
@@ -30,6 +35,8 @@ class HomeController: BaseViewController {
         
         homePresenter?.fetchNowPlayingMovies()
         homePresenter?.fetchPopularMovies()
+        homePresenter?.fetchTopRatedMovies()
+        homePresenter?.fetchUpcomingMovies()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,15 +57,8 @@ class HomeController: BaseViewController {
             iconColor: nil,
             action: #selector(HomeController.didProfileButtonTaped)
         )
-        let appIcon = createNavigationBarButton(
-            buttonBaseSize: 40,
-            rounded: false,
-            iconName: Constants.IMAGES.APP_ICON,
-            iconColor: nil,
-            action: nil)
         
         addRightButtonsToNavigationBar(buttons: [profileButton, searchButton])
-        addLeftButtonsToNavigationBar(buttons: [appIcon])
     }
     
     @objc func didSearchButtonTaped() {
@@ -69,35 +69,32 @@ class HomeController: BaseViewController {
         
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let nav = self.navigationController?.navigationBar
-        let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
-        
-        if (scrollView.contentOffset.y > 10 && !isNavbarColorPrimary) {
-            nav?.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
-            nav?.tintColor = UIColor.white
-            nav?.barTintColor = UIColor.white
-            nav?.barStyle = .blackTranslucent
-            
-            statusBar?.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
-            
-            self.navigationController?.title = "PopMovies"
-            
-            isNavbarColorPrimary = true
-        } else if scrollView.contentOffset.y <= 10 && isNavbarColorPrimary {
-            nav?.setBackgroundImage(UIImage(), for: .default)
-            nav?.shadowImage = UIImage()
-            nav?.backgroundColor = .clear
-            nav?.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
-            nav?.barStyle = .default
-            
-            statusBar?.backgroundColor = UIColor.white
-            
-            self.navigationController?.title = ""
-            
-            isNavbarColorPrimary = false
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let nav = self.navigationController?.navigationBar
+//        let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+//
+//        if (scrollView.contentOffset.y > 10 && !isNavbarColorPrimary) {
+//            nav?.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
+//            nav?.tintColor = UIColor.white
+//            nav?.barTintColor = UIColor.white
+//            nav?.barStyle = .blackTranslucent
+//
+//            statusBar?.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
+//            isNavbarColorPrimary = true
+//        } else if scrollView.contentOffset.y <= 10 && isNavbarColorPrimary {
+//            nav?.setBackgroundImage(UIImage(), for: .default)
+//            nav?.shadowImage = UIImage()
+//            nav?.backgroundColor = .clear
+//            nav?.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
+//            nav?.barStyle = .default
+//
+//            statusBar?.backgroundColor = UIColor.white
+//
+//            self.navigationController?.title = ""
+//
+//            isNavbarColorPrimary = false
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -128,6 +125,20 @@ extension HomeController: IHomeView {
         self.tableView.reloadRows(at: [indexPath], with: .left)
     }
     
+    func bindTopRatedMovies(movies: [Movie]) {
+        self.topRatedMovies = movies
+        
+        let indexPath = IndexPath(item: 2, section: 0)
+        self.tableView.reloadRows(at: [indexPath], with: .left)
+    }
+    
+    func bindUpcomingMovies(movies: [Movie]) {
+        self.upcomingMovies = movies
+        
+        let indexPath = IndexPath(item: 3, section: 0)
+        self.tableView.reloadRows(at: [indexPath], with: .left)
+    }
+    
 }
 
 // MARK: UITableView Page
@@ -135,7 +146,7 @@ extension HomeController: IHomeView {
 extension HomeController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -149,10 +160,24 @@ extension HomeController: UITableViewDataSource, UITableViewDelegate {
             
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: popularMoviesCelldentifier, for: indexPath) as! MovieListCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: popularMoviesCelldentifier, for: indexPath) as! PopularMoviesCell
             
             cell.movieListCallback = self
-            cell.movies = nowPlayingMovies
+            cell.movies = popularMovies
+            
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: topRatedMoviesCellIdentifier, for: indexPath) as! TopRatedMoviesCell
+            
+            cell.movieListCallback = self
+            cell.movies = topRatedMovies
+            
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: upcomingMoviesCellIdentifier, for: indexPath) as! UpcomingMoviesCell
+            
+            cell.movieListCallback = self
+            cell.movies = upcomingMovies
             
             return cell
         default:
