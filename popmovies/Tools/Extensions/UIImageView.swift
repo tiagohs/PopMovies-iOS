@@ -26,4 +26,25 @@ extension UIImageView {
             ],
             completionHandler: completionHandler)
     }
+    
+    func setTMDBImageBy(url: String?, contentSize: String, placeholder: String) {
+        if let imageUrl = ImageUtils.formatImageUrl(imageID: url, imageSize: contentSize) {
+            setImage(imageUrl: imageUrl, contentMode: .scaleAspectFill, placeholderImageName: placeholder)
+        } else {
+            self.image = UIImage(named: placeholder)
+        }
+    }
+    
+    func setImageColorBy(hexColor: String) {
+        let color = ViewUtils.UIColorFromHEX(hex: hexColor)
+        
+        setImageColorBy(uiColor: color)
+    }
+    
+    func setImageColorBy(uiColor: UIColor) {
+        let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
+        
+        self.image = templateImage
+        self.tintColor = uiColor
+    }
 }

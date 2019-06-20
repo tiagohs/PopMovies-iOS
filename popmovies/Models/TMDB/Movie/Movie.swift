@@ -9,7 +9,8 @@
 import Foundation
 import ObjectMapper
 
-class Movie: BaseModel {
+class Movie: BaseModel, Hashable {
+    
     var id: Int?
     var adult: Bool?
     var backdropPath: String?
@@ -80,6 +81,14 @@ class Movie: BaseModel {
         similiarMovies          <- map["similar_movies"]
         reviews                 <- map["reviews"]
         
+    }
+    
+    static func == (lhs: Movie, rhs: Movie) -> Bool {
+        return (lhs.id == rhs.id)
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
     
 }

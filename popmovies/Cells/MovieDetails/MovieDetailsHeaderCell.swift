@@ -45,6 +45,8 @@ class MovieDetailsHeaderCell: UITableViewCell {
     
     var movieColors: UIImageColors? = nil
     
+    var isImagesBind = false
+    
     private func bindMovieRankings(movieRanking: MovieOMDB) {
         
         if let imdbRankingValue = movieRanking.imdbRating {
@@ -65,28 +67,29 @@ class MovieDetailsHeaderCell: UITableViewCell {
     }
     
     private func bindMovieHeader(movie: Movie) {
-        let backdropUrl = "https://image.tmdb.org/t/p/w780/" + movie.backdropPath!
-        let posterUrl = "https://image.tmdb.org/t/p/w500/" + movie.posterPath!
         
-        if (movieColors == nil) {
-            let color = UIColor.white
-            color.withAlphaComponent(0.6)
+        if !isImagesBind {
+            let backdropUrl = "https://image.tmdb.org/t/p/w780/" + movie.backdropPath!
+            let posterUrl = "https://image.tmdb.org/t/p/w500/" + movie.posterPath!
             
-            self.movieBackdropView.updateColors(colors:
-                [UIColor.clear.cgColor, color.cgColor]
-            )
-        }
-        
-        if movieBackdropView.image == nil {
-            movieBackdropView.setImage( imageUrl: backdropUrl, contentMode: .scaleAspectFill, placeholderImageName: "placeholder") { (result) in
-                let image = try? result.get().image
+            if (movieColors == nil) {
+                let color = UIColor.black
+                color.withAlphaComponent(0.6)
                 
-                self.updateHeaderColors(image: image)
+                self.movieBackdropView.updateColors(colors:
+                    [UIColor.clear.cgColor, color.cgColor]
+                )
             }
-        }
-        
-        if moviePosterView.image == nil {
-            moviePosterView.setImage( imageUrl: posterUrl, contentMode: .scaleAspectFill, placeholderImageName: "placeholder")
+            
+            if movieBackdropView.image == nil {
+                movieBackdropView.setImage( imageUrl: backdropUrl, contentMode: .scaleAspectFill, placeholderImageName: "placeholder")
+                movieBackdropView.hero.id = String(describing: movie.backdropPath)
+            }
+            
+            if moviePosterView.image == nil {
+                moviePosterView.setImage( imageUrl: posterUrl, contentMode: .scaleAspectFill, placeholderImageName: "placeholder")
+                moviePosterView.hero.id = String(describing: movie.posterPath)
+            }
         }
         
         movieTitleView.text = movie.title

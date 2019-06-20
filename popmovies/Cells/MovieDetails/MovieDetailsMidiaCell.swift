@@ -1,14 +1,14 @@
 //
-//  MidiaViewController.swift
+//  MovieDetailsMidiaCell.swift
 //  popmovies
 //
-//  Created by Tiago Silva on 23/04/2019.
+//  Created by Tiago Silva on 20/06/19.
 //  Copyright © 2019 Tiago Silva. All rights reserved.
 //
 
 import UIKit
 
-class MidiaViewController: BaseViewController {
+class MovieDetailsMidiaCell: UITableViewCell {
     
     let videosCollectionViewIdentifier = "VideosCollectionViewIdentifier"
     let wallpapersCollectionViewIdentifier = "WallpapersCollectionViewIdentifier"
@@ -36,14 +36,9 @@ class MidiaViewController: BaseViewController {
         didSet { bindMidiaContent(movie: movie!) }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureNibs(collection: imagesCollectionViewView, nibName: "WallpaperCell", identifier: wallpaperCellIdentifier)
-        configureNibs(collection: videosCollectionViewView, nibName: "VideoCell", identifier: videoCellIdentifier) 
-    }
-    
     private func bindMidiaContent(movie: Movie) {
+        setupCells()
+        
         allImages = mergeImages(movie: movie)
         allVideos = movie.videos?.videoResults ?? []
         
@@ -53,6 +48,18 @@ class MidiaViewController: BaseViewController {
         
         self.imagesCollectionViewView.reloadData()
         self.videosCollectionViewView.reloadData()
+    }
+    
+    private func setupCells() {
+        configureNibs(imagesCollectionViewView, nibName: "WallpaperCell", identifier: wallpaperCellIdentifier)
+        configureNibs(videosCollectionViewView, nibName: "VideoCell", identifier: videoCellIdentifier)
+    }
+    
+    private func configureNibs(_ collection: UICollectionView, nibName: String, identifier: String) {
+        let cellNib = UINib(nibName: nibName, bundle: nil)
+        
+        collection.register(cellNib, forCellWithReuseIdentifier: identifier)
+        collection.reloadData()
     }
     
     private func mergeImages(movie: Movie) -> [Image] {
@@ -65,9 +72,10 @@ class MidiaViewController: BaseViewController {
         
         return backdrop + posters
     }
+    
 }
 
-extension MidiaViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MovieDetailsMidiaCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch collectionView.restorationIdentifier {
@@ -113,5 +121,5 @@ extension MidiaViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         return cell
     }
-
+    
 }

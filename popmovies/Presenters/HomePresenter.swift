@@ -37,7 +37,7 @@ class HomePresenter: BasePresenter, IHomePresenter {
                                         print(error)
                                     })
         
-        add(d: disposible)
+        add(disposible)
     }
     
     func fetchNowPlayingMovies() {
@@ -54,7 +54,7 @@ class HomePresenter: BasePresenter, IHomePresenter {
                 print(error)
             })
         
-        add(d: disposible)
+        add(disposible)
     }
     
     func fetchTopRatedMovies() {
@@ -69,7 +69,7 @@ class HomePresenter: BasePresenter, IHomePresenter {
                 print(error)
             })
         
-        add(d: disposible)
+        add(disposible)
     }
     
     func fetchUpcomingMovies() {
@@ -84,6 +84,6 @@ class HomePresenter: BasePresenter, IHomePresenter {
                 print(error)
             })
         
-        add(d: disposible)
+        add(disposible)
     }
 }

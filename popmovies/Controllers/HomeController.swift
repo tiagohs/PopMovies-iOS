@@ -15,8 +15,9 @@ class HomeController: BaseViewController {
     let topRatedMoviesCellIdentifier            = "TopRatedMoviesCellIdentifier"
     let upcomingMoviesCellIdentifier            = "UpcomingMoviesCellIdentifier"
     
+    let MovieDetailsControllerIdentifier             = "MovieDetailsControllerIdentifier"
     let movieDetailsSegueIdentifier             = "MovieDetailsSegueIdentifier"
-    
+
     @IBOutlet weak var tableView: UITableView!
     
     var homePresenter: IHomePresenter?
@@ -68,33 +69,6 @@ class HomeController: BaseViewController {
     @objc func didProfileButtonTaped() {
         
     }
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let nav = self.navigationController?.navigationBar
-//        let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
-//
-//        if (scrollView.contentOffset.y > 10 && !isNavbarColorPrimary) {
-//            nav?.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
-//            nav?.tintColor = UIColor.white
-//            nav?.barTintColor = UIColor.white
-//            nav?.barStyle = .blackTranslucent
-//
-//            statusBar?.backgroundColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
-//            isNavbarColorPrimary = true
-//        } else if scrollView.contentOffset.y <= 10 && isNavbarColorPrimary {
-//            nav?.setBackgroundImage(UIImage(), for: .default)
-//            nav?.shadowImage = UIImage()
-//            nav?.backgroundColor = .clear
-//            nav?.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
-//            nav?.barStyle = .default
-//
-//            statusBar?.backgroundColor = UIColor.white
-//
-//            self.navigationController?.title = ""
-//
-//            isNavbarColorPrimary = false
-//        }
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

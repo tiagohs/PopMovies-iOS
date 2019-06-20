@@ -38,7 +38,5 @@ class WallpaperCell: UICollectionViewCell {
         } else {
             wallpaperImageView.image = UIImage(named: "BackdropPlaceholder")
         }
-        
-        wallpaperImageView.layer.cornerRadius = 8
     }
 }

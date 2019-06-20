@@ -25,7 +25,7 @@ class BasePresenter: IBasePresenter {
         disposibles.dispose()
     }
     
-    func add(d: Disposable?) {
+    func add(_ d: Disposable?) {
         if (d == nil) { return }
         
         disposibles.insert(d!)

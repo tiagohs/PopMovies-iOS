@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Hero
 
 class UIGradientImageView: UIImageView {
     var myGradientLayer: CAGradientLayer? = nil
@@ -45,6 +46,7 @@ class UIGradientImageView: UIImageView {
     }
     
     func setup() {
+        
         if (colors != nil) {
             myGradientLayer = CAGradientLayer()
             
@@ -55,6 +57,7 @@ class UIGradientImageView: UIImageView {
             myGradientLayer!.colors = colors
             myGradientLayer!.isOpaque = false
             myGradientLayer!.locations = getLocations() as [NSNumber]?
+            
         }
     }
     

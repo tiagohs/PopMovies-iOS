@@ -9,8 +9,8 @@
 import ObjectMapper
 
 class MediaCreditList: BaseModel {
-    var cast : [CreditCast]?
-    var crew : [CreditCrew]?
+    var cast : [MediaCreditCast]?
+    var crew : [MediaCreditCrew]?
     
     override func mapping(map: Map) {
         cast <- map["cast"]

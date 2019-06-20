@@ -42,8 +42,6 @@ class VideoCell: UICollectionViewCell {
             videoImageView.image = UIImage(named: "BackdropPlaceholder")
         }
         
-        videoImageView.layer.cornerRadius = 5
-        
         var videoSubtitle = ""
         
         if let language = video.language, let videoLanguage = Locale(identifier: "pt_BR").localizedString(forIdentifier: language) {

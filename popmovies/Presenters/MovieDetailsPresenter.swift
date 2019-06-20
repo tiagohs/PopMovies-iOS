@@ -27,8 +27,7 @@ class MovieDetailsPresenter: BasePresenter, IMovieDetailsPresenter {
     
     func fetchMovieDetails(movieId: Int?) {
         if let id = movieId {
-            add(d:
-                interactor?.fetchMovieDetails(movieId: id)
+            add(interactor?.fetchMovieDetails(movieId: id)
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { (movie) in
@@ -44,8 +43,7 @@ class MovieDetailsPresenter: BasePresenter, IMovieDetailsPresenter {
     
     private func fetchMovieRankings(imdbId: String?) {
         if let imdb = imdbId {
-            add(d:
-                interactor?.fetchMovieRankings(imdbId: imdb)
+            add(interactor?.fetchMovieRankings(imdbId: imdb)
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { (movie) in
@@ -59,8 +57,7 @@ class MovieDetailsPresenter: BasePresenter, IMovieDetailsPresenter {
     
     func fetchMovieImages(movieId: Int?) {
         if let id = movieId {
-            add(d:
-                interactor?.fetchMovieImages(movieId: id)
+            add(interactor?.fetchMovieImages(movieId: id) 
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { (images) in

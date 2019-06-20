@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Hero
 
 class MovieCell: UICollectionViewCell {
     
@@ -47,11 +48,11 @@ class MovieCell: UICollectionViewCell {
         if let backdropUrl = ImageUtils.formatImageUrl(imageID: movie.backdropPath, imageSize: Constants.TMDB.ImageSize.BACKDROP.w780) {
             
             movieBackdropView.setImage( imageUrl: backdropUrl, contentMode: .scaleAspectFill, placeholderImageName: "BackdropPlaceholder")
+            movieBackdropView.hero.id = String(describing: movie.backdropPath)
         } else {
             movieBackdropView.image = UIImage(named: "BackdropPlaceholder")
         }
-        
-        movieBackdropView.layer.cornerRadius = 20
+    
     }
     
     func setupImageShadow(cornerRadius: CGFloat, shadowRect: CGRect) {
@@ -95,11 +96,10 @@ class MovieCell: UICollectionViewCell {
         if let posterUrl = ImageUtils.formatImageUrl(imageID: movie.posterPath, imageSize: Constants.TMDB.ImageSize.POSTER.w500) {
             
             moviePosterView.setImage( imageUrl: posterUrl, contentMode: .scaleAspectFill, placeholderImageName: "PosterPlaceholder")
+            moviePosterView.hero.id = String(describing: movie.posterPath)
         } else {
             moviePosterView.image = UIImage(named: "PosterPlaceholder")
         }
-        
-        moviePosterView.layer.cornerRadius = 5
         
         movieTitle.text = movie.title
         movieSubtitle.text = movie.releaseDate?.year

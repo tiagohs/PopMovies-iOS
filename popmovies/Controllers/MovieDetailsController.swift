@@ -8,14 +8,28 @@
 
 import Foundation
 import UIKit
+import Hero
+
+// MARK: MovieDetailsController: BaseViewController
 
 class MovieDetailsController: BaseViewController {
+    let PersonDetailsIdentifier                     = "PersonDetailsIdentifier"
+    let MovieDetailsControllerIdentifier            = "MovieDetailsControllerIdentifier"
     
-    let movieDetailsHeaderCellIdentifier        = "MovieDetailsHeaderCellIdentifier"
-    let movieDetailsContentCellIdentifier       = "MovieDetailsContentCellIdentifier"
+    let MovieDetailsHeaderCellIdentifier        = "MovieDetailsHeaderCellIdentifier"
+    let MovieDetailsOverviewIdentifier          = "MovieDetailsOverviewIdentifier"
+    let MovieDetailsCreditsCellIdentifier       = "MovieDetailsCreditsCellIdentifier"
+    let MovieDetailsMidiaCellIdentifier         = "MovieDetailsMidiaCellIdentifier"
+    let MovieDetailsRelatedCellIdentifier       = "MovieDetailsRelatedCellIdentifier"
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var closeButton: UIButton!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    var style:UIStatusBarStyle = .lightContent
     var isTabMidiaConfigured = false
     
     var movie: Movie? = nil
@@ -24,10 +38,12 @@ class MovieDetailsController: BaseViewController {
     var presenter: IMovieDetailsPresenter? = nil
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
         setupScreenTableView(tableView: tableView)
-        setupMovieDetailsNavigationBar()
+        //setupMovieDetailsNavigationBar()
+        
+        closeButton.layer.cornerRadius = closeButton.bounds.width / 2
+        
+        super.viewWillAppear(animated)
     }
     
     private func setupMovieDetailsNavigationBar() {
@@ -53,8 +69,8 @@ class MovieDetailsController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.navigationBar.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
+//        self.navigationController?.navigationBar.barStyle = .default
+//        self.navigationController?.navigationBar.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
     }
     
     override func viewDidLoad() {
@@ -79,13 +95,19 @@ class MovieDetailsController: BaseViewController {
     }
     
     private func updateStatusBarStyle(offset: CGFloat, barStyle: UIBarStyle) {
-        let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+        let color = UIColor(white: 1.0 - offset, alpha: 1.0)
+        let imageColor = UIColor(white: offset, alpha: 1.0)
         
-        self.navigationController?.navigationBar.tintColor = UIColor(hue: 0.725, saturation: offset, brightness: 1, alpha: 1)
-        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: offset)
-        statusBar?.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: offset)
-        self.navigationController?.navigationBar.barStyle = barStyle
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: offset)]
+        closeButton.backgroundColor = color
+        closeButton.imageView?.setImageColorBy(uiColor: imageColor)
+        
+        if (offset > 0.3) {
+            self.style = .default
+        } else {
+            self.style = .lightContent
+        }
+        
+        setNeedsStatusBarAppearanceUpdate()
     }
 }
 
@@ -137,33 +159,112 @@ extension MovieDetailsController: TabBarCallback {
 extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: movieDetailsHeaderCellIdentifier, for: indexPath) as! MovieDetailsHeaderCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsHeaderCellIdentifier, for: indexPath) as! MovieDetailsHeaderCell
             
             if (self.movie != nil) { cell.movie = self.movie }
             if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
             
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: movieDetailsContentCellIdentifier, for: indexPath) as! MovieDetailsContentCell
-            
-            cell.onInit()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsOverviewIdentifier, for: indexPath) as? MovieDetailsOverviewCell else {
+                return UITableViewCell()
+            }
             
             if (self.movie != nil) { cell.movie = self.movie }
             if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
             
+            return cell
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsCreditsCellIdentifier, for: indexPath) as? MovieDetailsCreditsCell else {
+                return UITableViewCell()
+            }
+            
+            if (self.movie != nil) { cell.movie = self.movie }
+            if (cell.personListener == nil) {
+                cell.personListener = self
+            }
+            
+            return cell
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsMidiaCellIdentifier, for: indexPath) as? MovieDetailsMidiaCell else {
+                return UITableViewCell()
+            }
+        
+            if (self.movie != nil) { cell.movie = self.movie }
+            
+            return cell
+        case 4:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsRelatedCellIdentifier, for: indexPath) as? MovieDetailsRelatedCell else {
+                return UITableViewCell()
+            }
+        
+            if (self.movie != nil) { cell.movie = self.movie }
+            if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
+            if (cell.relatedMoviesListener == nil) {
+                cell.relatedMoviesListener = self
+            }
+        
             return cell
         default:
             return UITableViewCell()
         }
     }
     
+    @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: nil)
+        let progress = translation.y / 2 / view.bounds.height
+        
+        switch sender.state {
+        case .began:
+            dismiss()
+        case .changed:
+            Hero.shared.update(progress)
+            
+            let currentPos = CGPoint(x: translation.x + view.center.x, y: translation.y + view.center.y)
+            
+            Hero.shared.apply(modifiers: [.position(currentPos)], to: view)
+        default:
+            if progress + sender.velocity(in: nil).y / view.bounds.height > 0.2 {
+                Hero.shared.finish()
+            } else {
+                Hero.shared.cancel()
+            }
+        }
+    }
+    
+    @IBAction func dismiss() {
+        hero.dismissViewController()
+    }
 }
 
-
+extension MovieDetailsController: IPersonListener, IRelatedMoviesListener {
+    
+    func didPersonSelect(_ person: Person) {
+        if let controller = self.storyboard!.instantiateViewController(withIdentifier: PersonDetailsIdentifier) as? PersonDetailsController {
+            
+            controller.hero.modalAnimationType = .slide(direction: .left)
+            controller.person = person
+            
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func didMovieSelect(_ movie: Movie) {
+        if let controller = self.storyboard!.instantiateViewController(withIdentifier: MovieDetailsControllerIdentifier) as? MovieDetailsController {
+            
+            controller.hero.modalAnimationType = .slide(direction: .up)
+            controller.movie = movie
+            
+            self.present(controller, animated: true, completion: nil)
+        }
+        
+    }
+    
+}

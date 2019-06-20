@@ -25,8 +25,6 @@ protocol IMovieService {
 }
 
 class MovieService: BaseService, IMovieService {
-    
-    
     var serviceUrl: String = ""
     
     override init() {

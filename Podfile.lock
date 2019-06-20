@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.2)
+  - Hero (1.4.0)
   - Kingfisher (5.3.1)
   - ObjectMapper (3.4.2)
   - RxAlamofire (4.4.1):
@@ -13,17 +14,19 @@ PODS:
   - UIImageColors (2.1.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.2)
-  - Kingfisher (~> 5.0)
-  - ObjectMapper (~> 3.4)
+  - Alamofire
+  - Hero
+  - Kingfisher
+  - ObjectMapper
   - RxAlamofire
-  - RxCocoa (~> 4.0)
-  - RxSwift (~> 4.0)
+  - RxCocoa
+  - RxSwift
   - UIImageColors
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Hero
     - Kingfisher
     - ObjectMapper
     - RxAlamofire
@@ -33,6 +36,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
@@ -40,6 +44,6 @@ SPEC CHECKSUMS:
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
 
-PODFILE CHECKSUM: 3f2d668dc5aee197873fd246bed9413848bffc83
+PODFILE CHECKSUM: 7af9bd59d0515d29235efc4964c312cb2a6bc1ba
 
 COCOAPODS: 1.5.2

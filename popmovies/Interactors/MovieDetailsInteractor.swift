@@ -21,7 +21,7 @@ class MovieDetailsInteractor: IMovieDetailsInteractor {
     func fetchMovieDetails(movieId: Int) -> Observable<Movie> {
         let appendToResponse = ["videos", "images", "keywords", "releases", "similar_movies", "credits"]
         
-        return movieService.getDetails(movieId: movieId, appendToResponse: appendToResponse, language: "en,null")
+        return movieService.getDetails(movieId: movieId, appendToResponse: appendToResponse, language: "en,pt_BR,null")
     }
     
     func fetchMovieRankings(imdbId: String) -> Observable<MovieOMDB> {

@@ -31,10 +31,12 @@ class Image: BaseModel {
 class Images: BaseModel {
     var backdrops : [Image]?
     var posters : [Image]?
+    var profile : [Image]?
     
     override func mapping(map: Map) {
         backdrops       <- map["backdrops"]
         posters         <- map["posters"]
+        profile         <- map["profile"]
     }
 }
 

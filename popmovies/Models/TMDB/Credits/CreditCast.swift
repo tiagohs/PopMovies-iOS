@@ -10,22 +10,38 @@ import ObjectMapper
 
 class CreditCast: BaseModel {
     var id : Int?
-    var name : String?
-    var profilePath : String?
-    var castId : Int?
+    var posterPath : String?
+    var adult : Bool?
+    var backdropPath : String?
+    var voteCount : Int?
+    var video : Bool?
+    var popularity : Double?
+    var genreIds : [Int]?
+    var originalLanguage : String?
+    var title : String?
+    var originalTitle : String?
+    var releaseDate : Date?
     var character : String?
+    var voteAverage : Int?
+    var overview : String?
     var creditId : String?
-    var gender : Int?
-    var order : Int?
     
     override func mapping(map: Map) {
-        castId <- map["cast_id"]
-        character <- map["character"]
-        creditId <- map["credit_id"]
-        gender <- map["gender"]
+        posterPath <- map["poster_path"]
+        adult <- map["adult"]
+        backdropPath <- map["backdrop_path"]
+        voteCount <- map["vote_count"]
+        video <- map["video"]
         id <- map["id"]
-        name <- map["name"]
-        order <- map["order"]
-        profilePath <- map["profile_path"]
+        popularity <- map["popularity"]
+        genreIds <- map["genre_ids"]
+        originalLanguage <- map["original_language"]
+        title <- map["title"]
+        originalTitle <- map["original_title"]
+        releaseDate <- (map["release_date"], DateFormatTransform("yyyy-MM-dd"))
+        character <- map["character"]
+        voteAverage <- map["vote_average"]
+        overview <- map["overview"]
+        creditId <- map["credit_id"]
     }
 }

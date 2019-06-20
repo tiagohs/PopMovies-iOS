@@ -22,6 +22,12 @@ class URLUtils {
         return "\(Constants.URL.WIKI_URL)index.php?search=\(search)"
     }
     
+    static func formartPersonIMDB(imdbId: String?) -> String? {
+        guard let id = imdbId else { return nil }
+        
+        return "\(Constants.URL.IMDB_URL)name/\(id)"
+    }
+    
     static func formatYoutubeUrl(videoId: String?) -> String? {
         guard let id = videoId else { return nil }
         

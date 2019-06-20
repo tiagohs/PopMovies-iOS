@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 class PersonCell: UICollectionViewCell {
     
@@ -42,6 +43,7 @@ class PersonCell: UICollectionViewCell {
         
         personPictureView.layer.cornerRadius = personPictureView.bounds.width / 2
         personPictureView.layer.masksToBounds = true
+        personPictureView.hero.id = String(describing: person.id)
         
         nameView.text = person.name
         subtitleView.text = person.subtitle
