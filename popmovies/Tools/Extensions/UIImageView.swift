@@ -27,9 +27,9 @@ extension UIImageView {
             completionHandler: completionHandler)
     }
     
-    func setTMDBImageBy(url: String?, contentSize: String, placeholder: String) {
+    func setTMDBImageBy(url: String?, contentSize: String, contentMode: UIView.ContentMode?, placeholder: String) {
         if let imageUrl = ImageUtils.formatImageUrl(imageID: url, imageSize: contentSize) {
-            setImage(imageUrl: imageUrl, contentMode: .scaleAspectFill, placeholderImageName: placeholder)
+            setImage(imageUrl: imageUrl, contentMode: contentMode, placeholderImageName: placeholder)
         } else {
             self.image = UIImage(named: placeholder)
         }

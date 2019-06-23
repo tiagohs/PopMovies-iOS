@@ -32,6 +32,7 @@ class PersonDetailsKnownForCell: UITableViewCell {
     var person: Person? {
         didSet { bindPerson(self.person!) }
     }
+    var knownForListener: IKnownForListener?
     var allImages: [Image] = []
     var allMovies: [Movie] = []
     
@@ -143,4 +144,28 @@ extension PersonDetailsKnownForCell: UICollectionViewDelegate, UICollectionViewD
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        switch collectionView.restorationIdentifier {
+        case KnownForCollectionViewIdentifier:
+            let movie = allMovies[indexPath.row]
+            
+            knownForListener?.didMovieSelect(movie)
+            break
+        case WallpapersCollectionViewIdentifier:
+            let image = allImages[indexPath.row]
+            
+            knownForListener?.didImageSelect(image, allImages: allImages)
+            break
+        default:
+            return
+        }
+        
+    }
+}
+
+protocol IKnownForListener {
+    func didMovieSelect(_ movie: Movie)
+    func didImageSelect(_ image: Image, allImages: [Image])
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FilmographyDepartmentItemCell" customModule="popmovies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbU-t8-eJV">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="568"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Departament" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nuc-vG-Jwv">
+                            <rect key="frame" x="16" y="10" width="382" height="19"/>
+                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Pv1-mX-APy">
+                            <rect key="frame" x="0.0" y="39" width="414" height="529"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q1v-KS-0Nv">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Pv1-mX-APy" firstAttribute="top" secondItem="Nuc-vG-Jwv" secondAttribute="bottom" constant="10" id="0EA-Mu-MBV"/>
+                        <constraint firstAttribute="trailing" secondItem="Pv1-mX-APy" secondAttribute="trailing" id="5fF-7t-RCq"/>
+                        <constraint firstItem="Nuc-vG-Jwv" firstAttribute="top" secondItem="WbU-t8-eJV" secondAttribute="top" constant="10" id="E1f-lk-SA0"/>
+                        <constraint firstAttribute="trailing" secondItem="Nuc-vG-Jwv" secondAttribute="trailing" constant="16" id="OKb-jY-4x9"/>
+                        <constraint firstItem="Nuc-vG-Jwv" firstAttribute="leading" secondItem="WbU-t8-eJV" secondAttribute="leading" constant="16" id="TWy-zM-zbX"/>
+                        <constraint firstAttribute="bottom" secondItem="Pv1-mX-APy" secondAttribute="bottom" id="jnE-Da-Oca"/>
+                        <constraint firstItem="Pv1-mX-APy" firstAttribute="leading" secondItem="WbU-t8-eJV" secondAttribute="leading" id="vav-Zh-Jb0"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="WbU-t8-eJV" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="8uV-q9-YHc"/>
+                <constraint firstAttribute="bottom" secondItem="WbU-t8-eJV" secondAttribute="bottom" id="Fzo-FJ-gEM"/>
+                <constraint firstItem="WbU-t8-eJV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JeP-VS-bXg"/>
+                <constraint firstItem="WbU-t8-eJV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="XtC-34-eLX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="183.48214285714286"/>
+        </view>
+    </objects>
+</document>

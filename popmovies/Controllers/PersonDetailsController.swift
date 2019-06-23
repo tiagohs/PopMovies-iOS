@@ -10,7 +10,8 @@ import UIKit
 import Hero
 
 class PersonDetailsController: BaseViewController {
-    
+    let MovieDetailsControllerIdentifier            = "MovieDetailsControllerIdentifier"
+
     let PersonDetailsHeaderCellIdentifier           = "PersonDetailsHeaderCellIdentifier"
     let PersonDetailsOverviewCellIdentifier         = "PersonDetailsOverviewCellIdentifier"
     let PersonDetailsKnownForCellIdentifier         = "PersonDetailsKnownForCellIdentifier"
@@ -132,6 +133,9 @@ extension PersonDetailsController: UITableViewDelegate, UITableViewDataSource {
             }
             
             if person != nil { cell.person = person }
+            if cell.knownForListener == nil {
+                cell.knownForListener = self
+            }
             
             return cell
         case 3:
@@ -154,4 +158,27 @@ extension PersonDetailsController: IPersonDetailsView {
         self.tableView.reloadData()
     }
     
+}
+
+extension PersonDetailsController: IKnownForListener {
+    
+    func didMovieSelect(_ movie: Movie) {
+        if let controller = self.storyboard!.instantiateViewController(withIdentifier: MovieDetailsControllerIdentifier) as? MovieDetailsController {
+            
+            controller.hero.modalAnimationType = .slide(direction: .up)
+            controller.movie = movie
+            
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func didImageSelect(_ image: Image, allImages: [Image]) {
+        if let controller = self.storyboard!.instantiateViewController(withIdentifier: MovieDetailsControllerIdentifier) as? ImageListController {
+            
+            controller.hero.modalAnimationType = .slide(direction: .up)
+            controller.allImages = allImages
+            
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
 }

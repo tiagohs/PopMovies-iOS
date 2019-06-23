@@ -15,6 +15,7 @@ import Hero
 class MovieDetailsController: BaseViewController {
     let PersonDetailsIdentifier                     = "PersonDetailsIdentifier"
     let MovieDetailsControllerIdentifier            = "MovieDetailsControllerIdentifier"
+    let ImageViewerControllerIdentifier             = "ImageViewerControllerIdentifier"
     
     let MovieDetailsHeaderCellIdentifier        = "MovieDetailsHeaderCellIdentifier"
     let MovieDetailsOverviewIdentifier          = "MovieDetailsOverviewIdentifier"
@@ -198,6 +199,7 @@ extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
             }
         
             if (self.movie != nil) { cell.movie = self.movie }
+            if (cell.midiaListener == nil) { cell.midiaListener = self }
             
             return cell
         case 4:
@@ -244,7 +246,7 @@ extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension MovieDetailsController: IPersonListener, IRelatedMoviesListener {
+extension MovieDetailsController: IPersonListener, IRelatedMoviesListener, IMidiaListener {
     
     func didPersonSelect(_ person: Person) {
         if let controller = self.storyboard!.instantiateViewController(withIdentifier: PersonDetailsIdentifier) as? PersonDetailsController {
@@ -264,6 +266,21 @@ extension MovieDetailsController: IPersonListener, IRelatedMoviesListener {
             
             self.present(controller, animated: true, completion: nil)
         }
+    }
+    
+    func didImageSelected(_ image: Image, _ allImages: [Image], indexPath: IndexPath) {
+        if let controller = self.storyboard!.instantiateViewController(withIdentifier: ImageViewerControllerIdentifier) as? ImageViewerController {
+            
+            controller.hero.modalAnimationType = .fade
+            controller.selectedIndex = indexPath
+            controller.image = image
+            controller.allImages = allImages
+            
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func didVideoSelected(_ video: Video, _ allVideos: [Video]) {
         
     }
     

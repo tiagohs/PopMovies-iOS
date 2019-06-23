@@ -49,6 +49,163 @@
             </objects>
             <point key="canvasLocation" x="2792.8000000000002" y="595.95202398800609"/>
         </scene>
+        <!--Image List Controller-->
+        <scene sceneID="FYj-6t-XD1">
+            <objects>
+                <viewController storyboardIdentifier="ImageListControllerIdentifier" id="cB0-fM-Lvb" customClass="ImageListController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UmX-eq-SXo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fAq-bN-uku">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="BEN-FH-7Yf">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cB0-fM-Lvb" id="ghy-hK-Ajs"/>
+                                    <outlet property="delegate" destination="cB0-fM-Lvb" id="Uum-Xc-mbX"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCh-jP-BVr">
+                                <rect key="frame" x="30" y="50" width="35" height="35"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="QGn-wY-iFW"/>
+                                    <constraint firstAttribute="width" constant="35" id="rvg-Yc-KnA"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="BackIcon">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss" destination="cB0-fM-Lvb" eventType="touchDragInside" id="kDL-7b-iS2"/>
+                                    <action selector="dismiss" destination="ZWk-TC-GzC" eventType="touchUpInside" id="tar-9W-wOl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fAq-bN-uku" firstAttribute="trailing" secondItem="CXL-Im-W1K" secondAttribute="trailing" id="L9d-yE-x79"/>
+                            <constraint firstItem="BCh-jP-BVr" firstAttribute="leading" secondItem="UmX-eq-SXo" secondAttribute="leading" constant="30" id="MVx-Pa-cHq"/>
+                            <constraint firstItem="fAq-bN-uku" firstAttribute="leading" secondItem="CXL-Im-W1K" secondAttribute="leading" id="aUs-08-tAa"/>
+                            <constraint firstAttribute="bottom" secondItem="fAq-bN-uku" secondAttribute="bottom" id="gf7-fI-1KH"/>
+                            <constraint firstItem="BCh-jP-BVr" firstAttribute="top" secondItem="UmX-eq-SXo" secondAttribute="top" constant="50" id="l6J-U2-wZo"/>
+                            <constraint firstItem="fAq-bN-uku" firstAttribute="top" secondItem="UmX-eq-SXo" secondAttribute="top" id="qzx-aO-LJl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CXL-Im-W1K"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="backButton" destination="BCh-jP-BVr" id="tZn-t3-5fe"/>
+                        <outlet property="imageListCollectionView" destination="fAq-bN-uku" id="22R-e6-QIz"/>
+                        <outlet property="imageListCollectionViewFlow" destination="BEN-FH-7Yf" id="rf4-i2-pvj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tsx-zj-yks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4308" y="977.58620689655174"/>
+        </scene>
+        <!--Image Viewer Controller-->
+        <scene sceneID="7Oe-7k-nBE">
+            <objects>
+                <viewController storyboardIdentifier="ImageViewerControllerIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="lfs-eD-K9w" customClass="ImageViewerController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pvQ-xt-i4V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZeG-CB-7rh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Umc-gP-2Vd">
+                                    <size key="itemSize" width="372" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="ImageViewerItemCellIdentifier" id="Lje-bf-4VW" customClass="ImageViewerItemCell" customModule="popmovies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="lfs-eD-K9w" id="x2F-KL-P1L"/>
+                                    <outlet property="delegate" destination="lfs-eD-K9w" id="gT8-i7-Uni"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSC-ya-tO0">
+                                <rect key="frame" x="310" y="50" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="hKj-3d-OYe"/>
+                                    <constraint firstAttribute="width" constant="35" id="iTr-WK-DzV"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="ShareIcon"/>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNr-Sk-X6s">
+                                <rect key="frame" x="30" y="50" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="1CH-eB-shl"/>
+                                    <constraint firstAttribute="width" constant="35" id="Hbm-eq-LYE"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="BackIcon"/>
+                                <connections>
+                                    <action selector="dismiss" destination="ZWk-TC-GzC" eventType="touchUpInside" id="6dy-iE-YxX"/>
+                                    <action selector="dismiss" destination="lfs-eD-K9w" eventType="touchDragInside" id="Fu0-Jx-Yio"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jNr-Sk-X6s" firstAttribute="top" secondItem="pvQ-xt-i4V" secondAttribute="top" constant="50" id="35s-Ob-xux"/>
+                            <constraint firstItem="ZeG-CB-7rh" firstAttribute="top" secondItem="pvQ-xt-i4V" secondAttribute="top" id="3Gj-eg-lmF"/>
+                            <constraint firstAttribute="bottom" secondItem="ZeG-CB-7rh" secondAttribute="bottom" id="7Xn-T2-Nnu"/>
+                            <constraint firstItem="jNr-Sk-X6s" firstAttribute="leading" secondItem="pvQ-xt-i4V" secondAttribute="leading" constant="30" id="QSx-f8-ZyD"/>
+                            <constraint firstItem="rSC-ya-tO0" firstAttribute="top" secondItem="pvQ-xt-i4V" secondAttribute="top" constant="50" id="dNB-ZW-oGs"/>
+                            <constraint firstItem="ZeG-CB-7rh" firstAttribute="leading" secondItem="UT4-at-x2T" secondAttribute="leading" id="exA-br-z5E"/>
+                            <constraint firstItem="ZeG-CB-7rh" firstAttribute="trailing" secondItem="UT4-at-x2T" secondAttribute="trailing" id="pFL-ZV-URV"/>
+                            <constraint firstAttribute="trailing" secondItem="rSC-ya-tO0" secondAttribute="trailing" constant="30" id="zkS-lA-8tB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UT4-at-x2T"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="backButton" destination="jNr-Sk-X6s" id="vQK-4e-Ipd"/>
+                        <outlet property="imageViewerCollectionView" destination="ZeG-CB-7rh" id="Zj4-Q1-XuO"/>
+                        <outlet property="panGesture" destination="uIt-sj-4dA" id="5gh-hu-5eS"/>
+                        <outlet property="shareButton" destination="rSC-ya-tO0" id="gis-cN-Jsk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mK5-Oh-Xe3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="uIt-sj-4dA">
+                    <connections>
+                        <action selector="handlePan:" destination="lfs-eD-K9w" id="7dj-NX-xVb"/>
+                        <outlet property="delegate" destination="lfs-eD-K9w" id="VzG-Z3-232"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="5293.6000000000004" y="977.58620689655174"/>
+        </scene>
         <!--Início-->
         <scene sceneID="8Mq-h9-j2e">
             <objects>
@@ -764,7 +921,7 @@
                                         <rect key="frame" x="0.0" y="885" width="375" height="414"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ku2-L5-sEI" id="MLV-UD-Y6a">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="414"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="413.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bE9-eO-n2Z">
@@ -869,7 +1026,7 @@
                                         <rect key="frame" x="0.0" y="1299" width="375" height="499"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sWY-9x-tr5" id="Ywv-7l-hSJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="499"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="498.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Co-24-Ojz">
@@ -1578,7 +1735,7 @@
                                         <rect key="frame" x="0.0" y="859" width="375" height="469"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SmI-rn-zko" id="STj-iM-Ndn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="469"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="468.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfv-do-zVH">
@@ -1681,7 +1838,7 @@
                                         <rect key="frame" x="0.0" y="1328" width="375" height="567"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lEK-bu-wsD" id="13k-YL-PN5">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="566.66666666666663"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

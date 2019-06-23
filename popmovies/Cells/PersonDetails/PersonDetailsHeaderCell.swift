@@ -37,7 +37,7 @@ class PersonDetailsHeaderCell: UITableViewCell {
             return
         }
         
-        profileImageView.setTMDBImageBy(url: profilePath, contentSize: Constants.TMDB.ImageSize.POSTER.w500, placeholder: Constants.IMAGES.PLACEHOLDER_POSTER_PROFILE)
+        profileImageView.setTMDBImageBy(url: profilePath, contentSize: Constants.TMDB.ImageSize.POSTER.w500, contentMode: .scaleAspectFill, placeholder: Constants.IMAGES.PLACEHOLDER_POSTER_PROFILE)
         profileImageView.hero.id = String(describing: person.id)
         profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2
     }
@@ -49,9 +49,11 @@ class PersonDetailsHeaderCell: UITableViewCell {
             backdropPath = taggedImages[0].filePath
         } else if let profileImages = person.images?.profile, profileImages.count > 0 {
             backdropPath = profileImages[0].filePath
+        } else {
+            backdropPath = person.profilePath
         }
         
-        backdropImageView.setTMDBImageBy(url: backdropPath, contentSize: Constants.TMDB.ImageSize.BACKDROP.w780, placeholder: Constants.IMAGES.PLACEHOLDER_BACKDROP_MOVIE)
+        backdropImageView.setTMDBImageBy(url: backdropPath, contentSize: Constants.TMDB.ImageSize.BACKDROP.w780, contentMode: .scaleAspectFill, placeholder: Constants.IMAGES.PLACEHOLDER_BACKDROP_MOVIE) 
     }
     
     private func bindSocialLinks(_ person: Person) {

@@ -32,6 +32,7 @@ class MovieDetailsMidiaCell: UITableViewCell {
     var allImages: [Image] = []
     var allVideos: [Video] = []
     
+    var midiaListener: IMidiaListener?
     var movie: Movie? {
         didSet { bindMidiaContent(movie: movie!) }
     }
@@ -101,6 +102,17 @@ extension MovieDetailsMidiaCell: UICollectionViewDelegate, UICollectionViewDataS
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView.restorationIdentifier {
+        case videosCollectionViewIdentifier:
+            didVideoSelected(collectionView, didSelectItemAt: indexPath)
+        case wallpapersCollectionViewIdentifier:
+            didImageSelected(collectionView, didSelectItemAt: indexPath)
+        default:
+            return
+        }
+    }
+    
     private func setupVideosCollectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let videos = movie?.videos?.videoResults else {
             return UICollectionViewCell()
@@ -122,4 +134,22 @@ extension MovieDetailsMidiaCell: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
+    private func didVideoSelected(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let video = allVideos[indexPath.row]
+        
+        midiaListener?.didVideoSelected(video, allVideos)
+    }
+    
+    private func didImageSelected(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let image = allImages[indexPath.row]
+        
+        midiaListener?.didImageSelected(image, allImages, indexPath: indexPath)
+    }
+    
+}
+
+protocol IMidiaListener {
+    
+    func didVideoSelected(_ video: Video, _ allVideos: [Video])
+    func didImageSelected(_ image: Image,_ allImages: [Image], indexPath: IndexPath)
 }
