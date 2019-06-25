@@ -74,6 +74,13 @@ class MovieDetailsMidiaCell: UITableViewCell {
         return backdrop + posters
     }
     
+    @IBAction func didSeeAllVideosClicked(_ sender: Any) {
+        midiaListener?.didSeeAllVideosClicked(allVideos)
+    }
+    
+    @IBAction func didSeeAllImagesClicked(_ sender: Any) {
+        midiaListener?.didSeeAllWallpapersClicked(allImages)
+    }
 }
 
 extension MovieDetailsMidiaCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -152,4 +159,6 @@ protocol IMidiaListener {
     
     func didVideoSelected(_ video: Video, _ allVideos: [Video])
     func didImageSelected(_ image: Image,_ allImages: [Image], indexPath: IndexPath)
+    func didSeeAllVideosClicked(_ allVideos: [Video])
+    func didSeeAllWallpapersClicked(_ allImages: [Image])
 }

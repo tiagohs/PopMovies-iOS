@@ -25,9 +25,9 @@ class MovieDetailsPresenter: BasePresenter, IMovieDetailsPresenter {
         interactor = nil
     }
     
-    func fetchMovieDetails(movieId: Int?) {
-        if let id = movieId {
-            add(interactor?.fetchMovieDetails(movieId: id)
+    func fetchMovieDetails(movie: Movie?) {
+        if let movie = movie {
+            add(interactor?.fetchMovieDetails(movie: movie)
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { (movie) in
@@ -55,17 +55,15 @@ class MovieDetailsPresenter: BasePresenter, IMovieDetailsPresenter {
         }
     }
     
-    func fetchMovieImages(movieId: Int?) {
-        if let id = movieId {
-            add(interactor?.fetchMovieImages(movieId: id) 
-                    .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
-                    .observeOn(MainScheduler.instance)
-                    .subscribe(onNext: { (images) in
-                        self.view?.bindMovieImages(images: images)
-                    }, onError: { (error) in
-                        //
-                    })
-            )
-        }
+    func fetchMovieImages(movie: Movie?) {
+        add(interactor?.fetchMovieImages(movie: movie)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (images) in
+                self.view?.bindMovieImages(images: images)
+            }, onError: { (error) in
+                //
+            })
+        )
     }
 }

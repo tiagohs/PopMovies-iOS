@@ -1,17 +1,21 @@
 PODS:
   - Alamofire (4.8.2)
   - Hero (1.4.0)
-  - Kingfisher (5.3.1)
-  - ObjectMapper (3.4.2)
-  - RxAlamofire (4.4.1):
-    - RxAlamofire/Core (= 4.4.1)
-  - RxAlamofire/Core (4.4.1):
+  - Kingfisher (5.6.0)
+  - ObjectMapper (3.5.0)
+  - RxAlamofire (5.0.0):
+    - RxAlamofire/Core (= 5.0.0)
+  - RxAlamofire/Core (5.0.0):
     - Alamofire (~> 4.8)
-    - RxSwift (~> 4.5)
-  - RxCocoa (4.5.0):
-    - RxSwift (>= 4.4.2, ~> 4.4)
-  - RxSwift (4.5.0)
+    - RxSwift (~> 5.0)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
   - UIImageColors (2.1.0)
+  - YoutubePlayer-in-WKWebView (0.3.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -22,28 +26,20 @@ DEPENDENCIES:
   - RxCocoa
   - RxSwift
   - UIImageColors
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - Hero
-    - Kingfisher
-    - ObjectMapper
-    - RxAlamofire
-    - RxCocoa
-    - RxSwift
-    - UIImageColors
+  - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
-  Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
-  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
-  RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
-  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
-  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  Kingfisher: 1a50df6880a60bae26f3e21a0df3d17b892f5e0b
+  ObjectMapper: 078b564ed25c6578b62588e306bf1da3924636d4
+  RxAlamofire: e7875a012aff55345672d0f70a2a9cd6aeb0f211
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
+  YoutubePlayer-in-WKWebView: 17a33b2fa619d357c9ddd763942ce556660facae
 
-PODFILE CHECKSUM: 7af9bd59d0515d29235efc4964c312cb2a6bc1ba
+PODFILE CHECKSUM: ce239b4f2a3dfe3e7c5de93bcf2caab37ad711bf
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.4.0

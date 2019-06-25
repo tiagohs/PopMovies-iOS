@@ -16,6 +16,9 @@ class MovieDetailsController: BaseViewController {
     let PersonDetailsIdentifier                     = "PersonDetailsIdentifier"
     let MovieDetailsControllerIdentifier            = "MovieDetailsControllerIdentifier"
     let ImageViewerControllerIdentifier             = "ImageViewerControllerIdentifier"
+    let VideoViewerControllerIdentifier             = "VideoViewerControllerIdentifier"
+    let ImageListControllerIdentifier               = "ImageListControllerIdentifier"
+    let VideoListControllerIdentifier               = "VideoListControllerIdentifier"
     
     let MovieDetailsHeaderCellIdentifier        = "MovieDetailsHeaderCellIdentifier"
     let MovieDetailsOverviewIdentifier          = "MovieDetailsOverviewIdentifier"
@@ -25,6 +28,7 @@ class MovieDetailsController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -43,6 +47,7 @@ class MovieDetailsController: BaseViewController {
         //setupMovieDetailsNavigationBar()
         
         closeButton.layer.cornerRadius = closeButton.bounds.width / 2
+        shareButton.layer.cornerRadius = shareButton.bounds.width / 2
         
         super.viewWillAppear(animated)
     }
@@ -78,7 +83,7 @@ class MovieDetailsController: BaseViewController {
         super.viewDidLoad()
         
         presenter = MovieDetailsPresenter(view: self)
-        presenter?.fetchMovieDetails(movieId: movie?.id)
+        presenter?.fetchMovieDetails(movie: movie)
         
         self.title = movie?.title
     }
@@ -102,6 +107,9 @@ class MovieDetailsController: BaseViewController {
         closeButton.backgroundColor = color
         closeButton.imageView?.setImageColorBy(uiColor: imageColor)
         
+        shareButton.backgroundColor = color
+        shareButton.imageView?.setImageColorBy(uiColor: imageColor)
+        
         if (offset > 0.3) {
             self.style = .default
         } else {
@@ -124,6 +132,7 @@ extension MovieDetailsController: IMovieDetailsView {
         self.movie?.productionCompanies = movie.productionCompanies
         self.movie?.productionCountries = movie.productionCountries
         self.movie?.similiarMovies = movie.similiarMovies
+        self.movie?.genres = movie.genres
         
         self.tableView.reloadData()
     }
@@ -254,7 +263,7 @@ extension MovieDetailsController: IPersonListener, IRelatedMoviesListener, IMidi
             controller.hero.modalAnimationType = .slide(direction: .left)
             controller.person = person
             
-            self.present(controller, animated: true, completion: nil)
+            self.show(controller, sender: nil)
         }
     }
     
@@ -264,7 +273,7 @@ extension MovieDetailsController: IPersonListener, IRelatedMoviesListener, IMidi
             controller.hero.modalAnimationType = .slide(direction: .up)
             controller.movie = movie
             
-            self.present(controller, animated: true, completion: nil)
+            self.show(controller, sender: nil)
         }
     }
     
@@ -275,13 +284,44 @@ extension MovieDetailsController: IPersonListener, IRelatedMoviesListener, IMidi
             controller.selectedIndex = indexPath
             controller.image = image
             controller.allImages = allImages
+            controller.movie = self.movie
             
             self.present(controller, animated: true, completion: nil)
         }
     }
     
     func didVideoSelected(_ video: Video, _ allVideos: [Video]) {
+        if let controller = self.storyboard!.instantiateViewController(withIdentifier: VideoViewerControllerIdentifier) as? VideoViewerController {
+            
+            controller.hero.modalAnimationType = .fade
+            controller.video = video
+            
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func didSeeAllVideosClicked(_ allVideos: [Video]) {
+        guard let controller = self.storyboard!.instantiateViewController(withIdentifier: VideoListControllerIdentifier) as? VideoListController else {
+            return
+        }
         
+        controller.hero.modalAnimationType = .fade
+        controller.allVideos = allVideos
+        
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    func didSeeAllWallpapersClicked(_ allImages: [Image]) {
+        guard let controller = self.storyboard!.instantiateViewController(withIdentifier: ImageListControllerIdentifier) as? ImageListController else {
+            return
+        }
+        
+        controller.hero.modalAnimationType = .fade
+        controller.allImages = allImages
+        controller.movie = self.movie
+        
+        self.present(controller, animated: true, completion: nil)
     }
     
 }
+

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Hero
 
 class HomeController: BaseViewController {
+    let HomeShowMovieListSegueIdentifier        = "HomeShowMovieListSegueIdentifier"
     
     let nowPlayingMovieCellIdentifier           = "NowPlayingMovieCellIdentifier"
     let popularMoviesCelldentifier              = "PopularMoviesCelldentifier"
@@ -19,6 +21,7 @@ class HomeController: BaseViewController {
     let movieDetailsSegueIdentifier             = "MovieDetailsSegueIdentifier"
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     var homePresenter: IHomePresenter?
     
@@ -32,6 +35,10 @@ class HomeController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        logoImageView.layer.cornerRadius = logoImageView.bounds.width / 2
+        
+        setupScreenTableView(tableView: self.tableView)
+        
         homePresenter = HomePresenter(view: self)
         
         homePresenter?.fetchNowPlayingMovies()
@@ -41,25 +48,15 @@ class HomeController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+
         super.viewWillAppear(animated)
-        
-        setupScreenTableView(tableView: self.tableView)
-        setupHomeNavigationBar()
     }
     
-    private func setupHomeNavigationBar() {
-        let searchButton = createNavigationBarButton(
-            systemIcon: UIBarButtonItem.SystemItem.search,
-            action: #selector(HomeController.didSearchButtonTaped))
-        let profileButton = createNavigationBarButton(
-            buttonBaseSize: 20,
-            rounded: true,
-            iconName: Constants.IMAGES.PLACEHOLDER_POSTER_PROFILE,
-            iconColor: nil,
-            action: #selector(HomeController.didProfileButtonTaped)
-        )
-        
-        addRightButtonsToNavigationBar(buttons: [profileButton, searchButton])
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated);
+
+        super.viewWillDisappear(animated)
     }
     
     @objc func didSearchButtonTaped() {
@@ -77,7 +74,18 @@ class HomeController: BaseViewController {
             let movieDetailsController = segue.destination as! MovieDetailsController
             
             movieDetailsController.movie = movie
+            
+            return
         }
+        
+        if (segue.identifier == HomeShowMovieListSegueIdentifier) {
+            MovieListController.preparePopularMovieList(segue: segue)
+            return
+        }
+    }
+    
+    @IBAction func didSeeAllPopularMoviesSelected() {
+        performSegue(withIdentifier: HomeShowMovieListSegueIdentifier, sender: nil)
     }
 }
 

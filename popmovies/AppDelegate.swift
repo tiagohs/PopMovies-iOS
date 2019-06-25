@@ -45,16 +45,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupNavigationBar() {
-        let navigationBar = UINavigationBar.appearance()
-        
-        navigationBar.isTranslucent = true
-        navigationBar.barStyle = .default
-        navigationBar.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-        
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)], for: .selected)
+//        let navigationBar = UINavigationBar.appearance()
+//        
+//        navigationBar.isTranslucent = true
+//        navigationBar.barStyle = .default
+//        navigationBar.tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
+//        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationBar.shadowImage = UIImage()
+//        
+//        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)], for: .selected)
     }
     
     private func setupStatusBar() {

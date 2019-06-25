@@ -17,13 +17,13 @@ protocol IMovieDetailsView: IBaseView {
 
 protocol IMovieDetailsPresenter: IBasePresenter {
     
-    func fetchMovieDetails(movieId: Int?)
-    func fetchMovieImages(movieId: Int?)
+    func fetchMovieDetails(movie: Movie?)
+    func fetchMovieImages(movie: Movie?)
 }
 
 protocol IMovieDetailsInteractor {
     
-    func fetchMovieDetails(movieId: Int) -> Observable<Movie>
+    func fetchMovieDetails(movie: Movie?) -> Observable<Movie>
     func fetchMovieRankings(imdbId: String) -> Observable<MovieOMDB>
-    func fetchMovieImages(movieId: Int) -> Observable<Images>
+    func fetchMovieImages(movie: Movie?) -> Observable<Images>
 }

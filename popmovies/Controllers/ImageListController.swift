@@ -14,17 +14,29 @@ class ImageListController: BaseViewController {
     let ImageListCellIdentifier             = "ImageListCellIdentifier"
     
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var posterImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var imageQuantityLabel: UILabel!
+
+
     @IBOutlet weak var imageListCollectionView: UICollectionView!
     @IBOutlet weak var imageListCollectionViewFlow: UICollectionViewFlowLayout!  {
         didSet {
-            imageListCollectionViewFlow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+            //imageListCollectionViewFlow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
     }
     
-    var allImages: [Image]?
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    var allImages: [Image] = []
+    var movie: Movie?
+    var person: Person?
+    
     lazy var cellSize: CGSize = CGSize(width: self.view.bounds.width / CGFloat(self.numberOfCollunms), height: self.view.bounds.width / CGFloat(self.numberOfCollunms))
     
-    let numberOfCollunms = 3
+    let numberOfCollunms = 2
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,12 +45,31 @@ class ImageListController: BaseViewController {
         configureNibs(collection: imageListCollectionView, nibName: "ImageListItem", identifier: ImageListCellIdentifier)
         
         backButton.layer.cornerRadius = backButton.bounds.width / 2
+        posterImage.layer.cornerRadius = posterImage.bounds.width / 2
+        
         imageListCollectionView.indicatorStyle = .black
-        imageListCollectionView.reloadData()
+        backButton.imageView?.setImageColorBy(uiColor: UIColor.black)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imageListCollectionView.reloadData()
+        
+        if let movie = self.movie {
+            posterImage.setTMDBImageBy(url: movie.posterPath, contentSize: Constants.TMDB.ImageSize.POSTER.w154, contentMode: .scaleAspectFill, placeholder: nil)
+            
+            nameLabel.text = movie.title
+            imageQuantityLabel.text = "\(allImages.count) Images"
+            return
+        }
+        
+        if let person = self.person {
+            posterImage.setTMDBImageBy(url: person.profilePath, contentSize: Constants.TMDB.ImageSize.POSTER.w154, contentMode: .scaleAspectFill, placeholder: nil)
+            
+            nameLabel.text = person.name
+            imageQuantityLabel.text = "\(allImages.count) Images"
+        }
         
     }
     
@@ -50,28 +81,30 @@ class ImageListController: BaseViewController {
 extension ImageListController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allImages?.count ?? 0
+        return allImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageListCellIdentifier, for: indexPath) as? ImageListItemCell, let allImages = self.allImages else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageListCellIdentifier, for: indexPath) as? ImageListItemCell else {
             return UICollectionViewCell()
         }
         let image = allImages[indexPath.row]
         
-        if (cell.image == nil) { cell.image = image }
+        cell.image = image
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let controller = self.storyboard!.instantiateViewController(withIdentifier: ImageViewerControllerIdentifier) as? ImageViewerController, let allImages = self.allImages {
+        if let controller = self.storyboard!.instantiateViewController(withIdentifier: ImageViewerControllerIdentifier) as? ImageViewerController {
             let image = allImages[indexPath.row]
             
-            controller.hero.modalAnimationType = .slide(direction: .up)
+            controller.hero.modalAnimationType = .fade
             controller.selectedIndex = indexPath
             controller.image = image
             controller.allImages = allImages
+            controller.movie = movie
+            controller.person = person
             
             self.present(controller, animated: true, completion: nil)
         }

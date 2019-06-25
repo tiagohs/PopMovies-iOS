@@ -96,34 +96,40 @@ class MovieService: BaseService, IMovieService {
     func getNowPlaying(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
         let url = "\(serviceUrl)/now_playing"
         
-        return getMovieList(url: url, region: region, page: page)
+        return buildMovieList(url: url, region: region, page: page)
     }
     
     func getTopRated(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
         let url = "\(serviceUrl)/top_rated"
         
-        return getMovieList(url: url, region: region, page: page)
+        return buildMovieList(url: url, region: region, page: page)
     }
     
     func getUpcoming(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
         let url = "\(serviceUrl)/upcoming"
         
-        return getMovieList(url: url, region: region, page: page)
+        return buildMovieList(url: url, region: region, page: page)
     }
     
     func getPopularMovies(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
         let url = "\(serviceUrl)/popular"
         
-        return getMovieList(url: url, region: region, page: page)
+        return buildMovieList(url: url, region: region, page: page)
     }
     
-    private func getMovieList(url: String, region: String, page: Int) -> Observable<Results<Movie>> {
+    private func buildMovieList(url: String, region: String, page: Int) -> Observable<Results<Movie>> {
         let parameters = baseParameters.merge(with: [
             "page": String(page),
             "region": region
         ])
         
         return requestJSON(.get, url, parameters: parameters)
+            .debug()
+            .mapObject(type: Results<Movie>.self)
+    }
+    
+    func getMovieList(url: String, paramenters: [String : String]) -> Observable<Results<Movie>> {
+        return requestJSON(.get, url, parameters: paramenters)
             .debug()
             .mapObject(type: Results<Movie>.self)
     }

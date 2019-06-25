@@ -29,10 +29,6 @@
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="puz-oH-pTZ">
                             <rect key="frame" x="8" y="10" width="148" height="203"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="148" id="UoR-Pl-UK4"/>
-                                <constraint firstAttribute="height" constant="203" id="W23-IJ-e4N"/>
-                            </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="5"/>
@@ -41,12 +37,18 @@
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Titulo Filme" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-MY-cuF">
                             <rect key="frame" x="10" y="218" width="144" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="KC0-WF-cDC"/>
+                            </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Subitulo Filme" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Wwl-pq-pqL">
                             <rect key="frame" x="10" y="240" width="144" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="12" id="Pbw-zX-e2Y"/>
+                            </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto Light" pointSize="10"/>
                             <textInputTraits key="textInputTraits"/>
@@ -54,15 +56,17 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="puz-oH-pTZ" secondAttribute="trailing" constant="8" id="3hm-G5-ePg"/>
+                        <constraint firstAttribute="bottom" secondItem="Wwl-pq-pqL" secondAttribute="bottom" constant="18" id="6Jf-Wt-xeX"/>
                         <constraint firstAttribute="width" constant="164" id="MAu-BN-jOV"/>
                         <constraint firstItem="0Hd-MY-cuF" firstAttribute="top" secondItem="puz-oH-pTZ" secondAttribute="bottom" constant="5" id="e8A-dc-I8F"/>
                         <constraint firstAttribute="trailing" secondItem="0Hd-MY-cuF" secondAttribute="trailing" constant="10" id="gGu-96-RjA"/>
                         <constraint firstAttribute="height" constant="270" id="m2q-BY-CET"/>
                         <constraint firstAttribute="trailing" secondItem="Wwl-pq-pqL" secondAttribute="trailing" constant="10" id="nWf-Fv-bCj"/>
                         <constraint firstItem="0Hd-MY-cuF" firstAttribute="leading" secondItem="2Y1-3z-xYt" secondAttribute="leading" constant="10" id="opW-D2-Of2"/>
+                        <constraint firstItem="puz-oH-pTZ" firstAttribute="leading" secondItem="2Y1-3z-xYt" secondAttribute="leading" constant="8" id="pGh-ps-Tbj"/>
                         <constraint firstItem="Wwl-pq-pqL" firstAttribute="leading" secondItem="2Y1-3z-xYt" secondAttribute="leading" constant="10" id="pnX-Vz-2gW"/>
                         <constraint firstItem="puz-oH-pTZ" firstAttribute="top" secondItem="2Y1-3z-xYt" secondAttribute="top" constant="10" id="qtq-7v-UH8"/>
-                        <constraint firstItem="puz-oH-pTZ" firstAttribute="centerX" secondItem="2Y1-3z-xYt" secondAttribute="centerX" id="t3Q-aB-WTp"/>
                         <constraint firstItem="Wwl-pq-pqL" firstAttribute="top" secondItem="0Hd-MY-cuF" secondAttribute="bottom" constant="5" id="uzv-ns-jlU"/>
                     </constraints>
                 </view>

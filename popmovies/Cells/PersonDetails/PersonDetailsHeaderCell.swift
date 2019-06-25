@@ -25,35 +25,51 @@ class PersonDetailsHeaderCell: UITableViewCell {
         didSet { bindPerson(self.person!) }
     }
     
+    var headerListener: IHeaderListener?
+    var isProfileImageBind = false
+    var isBackdropImageBind = false
+    
+    func bindBackdropImage(_ person: Person) {
+        
+        if (!isBackdropImageBind) {
+            var backdropPath: String? = nil
+            
+            if let taggedImages = person.taggedImages?.results, taggedImages.count > 0 {
+                backdropPath = taggedImages[0].filePath
+            } else if let profileImages = person.images?.profile, profileImages.count > 0 {
+                backdropPath = profileImages[0].filePath
+            } else {
+                backdropPath = person.profilePath
+            }
+            
+            backdropImageView.setTMDBImageBy(url: backdropPath, contentSize: Constants.TMDB.ImageSize.BACKDROP.w780, contentMode: .scaleAspectFill, placeholder: nil)
+            
+            isBackdropImageBind = true
+        }
+    }
+    
     private func bindPerson(_ person: Person) {
         bindProfileImage(person)
-        bindBackdropImage(person)
         bindSocialLinks(person)
         bindContent(person)
     }
     
     private func bindProfileImage(_ person: Person) {
-        guard let profilePath = person.profilePath else {
-            return
+        
+        if (!isProfileImageBind) {
+            guard let profilePath = person.profilePath else {
+                return
+            }
+            
+            profileImageView.setTMDBImageBy(url: profilePath, contentSize: Constants.TMDB.ImageSize.POSTER.w500, contentMode: .scaleAspectFill, placeholder: nil)
+            profileImageView.hero.id = String(describing: person.id)
+            profileImageView.hero.modifiers = [.scale(0.6)]
+            
+            profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2
+            
+            isProfileImageBind = true
         }
         
-        profileImageView.setTMDBImageBy(url: profilePath, contentSize: Constants.TMDB.ImageSize.POSTER.w500, contentMode: .scaleAspectFill, placeholder: Constants.IMAGES.PLACEHOLDER_POSTER_PROFILE)
-        profileImageView.hero.id = String(describing: person.id)
-        profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2
-    }
-    
-    private func bindBackdropImage(_ person: Person) {
-        var backdropPath: String? = nil
-        
-        if let taggedImages = person.taggedImages?.results, taggedImages.count > 0 {
-            backdropPath = taggedImages[0].filePath
-        } else if let profileImages = person.images?.profile, profileImages.count > 0 {
-            backdropPath = profileImages[0].filePath
-        } else {
-            backdropPath = person.profilePath
-        }
-        
-        backdropImageView.setTMDBImageBy(url: backdropPath, contentSize: Constants.TMDB.ImageSize.BACKDROP.w780, contentMode: .scaleAspectFill, placeholder: Constants.IMAGES.PLACEHOLDER_BACKDROP_MOVIE) 
     }
     
     private func bindSocialLinks(_ person: Person) {
@@ -89,4 +105,56 @@ class PersonDetailsHeaderCell: UITableViewCell {
         totalMoviesLabel.text = String(describing: totalCredits.count)
         totalPicturesLabel.text = String(describing: totalPictures.count)
     }
+    
+    @IBAction func didSeeAllImagesClicked(_ sender: Any) {
+        
+        if let person = self.person {
+            let allImages = mergeImages(person)
+            
+            headerListener?.didSeeAllImagesHeaderButtonSelect(allImages) 
+        }
+        
+    }
+    
+    private func mergeImages(_ person: Person) -> [Image] {
+        let taggedImages = person.taggedImages?.results?.map({ (taggedImagesResults) -> Image in
+            let image = Image()
+            image.filePath = taggedImagesResults.filePath
+            
+            return image
+        }) ?? []
+        let profileImages = person.images?.profile ?? []
+        
+        return taggedImages + profileImages
+    }
+    
+    @IBAction func didFacebookClicked() {
+        guard let url = URLUtils.formatFacebookUrl(facebookId: person?.externalIds?.facebookId) else { return }
+        
+        openLink(link: url)
+    }
+    
+    @IBAction func didTwitterClicked() {
+        guard let url = URLUtils.formatTwitterUrl(twitterId: person?.externalIds?.twitterId) else { return }
+        
+        openLink(link: url)
+    }
+    
+    @IBAction func didInstagramClicked() {
+        guard let url = URLUtils.formatInstagramUrl(instagramId: person?.externalIds?.instagramId) else { return }
+        
+        openLink(link: url)
+    }
+    
+    private func openLink(link: String) {
+        if let encoded = link.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+            let myURL = URL(string: encoded) {
+            UIApplication.shared.open(myURL)
+        }
+    }
+}
+
+protocol IHeaderListener {
+    func didSeeAllImagesHeaderButtonSelect(_ allImages: [Image])
+    func didSeeAllMoviesHeaderButtonSelect(_ allMovies: [Movie])
 }

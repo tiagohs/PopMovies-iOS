@@ -33,4 +33,22 @@ class URLUtils {
         
         return "https://i.ytimg.com/vi/\(id)/hqdefault.jpg"
     }
+    
+    static func formatTwitterUrl(twitterId: String?) -> String? {
+        guard let id = twitterId else { return nil }
+        
+        return "twitter://user?screen_name=\(id)"
+    }
+    
+    static func formatFacebookUrl(facebookId: String?) -> String? {
+        guard let id = facebookId else { return nil }
+        
+        return "https://www.facebook.com/\(id)"
+    }
+    
+    static func formatInstagramUrl(instagramId: String?) -> String? {
+        guard let id = instagramId else { return nil }
+        
+        return "https://instagram.com/_u/\(id)"
+    }
 }

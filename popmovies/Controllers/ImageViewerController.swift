@@ -11,10 +11,12 @@ import Hero
 
 class ImageViewerController: BaseViewController {
     let ImageViewerItemCellIdentifier = "ImageViewerItemCellIdentifier"
+    let ImageListControllerIdentifier = "ImageListControllerIdentifier"
     
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var galleryButton: UIButton!
     @IBOutlet weak var imageViewerCollectionView: UICollectionView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -26,12 +28,14 @@ class ImageViewerController: BaseViewController {
     var image: Image?
     var allImages: [Image]?
     
+    var person: Person?
+    var movie: Movie?
+    
     override func viewWillAppear(_ animated: Bool) {
-        
-        
         backButton.layer.cornerRadius = backButton.bounds.width / 2
         shareButton.layer.cornerRadius = shareButton.bounds.width / 2
-        
+        galleryButton.layer.cornerRadius = galleryButton.bounds.width / 2
+
         super.viewWillAppear(animated)
     }
     
@@ -88,6 +92,27 @@ class ImageViewerController: BaseViewController {
     @IBAction func dismiss() {
         hero.dismissViewController()
     }
+    
+    @IBAction func didGalleryButtonClicked() {
+        guard let controller = self.storyboard!.instantiateViewController(withIdentifier: ImageListControllerIdentifier) as? ImageListController else {
+            return
+        }
+        guard let allImages = self.allImages else {
+            return
+        }
+        
+        controller.hero.modalAnimationType = .fade
+        controller.allImages = allImages
+        
+        if person != nil {
+            controller.person = person
+        } else if movie != nil {
+            controller.movie = movie
+        }
+        
+        self.present(controller, animated: true, completion: nil)
+    }
+    
 }
 
 extension ImageViewerController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -102,33 +127,18 @@ extension ImageViewerController: UICollectionViewDataSource, UICollectionViewDel
         }
         let image = allImages[indexPath.row]
         
-        if (cell.image == nil) {
-            bindCell(cell, image, indexPath)
-        }
+        bindCell(cell, image, indexPath)
         
         return cell
     }
     
     private func bindCell(_ cell: ImageViewerItemCell,_ image: Image,_ indexPath: IndexPath) {
-        if let imageURL = ImageUtils.formatImageUrl(imageID: image.filePath, imageSize: Constants.TMDB.ImageSize.BACKDROP.w780) {
-            
-            cell.imageView.setImage( imageUrl: imageURL, contentMode: .scaleAspectFit, placeholderImageName: "BackdropPlaceholder")
-            cell.imageView.hero.id = image.filePath
-        }
+        cell.imageView.setTMDBImageBy(url: image.filePath, contentSize: Constants.TMDB.ImageSize.BACKDROP.w1280, contentMode: .scaleAspectFill, placeholder: nil)
+        
         cell.imageView.hero.id = String(describing: image.filePath)
-        cell.imageView.hero.modifiers = [.position(CGPoint(x:view.bounds.width/2, y:view.bounds.height+view.bounds.width/2)), .scale(0.6), .fade]
+        cell.imageView.hero.modifiers = [.fade]
         cell.topInset = topLayoutGuide.length
         cell.imageView.isOpaque = true
-        
-        cell.imageView.hero.modifiers = [
-            .position(CGPoint(
-                x: view.bounds.width / 2,
-                y: view.bounds.height + view.bounds.width / 2
-                )
-            ),
-            .scale(0.6),
-            .fade
-        ]
         cell.topInset = topLayoutGuide.length
     }
     

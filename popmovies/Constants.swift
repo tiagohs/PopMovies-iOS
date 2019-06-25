@@ -63,6 +63,27 @@ struct Constants {
                 static let original     = "original"
             }
         }
+        
+        static let GENRES_IMAGES = [
+            28: IMAGES.GENRE_ACTION,
+            12: IMAGES.GENRE_ADVENTURE,
+            16: IMAGES.GENRE_ANIMATION,
+            35: IMAGES.GENRE_COMEDY,
+            80: IMAGES.GENRE_CRIME,
+            99: IMAGES.GENRE_DOCUMENTARY,
+            18: IMAGES.GENRE_DRAMA,
+            14: IMAGES.GENRE_FAMILY,
+            36: IMAGES.GENRE_HISTORY,
+            27: IMAGES.GENRE_HORROR,
+            10402: IMAGES.GENRE_MUSIC,
+            9648: IMAGES.GENRE_MISTERY,
+            10749: IMAGES.GENRE_ROMANCE,
+            878: IMAGES.GENRE_SCIENCE_FICTION,
+            10770: IMAGES.GENRE_TV_MOVIE,
+            53: IMAGES.GENRE_THRILLER,
+            10752: IMAGES.GENRE_WAR,
+            37: IMAGES.GENRE_WESTERON
+        ]
     }
     
     struct OMDB {
@@ -98,6 +119,27 @@ struct Constants {
         static let ICON_SHARE                           = "ShareIcon"
         static let ICON_TOMATOES                        = "TomatoesIcon-white"
         static let ICON_WIKI                            = "WikiIcon-white"
+        
+        static let GENRE_ACTION                         = "action"
+        static let GENRE_ADVENTURE                         = "adventure"
+        static let GENRE_ANIMATION                         = "animation"
+        static let GENRE_COMEDY                         = "comedy"
+        static let GENRE_CRIME                         = "crime"
+        static let GENRE_DOCUMENTARY                         = "documentary"
+        static let GENRE_DRAMA                         = "drama"
+        static let GENRE_FAMILY                         = "family"
+        static let GENRE_FANTASY                         = "fantasy"
+        static let GENRE_HORROR                         = "horror"
+        static let GENRE_HISTORY                         = "history"
+        static let GENRE_MISTERY                         = "mistery"
+        static let GENRE_TV_MOVIE                         = "tv_movie"
+        static let GENRE_ROMANCE                         = "romance"
+        static let GENRE_MUSIC                         = "music"
+        static let GENRE_SCIENCE_FICTION                         = "science_fiction"
+        static let GENRE_THRILLER                         = "thriller"
+        static let GENRE_WAR                         = "war"
+        static let GENRE_WESTERON                         = "westeron"
+        
     }
     
 }

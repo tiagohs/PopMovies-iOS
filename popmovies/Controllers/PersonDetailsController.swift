@@ -11,6 +11,8 @@ import Hero
 
 class PersonDetailsController: BaseViewController {
     let MovieDetailsControllerIdentifier            = "MovieDetailsControllerIdentifier"
+    let ImageListControllerIdentifier               = "ImageListControllerIdentifier"
+    let ImageViewerControllerIdentifier             = "ImageViewerControllerIdentifier"
 
     let PersonDetailsHeaderCellIdentifier           = "PersonDetailsHeaderCellIdentifier"
     let PersonDetailsOverviewCellIdentifier         = "PersonDetailsOverviewCellIdentifier"
@@ -20,6 +22,8 @@ class PersonDetailsController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    
+    var isFromServer = false
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.style
@@ -42,6 +46,8 @@ class PersonDetailsController: BaseViewController {
     override func viewDidLoad() {
         presenter = PersonDetailsPresenter(view: self)
         presenter.fetchPersonDetails(personId: person?.id)
+        
+        tableView.reloadData()
     }
     
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
@@ -116,7 +122,17 @@ extension PersonDetailsController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            if person != nil { cell.person = person }
+            if person != nil {
+                cell.person = person
+                
+                if (isFromServer) {
+                    cell.bindBackdropImage(person!)
+                }
+            }
+            
+            if cell.headerListener == nil {
+                cell.headerListener = self
+            }
             
             return cell
         case 1:
@@ -155,12 +171,14 @@ extension PersonDetailsController: IPersonDetailsView {
     func bindPerson(person: Person) {
         self.person = person
         
+        isFromServer = true
+        
         self.tableView.reloadData()
     }
     
 }
 
-extension PersonDetailsController: IKnownForListener {
+extension PersonDetailsController: IKnownForListener, IHeaderListener {
     
     func didMovieSelect(_ movie: Movie) {
         if let controller = self.storyboard!.instantiateViewController(withIdentifier: MovieDetailsControllerIdentifier) as? MovieDetailsController {
@@ -172,13 +190,41 @@ extension PersonDetailsController: IKnownForListener {
         }
     }
     
-    func didImageSelect(_ image: Image, allImages: [Image]) {
-        if let controller = self.storyboard!.instantiateViewController(withIdentifier: MovieDetailsControllerIdentifier) as? ImageListController {
-            
-            controller.hero.modalAnimationType = .slide(direction: .up)
-            controller.allImages = allImages
-            
-            self.present(controller, animated: true, completion: nil)
+    func didImageSelect(_ image: Image, allImages: [Image], indexPath: IndexPath) {
+        guard let controller = self.storyboard!.instantiateViewController(withIdentifier: ImageViewerControllerIdentifier) as? ImageViewerController else {
+            return
         }
+        
+        controller.hero.modalAnimationType = .fade
+        controller.selectedIndex = indexPath
+        controller.image = image
+        controller.allImages = allImages
+        controller.person = self.person
+        
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    func didSeeAllMoviesHeaderButtonSelect(_ allMovies: [Movie]) {
+        
+    }
+    
+    func didSeeAllImagesHeaderButtonSelect(_ allImages: [Image]) {
+        seeAllImages(allImages)
+    }
+    
+    func didSeeAllImagesSelect(_ allImages: [Image]) {
+        seeAllImages(allImages)
+    }
+    
+    private func seeAllImages(_ allImages: [Image]) {
+        guard let controller = self.storyboard!.instantiateViewController(withIdentifier: ImageListControllerIdentifier) as? ImageListController else {
+            return
+        }
+        
+        controller.hero.modalAnimationType = .fade
+        controller.allImages = allImages
+        controller.person = self.person
+        
+        self.present(controller, animated: true, completion: nil)
     }
 }

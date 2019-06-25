@@ -90,6 +90,8 @@ class MovieDetailsHeaderCell: UITableViewCell {
                 moviePosterView.setImage( imageUrl: posterUrl, contentMode: .scaleAspectFill, placeholderImageName: "placeholder")
                 moviePosterView.hero.id = String(describing: movie.posterPath)
             }
+            
+            isImagesBind = true
         }
         
         movieTitleView.text = movie.title
@@ -156,9 +158,8 @@ extension MovieDetailsHeaderCell: UICollectionViewDelegate, UICollectionViewData
         
         if let genres = movie?.genres {
             let genre = genres[indexPath.row]
-            let textColor = movieColors?.primary ?? UIColor()
             
-            cell.bindSimpleItem(simpleItem: SimpleItem(id: genre.id!, text: genre.name!), color: textColor)
+            cell.bindSimpleItem(simpleItem: SimpleItem(id: genre.id!, text: genre.name!))
             return cell
         }
         

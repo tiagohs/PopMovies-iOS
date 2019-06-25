@@ -26,14 +26,14 @@ class SimpleItemCell: UICollectionViewCell {
         ])
     }
     
-    func bindSimpleItem(simpleItem: SimpleItem, color: UIColor) {
+    func bindSimpleItem(simpleItem: SimpleItem) {
         self.simpleItem = simpleItem
         
         buttonView.setTitle("\(String(simpleItem.text))", for: .normal)
-        buttonView.setTitleColor(color, for: .normal)
+        buttonView.setTitleColor(UIColor.white, for: .normal)
         buttonView.sizeToFit()
         buttonView.contentEdgeInsets = UIEdgeInsets(top: 5,left: 10,bottom: 5,right: 10)
-        buttonView.layer.borderColor = color.cgColor
+        buttonView.layer.borderColor = UIColor.white.cgColor
         buttonView.layer.borderWidth = 1.0
         buttonView.layer.cornerRadius = 5.0
     }

@@ -44,7 +44,11 @@ class MovieDetailsRelatedCell: UITableViewCell {
         self.originalTitleView.sizeToFit()
         self.originalTitleView.layoutIfNeeded()
         self.inTheaterView.text = movie.releaseDate?.formatDate(pattner: "MMM d, yyyy")
-        self.languageView.text = Locale(identifier: "pt_BR").localizedString(forIdentifier: movie.originalLanguage!)
+        
+        if let originalLanguage = movie.originalLanguage {
+            self.languageView.text = Locale(identifier: "pt_BR").localizedString(forIdentifier: originalLanguage)
+        }
+        
         self.revenueView.text = movie.revenue != nil ? "$ \(movie.revenue!)" : "N/A"
         
         self.relatedMoviesCollectionView.reloadData()

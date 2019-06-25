@@ -18,6 +18,8 @@ class ImageListItemCell: UICollectionViewCell {
     }
     
     private func bindImage(_ image: Image) {
+        imageView.setTMDBImageBy(url: image.filePath, contentSize: Constants.TMDB.ImageSize.BACKDROP.w780, contentMode: .scaleAspectFill, placeholder: nil)
+        
         imageView.hero.id = image.filePath
         imageView.hero.modifiers = [.fade, .scale(0.8)]
         imageView.isOpaque = true

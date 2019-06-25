@@ -18,19 +18,20 @@ class MovieDetailsInteractor: IMovieDetailsInteractor {
         self.movieService = MovieService()
     }
     
-    func fetchMovieDetails(movieId: Int) -> Observable<Movie> {
+    func fetchMovieDetails(movie: Movie?) -> Observable<Movie> {
+        let languages = "en,pt_BR,\(String(describing: movie?.originalLanguage)),null"
         let appendToResponse = ["videos", "images", "keywords", "releases", "similar_movies", "credits"]
         
-        return movieService.getDetails(movieId: movieId, appendToResponse: appendToResponse, language: "en,pt_BR,null")
+        return movieService.getDetails(movieId: movie!.id!, appendToResponse: appendToResponse, language: languages)
     }
     
     func fetchMovieRankings(imdbId: String) -> Observable<MovieOMDB> {
         return movieService.getMovieRankings(imdbId: imdbId) 
     }
     
-    func fetchMovieImages(movieId: Int) -> Observable<Images> {
-        let includeImageLanguage = ["en", "pt_BR", "null"]
+    func fetchMovieImages(movie: Movie?) -> Observable<Images> {
+        let includeImageLanguage = ["en", "pt_BR", String(describing: movie?.originalLanguage), "null"]
         
-        return movieService.getImages(movieId: movieId, includeImageLanguage: includeImageLanguage, language: "null")
+        return movieService.getImages(movieId: movie!.id!, includeImageLanguage: includeImageLanguage, language: "null")
     }
 }

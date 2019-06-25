@@ -26,12 +26,23 @@ class ImageViewerItemCell: UICollectionViewCell {
         }
     }
     
+    //MARK: init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    convenience required init(key:String) {
+        self.init(frame:CGRect.zero)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         scrollView = UIScrollView(frame: bounds)
         imageView = UIImageView(frame: bounds)
         imageView.contentMode = .scaleAspectFill
+        
         scrollView.addSubview(imageView)
+        
         scrollView.maximumZoomScale = 3
         scrollView.delegate = self
         scrollView.contentMode = .center
