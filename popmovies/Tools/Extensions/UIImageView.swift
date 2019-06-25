@@ -39,6 +39,14 @@ extension UIImageView {
         
     }
     
+    func setImage(image: UIImage?, animation: UIView.AnimationOptions, duration: Double = 0.75) {
+        UIView.transition(with: self,
+                          duration: duration,
+                          options: animation,
+                          animations: { self.image = image },
+                          completion: nil)
+    }
+    
     func setTMDBImageBy(url: String?, contentSize: String, contentMode: UIView.ContentMode?, placeholder: String?) {
         if let imageUrl = ImageUtils.formatImageUrl(imageID: url, imageSize: contentSize) {
             setImage(imageUrl: imageUrl, contentMode: contentMode, placeholderImageName: placeholder)

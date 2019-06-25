@@ -19,7 +19,7 @@ class Genre : BaseModel {
     
     private func getImage(_ id: Int) -> String? {
         
-        for (genreId, genreImageName) in Constants.TMDB.GENRES_IMAGES {
+        for (genreId, genreImageName) in TMDB.GENRES_IMAGES {
             if genreId == id {
                 return genreImageName
             }

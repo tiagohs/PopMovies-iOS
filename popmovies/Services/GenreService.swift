@@ -10,26 +10,20 @@ import Foundation
 import RxSwift
 import RxAlamofire
 
+// MARK: IGenreService
+
 protocol IGenreService {
     
     func fetchGenres(language: String) -> Observable<[Genre]>
 }
 
-class GenreService: BaseService, IGenreService {
-    var serviceUrl: String = ""
-    
-    override init() {
-        super.init()
-        
-        serviceUrl = "\(baseUrl)genre"
-    }
+// MARK: GenreService: IGenreService
+
+class GenreService: IGenreService {
     
     func fetchGenres(language: String) -> Observable<[Genre]> {
-        let parameters = [
-            Constants.TMDB.Parameters.apiKey: Constants.TMDB.API_KEY,
-            Constants.TMDB.Parameters.language: language
-        ]
-        let url = "\(serviceUrl)/movie/list"
+        let url = TMDB.URL.GENRES.GENRES_LIST
+        let parameters = TMDB.URL.GENRES.buildPersonDetailsParameters(language)
         
         return requestJSON(.get, url, parameters: parameters)
             .debug()

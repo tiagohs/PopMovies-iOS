@@ -57,7 +57,7 @@ class ImageListController: BaseViewController {
         imageListCollectionView.reloadData()
         
         if let movie = self.movie {
-            posterImage.setTMDBImageBy(url: movie.posterPath, contentSize: Constants.TMDB.ImageSize.POSTER.w154, contentMode: .scaleAspectFill, placeholder: nil)
+            posterImage.setTMDBImageBy(url: movie.posterPath, contentSize: TMDB.ImageSize.POSTER.w154, contentMode: .scaleAspectFill, placeholder: nil)
             
             nameLabel.text = movie.title
             imageQuantityLabel.text = "\(allImages.count) Images"
@@ -65,7 +65,7 @@ class ImageListController: BaseViewController {
         }
         
         if let person = self.person {
-            posterImage.setTMDBImageBy(url: person.profilePath, contentSize: Constants.TMDB.ImageSize.POSTER.w154, contentMode: .scaleAspectFill, placeholder: nil)
+            posterImage.setTMDBImageBy(url: person.profilePath, contentSize: TMDB.ImageSize.POSTER.w154, contentMode: .scaleAspectFill, placeholder: nil)
             
             nameLabel.text = person.name
             imageQuantityLabel.text = "\(allImages.count) Images"

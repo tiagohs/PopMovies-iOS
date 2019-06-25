@@ -15,6 +15,6 @@ class ImageUtils {
             return nil
         }
         
-        return "\(Constants.TMDB.BASE_IMAGE_URL)\(imageSize)/\(id)"
+        return "\(TMDB.BASE_IMAGE_URL)\(imageSize)/\(id)"
     }
 }

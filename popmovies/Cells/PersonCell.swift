@@ -34,7 +34,7 @@ class PersonCell: UICollectionViewCell {
     
     private func bindPersonCellContent(person: PersonItem) {
         
-        if let pictureUrl = ImageUtils.formatImageUrl(imageID: person.pictureId, imageSize: Constants.TMDB.ImageSize.PROFILE.w185) {
+        if let pictureUrl = ImageUtils.formatImageUrl(imageID: person.pictureId, imageSize: TMDB.ImageSize.PROFILE.w185) {
             
             personPictureView.setImage( imageUrl: pictureUrl, contentMode: .scaleAspectFill, placeholderImageName: "ProfilePlaceholder")
         } else {

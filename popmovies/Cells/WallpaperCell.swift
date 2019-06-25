@@ -32,7 +32,7 @@ class WallpaperCell: UICollectionViewCell {
     }
     
     private func bindWallpaper(wallpaper: Image) {
-        if let backdropUrl = ImageUtils.formatImageUrl(imageID: wallpaper.filePath, imageSize: Constants.TMDB.ImageSize.BACKDROP.w780) {
+        if let backdropUrl = ImageUtils.formatImageUrl(imageID: wallpaper.filePath, imageSize: TMDB.ImageSize.BACKDROP.w780) {
             
             wallpaperImageView.setImage( imageUrl: backdropUrl, contentMode: .scaleAspectFill, placeholderImageName: "BackdropPlaceholder")
             wallpaperImageView.hero.id = String(describing: wallpaper.filePath)

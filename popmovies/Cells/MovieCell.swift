@@ -45,7 +45,7 @@ class MovieCell: UICollectionViewCell {
         
         guard let movieBackdropView = self.movieBackground else { return }
         
-        if let backdropUrl = ImageUtils.formatImageUrl(imageID: movie.backdropPath, imageSize: Constants.TMDB.ImageSize.BACKDROP.w780) {
+        if let backdropUrl = ImageUtils.formatImageUrl(imageID: movie.backdropPath, imageSize: TMDB.ImageSize.BACKDROP.w780) {
             
             movieBackdropView.setImage( imageUrl: backdropUrl, contentMode: .scaleAspectFill, placeholderImageName: "BackdropPlaceholder")
             movieBackdropView.hero.id = String(describing: movie.backdropPath)
@@ -93,7 +93,7 @@ class MovieCell: UICollectionViewCell {
         
         guard let moviePosterView = self.moviePoster else { return }
         
-        if let posterUrl = ImageUtils.formatImageUrl(imageID: movie.posterPath, imageSize: Constants.TMDB.ImageSize.POSTER.w500) {
+        if let posterUrl = ImageUtils.formatImageUrl(imageID: movie.posterPath, imageSize: TMDB.ImageSize.POSTER.w500) {
             
             moviePosterView.setImage( imageUrl: posterUrl, contentMode: .scaleAspectFill, placeholderImageName: "PosterPlaceholder")
             moviePosterView.hero.id = String(describing: movie.posterPath)

@@ -9,84 +9,95 @@
 import UIKit
 import Hero
 
-class HomeController: BaseViewController {
-    let HomeShowMovieListSegueIdentifier        = "HomeShowMovieListSegueIdentifier"
-    
-    let nowPlayingMovieCellIdentifier           = "NowPlayingMovieCellIdentifier"
-    let popularMoviesCelldentifier              = "PopularMoviesCelldentifier"
-    let topRatedMoviesCellIdentifier            = "TopRatedMoviesCellIdentifier"
-    let upcomingMoviesCellIdentifier            = "UpcomingMoviesCellIdentifier"
-    
-    let MovieDetailsControllerIdentifier             = "MovieDetailsControllerIdentifier"
-    let movieDetailsSegueIdentifier             = "MovieDetailsSegueIdentifier"
+// MARK: HomeController: BaseViewController
 
+class HomeController: BaseViewController {
+    // MARK: Constants
+    
+    let HomeShowMovieListSegueIdentifier        = "HomeShowMovieListSegueIdentifier"
+    let MovieDetailsSegueIdentifier             = "MovieDetailsSegueIdentifier"
+    
+    let NowPlayingMovieCellIdentifier           = "NowPlayingMovieCellIdentifier"
+    let PopularMoviesCelldentifier              = "PopularMoviesCelldentifier"
+    let TopRatedMoviesCellIdentifier            = "TopRatedMoviesCellIdentifier"
+    let UpcomingMoviesCellIdentifier            = "UpcomingMoviesCellIdentifier"
+    
+    let MovieDetailsControllerIdentifier        = "MovieDetailsControllerIdentifier"
+    
+    let numberOfRows                            = 4
+    
+    // MARK: Outlets
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logoImageView: UIImageView!
     
-    var homePresenter: IHomePresenter?
+    // MARK: Properties
+    
+    var homePresenter: IHomePresenter!
     
     var nowPlayingMovies: [Movie]              = []
     var popularMovies: [Movie]                 = []
     var topRatedMovies: [Movie]                = []
     var upcomingMovies: [Movie]                = []
     
-    var isNavbarColorPrimary = false
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        logoImageView.layer.cornerRadius = logoImageView.bounds.width / 2
-        
-        setupScreenTableView(tableView: self.tableView)
-        
-        homePresenter = HomePresenter(view: self)
-        
-        homePresenter?.fetchNowPlayingMovies()
-        homePresenter?.fetchPopularMovies()
-        homePresenter?.fetchTopRatedMovies()
-        homePresenter?.fetchUpcomingMovies()
-    }
+    // MARK: Lifecycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-
+        hideNavigationBar(animated)
+        
         super.viewWillAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: animated);
-
+        showNavigationBar(animated)
+        
         super.viewWillDisappear(animated)
     }
     
-    @objc func didSearchButtonTaped() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        setupUI()
+        setupPresenters()
     }
     
-    @objc func didProfileButtonTaped() {
-        
+}
+
+// MARK: UITableViewDataSource, UITableViewDelegate
+
+extension HomeController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numberOfRows
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (segue.identifier == movieDetailsSegueIdentifier) {
-            let movie = sender as! Movie
-            let movieDetailsController = segue.destination as! MovieDetailsController
-            
-            movieDetailsController.movie = movie
-            
-            return
+        switch indexPath.row {
+        case 0:
+            return bindCell(tableView, cellForRowAt: indexPath, NowPlayingMovieCellIdentifier, nowPlayingMovies)
+        case 1:
+            return bindCell(tableView, cellForRowAt: indexPath, PopularMoviesCelldentifier, popularMovies)
+        case 2:
+            return bindCell(tableView, cellForRowAt: indexPath, TopRatedMoviesCellIdentifier, topRatedMovies)
+        case 3:
+            return bindCell(tableView, cellForRowAt: indexPath, UpcomingMoviesCellIdentifier, upcomingMovies)
+        default:
+            return UITableViewCell()
+        }
+    }
+    
+    private func bindCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, _ cellIdentifier: String, _ movies: [Movie]) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MovieListCell else {
+            return UITableViewCell()
         }
         
-        if (segue.identifier == HomeShowMovieListSegueIdentifier) {
-            MovieListController.preparePopularMovieList(segue: segue)
-            return
-        }
+        cell.movieListCallback = self
+        cell.movies = movies
+        
+        return cell
     }
     
-    @IBAction func didSeeAllPopularMoviesSelected() {
-        performSegue(withIdentifier: HomeShowMovieListSegueIdentifier, sender: nil)
-    }
 }
 
 // MARK: IHomeView
@@ -96,77 +107,31 @@ extension HomeController: IHomeView {
     func bindNowPlayingMovies(movies: [Movie]) {
         self.nowPlayingMovies = movies
         
-        let indexPath = IndexPath(item: 0, section: 0)
-        self.tableView.reloadRows(at: [indexPath], with: .left)
+        updateRow(itemIndex: 0)
     }
     
     func bindPopularMovies(movies: [Movie]) {
         self.popularMovies = movies
         
-        let indexPath = IndexPath(item: 1, section: 0)
-        self.tableView.reloadRows(at: [indexPath], with: .left)
+        updateRow(itemIndex: 1)
     }
     
     func bindTopRatedMovies(movies: [Movie]) {
         self.topRatedMovies = movies
         
-        let indexPath = IndexPath(item: 2, section: 0)
-        self.tableView.reloadRows(at: [indexPath], with: .left)
+        updateRow(itemIndex: 2)
     }
     
     func bindUpcomingMovies(movies: [Movie]) {
         self.upcomingMovies = movies
         
-        let indexPath = IndexPath(item: 3, section: 0)
+        updateRow(itemIndex: 3)
+    }
+    
+    private func updateRow(itemIndex: Int) {
+        let indexPath = IndexPath(item: itemIndex, section: 0)
         self.tableView.reloadRows(at: [indexPath], with: .left)
     }
-    
-}
-
-// MARK: UITableView Page
-
-extension HomeController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: nowPlayingMovieCellIdentifier, for: indexPath) as! NowPlayingMoviesCell
-            
-            cell.movieListCallback = self
-            cell.movies = nowPlayingMovies
-            
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: popularMoviesCelldentifier, for: indexPath) as! PopularMoviesCell
-            
-            cell.movieListCallback = self
-            cell.movies = popularMovies
-            
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: topRatedMoviesCellIdentifier, for: indexPath) as! TopRatedMoviesCell
-            
-            cell.movieListCallback = self
-            cell.movies = topRatedMovies
-            
-            return cell
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: upcomingMoviesCellIdentifier, for: indexPath) as! UpcomingMoviesCell
-            
-            cell.movieListCallback = self
-            cell.movies = upcomingMovies
-            
-            return cell
-        default:
-            return UITableViewCell()
-        }
-    }
-    
 }
 
 // MARK: MovieListCallback
@@ -174,7 +139,77 @@ extension HomeController: UITableViewDataSource, UITableViewDelegate {
 extension HomeController: MovieListCallback {
     
     func didSelectItem(index: Int, movie: Movie) {
-        performSegue(withIdentifier: movieDetailsSegueIdentifier, sender: movie)
+        performSegue(withIdentifier: MovieDetailsSegueIdentifier, sender: movie)
     }
     
+}
+
+// MARK: Prepare Segues
+
+extension HomeController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let cellIdentifier = sender as? String else {
+            return
+        }
+        
+        switch segue.identifier {
+        case MovieDetailsSegueIdentifier:
+            return MovieDetailsController.prepareMovieDetailsController(segue, sender)
+        case HomeShowMovieListSegueIdentifier:
+            return prepareBy(segue, cellIdentifier: cellIdentifier)
+        default:
+            return
+        }
+    }
+    
+    private func prepareBy(_ segue: UIStoryboardSegue, cellIdentifier: String) {
+        switch cellIdentifier {
+        case PopularMoviesCelldentifier:
+            return MovieListController.preparePopularMovieList(segue: segue)
+        case UpcomingMoviesCellIdentifier:
+            return MovieListController.prepareUpcomingMovieList(segue: segue)
+        case TopRatedMoviesCellIdentifier:
+            return MovieListController.prepareTopRatedMovieList(segue: segue)
+        default:
+            return
+        }
+    }
+}
+
+// MARK: Setup Methods
+
+private extension HomeController {
+    
+    func setupUI() {
+        logoImageView.layer.cornerRadius = logoImageView.bounds.width / 2
+        
+        setupScreenTableView(tableView: self.tableView)
+    }
+    
+    func setupPresenters() {
+        homePresenter = HomePresenter(view: self)
+        
+        homePresenter.fetchNowPlayingMovies()
+        homePresenter.fetchPopularMovies()
+        homePresenter.fetchTopRatedMovies()
+        homePresenter.fetchUpcomingMovies()
+    }
+}
+
+// MARK: Actions Methods
+
+private extension HomeController {
+    
+    @IBAction func didSeeAllPopularMoviesSelected() {
+        performSegue(withIdentifier: HomeShowMovieListSegueIdentifier, sender: PopularMoviesCelldentifier)
+    }
+    
+    @IBAction func didSeeAllUpcomingMoviesSelected() {
+        performSegue(withIdentifier: HomeShowMovieListSegueIdentifier, sender: UpcomingMoviesCellIdentifier)
+    }
+    
+    @IBAction func didSeeAllTopRatedMoviesSelected() {
+        performSegue(withIdentifier: HomeShowMovieListSegueIdentifier, sender: TopRatedMoviesCellIdentifier)
+    }
 }

@@ -37,7 +37,9 @@ class GenreCell: UICollectionViewCell {
         genreNameLabel.text = genre.name
         
         if let imageName = genre.imageName {
-            genreImageView.image = UIImage(named: imageName)
+            let image = UIImage(named: imageName)
+            
+            genreImageView.setImage(image: image, animation: .transitionCrossDissolve) 
         }
         
         if !isBind {

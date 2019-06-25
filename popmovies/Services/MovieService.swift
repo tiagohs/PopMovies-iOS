@@ -10,6 +10,8 @@ import Foundation
 import RxSwift
 import RxAlamofire
 
+// MARK: IMovieService
+
 protocol IMovieService {
     
     func getMovieRankings(imdbId: String) -> Observable<MovieOMDB>
@@ -22,24 +24,16 @@ protocol IMovieService {
     func getNowPlaying(page: Int, region: String) -> Observable<Results<Movie>>
     func getTopRated(page: Int, region: String) -> Observable<Results<Movie>>
     func getUpcoming(page: Int, region: String) -> Observable<Results<Movie>>
+    func getMovieList(url: String, paramenters: [String : String]) -> Observable<Results<Movie>> 
 }
 
-class MovieService: BaseService, IMovieService {
-    var serviceUrl: String = ""
-    
-    override init() {
-        super.init()
-        
-        serviceUrl = "\(baseUrl)movie"
-    }
+// MARK: MovieService: IMovieService
+
+class MovieService: IMovieService {
     
     func getMovieRankings(imdbId: String) -> Observable<MovieOMDB> {
-        let baseUrl = Constants.OMDB.BASE_URL
-        let parameters = [
-            Constants.OMDB.Parameters.apiKey: Constants.OMDB.API_KEY,
-            Constants.OMDB.Parameters.tomatoes: "true",
-            "i": imdbId
-        ]
+        let baseUrl = OMDB.BASE_URL
+        let parameters = OMDB.URL.buildMovieRankingsParameters(imdbId)
         
         return requestJSON(.get, baseUrl, parameters: parameters)
             .debug()
@@ -47,13 +41,8 @@ class MovieService: BaseService, IMovieService {
     }
     
     func getDetails(movieId: Int, appendToResponse: [String], language: String = "pt_BR") -> Observable<Movie> {
-        let appendToResponse = createAppendToResponse(appendToResponse: appendToResponse)
-        let parameters = [
-            Constants.TMDB.Parameters.apiKey: Constants.TMDB.API_KEY,
-            Constants.TMDB.Parameters.language: language,
-            "append_to_response": appendToResponse
-        ]
-        let url = "\(serviceUrl)/\(movieId)"
+        let url = TMDB.URL.MOVIES.buidMovieDetailsUrl(movieId: movieId)
+        let parameters = TMDB.URL.MOVIES.buildMovieDetailsParameters(appendToResponse, language)
         
         return requestJSON(.get, url, parameters: parameters)
                     .debug()
@@ -61,16 +50,8 @@ class MovieService: BaseService, IMovieService {
     }
     
     func getImages(movieId: Int, includeImageLanguage: [String], language: String? = nil) -> Observable<Images> {
-        var parameters = [
-            Constants.TMDB.Parameters.apiKey: Constants.TMDB.API_KEY,
-            "include_image_language": includeImageLanguage.joined(separator: ",")
-        ]
-        
-        if language != nil {
-            parameters.append(with: ["language": language!])
-        }
-        
-        let url = "\(serviceUrl)/\(movieId)/images"
+        let url = TMDB.URL.MOVIES.buildImagesUrl(movieId: movieId)
+        let parameters = TMDB.URL.MOVIES.buildImagesParameters(includeImageLanguage, language)
         
         return requestJSON(.get, url, parameters: parameters)
             .debug()
@@ -78,15 +59,8 @@ class MovieService: BaseService, IMovieService {
     }
     
     func getVideos(movieId: Int, language: String? = nil) -> Observable<Results<Video>> {
-        var parameters = [
-            Constants.TMDB.Parameters.apiKey: Constants.TMDB.API_KEY
-        ]
-        
-        if language != nil {
-            parameters.append(with: ["language": language!])
-        }
-        
-        let url = "\(serviceUrl)/\(movieId)/videos"
+        let url = TMDB.URL.MOVIES.buidVideosUrl(movieId: movieId)
+        let parameters = TMDB.URL.MOVIES.buildVideosParameters(language)
         
         return requestJSON(.get, url, parameters: parameters)
             .debug()
@@ -94,42 +68,45 @@ class MovieService: BaseService, IMovieService {
     }
     
     func getNowPlaying(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
-        let url = "\(serviceUrl)/now_playing"
+        let url = TMDB.URL.MOVIES.NOW_PLAYING_MOVIES_URL
         
         return buildMovieList(url: url, region: region, page: page)
     }
     
     func getTopRated(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
-        let url = "\(serviceUrl)/top_rated"
+        let url = TMDB.URL.MOVIES.TOP_RATED_MOVIES_URL
         
         return buildMovieList(url: url, region: region, page: page)
     }
     
     func getUpcoming(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
-        let url = "\(serviceUrl)/upcoming"
+        let url = TMDB.URL.MOVIES.UPCOMING_MOVIES_URL
         
         return buildMovieList(url: url, region: region, page: page)
     }
     
     func getPopularMovies(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
-        let url = "\(serviceUrl)/popular"
+        let url = TMDB.URL.MOVIES.POPULAR_MOVIES_URL
         
         return buildMovieList(url: url, region: region, page: page)
     }
     
-    private func buildMovieList(url: String, region: String, page: Int) -> Observable<Results<Movie>> {
-        let parameters = baseParameters.merge(with: [
-            "page": String(page),
-            "region": region
-        ])
-        
-        return requestJSON(.get, url, parameters: parameters)
+    func getMovieList(url: String, paramenters: [String : String]) -> Observable<Results<Movie>> {
+        return requestJSON(.get, url, parameters: paramenters)
             .debug()
             .mapObject(type: Results<Movie>.self)
     }
     
-    func getMovieList(url: String, paramenters: [String : String]) -> Observable<Results<Movie>> {
-        return requestJSON(.get, url, parameters: paramenters)
+}
+
+// MARK: Helpers Method
+
+private extension MovieService {
+    
+    private func buildMovieList(url: String, region: String, page: Int) -> Observable<Results<Movie>> {
+        let parameters = TMDB.URL.MOVIES.buildMovieListParameters(region, page)
+        
+        return requestJSON(.get, url, parameters: parameters)
             .debug()
             .mapObject(type: Results<Movie>.self)
     }

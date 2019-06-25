@@ -11,7 +11,7 @@ import RxSwift
 
 class MovieListInteractor: IMovieListInteractor {
     
-    var service: MovieService!
+    var service: IMovieService!
     
     init() {
         self.service = MovieService()

@@ -42,7 +42,7 @@ class PersonDetailsHeaderCell: UITableViewCell {
                 backdropPath = person.profilePath
             }
             
-            backdropImageView.setTMDBImageBy(url: backdropPath, contentSize: Constants.TMDB.ImageSize.BACKDROP.w780, contentMode: .scaleAspectFill, placeholder: nil)
+            backdropImageView.setTMDBImageBy(url: backdropPath, contentSize: TMDB.ImageSize.BACKDROP.w780, contentMode: .scaleAspectFill, placeholder: nil)
             
             isBackdropImageBind = true
         }
@@ -61,7 +61,7 @@ class PersonDetailsHeaderCell: UITableViewCell {
                 return
             }
             
-            profileImageView.setTMDBImageBy(url: profilePath, contentSize: Constants.TMDB.ImageSize.POSTER.w500, contentMode: .scaleAspectFill, placeholder: nil)
+            profileImageView.setTMDBImageBy(url: profilePath, contentSize: TMDB.ImageSize.POSTER.w500, contentMode: .scaleAspectFill, placeholder: nil)
             profileImageView.hero.id = String(describing: person.id)
             profileImageView.hero.modifiers = [.scale(0.6)]
             

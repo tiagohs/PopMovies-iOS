@@ -133,7 +133,7 @@ extension ImageViewerController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func bindCell(_ cell: ImageViewerItemCell,_ image: Image,_ indexPath: IndexPath) {
-        cell.imageView.setTMDBImageBy(url: image.filePath, contentSize: Constants.TMDB.ImageSize.BACKDROP.w1280, contentMode: .scaleAspectFill, placeholder: nil)
+        cell.imageView.setTMDBImageBy(url: image.filePath, contentSize: TMDB.ImageSize.BACKDROP.w1280, contentMode: .scaleAspectFill, placeholder: nil)
         
         cell.imageView.hero.id = String(describing: image.filePath)
         cell.imageView.hero.modifiers = [.fade]

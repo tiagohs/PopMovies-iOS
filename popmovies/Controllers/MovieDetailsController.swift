@@ -325,3 +325,14 @@ extension MovieDetailsController: IPersonListener, IRelatedMoviesListener, IMidi
     
 }
 
+extension MovieDetailsController {
+    
+    static func prepareMovieDetailsController(_ segue: UIStoryboardSegue,_ sender: Any?) {
+        guard let movieDetailsController = segue.destination as? MovieDetailsController, let movie = sender as? Movie else {
+            return
+        }
+        
+        movieDetailsController.movie = movie
+    }
+}
+

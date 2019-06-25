@@ -94,36 +94,39 @@ extension MovieListController: IMovieListView {
 extension MovieListController {
     
     static func preparePopularMovieList(segue: UIStoryboardSegue) {
-        let url = "\(Constants.TMDB.BASE_URL)movie/popular"
-        let parameters = [
-            Constants.TMDB.Parameters.apiKey: Constants.TMDB.API_KEY,
-            Constants.TMDB.Parameters.language: "pt-BR",
-            "region": "BR"
-        ]
+        guard let controller = segue.destination as? MovieListController else {
+            return
+        }
         
-        let controller = segue.destination as! MovieListController
+        let url = TMDB.URL.MOVIES.POPULAR_MOVIES_URL
+        let parameters = TMDB.URL.MOVIES.buildMovieListParameters()
         
         controller.url = url
         controller.parameters = parameters
     }
     
-    static func showPopularMovieList(from: UIViewController) {
-        if let controller = from.storyboard!.instantiateViewController(withIdentifier: "MovieListControllerIdentifier") as? MovieListController {
-            let url = "\(Constants.TMDB.BASE_URL)movie/popular"
-            let parameters = [
-                Constants.TMDB.Parameters.apiKey: Constants.TMDB.API_KEY,
-                Constants.TMDB.Parameters.language: "pt-BR",
-                "region": "BR"
-            ]
-            
-            controller.hero.modalAnimationType = .slide(direction: .left)
-            
-            controller.url = url
-            controller.parameters = parameters
-            
-            from.present(controller, animated: true, completion: nil)
+    static func prepareUpcomingMovieList(segue: UIStoryboardSegue) {
+        guard let controller = segue.destination as? MovieListController else {
+            return
         }
         
+        let url = TMDB.URL.MOVIES.UPCOMING_MOVIES_URL
+        let parameters = TMDB.URL.MOVIES.buildMovieListParameters()
+        
+        controller.url = url
+        controller.parameters = parameters
+    }
+    
+    static func prepareTopRatedMovieList(segue: UIStoryboardSegue) {
+        guard let controller = segue.destination as? MovieListController else {
+            return
+        }
+        
+        let url = TMDB.URL.MOVIES.TOP_RATED_MOVIES_URL
+        let parameters = TMDB.URL.MOVIES.buildMovieListParameters()
+        
+        controller.url = url
+        controller.parameters = parameters
     }
     
 }

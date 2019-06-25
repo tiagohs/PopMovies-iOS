@@ -10,30 +10,20 @@ import Foundation
 import RxSwift
 import RxAlamofire
 
+// MARK: IPersonService
 
 protocol IPersonService {
     
     func getDetails(personId: Int, appendToResponse: [String], language: String) -> Observable<Person>
-    
 }
 
-class PersonService: BaseService, IPersonService {
-    var serviceUrl: String = ""
-    
-    override init() {
-        super.init()
-        
-        serviceUrl = "\(baseUrl)person"
-    }
+// MARK: PersonService: IPersonService
+
+class PersonService: IPersonService {
     
     func getDetails(personId: Int, appendToResponse: [String], language: String) -> Observable<Person> {
-        let appendToResponse = createAppendToResponse(appendToResponse: appendToResponse)
-        let parameters = [
-            Constants.TMDB.Parameters.apiKey: Constants.TMDB.API_KEY,
-            Constants.TMDB.Parameters.language: language,
-            "append_to_response": appendToResponse
-        ]
-        let url = "\(serviceUrl)/\(personId)"
+        let url = TMDB.URL.PERSON.buidPersonDetailsUrl(personId: personId)
+        let parameters = TMDB.URL.PERSON.buildPersonDetailsParameters(appendToResponse, language)
         
         return requestJSON(.get, url, parameters: parameters)
             .debug()
