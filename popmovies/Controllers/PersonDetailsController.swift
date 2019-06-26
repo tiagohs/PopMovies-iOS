@@ -13,6 +13,7 @@ class PersonDetailsController: BaseViewController {
     let MovieDetailsControllerIdentifier            = "MovieDetailsControllerIdentifier"
     let ImageListControllerIdentifier               = "ImageListControllerIdentifier"
     let ImageViewerControllerIdentifier             = "ImageViewerControllerIdentifier"
+    let PersonDetailsToMovieListIdentifier          = "PersonDetailsToMovieListIdentifier"
 
     let PersonDetailsHeaderCellIdentifier           = "PersonDetailsHeaderCellIdentifier"
     let PersonDetailsOverviewCellIdentifier         = "PersonDetailsOverviewCellIdentifier"
@@ -76,6 +77,60 @@ class PersonDetailsController: BaseViewController {
         hero.dismissViewController()
     }
     
+    @IBAction func didSeeAllImagesClicked(_ sender: Any) {
+        let allImages = mergeImages()
+        
+        seeAllImages(allImages)
+    }
+    
+    @IBAction func didSeeAllMoviesClicked(_ sender: Any) {
+        performSegue(withIdentifier: PersonDetailsToMovieListIdentifier, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
+    
+    private func mergeMovies() -> [Movie] {
+        let castCredits = person?.movieCredits?.cast?.map({ (creditCast) -> Movie in
+            let movie = Movie()
+            
+            movie.id = creditCast.id
+            movie.title = creditCast.title
+            movie.posterPath = creditCast.posterPath
+            movie.backdropPath = creditCast.backdropPath
+            movie.releaseDate = creditCast.releaseDate
+            
+            return movie
+        }) ?? []
+        let crewCredits = person?.movieCredits?.crew?.map({ (creditCrew) -> Movie in
+            let movie = Movie()
+            
+            movie.id = creditCrew.id
+            movie.title = creditCrew.title
+            movie.posterPath = creditCrew.posterPath
+            movie.backdropPath = creditCrew.backdropPath
+            movie.releaseDate = creditCrew.releaseDate
+            
+            return movie
+        }) ?? []
+        
+        return castCredits + crewCredits
+    }
+    
+    private func mergeImages() -> [Image] {
+        guard let person = self.person else { return [] }
+        let taggedImages = person.taggedImages?.results?.map({ (taggedImagesResults) -> Image in
+            let image = Image()
+            image.filePath = taggedImagesResults.filePath
+            
+            return image
+        }) ?? []
+        let profileImages = person.images?.profile ?? []
+        
+        return taggedImages + profileImages
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var offset = scrollView.contentOffset.y / 155
         
@@ -130,10 +185,6 @@ extension PersonDetailsController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             
-            if cell.headerListener == nil {
-                cell.headerListener = self
-            }
-            
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: PersonDetailsOverviewCellIdentifier, for: indexPath) as? PersonDetailsOverviewCell else {
@@ -178,7 +229,7 @@ extension PersonDetailsController: IPersonDetailsView {
     
 }
 
-extension PersonDetailsController: IKnownForListener, IHeaderListener {
+extension PersonDetailsController: IKnownForListener {
     
     func didMovieSelect(_ movie: Movie) {
         if let controller = self.storyboard!.instantiateViewController(withIdentifier: MovieDetailsControllerIdentifier) as? MovieDetailsController {
@@ -202,14 +253,6 @@ extension PersonDetailsController: IKnownForListener, IHeaderListener {
         controller.person = self.person
         
         self.present(controller, animated: true, completion: nil)
-    }
-    
-    func didSeeAllMoviesHeaderButtonSelect(_ allMovies: [Movie]) {
-        
-    }
-    
-    func didSeeAllImagesHeaderButtonSelect(_ allImages: [Image]) {
-        seeAllImages(allImages)
     }
     
     func didSeeAllImagesSelect(_ allImages: [Image]) {

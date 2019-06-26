@@ -10,7 +10,8 @@ import UIKit
 import Hero
 
 class MovieListController: BaseViewController {
-    let MovieCellIdentifier             = "MovieCellIdentifier"
+    let MovieCellIdentifier                     = "MovieCellIdentifier"
+    let MovieListToMovieListSegueIdentifier     = "MovieListToMovieListSegueIdentifier"
     
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     
@@ -55,6 +56,15 @@ extension MovieListController: UICollectionViewDelegate, UICollectionViewDataSou
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let movies = self.movies else {
+            return
+        }
+        let movie = movies[indexPath.row]
+        
+        performSegue(withIdentifier: MovieListToMovieListSegueIdentifier, sender: movie)
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         showActivityIndicator()
         presenter.fetchMoviesFrom(url: url, parameters: parameters)
@@ -66,6 +76,13 @@ extension MovieListController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return self.cellSize
+    }
+}
+
+extension MovieListController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        MovieDetailsController.prepareMovieDetailsController(segue, sender)
     }
 }
 
@@ -103,6 +120,7 @@ extension MovieListController {
         
         controller.url = url
         controller.parameters = parameters
+        controller.title = "Popular Movies"
     }
     
     static func prepareUpcomingMovieList(segue: UIStoryboardSegue) {
@@ -115,6 +133,7 @@ extension MovieListController {
         
         controller.url = url
         controller.parameters = parameters
+        controller.title = "Upcoming Movies"
     }
     
     static func prepareTopRatedMovieList(segue: UIStoryboardSegue) {
@@ -127,6 +146,52 @@ extension MovieListController {
         
         controller.url = url
         controller.parameters = parameters
+        controller.title = "To Rated Movies"
+    }
+    
+    static func prepareSimilarMoviesList(segue: UIStoryboardSegue, sender: Any?) {
+        guard let uiNavigationController = segue.destination as? UINavigationController,
+            let controller = uiNavigationController.viewControllers.first as? MovieListController,
+            let movie = sender as? Movie, let movieId = movie.id else {
+            return
+        }
+        
+        let url = TMDB.URL.MOVIES.buildSimilarMoviesUrl(movieId: movieId)
+        let parameters = TMDB.URL.MOVIES.buildMovieListParameters()
+        
+        controller.url = url
+        controller.parameters = parameters
+        controller.title = movie.title
+        
+        controller.navigationController?.hero.navigationAnimationType = .slide(direction: .left)
+    }
+    
+    static func prepareMoviesByGenreList(segue: UIStoryboardSegue, sender: Any?) {
+        guard let controller = segue.destination as? MovieListController, let genre = sender as? Genre, let id = genre.id else {
+            return
+        }
+        
+        let url = TMDB.URL.GENRES.buildMovieListByGenreUrl(id)
+        let parameters = TMDB.URL.GENRES.buildMovieListByGenreParameters("BR", 1, "pt_BR")
+        
+        controller.url = url
+        controller.parameters = parameters
+        controller.title = genre.name
+    }
+    
+    static func prepareMoviesByGenreListToUINavigation(segue: UIStoryboardSegue, sender: Any?) {
+        guard let uiNavigationController = segue.destination as? UINavigationController,
+            let controller = uiNavigationController.viewControllers.first as? MovieListController,
+            let genre = sender as? Genre, let id = genre.id else {
+                return
+        }
+        
+        let url = TMDB.URL.GENRES.buildMovieListByGenreUrl(id)
+        let parameters = TMDB.URL.GENRES.buildMovieListByGenreParameters("BR", 1, "pt_BR")
+        
+        controller.url = url
+        controller.parameters = parameters
+        controller.title = genre.name
     }
     
 }

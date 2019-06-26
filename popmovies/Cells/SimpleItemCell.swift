@@ -10,8 +10,11 @@ import UIKit
 
 class SimpleItemCell: UICollectionViewCell {
 
-    @IBOutlet weak var buttonView: UIButton!
-    var simpleItem: SimpleItem? = nil
+    @IBOutlet weak var itemLabel: UILabel!
+    
+    var simpleItem: SimpleItem? {
+        didSet { bindSimpleItem(self.simpleItem!)}
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,16 +29,13 @@ class SimpleItemCell: UICollectionViewCell {
         ])
     }
     
-    func bindSimpleItem(simpleItem: SimpleItem) {
-        self.simpleItem = simpleItem
+    private func bindSimpleItem(_ simpleItem: SimpleItem) {
+        itemLabel.text = simpleItem.text
         
-        buttonView.setTitle("\(String(simpleItem.text))", for: .normal)
-        buttonView.setTitleColor(UIColor.white, for: .normal)
-        buttonView.sizeToFit()
-        buttonView.contentEdgeInsets = UIEdgeInsets(top: 5,left: 10,bottom: 5,right: 10)
-        buttonView.layer.borderColor = UIColor.white.cgColor
-        buttonView.layer.borderWidth = 1.0
-        buttonView.layer.cornerRadius = 5.0
+        itemLabel.layer.borderColor = UIColor.white.cgColor
+        itemLabel.layer.borderWidth = 1.0
+        itemLabel.layer.cornerRadius = 5.0
+        
     }
-
+    
 }

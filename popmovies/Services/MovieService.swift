@@ -67,6 +67,12 @@ class MovieService: IMovieService {
             .mapObject(type: Results<Video>.self)
     }
     
+    func getSimilarMovies(movieId: Int, page: Int, region: String = "BR") -> Observable<Results<Movie>> {
+        let url = TMDB.URL.MOVIES.buildSimilarMoviesUrl(movieId: movieId)
+        
+        return buildMovieList(url: url, region: region, page: page)
+    }
+    
     func getNowPlaying(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
         let url = TMDB.URL.MOVIES.NOW_PLAYING_MOVIES_URL
         

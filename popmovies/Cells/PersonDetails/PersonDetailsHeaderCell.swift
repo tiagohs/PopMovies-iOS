@@ -25,9 +25,11 @@ class PersonDetailsHeaderCell: UITableViewCell {
         didSet { bindPerson(self.person!) }
     }
     
-    var headerListener: IHeaderListener?
     var isProfileImageBind = false
     var isBackdropImageBind = false
+    
+    var allImages: [Image] = []
+    var allMovies: [Movie] = []
     
     func bindBackdropImage(_ person: Person) {
         
@@ -89,34 +91,15 @@ class PersonDetailsHeaderCell: UITableViewCell {
     }
     
     private func bindCounts(_ person: Person) {
-        let castCredits = person.movieCredits?.cast ?? []
-        let crewCredits = person.movieCredits?.crew ?? []
-        let profileImages = person.images?.profile ?? []
-        let taggedImages = person.taggedImages?.results?.map({ (taggedImagesResults) -> Image in
-            let image = Image()
-            image.filePath = taggedImagesResults.filePath
-            
-            return image
-        }) ?? []
+        allMovies = mergeMovies()
+        allImages = mergeImages()
         
-        let totalCredits = castCredits + crewCredits
-        let totalPictures = profileImages + taggedImages
-        
-        totalMoviesLabel.text = String(describing: totalCredits.count)
-        totalPicturesLabel.text = String(describing: totalPictures.count)
+        totalMoviesLabel.text = String(describing: allMovies.count)
+        totalPicturesLabel.text = String(describing: allImages.count)
     }
     
-    @IBAction func didSeeAllImagesClicked(_ sender: Any) {
-        
-        if let person = self.person {
-            let allImages = mergeImages(person)
-            
-            headerListener?.didSeeAllImagesHeaderButtonSelect(allImages) 
-        }
-        
-    }
-    
-    private func mergeImages(_ person: Person) -> [Image] {
+    private func mergeImages() -> [Image] {
+        guard let person = self.person else { return [] }
         let taggedImages = person.taggedImages?.results?.map({ (taggedImagesResults) -> Image in
             let image = Image()
             image.filePath = taggedImagesResults.filePath
@@ -126,6 +109,33 @@ class PersonDetailsHeaderCell: UITableViewCell {
         let profileImages = person.images?.profile ?? []
         
         return taggedImages + profileImages
+    }
+    
+    private func mergeMovies() -> [Movie] {
+        let castCredits = person?.movieCredits?.cast?.map({ (creditCast) -> Movie in
+            let movie = Movie()
+            
+            movie.id = creditCast.id
+            movie.title = creditCast.title
+            movie.posterPath = creditCast.posterPath
+            movie.backdropPath = creditCast.backdropPath
+            movie.releaseDate = creditCast.releaseDate
+            
+            return movie
+        }) ?? []
+        let crewCredits = person?.movieCredits?.crew?.map({ (creditCrew) -> Movie in
+            let movie = Movie()
+            
+            movie.id = creditCrew.id
+            movie.title = creditCrew.title
+            movie.posterPath = creditCrew.posterPath
+            movie.backdropPath = creditCrew.backdropPath
+            movie.releaseDate = creditCrew.releaseDate
+            
+            return movie
+        }) ?? []
+        
+        return castCredits + crewCredits
     }
     
     @IBAction func didFacebookClicked() {
@@ -152,9 +162,4 @@ class PersonDetailsHeaderCell: UITableViewCell {
             UIApplication.shared.open(myURL)
         }
     }
-}
-
-protocol IHeaderListener {
-    func didSeeAllImagesHeaderButtonSelect(_ allImages: [Image])
-    func didSeeAllMoviesHeaderButtonSelect(_ allMovies: [Movie])
 }

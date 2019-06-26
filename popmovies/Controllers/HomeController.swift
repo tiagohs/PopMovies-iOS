@@ -149,14 +149,15 @@ extension HomeController: MovieListCallback {
 extension HomeController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let cellIdentifier = sender as? String else {
-            return
-        }
         
         switch segue.identifier {
         case MovieDetailsSegueIdentifier:
             return MovieDetailsController.prepareMovieDetailsController(segue, sender)
         case HomeShowMovieListSegueIdentifier:
+            guard let cellIdentifier = sender as? String else {
+                return
+            }
+            
             return prepareBy(segue, cellIdentifier: cellIdentifier)
         default:
             return

@@ -59,6 +59,10 @@ class MovieDetailsRelatedCell: UITableViewCell {
         self.budgetView.text = movieRanking.boxOffice
     }
     
+    @IBAction func didSeeAllRelatedMoviesClicked(_ sender: Any?) {
+        relatedMoviesListener?.didSeeAllRelatedMoviesClicked()
+    }
+    
     private func setupCells() {
         configureNibs(relatedMoviesCollectionView, nibName: "MovieSmallCell", identifier: movieCellIdentifier)
     }
@@ -103,4 +107,5 @@ extension MovieDetailsRelatedCell: UICollectionViewDelegate, UICollectionViewDat
 
 protocol IRelatedMoviesListener {
     func didMovieSelect(_ movie: Movie)
+    func didSeeAllRelatedMoviesClicked()
 }

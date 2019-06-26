@@ -47,6 +47,12 @@ struct TMDB {
                 return "\(movieDetailsUrl)/images"
             }
             
+            static func buildSimilarMoviesUrl(movieId: Int) -> String {
+                let movieDetailsUrl = buidMovieDetailsUrl(movieId: movieId)
+                
+                return "\(movieDetailsUrl)/similar"
+            }
+            
             static func buildMovieListParameters(_ region: String = "BR",_ page: Int = 1,_ language: String = "pt_BR") -> [String : String] {
                 return [
                     Parameters.apiKey: API_KEY,
@@ -114,14 +120,22 @@ struct TMDB {
         }
         
         struct GENRES {
-            static let BASE_URL         = "\(TMDB.BASE_URL)genre"
-            static let GENRES_LIST      = "\(BASE_URL)/movie/list"
+            static let BASE_URL                 = "\(TMDB.BASE_URL)genre"
+            static let GENRES_LIST_URL          = "\(BASE_URL)/movie/list"
+            
+            static func buildMovieListByGenreUrl(_ genreId: Int) -> String {
+                return "\(BASE_URL)/\(String(describing: genreId))/movies"
+            }
             
             static func buildPersonDetailsParameters(_ language: String) -> [String : String] {
                 return [
                     Parameters.apiKey: API_KEY,
                     Parameters.language: language
                 ]
+            }
+            
+            static func buildMovieListByGenreParameters(_ region: String = "BR",_ page: Int = 1,_ language: String = "pt_BR") -> [ String : String ] {
+                return MOVIES.buildMovieListParameters(region, page, language)
             }
         }
         

@@ -10,7 +10,9 @@ import UIKit
 import Hero
 
 class GenresController: BaseViewController {
-    let GenreCellIdentifier = "GenreCellIdentifier"
+    let GenreCellIdentifier                     = "GenreCellIdentifier"
+    
+    let GenreShowMovieListSegueIdentifier       = "GenreShowMovieListSegueIdentifier"
     
     @IBOutlet weak var genresCollectionView: UICollectionView!
     
@@ -50,6 +52,12 @@ extension GenresController: UICollectionViewDelegate, UICollectionViewDataSource
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let genre = genres[indexPath.row]
+        
+        performSegue(withIdentifier: GenreShowMovieListSegueIdentifier, sender: genre)
+    }
+    
 }
 
 extension GenresController: UICollectionViewDelegateFlowLayout {
@@ -59,6 +67,15 @@ extension GenresController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: Prepare Segues
+
+extension GenresController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        MovieListController.prepareMoviesByGenreList(segue: segue, sender: sender)
+    }
+    
+}
 extension GenresController: IGenresView {
     
     func bindgenres(genres: [Genre]) {

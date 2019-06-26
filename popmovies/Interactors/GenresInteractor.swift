@@ -20,6 +20,6 @@ class GenresIntractor: IGenresInteractor {
     func fetchGenres() -> Observable<[Genre]> {
         let language = "pt_BR"
         
-        return service.fetchGenres(language: language)
+        return service.getGenres(language: language)
     }
 }

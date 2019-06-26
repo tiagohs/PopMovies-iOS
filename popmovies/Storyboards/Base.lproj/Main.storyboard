@@ -98,11 +98,12 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="moviesCollectionView" destination="WOI-Go-HWX" id="jwa-2v-iHk"/>
+                        <segue destination="ag3-Id-TTr" kind="presentation" identifier="MovieListToMovieListSegueIdentifier" id="NY9-Ax-6xf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7yz-a5-Sfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3724" y="41"/>
+            <point key="canvasLocation" x="3724" y="366"/>
         </scene>
         <!--Genres-->
         <scene sceneID="QYx-cm-YKk">
@@ -144,6 +145,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="genresCollectionView" destination="lta-2d-rX8" id="jXU-52-Cmr"/>
+                        <segue destination="HLz-Zh-9Y4" kind="show" identifier="GenreShowMovieListSegueIdentifier" id="hwS-CG-3u7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fC9-t8-D6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -169,6 +171,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9h-Ne-HWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2567.1999999999998" y="1361.8226600985222"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zgE-4r-7Zf">
+            <objects>
+                <navigationController id="tlK-Np-rIa" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2GO-bY-UBF">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HLz-Zh-9Y4" kind="relationship" relationship="rootViewController" id="wL5-LE-Cmb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kYs-DF-qad" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5156" y="616"/>
         </scene>
         <!--Image List Controller-->
         <scene sceneID="FYj-6t-XD1">
@@ -266,11 +286,12 @@
                         <outlet property="imageQuantityLabel" destination="7jp-Jb-7Ct" id="2I7-fo-2RA"/>
                         <outlet property="nameLabel" destination="zhk-yM-fhH" id="5ir-sh-Icn"/>
                         <outlet property="posterImage" destination="YNI-Bg-Vkh" id="qt1-Fy-Cy8"/>
+                        <segue destination="lfs-eD-K9w" kind="presentation" id="XP3-8h-33n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tsx-zj-yks" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6141.6000000000004" y="360.59113300492612"/>
+            <point key="canvasLocation" x="4668" y="-133"/>
         </scene>
         <!--Video List Controller-->
         <scene sceneID="oKt-VC-P4u">
@@ -331,11 +352,12 @@
                         <outlet property="backButton" destination="ea0-ET-Cib" id="Hcb-TO-15c"/>
                         <outlet property="videoListCollectionView" destination="8tA-XW-dT3" id="494-w6-dGW"/>
                         <outlet property="videoListCollectionViewFlow" destination="AnT-w9-jjU" id="1K6-OD-vBF"/>
+                        <segue destination="kDA-lu-wzf" kind="presentation" id="yb2-cl-XVK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zXX-ba-Jcx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6141.6000000000004" y="1100.9852216748768"/>
+            <point key="canvasLocation" x="3724" y="-1627"/>
         </scene>
         <!--Image Viewer Controller-->
         <scene sceneID="7Oe-7k-nBE">
@@ -456,7 +478,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6936.8000000000002" y="360.59113300492612"/>
+            <point key="canvasLocation" x="5612" y="-133"/>
         </scene>
         <!--Video Viewer Controller-->
         <scene sceneID="D7k-B4-PFm">
@@ -546,7 +568,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6936.8000000000002" y="1100.9852216748768"/>
+            <point key="canvasLocation" x="4668" y="-1627"/>
         </scene>
         <!--Início-->
         <scene sceneID="8Mq-h9-j2e">
@@ -1002,9 +1024,9 @@
                                                             </constraints>
                                                         </view>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQ7-fo-etr">
-                                                            <rect key="frame" x="140" y="129.33333333333331" width="225" height="25"/>
+                                                            <rect key="frame" x="140" y="127.33333333333331" width="225" height="30"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="25" id="3VS-1r-K1u"/>
+                                                                <constraint firstAttribute="height" constant="30" id="3VS-1r-K1u"/>
                                                             </constraints>
                                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="w8x-6w-j5E">
                                                                 <size key="itemSize" width="71" height="25"/>
@@ -1014,31 +1036,43 @@
                                                             </collectionViewFlowLayout>
                                                             <cells>
                                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimpleItemCellIdentifier" id="jS3-O7-NBv" customClass="SimpleItemCell" customModule="popmovies" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="71" height="25"/>
+                                                                    <rect key="frame" x="0.0" y="2.6666666666666665" width="71" height="25"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                         <rect key="frame" x="0.0" y="0.0" width="71" height="25"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="til-qF-JNm">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="71" height="25"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="height" constant="25" id="O39-Ra-WuL"/>
-                                                                                </constraints>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lc0-Yi-HNN" customClass="UIPaddingLabel" customModule="popmovies" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="71" height="30"/>
                                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                                                                <state key="normal" title="Button"/>
-                                                                            </button>
+                                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                                        <real key="value" value="10"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                                        <real key="value" value="10"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                            </label>
                                                                         </subviews>
                                                                     </view>
                                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="trailing" secondItem="til-qF-JNm" secondAttribute="trailing" id="Icj-Fs-Fbk"/>
-                                                                        <constraint firstItem="til-qF-JNm" firstAttribute="top" secondItem="jS3-O7-NBv" secondAttribute="top" id="Ijm-0r-Ud0"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="til-qF-JNm" secondAttribute="bottom" id="oVU-NC-Gb8"/>
-                                                                        <constraint firstItem="til-qF-JNm" firstAttribute="leading" secondItem="jS3-O7-NBv" secondAttribute="leading" id="wye-fv-ZH4"/>
+                                                                        <constraint firstItem="Lc0-Yi-HNN" firstAttribute="top" secondItem="jS3-O7-NBv" secondAttribute="top" id="8bu-U0-Klq"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="Lc0-Yi-HNN" secondAttribute="trailing" id="Ca0-sE-7r9"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="Lc0-Yi-HNN" secondAttribute="bottom" id="StA-fm-emu"/>
+                                                                        <constraint firstItem="Lc0-Yi-HNN" firstAttribute="leading" secondItem="jS3-O7-NBv" secondAttribute="leading" id="ycS-1D-0wT"/>
                                                                     </constraints>
                                                                     <connections>
-                                                                        <outlet property="buttonView" destination="til-qF-JNm" id="JRL-MV-LLm"/>
+                                                                        <outlet property="itemLabel" destination="Lc0-Yi-HNN" id="tB6-kb-DgU"/>
                                                                     </connections>
                                                                 </collectionViewCell>
                                                             </cells>
@@ -1072,7 +1106,7 @@
                                                         <constraint firstItem="rQ7-fo-etr" firstAttribute="leading" secondItem="IXR-68-xpN" secondAttribute="trailing" constant="10" id="jUw-5Z-Fda"/>
                                                         <constraint firstItem="fq7-Ht-fL5" firstAttribute="firstBaseline" secondItem="79A-ZE-ele" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="l5e-yg-602"/>
                                                         <constraint firstItem="Uwn-js-tm5" firstAttribute="leading" secondItem="IXR-68-xpN" secondAttribute="trailing" constant="10" id="oCM-Wu-LtE"/>
-                                                        <constraint firstItem="rQ7-fo-etr" firstAttribute="top" secondItem="fq7-Ht-fL5" secondAttribute="bottom" constant="10" id="pPu-fB-jY5"/>
+                                                        <constraint firstItem="rQ7-fo-etr" firstAttribute="top" secondItem="fq7-Ht-fL5" secondAttribute="bottom" constant="8" id="pPu-fB-jY5"/>
                                                         <constraint firstAttribute="trailing" secondItem="rQ7-fo-etr" secondAttribute="trailing" constant="10" id="paT-RC-2gO"/>
                                                         <constraint firstItem="fq7-Ht-fL5" firstAttribute="leading" secondItem="IXR-68-xpN" secondAttribute="trailing" constant="43" id="qzH-oj-zV7"/>
                                                         <constraint firstAttribute="trailing" secondItem="Uwn-js-tm5" secondAttribute="trailing" constant="16" id="uB9-l4-7iZ"/>
@@ -1409,6 +1443,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                     <state key="normal" title="See All"/>
+                                                    <connections>
+                                                        <action selector="didSeeAllRelatedMoviesClicked:" destination="sWY-9x-tr5" eventType="touchUpInside" id="Oua-MY-IoG"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Azi-BT-XVw">
                                                     <rect key="frame" x="15.999999999999996" y="241.33333333333334" width="56.666666666666657" height="27.000000000000028"/>
@@ -1726,8 +1763,15 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="closeButton" destination="Wof-UY-0eU" id="wp8-Qn-9Fc"/>
+                        <outlet property="panGesture" destination="aFx-uZ-5VW" id="Z73-M2-iDM"/>
                         <outlet property="shareButton" destination="3oF-Wv-8pT" id="hCT-y8-Jip"/>
                         <outlet property="tableView" destination="8et-Rc-4Zd" id="7Ll-ir-akM"/>
+                        <segue destination="ZWk-TC-GzC" kind="presentation" id="l63-Kz-nUf"/>
+                        <segue destination="cB0-fM-Lvb" kind="presentation" id="9rW-MS-7MG"/>
+                        <segue destination="lfs-eD-K9w" kind="presentation" id="Rew-DY-8Su"/>
+                        <segue destination="hOV-Id-q0E" kind="presentation" id="GSR-Cw-TNi"/>
+                        <segue destination="kDA-lu-wzf" kind="presentation" id="SDY-zf-33V"/>
+                        <segue destination="tlK-Np-rIa" kind="show" identifier="MovieDetailsToMovieListSegueIdentifier" id="QVK-xN-xmu"/>
                     </connections>
                 </viewController>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="aFx-uZ-5VW">
@@ -1881,12 +1925,16 @@
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <gestureRecognizers/>
                                                             <constraints>
                                                                 <constraint firstItem="sQ3-Nl-5Vc" firstAttribute="centerX" secondItem="1GZ-Ai-oQS" secondAttribute="centerX" id="CEz-8P-YxB"/>
                                                                 <constraint firstItem="sQ3-Nl-5Vc" firstAttribute="top" secondItem="Aof-Iq-nyX" secondAttribute="bottom" constant="9" id="Duz-ni-dfh"/>
                                                                 <constraint firstItem="Aof-Iq-nyX" firstAttribute="centerX" secondItem="1GZ-Ai-oQS" secondAttribute="centerX" id="aQK-Ni-LGX"/>
                                                                 <constraint firstAttribute="bottom" secondItem="sQ3-Nl-5Vc" secondAttribute="bottom" constant="15" id="zeX-yI-BDs"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="zYs-ep-ftu" appends="YES" id="vjS-QF-myC"/>
+                                                            </connections>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrX-ag-5E4">
                                                             <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="110"/>
@@ -1908,12 +1956,16 @@
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <gestureRecognizers/>
                                                             <constraints>
                                                                 <constraint firstItem="qIf-U3-yVf" firstAttribute="centerX" secondItem="SrX-ag-5E4" secondAttribute="centerX" id="51t-e8-f5L"/>
                                                                 <constraint firstItem="qIf-U3-yVf" firstAttribute="top" secondItem="R4R-Hm-Mwp" secondAttribute="bottom" constant="9" id="5Ne-eT-Pva"/>
                                                                 <constraint firstItem="R4R-Hm-Mwp" firstAttribute="centerX" secondItem="SrX-ag-5E4" secondAttribute="centerX" id="MMe-ls-pS5"/>
                                                                 <constraint firstAttribute="bottom" secondItem="qIf-U3-yVf" secondAttribute="bottom" constant="15" id="SWD-Ey-oIz"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="42O-2q-dNS" appends="YES" id="vkj-t0-CJU"/>
+                                                            </connections>
                                                         </view>
                                                     </subviews>
                                                     <constraints>
@@ -2326,6 +2378,8 @@
                         <outlet property="backButton" destination="wpo-ut-JVX" id="TMX-LJ-lTN"/>
                         <outlet property="shareButton" destination="VMv-Zh-5NW" id="rk0-IN-KEk"/>
                         <outlet property="tableView" destination="KUp-QV-pyL" id="n1T-hK-9kl"/>
+                        <segue destination="lfs-eD-K9w" kind="presentation" id="0id-y1-ljg"/>
+                        <segue destination="tlK-Np-rIa" kind="show" identifier="PersonDetailsToMovieListIdentifier" id="Y1R-tw-geC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIm-bG-PUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2334,8 +2388,18 @@
                         <action selector="handlePan:" destination="ZWk-TC-GzC" id="AYM-Ra-CqM"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="zYs-ep-ftu">
+                    <connections>
+                        <action selector="didSeeAllMoviesClicked:" destination="ZWk-TC-GzC" id="bqD-5J-kbp"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="42O-2q-dNS">
+                    <connections>
+                        <action selector="didSeeAllImagesClicked:" destination="ZWk-TC-GzC" id="Scv-PX-hM0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5917.6000000000004" y="-475.1231527093596"/>
+            <point key="canvasLocation" x="4668" y="-952"/>
         </scene>
         <!--Home-->
         <scene sceneID="lQU-9e-pei">
@@ -2393,6 +2457,7 @@
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2421,7 +2486,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ydr-tl-P4h">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2450,4 +2516,11 @@
         <image name="TwitterIcon-white" width="26.666666030883789" height="26.666666030883789"/>
         <image name="WikiIcon-white" width="33.333332061767578" height="33.333332061767578"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="NY9-Ax-6xf"/>
+        <segue reference="SDY-zf-33V"/>
+        <segue reference="0id-y1-ljg"/>
+        <segue reference="Y1R-tw-geC"/>
+        <segue reference="wL5-LE-Cmb"/>
+    </inferredMetricsTieBreakers>
 </document>

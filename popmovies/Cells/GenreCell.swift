@@ -39,7 +39,7 @@ class GenreCell: UICollectionViewCell {
         if let imageName = genre.imageName {
             let image = UIImage(named: imageName)
             
-            genreImageView.setImage(image: image, animation: .transitionCrossDissolve) 
+            genreImageView.setImage(image: image, animation: .transitionCrossDissolve)
         }
         
         if !isBind {

@@ -13,6 +13,8 @@ import Hero
 // MARK: MovieDetailsController: BaseViewController
 
 class MovieDetailsController: BaseViewController {
+    let MovieDetailsToMovieListSegueIdentifier      = "MovieDetailsToMovieListSegueIdentifier"
+    
     let PersonDetailsIdentifier                     = "PersonDetailsIdentifier"
     let MovieDetailsControllerIdentifier            = "MovieDetailsControllerIdentifier"
     let ImageViewerControllerIdentifier             = "ImageViewerControllerIdentifier"
@@ -29,6 +31,7 @@ class MovieDetailsController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var panGesture: UIPanGestureRecognizer!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -120,6 +123,113 @@ class MovieDetailsController: BaseViewController {
     }
 }
 
+extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsHeaderCellIdentifier, for: indexPath) as! MovieDetailsHeaderCell
+            
+            if (self.movie != nil) { cell.movie = self.movie }
+            if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
+            if (cell.movieDetailsHeaderListener == nil) { cell.movieDetailsHeaderListener = self }
+            
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsOverviewIdentifier, for: indexPath) as? MovieDetailsOverviewCell else {
+                return UITableViewCell()
+            }
+            
+            if (self.movie != nil) { cell.movie = self.movie }
+            if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
+            
+            return cell
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsCreditsCellIdentifier, for: indexPath) as? MovieDetailsCreditsCell else {
+                return UITableViewCell()
+            }
+            
+            if (self.movie != nil) { cell.movie = self.movie }
+            if (cell.personListener == nil) {
+                cell.personListener = self
+            }
+            
+            return cell
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsMidiaCellIdentifier, for: indexPath) as? MovieDetailsMidiaCell else {
+                return UITableViewCell()
+            }
+            
+            if (self.movie != nil) { cell.movie = self.movie }
+            if (cell.midiaListener == nil) { cell.midiaListener = self }
+            
+            return cell
+        case 4:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsRelatedCellIdentifier, for: indexPath) as? MovieDetailsRelatedCell else {
+                return UITableViewCell()
+            }
+            
+            if (self.movie != nil) { cell.movie = self.movie }
+            if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
+            if (cell.relatedMoviesListener == nil) {
+                cell.relatedMoviesListener = self
+            }
+            
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
+    
+    @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: nil)
+        let progress = translation.y / 2 / view.bounds.height
+        
+        switch sender.state {
+        case .began:
+            dismiss()
+        case .changed:
+            Hero.shared.update(progress)
+            
+            let currentPos = CGPoint(x: translation.x + view.center.x, y: translation.y + view.center.y)
+            
+            Hero.shared.apply(modifiers: [.position(currentPos)], to: view)
+        default:
+            if progress + sender.velocity(in: nil).y / view.bounds.height > 0.2 {
+                Hero.shared.finish()
+            } else {
+                Hero.shared.cancel()
+            }
+        }
+    }
+    
+    @IBAction func dismiss() {
+        hero.dismissViewController()
+    }
+}
+
+extension MovieDetailsController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (sender as? Movie) != nil {
+            MovieListController.prepareSimilarMoviesList(segue: segue, sender: sender)
+            return
+        }
+        
+        if (sender as? Genre) != nil {
+            MovieListController.prepareMoviesByGenreListToUINavigation(segue: segue, sender: sender)
+            return
+        }
+        
+    }
+}
+
 extension MovieDetailsController: IMovieDetailsView {
     
     func bindMovie(movie: Movie) {
@@ -166,96 +276,11 @@ extension MovieDetailsController: TabBarCallback {
     
 }
 
-extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsHeaderCellIdentifier, for: indexPath) as! MovieDetailsHeaderCell
-            
-            if (self.movie != nil) { cell.movie = self.movie }
-            if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
-            
-            return cell
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsOverviewIdentifier, for: indexPath) as? MovieDetailsOverviewCell else {
-                return UITableViewCell()
-            }
-            
-            if (self.movie != nil) { cell.movie = self.movie }
-            if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
-            
-            return cell
-        case 2:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsCreditsCellIdentifier, for: indexPath) as? MovieDetailsCreditsCell else {
-                return UITableViewCell()
-            }
-            
-            if (self.movie != nil) { cell.movie = self.movie }
-            if (cell.personListener == nil) {
-                cell.personListener = self
-            }
-            
-            return cell
-        case 3:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsMidiaCellIdentifier, for: indexPath) as? MovieDetailsMidiaCell else {
-                return UITableViewCell()
-            }
-        
-            if (self.movie != nil) { cell.movie = self.movie }
-            if (cell.midiaListener == nil) { cell.midiaListener = self }
-            
-            return cell
-        case 4:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsRelatedCellIdentifier, for: indexPath) as? MovieDetailsRelatedCell else {
-                return UITableViewCell()
-            }
-        
-            if (self.movie != nil) { cell.movie = self.movie }
-            if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
-            if (cell.relatedMoviesListener == nil) {
-                cell.relatedMoviesListener = self
-            }
-        
-            return cell
-        default:
-            return UITableViewCell()
-        }
-    }
-    
-    @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: nil)
-        let progress = translation.y / 2 / view.bounds.height
-        
-        switch sender.state {
-        case .began:
-            dismiss()
-        case .changed:
-            Hero.shared.update(progress)
-            
-            let currentPos = CGPoint(x: translation.x + view.center.x, y: translation.y + view.center.y)
-            
-            Hero.shared.apply(modifiers: [.position(currentPos)], to: view)
-        default:
-            if progress + sender.velocity(in: nil).y / view.bounds.height > 0.2 {
-                Hero.shared.finish()
-            } else {
-                Hero.shared.cancel()
-            }
-        }
-    }
-    
-    @IBAction func dismiss() {
-        hero.dismissViewController()
-    }
-}
-
-extension MovieDetailsController: IPersonListener, IRelatedMoviesListener, IMidiaListener {
+extension MovieDetailsController:
+        IPersonListener,
+        IRelatedMoviesListener,
+        IMidiaListener,
+        IMovieDetailsHeaderListener {
     
     func didPersonSelect(_ person: Person) {
         if let controller = self.storyboard!.instantiateViewController(withIdentifier: PersonDetailsIdentifier) as? PersonDetailsController {
@@ -275,6 +300,10 @@ extension MovieDetailsController: IPersonListener, IRelatedMoviesListener, IMidi
             
             self.show(controller, sender: nil)
         }
+    }
+    
+    func didSeeAllRelatedMoviesClicked() {
+        performSegue(withIdentifier: MovieDetailsToMovieListSegueIdentifier, sender: self.movie)
     }
     
     func didImageSelected(_ image: Image, _ allImages: [Image], indexPath: IndexPath) {
@@ -321,6 +350,10 @@ extension MovieDetailsController: IPersonListener, IRelatedMoviesListener, IMidi
         controller.movie = self.movie
         
         self.present(controller, animated: true, completion: nil)
+    }
+    
+    func didGenreSelected(_ genre: Genre) {
+        performSegue(withIdentifier: MovieDetailsToMovieListSegueIdentifier, sender: genre)
     }
     
 }

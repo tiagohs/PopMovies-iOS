@@ -43,7 +43,8 @@ class MovieDetailsHeaderCell: UITableViewCell {
         didSet { bindMovieRankings(movieRanking: movieRanking!) }
     }
     
-    var movieColors: UIImageColors? = nil
+    var movieColors: UIImageColors?
+    var movieDetailsHeaderListener: IMovieDetailsHeaderListener?
     
     var isImagesBind = false
     
@@ -154,17 +155,28 @@ extension MovieDetailsHeaderCell: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: simpleItemCellIdentifier, for: indexPath) as! SimpleItemCell
-        
-        if let genres = movie?.genres {
-            let genre = genres[indexPath.row]
-            
-            cell.bindSimpleItem(simpleItem: SimpleItem(id: genre.id!, text: genre.name!))
-            return cell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: simpleItemCellIdentifier, for: indexPath) as? SimpleItemCell, let genres = movie?.genres else {
+            return UICollectionViewCell()
         }
+        let genre = genres[indexPath.row]
         
-        return UICollectionViewCell()
+        cell.simpleItem = SimpleItem(id: genre.id!, text: genre.name!)
+        
+        return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let genres = self.movie?.genres else {
+            return
+        }
+        let genre = genres[indexPath.row]
+        
+        movieDetailsHeaderListener?.didGenreSelected(genre)
+    }
     
+}
+
+protocol IMovieDetailsHeaderListener {
+    
+    func didGenreSelected(_ genre: Genre)
 }
