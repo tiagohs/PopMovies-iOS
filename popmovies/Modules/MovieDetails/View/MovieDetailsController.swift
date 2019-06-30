@@ -43,7 +43,6 @@ class MovieDetailsController: BaseViewController {
     
     var movie: Movie? = nil
     var movieRankings: MovieOMDB? = nil
-    
 }
 
 // MARK: Lifecycle Methods
@@ -66,7 +65,6 @@ extension MovieDetailsController {
         super.viewDidLoad()
         
         self.presenter?.viewDidLoad()
-        self.presenter?.fetchMovieDetails(movie: movie)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -212,16 +210,7 @@ extension MovieDetailsController: MovieDetailsViewInterface {
     
     
     func showMovie(with movie: Movie) {
-        self.movie?.credits = movie.credits
-        self.movie?.keywords = movie.keywords
-        self.movie?.runtime = movie.runtime
-        self.movie?.videos = movie.videos
-        self.movie?.images = movie.images
-        self.movie?.homepage = movie.homepage
-        self.movie?.productionCompanies = movie.productionCompanies
-        self.movie?.productionCountries = movie.productionCountries
-        self.movie?.similiarMovies = movie.similiarMovies
-        self.movie?.genres = movie.genres
+        self.movie = movie
         
         self.tableView.reloadData()
     }
@@ -255,6 +244,7 @@ extension MovieDetailsController: MovieDetailsHeaderDelegate {
 // MARK: MovieDetailsCreditsDelegate
 
 extension MovieDetailsController: MovieDetailsOverviewDelegate {
+    
     func didImdbLinkButtonClicked() {
         guard let imdbURL = URLUtils.formatIMDBUrl(imdbId: movie?.imdbID) else { return }
         
@@ -273,12 +263,6 @@ extension MovieDetailsController: MovieDetailsOverviewDelegate {
         self.presenter?.didSelectLink(url: wikiUrl)
     }
 
-    private func openLink(link: String) {
-        if let encoded = link.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
-            let myURL = URL(string: encoded) {
-            UIApplication.shared.open(myURL)
-        }
-    }
 }
 
 // MARK: MovieDetailsCreditsDelegate
@@ -300,7 +284,7 @@ extension MovieDetailsController: MovieDetailsRelatedDelegate {
     }
     
     func didSeeAllRelatedMoviesClicked() {
-        self.presenter?.didSeeAllRelatedMoviesClicked(self.movie)
+        self.presenter?.didSeeAllRelatedMoviesClicked()
     }
     
 }
@@ -310,31 +294,19 @@ extension MovieDetailsController: MovieDetailsRelatedDelegate {
 extension MovieDetailsController: MovieDetailsMidiaDelegate {
     
     func didImageSelected(_ image: Image, _ allImages: [Image], indexPath: IndexPath) {
-        self.presenter?.didSelectImage(image, allImages, movie)
+        self.presenter?.didSelectImage(image, allImages, indexPath: indexPath)
     }
     
     func didVideoSelected(_ video: Video, _ allVideos: [Video]) {
-        self.presenter?.didSelectVideo(video, allVideos, movie)
+        self.presenter?.didSelectVideo(video, allVideos)
     }
     
     func didSeeAllVideosClicked(_ allVideos: [Video]) {
-        self.presenter?.didSeeAllVideosClicked(allVideos, movie)
+        self.presenter?.didSeeAllVideosClicked(allVideos)
     }
     
     func didSeeAllWallpapersClicked(_ allImages: [Image]) {
-        self.presenter?.didSeeAllWallpapersClicked(allImages, movie)
-    }
-    
-}
-
-// MARK: TabBarCallback
-
-extension MovieDetailsController: TabBarCallback {
-    
-    func onTabBarSelect(index: Int) {
-        if index == 0 && isTabMidiaConfigured { return }
-        
-        isTabMidiaConfigured = true
+        self.presenter?.didSeeAllWallpapersClicked(allImages)
     }
     
 }

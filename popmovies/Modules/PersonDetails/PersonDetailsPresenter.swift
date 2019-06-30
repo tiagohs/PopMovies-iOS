@@ -8,31 +8,113 @@
 
 import RxSwift
 
-class PersonDetailsPresenter: BasePresenter, IPersonDetailsPresenter {
+ // MARK: PersonDetailsPresenter
+
+class PersonDetailsPresenter {
     
-    var view: IPersonDetailsView!
-    var interactor: IPersonDetailsInteractor!
+     // MARK: Properties
     
-    init(view: IPersonDetailsView) {
+    var view: PersonDetailsViewInterface?
+    var interactor: PersonDetailsInteractorInputInterface?
+    var wireframe: PersonDetailsWireframsInterface?
+    
+    var person: Person?
+    
+    init(view: PersonDetailsViewInterface?) {
         self.view = view
-        self.interactor = PersonDetailsInteractor()
     }
     
-    func fetchPersonDetails(personId: Int?) {
-        guard let personId = personId else {
-            
+}
+
+
+// MARK: PersonDetailsPresenterInterface - Lifecycle methods
+
+extension PersonDetailsPresenter: PersonDetailsPresenterInterface {
+    
+    func viewDidLoad() {
+        self.view?.setupUI()
+        
+        self.fetchPersonDetails()
+    }
+    
+    func viewDidDisappear(_ animated: Bool) {
+        self.interactor?.outputFinished()
+        self.interactor = nil
+        self.view = nil
+    }
+    
+    func viewWillAppear(_ animated: Bool) {}
+    
+    func viewWillDisappear(_ animated: Bool) {}
+    
+}
+
+// MARK: PersonDetailsPresenterInterface - Fetch methods
+
+extension PersonDetailsPresenter {
+    
+    func fetchPersonDetails() {
+        guard let personId = self.person?.id else {
+            self.view?.onError(message: "Erro ao buscar mais informações sobre essa pessoa.")
             return
         }
         
-        add(interactor.fetchPersonDetails(personId: personId)
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (person) in
-                self.view.bindPerson(person: person)
-            }, onError: { (error) in
-                //
-            })
-        )
+        self.interactor?.fetchPersonDetails(personId)
+    }
+    
+}
+
+// MARK: PersonDetailsPresenter - User click methods
+
+extension PersonDetailsPresenter {
+    
+    func didSelectMovie(_ movie: Movie) {
+        wireframe?.presentDetails(for: movie)
+    }
+    
+    func didImageSelect(_ image: Image, indexPath: IndexPath) {
+        guard let person = self.person, !person.allImages.isEmpty else {
+            return
+        }
+        
+        wireframe?.presentImageViewer(for: image, person.allImages, person, indexPath: indexPath)
+    }
+    
+    func didSeeAllImagesClicked() {
+        guard let person = self.person, !person.allImages.isEmpty else {
+            return
+        }
+        
+        wireframe?.pushToImageList(person.allImages, person)
+    }
+    
+    func didLinkClicked(with url: String) {
+        wireframe?.presentExternalLink(from: url)
+    }
+    
+    func didSeeAllMoviesClicked() {
+        guard let person = self.person,
+            !person.allMovieCredits.isEmpty else {
+            return
+        }
+        
+        wireframe?.pushToMovieList(person.allMovieCredits, person)
+    }
+    
+}
+
+// MARK: PersonDetailsInteractorOutputInterface
+
+extension PersonDetailsPresenter: PersonDetailsInteractorOutputInterface {
+    
+    func personDetailsDidFetch(_ person: Person) {
+        self.person = person
+        
+        self.view?.showPerson(with: person)
+    }
+    
+    func personDetailsDidError(_ error: DefaultError) {
+        self.view?.onError(message: error.message)
     }
     
 }

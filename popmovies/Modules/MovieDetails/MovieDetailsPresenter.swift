@@ -16,6 +16,9 @@ class MovieDetailsPresenter {
     var interactor: MovieDetailsInteractorInputInterface?
     var wireframe: MovieDetailsWireframeInterface?
     
+    var movie: Movie? = nil
+    var movieRankings: MovieOMDB? = nil
+    
     init(view: MovieDetailsViewInterface?) {
         self.view = view
     }
@@ -28,6 +31,7 @@ extension MovieDetailsPresenter: MovieDetailsPresenterInterface {
     
     func viewDidLoad() {
         self.view?.setupUI()
+        self.fetchMovieDetails()
     }
     
     func viewDidDisappear(_ animated: Bool) {
@@ -45,8 +49,8 @@ extension MovieDetailsPresenter: MovieDetailsPresenterInterface {
 
 extension MovieDetailsPresenter {
     
-    func fetchMovieDetails(movie: Movie?) {
-        guard let movie = movie else {
+    func fetchMovieDetails() {
+        guard let movie = self.movie else {
             return
         }
         
@@ -70,40 +74,40 @@ extension MovieDetailsPresenter {
         wireframe?.presentExternalLink(from: url)
     }
     
-    func didSelectImage(_ image: Image, _ allImages: [Image], _ movie: Movie?) {
-        guard let movie = movie else {
+    func didSelectImage(_ image: Image, _ allImages: [Image], indexPath: IndexPath) {
+        guard let movie = self.movie else {
             return
         }
         
-        wireframe?.presentImageViewer(for: image, allImages, movie)
+        wireframe?.presentImageViewer(for: image, allImages, movie, indexPath: indexPath)
     }
     
-    func didSelectVideo(_ video: Video, _ allVideos: [Video], _ movie: Movie?) {
-        guard let movie = movie else {
+    func didSelectVideo(_ video: Video, _ allVideos: [Video]) {
+        guard let movie = self.movie else {
             return
         }
         
         wireframe?.presentVideoViewer(for: video, allVideos, movie)
     }
     
-    func didSeeAllVideosClicked(_ allVideos: [Video], _ movie: Movie?) {
-        guard let movie = movie else {
+    func didSeeAllVideosClicked(_ allVideos: [Video]) {
+        guard let movie = self.movie else {
             return
         }
         
         wireframe?.pushToVideoList(allVideos, movie)
     }
     
-    func didSeeAllWallpapersClicked(_ allImages: [Image], _ movie: Movie?) {
-        guard let movie = movie else {
+    func didSeeAllWallpapersClicked(_ allImages: [Image]) {
+        guard let movie = self.movie else {
             return
         }
         
         wireframe?.pushToImageList(allImages, movie)
     }
     
-    func didSeeAllRelatedMoviesClicked(_ movie: Movie?) {
-        guard let movie = movie else {
+    func didSeeAllRelatedMoviesClicked() {
+        guard let movie = self.movie else {
             return
         }
         
@@ -120,10 +124,23 @@ extension MovieDetailsPresenter {
 extension MovieDetailsPresenter: MovieDetailsInteractorOutputInterface {
     
     func movieDetailsDidFetch(_ movie: Movie) {
+        self.movie?.credits = movie.credits
+        self.movie?.keywords = movie.keywords
+        self.movie?.runtime = movie.runtime
+        self.movie?.videos = movie.videos
+        self.movie?.images = movie.images
+        self.movie?.homepage = movie.homepage
+        self.movie?.productionCompanies = movie.productionCompanies
+        self.movie?.productionCountries = movie.productionCountries
+        self.movie?.similiarMovies = movie.similiarMovies
+        self.movie?.genres = movie.genres
+        
         self.view?.showMovie(with: movie)
     }
     
     func movieRankingsDidFetch(_ movie: MovieOMDB) {
+        self.movieRankings = movie
+        
         self.view?.showMovieRankings(with: movie)
     }
     

@@ -43,6 +43,8 @@ class Movie: BaseModel, Hashable {
     var similiarMovies: Results<Movie>?
     var reviews: [Review]?
     
+    var allImages: [Image] = []
+    
     override func mapping(map: Map) {
         id                      <-  map["id"]
         adult                   <-  map["adult"]
@@ -81,6 +83,18 @@ class Movie: BaseModel, Hashable {
         similiarMovies          <- map["similar_movies"]
         reviews                 <- map["reviews"]
         
+        allImages               = mergeImages()
+    }
+    
+    private func mergeImages() -> [Image] {
+        let posters = self.images?.backdrops ?? []
+        let backdrop = self.images?.posters ?? []
+        
+        if (posters.count > 3 && backdrop.count > 3) {
+            return Array(backdrop[0..<3]) + Array(posters[0..<3])
+        }
+        
+        return Array(Set(backdrop + posters))
     }
     
     static func == (lhs: Movie, rhs: Movie) -> Bool {

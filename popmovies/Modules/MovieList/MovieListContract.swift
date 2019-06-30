@@ -21,7 +21,7 @@ protocol MovieListPresenterInterface: BasePresenterInterface {
     var interactor: MovieListInteractorInputInterface? { get set }
     var wireframe: MovieListWireframeInterface? { get set }
     
-    func fetchMovies(from url: String?,with parameters: [String : String ]?)
+    func fetchMovies()
     func didSelectMovie(_ movie: Movie)
 }
 
@@ -44,6 +44,8 @@ protocol MovieListWireframeInterface {
     func presentDetails(for movie: Movie)
     
     static func buildModule(url: String, parameters: [String : String], title: String) -> UIViewController
-    static func buildModule(with movies: [Movie]) -> UIViewController
+    static func buildModule(with movies: [Movie], title: String) -> UIViewController
+    static func buildModuleFromUINavigation(with movies: [Movie], title: String) -> UIViewController
+    static func buildModuleFromUINavigation(url: String, parameters: [String : String], title: String) -> UIViewController 
     static func buildModule() -> UIViewController
 }

@@ -28,9 +28,6 @@ class MovieListController: BaseViewController {
     var movies: [Movie]?
     var presenter: MovieListPresenterInterface?
     
-    var parameters: [String : String] = [:]
-    var url: String?
-    
     lazy var cellSize: CGSize = CGSize(width: self.moviesCollectionView.bounds.width / CGFloat(self.numberOfCollunms), height: (self.moviesCollectionView.bounds.width / CGFloat(self.numberOfCollunms)) + CGFloat(115))
     
 }
@@ -50,9 +47,6 @@ extension MovieListController {
         
         self.presenter?.viewDidLoad()
         
-        if movies == nil {
-            presenter?.fetchMovies(from: url, with: parameters)
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -92,7 +86,7 @@ extension MovieListController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        presenter?.fetchMovies(from: url, with: parameters)
+        presenter?.fetchMovies()
     }
     
 }
@@ -111,11 +105,7 @@ extension MovieListController: UICollectionViewDelegateFlowLayout {
 extension MovieListController: MovieListViewInterface {
     
     func showMovies(with movies: [Movie]) {
-        if self.movies != nil {
-            self.movies! += movies
-        } else {
-            self.movies = movies
-        }
+        self.movies = movies
         
         moviesCollectionView.reloadData()
     }

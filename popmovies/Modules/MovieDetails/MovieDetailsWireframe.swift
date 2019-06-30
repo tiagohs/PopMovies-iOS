@@ -24,46 +24,32 @@ class MovieDetailsWireframe: MovieDetailsWireframeInterface {
     }
     
     func presentDetails(for person: Person) {
+        let personDetailsModule = PersonDetailsWireframe.buildModule(with: person)
         
-//        if let controller = self.storyboard!.instantiateViewController(withIdentifier: PersonDetailsIdentifier) as? PersonDetailsController {
-//
-//            controller.hero.modalAnimationType = .slide(direction: .left)
-//            controller.person = person
-//
-//            self.show(controller, sender: nil)
-//        }
+        self.viewController?.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(personDetailsModule, animated: true, completion: nil)
     }
     
     func presentDetails(for movie: Movie) {
-        let movieDetailsModule = MovieDetailsWireframe.buildModule(with: movie) as! MovieDetailsController
-        
-        movieDetailsModule.movie = movie
+        let movieDetailsModule = MovieDetailsWireframe.buildModule(with: movie)
         
         self.viewController?.hero.modalAnimationType = .slide(direction: .left)
         self.viewController?.present(movieDetailsModule, animated: true, completion: nil)
     }
     
-    func presentImageViewer(for image: Image, _ allImages: [Image], _ movie: Movie) {
-//        if let controller = self.storyboard!.instantiateViewController(withIdentifier: ImageViewerControllerIdentifier) as? ImageViewerController {
-//            
-//            controller.hero.modalAnimationType = .fade
-//            controller.selectedIndex = indexPath
-//            controller.image = image
-//            controller.allImages = allImages
-//            controller.movie = self.movie
-//            
-//            self.present(controller, animated: true, completion: nil)
-//        }
+    func presentImageViewer(for image: Image, _ allImages: [Image], _ movie: Movie, indexPath: IndexPath) {
+        let imageViewerModule = ImageViewerWireframe.buildModule(image, allImages: allImages, indexPath, movie, nil)
+        
+        imageViewerModule.hero.modalAnimationType = .fade
+        
+        self.viewController?.present(imageViewerModule, animated: true, completion: nil)
     }
     
     func presentVideoViewer(for video: Video, _ allVideos: [Video],  _ movie: Movie) {
-//        if let controller = self.storyboard!.instantiateViewController(withIdentifier: VideoViewerControllerIdentifier) as? VideoViewerController {
-//            
-//            controller.hero.modalAnimationType = .fade
-//            controller.video = video
-//            
-//            self.present(controller, animated: true, completion: nil)
-//        }
+        let videoModule = VideoViewerWireframe.buildModule(video)
+        
+        videoModule.hero.modalAnimationType = .fade
+        self.viewController?.present(videoModule, animated: true, completion: nil)
     }
     
     func pushToRelatedMovies(with movie: Movie) {
@@ -73,11 +59,7 @@ class MovieDetailsWireframe: MovieDetailsWireframeInterface {
         let url = TMDB.URL.MOVIES.buildSimilarMoviesUrl(movieId: movieId)
         let parameters = TMDB.URL.MOVIES.buildMovieListParameters()
         let title = movie.title ?? "Similar Movies"
-        let movieListModule = MovieListWireframe.buildModule(url: url, parameters: parameters, title: title) as! MovieListController
-        
-        movieListModule.url = url
-        movieListModule.parameters = parameters
-        movieListModule.title = movie.title
+        let movieListModule = MovieListWireframe.buildModuleFromUINavigation(url: url, parameters: parameters, title: title)
         
         navigationController.hero.navigationAnimationType = .slide(direction: .left)
         navigationController.pushViewController(movieListModule, animated: true)
@@ -98,26 +80,17 @@ class MovieDetailsWireframe: MovieDetailsWireframeInterface {
     }
     
     func pushToVideoList(_ allVideos: [Video], _ movie: Movie) {
-//        guard let controller = self.storyboard!.instantiateViewController(withIdentifier: VideoListControllerIdentifier) as? VideoListController else {
-//            return
-//        }
-//        
-//        controller.hero.modalAnimationType = .fade
-//        controller.allVideos = allVideos
-//        
-//        self.present(controller, animated: true, completion: nil)
+        let videoListModule = VideoListWireframe.buildModule(allVideos, movie, nil)
+        
+        videoListModule.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(videoListModule, animated: true, completion: nil)
     }
     
     func pushToImageList(_ allImages: [Image], _ movie: Movie) {
-//        guard let controller = self.storyboard!.instantiateViewController(withIdentifier: ImageListControllerIdentifier) as? ImageListController else {
-//            return
-//        }
-//        
-//        controller.hero.modalAnimationType = .fade
-//        controller.allImages = allImages
-//        controller.movie = self.movie
-//        
-//        self.present(controller, animated: true, completion: nil)
+        let imageListModule = ImageListWireframe.buildModule(allImages, person: nil, movie)
+        
+        imageListModule.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(imageListModule, animated: true, completion: nil)
     }
     
 }
@@ -128,8 +101,10 @@ extension MovieDetailsWireframe {
     
     static func buildModule(with movie: Movie?) -> UIViewController {
         let movieDetailsModule = MovieDetailsWireframe.buildModule() as! MovieDetailsController
+        let presenter = movieDetailsModule.presenter as! MovieDetailsPresenter
         
         movieDetailsModule.movie = movie
+        presenter.movie = movie
         
         return movieDetailsModule
     }

@@ -20,6 +20,11 @@ class MovieListPresenter {
     var page: Int = 1
     var totalPage: Int = 1
     
+    var movies: [Movie]?
+    
+    var parameters: [String : String]?
+    var url: String?
+    
     init(view: MovieListViewInterface?) {
         self.view = view
     }
@@ -32,6 +37,10 @@ extension MovieListPresenter: MovieListPresenterInterface {
     
     func viewDidLoad() {
         self.view?.setupUI()
+        
+        if movies == nil {
+            self.fetchMovies()
+        }
     }
     
     func viewDidDisappear(_ animated: Bool) {
@@ -49,7 +58,7 @@ extension MovieListPresenter: MovieListPresenterInterface {
 
 extension MovieListPresenter {
     
-    func fetchMovies(from url: String?, with parameters: [String : String]?) {
+    func fetchMovies() {
         if page > totalPage { return }
         
         guard let url = url else {
@@ -88,6 +97,12 @@ extension MovieListPresenter: MovieListInteractorOutputInterface {
     func moviesDidFetch(_ movies: [Movie], totalPages: Int) {
         self.totalPage = totalPages
         self.page += 1
+        
+        if self.movies != nil {
+            self.movies! += movies
+        } else {
+            self.movies = movies
+        }
         
         self.view?.hideActivityIndicator()
         self.view?.showMovies(with: movies)

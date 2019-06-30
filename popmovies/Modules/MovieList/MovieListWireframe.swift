@@ -27,18 +27,22 @@ extension MovieListWireframe {
     
     static func buildModule(url: String, parameters: [String : String], title: String) -> UIViewController {
         let module = buildModule() as! MovieListController
+        let presenter = module.presenter as! MovieListPresenter
         
-        module.url = url
-        module.parameters = parameters
+        presenter.url = url
+        presenter.parameters = parameters
+        
         module.title = title
         
         return module
     }
     
-    static func buildModule(with movies: [Movie]) -> UIViewController {
+    static func buildModule(with movies: [Movie], title: String) -> UIViewController {
         let module = buildModule() as! MovieListController
+        let presenter = module.presenter as! MovieListPresenter
         
         module.movies = movies
+        presenter.movies = movies
         
         return module
     }
@@ -53,25 +57,33 @@ extension MovieListWireframe {
         let navigationController = R.storyboard.main.movieListNavigationController()
         let view = navigationController?.viewControllers.first as! MovieListController
         
-        return build(view)
+        _ = build(view)
+        
+        return navigationController!
     }
     
     static func buildModuleFromUINavigation(url: String, parameters: [String : String], title: String) -> UIViewController {
-        let module = buildModuleFromUINavigation() as! MovieListController
+        let moduleNavigation = buildModuleFromUINavigation() as! UINavigationController
+        let module = moduleNavigation.viewControllers.first as! MovieListController
+        let presenter = module.presenter as! MovieListPresenter
+
+        presenter.url = url
+        presenter.parameters = parameters
         
-        module.url = url
-        module.parameters = parameters
         module.title = title
         
-        return module
+        return moduleNavigation
     }
     
-    static func buildModuleFromUINavigation(with movies: [Movie]) -> UIViewController {
-        let module = buildModuleFromUINavigation() as! MovieListController
-        
+    static func buildModuleFromUINavigation(with movies: [Movie], title: String) -> UIViewController {
+        let moduleNavigation = buildModuleFromUINavigation() as! UINavigationController
+        let module = moduleNavigation.viewControllers.first as! MovieListController
+        let presenter = module.presenter as! MovieListPresenter
+
         module.movies = movies
+        presenter.movies = movies
         
-        return module
+        return moduleNavigation
     }
     
     private static func build(_ view: MovieListController?) -> UIViewController {

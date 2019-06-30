@@ -6,20 +6,54 @@
 //  Copyright © 2019 Tiago Silva. All rights reserved.
 //
 
+import UIKit
 import RxSwift
 
-protocol IPersonDetailsView: BaseViewInterface {
+protocol PersonDetailsViewInterface: BaseViewInterface {
     
-    func bindPerson(person: Person)
+    var presenter: PersonDetailsPresenterInterface? { get set }
+
+    func showPerson(with person: Person)
 }
 
-protocol IPersonDetailsPresenter: BasePresenter {
+protocol PersonDetailsPresenterInterface: BasePresenterInterface {
+
+    var view: PersonDetailsViewInterface? { get set }
+    var interactor: PersonDetailsInteractorInputInterface? { get set }
+    var wireframe: PersonDetailsWireframsInterface? { get set }
     
-    func fetchPersonDetails(personId: Int?)
+    func fetchPersonDetails()
+    
+    func didLinkClicked(with url: String)
+    func didSelectMovie(_ movie: Movie)
+    func didImageSelect(_ image: Image, indexPath: IndexPath)
+    func didSeeAllMoviesClicked()
+    func didSeeAllImagesClicked()
 }
 
-protocol IPersonDetailsInteractor {
-    
-    func fetchPersonDetails(personId: Int) -> Observable<Person>
+protocol PersonDetailsInteractorInputInterface: BaseInteractorInterface {
+    var output: PersonDetailsInteractorOutputInterface? { get set }
+
+    func fetchPersonDetails(_ personId: Int)
 }
 
+protocol PersonDetailsInteractorOutputInterface {
+    
+    func personDetailsDidFetch(_ person: Person)
+    
+    func personDetailsDidError(_ error: DefaultError)
+}
+
+protocol PersonDetailsWireframsInterface {
+    
+    var viewController: UIViewController? { get set }
+    
+    func presentExternalLink(from url: String)
+    func presentDetails(for movie: Movie)
+    func presentImageViewer(for image: Image, _ allImages: [Image], _ person: Person, indexPath: IndexPath)
+    func pushToImageList(_ allImages: [Image], _ person: Person)
+    func pushToMovieList(_ allMovies: [Movie], _ person: Person)
+    
+    static func buildModule(with person: Person) -> UIViewController
+    static func buildModule() -> UIViewController
+}

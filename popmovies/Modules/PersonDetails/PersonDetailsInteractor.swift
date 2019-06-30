@@ -9,17 +9,48 @@
 import Foundation
 import RxSwift
 
-class PersonDetailsInteractor: IPersonDetailsInteractor { 
+// MARK: PersonDetailsInteractor: BaseInteractor
+
+class PersonDetailsInteractor: BaseInteractor {
+    let personService: IPersonService
     
-    var personService: IPersonService
+    var output: PersonDetailsInteractorOutputInterface?
     
-    init() {
-        personService = PersonService()
+    init(output: PersonDetailsInteractorOutputInterface?) {
+        self.output = output
+        self.personService = PersonService()
     }
     
-    func fetchPersonDetails(personId: Int) -> Observable<Person> {
+}
+
+// MARK: HomeInteractorInputInterface - Output lifecycle Methods
+
+extension PersonDetailsInteractor: PersonDetailsInteractorInputInterface {
+    
+    func outputDidLoad() {}
+    
+    func outputFinished() {
+        disposibles.dispose()
+        
+        self.output = nil
+    }
+}
+
+// MARK: HomeInteractorInputInterface - Fetch methods
+
+extension PersonDetailsInteractor {
+    
+    func fetchPersonDetails(_ personId: Int) {
         let appendToResponse = ["tagged_images", "images", "movie_credits", "external_ids"]
         
-        return personService.getDetails(personId: personId, appendToResponse: appendToResponse, language: "en,pt_BR,null")
+        add(personService.getDetails(personId: personId, appendToResponse: appendToResponse, language: "en,pt_BR,null")
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (person) in
+                self.output?.personDetailsDidFetch(person)
+            }, onError: { (error) in
+                self.output?.personDetailsDidError(DefaultError(message: "Erro ao buscar mais informações sobre essa pessoa."))
+            })
+        )
     }
 }

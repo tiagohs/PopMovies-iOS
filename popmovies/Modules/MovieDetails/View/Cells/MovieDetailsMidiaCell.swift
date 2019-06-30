@@ -54,7 +54,7 @@ extension MovieDetailsMidiaCell {
     private func bindMidiaContent(movie: Movie) {
         setupCells()
         
-        allImages = mergeImages(movie: movie)
+        allImages = movie.allImages
         allVideos = movie.videos?.videoResults ?? []
         
         if allVideos.count > 6 {
@@ -68,17 +68,6 @@ extension MovieDetailsMidiaCell {
     private func setupCells() {
         imagesCollectionViewView.configureNibs(nibName: WallpaperCell, identifier: WallpaperCellIdentifier)
         videosCollectionViewView.configureNibs(nibName: VideoCell, identifier: VideoCellIdentifier)
-    }
-    
-    private func mergeImages(movie: Movie) -> [Image] {
-        let posters = movie.images?.backdrops ?? []
-        let backdrop = movie.images?.posters ?? []
-        
-        if (posters.count > 3 && backdrop.count > 3) {
-            return Array(backdrop[0..<3]) + Array(posters[0..<3])
-        }
-        
-        return backdrop + posters
     }
     
 }

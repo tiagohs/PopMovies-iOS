@@ -40,12 +40,12 @@ extension MovieDetailsInteractor: MovieDetailsInteractorInputInterface {
 
 extension MovieDetailsInteractor {
     
-    func fetchMovieDetails(movie: Movie?) {
-        guard let movieId = movie?.id else {
+    func fetchMovieDetails(movie: Movie) {
+        guard let movieId = movie.id else {
             return
         }
 
-        let languages = "en,pt_BR,\(String(describing: movie?.originalLanguage)),null"
+        let languages = "en,pt_BR,\(String(describing: movie.originalLanguage)),null"
         let appendToResponse = ["videos", "images", "keywords", "releases", "similar_movies", "credits"]
         
         
