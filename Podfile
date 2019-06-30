@@ -14,7 +14,8 @@ target 'popmovies' do
   pod 'Kingfisher'
   pod 'UIImageColors'
   pod 'Hero'
-  pod "YoutubePlayer-in-WKWebView"
+  pod 'YoutubePlayer-in-WKWebView'
+  pod 'R.swift'
   
   target 'popmoviesTests' do
     inherit! :search_paths

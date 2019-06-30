@@ -110,6 +110,12 @@ struct TMDB {
                 return "\(TMDB.BASE_URL)person/\(String(describing: personId))"
             }
             
+            static func buildPersonMovieCreditsUrl(personId: Int) -> String {
+                let personDetailsUrl = buidPersonDetailsUrl(personId: personId)
+                
+                return "\(personDetailsUrl)/movie_credits"
+            }
+            
             static func buildPersonDetailsParameters(_ appendToResponse: [String],_ language: String) -> [String : String] {
                 return [
                     Parameters.apiKey: API_KEY,
@@ -208,4 +214,5 @@ struct TMDB {
         10752:  Constants.IMAGES.GENRE_WAR,
         37:     Constants.IMAGES.GENRE_WESTERON
     ]
+    
 }

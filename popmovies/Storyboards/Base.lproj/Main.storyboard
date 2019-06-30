@@ -36,7 +36,7 @@
         <!--Perfil-->
         <scene sceneID="zqk-Qg-wfL">
             <objects>
-                <viewController id="Xsg-RH-Irj" userLabel="Perfil" customClass="ProfileController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileController" id="Xsg-RH-Irj" userLabel="Perfil" customClass="ProfileController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dBn-hk-Mdo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,7 +55,7 @@
         <!--Movies-->
         <scene sceneID="sWj-ch-H74">
             <objects>
-                <viewController storyboardIdentifier="MovieListControllerIdentifier" id="HLz-Zh-9Y4" customClass="MovieListController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieListController" id="HLz-Zh-9Y4" customClass="MovieListController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="maA-Ko-UXy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
         <!--Genres-->
         <scene sceneID="QYx-cm-YKk">
             <objects>
-                <viewController id="d7p-6h-SP6" customClass="GenresController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GenresController" id="d7p-6h-SP6" customClass="GenresController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rb8-f5-fLb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -155,7 +155,7 @@
         <!--View Controller-->
         <scene sceneID="HLJ-qg-QYH">
             <objects>
-                <viewController id="vQP-Dd-vYx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeekController" id="vQP-Dd-vYx" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="baQ-X1-2vU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,7 +175,7 @@
         <!--Navigation Controller-->
         <scene sceneID="zgE-4r-7Zf">
             <objects>
-                <navigationController id="tlK-Np-rIa" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MovieListNavigationController" id="tlK-Np-rIa" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2GO-bY-UBF">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -193,7 +193,7 @@
         <!--Image List Controller-->
         <scene sceneID="FYj-6t-XD1">
             <objects>
-                <viewController storyboardIdentifier="ImageListControllerIdentifier" id="cB0-fM-Lvb" customClass="ImageListController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageListController" id="cB0-fM-Lvb" customClass="ImageListController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UmX-eq-SXo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,7 +362,7 @@
         <!--Image Viewer Controller-->
         <scene sceneID="7Oe-7k-nBE">
             <objects>
-                <viewController storyboardIdentifier="ImageViewerControllerIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="lfs-eD-K9w" customClass="ImageViewerController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageViewerController" automaticallyAdjustsScrollViewInsets="NO" id="lfs-eD-K9w" customClass="ImageViewerController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pvQ-xt-i4V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -483,7 +483,7 @@
         <!--Video Viewer Controller-->
         <scene sceneID="D7k-B4-PFm">
             <objects>
-                <viewController storyboardIdentifier="VideoViewerControllerIdentifier" id="kDA-lu-wzf" customClass="VideoViewerController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoViewerController" id="kDA-lu-wzf" customClass="VideoViewerController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ioc-TL-4if">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -573,7 +573,7 @@
         <!--Início-->
         <scene sceneID="8Mq-h9-j2e">
             <objects>
-                <viewController id="ap4-Hz-YNq" userLabel="Início" customClass="HomeController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeController" id="ap4-Hz-YNq" userLabel="Início" customClass="HomeController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qru-RH-mje">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -582,7 +582,7 @@
                                 <rect key="frame" x="0.0" y="100" width="375" height="712"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NowPlayingMovieCellIdentifier" rowHeight="216" id="YXL-Rg-ZCK" userLabel="NowPlayingMovieCell" customClass="NowPlayingMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NowPlayingMovieCell" rowHeight="216" id="YXL-Rg-ZCK" userLabel="NowPlayingMovieCell" customClass="NowPlayingMoviesCell" customModule="popmovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="216"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YXL-Rg-ZCK" id="6wP-Pd-9Op">
@@ -624,7 +624,7 @@
                                             <outlet property="moviesCollectionViewViewFlow" destination="6VR-2U-L47" id="Ujc-S6-uOP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopularMoviesCelldentifier" rowHeight="339" id="Sff-Bw-4Ab" userLabel="PopularMoviesCell" customClass="PopularMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopularMoviesCell" rowHeight="339" id="Sff-Bw-4Ab" userLabel="PopularMoviesCell" customClass="PopularMoviesCell" customModule="popmovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="244" width="375" height="339"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sff-Bw-4Ab" id="BhW-Hs-ccW">
@@ -632,7 +632,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JQ-mC-aZN">
-                                                    <rect key="frame" x="10" y="10" width="69.333333333333329" height="30"/>
+                                                    <rect key="frame" x="10" y="10" width="64" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="xXe-v1-Sfm"/>
                                                     </constraints>
@@ -641,7 +641,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMJ-m7-eWl">
-                                                    <rect key="frame" x="84.333333333333343" y="13.999999999999998" width="64.333333333333343" height="23.333333333333329"/>
+                                                    <rect key="frame" x="79" y="14.000000000000002" width="50" height="29.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -665,7 +665,7 @@
                                                     </connections>
                                                 </collectionView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Uj-md-3ta">
-                                                    <rect key="frame" x="315" y="14" width="44" height="21"/>
+                                                    <rect key="frame" x="316" y="14" width="43" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21.329999999999998" id="17Q-Qs-Jr5"/>
                                                     </constraints>
@@ -695,7 +695,7 @@
                                             <outlet property="moviesCollectionViewViewFlow" destination="piy-Aj-ay3" id="nrg-jU-jpa"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopRatedMoviesCellIdentifier" rowHeight="288" id="hc6-Su-cz2" userLabel="TopRatedMoviesCell" customClass="TopRatedMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopRatedMoviesCell" rowHeight="288" id="hc6-Su-cz2" userLabel="TopRatedMoviesCell" customClass="TopRatedMoviesCell" customModule="popmovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="583" width="375" height="288"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hc6-Su-cz2" id="cxV-Ib-Cgy">
@@ -764,7 +764,7 @@
                                             <outlet property="moviesCollectionView" destination="Bh1-BO-Sv7" id="uFE-ei-7Rz"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UpcomingMoviesCellIdentifier" rowHeight="288" id="gdH-Ud-Rub" userLabel="UpcomingMoviesCell" customClass="UpcomingMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UpcomingMoviesCell" rowHeight="288" id="gdH-Ud-Rub" userLabel="UpcomingMoviesCell" customClass="UpcomingMoviesCell" customModule="popmovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="871" width="375" height="288"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gdH-Ud-Rub" id="kG4-hJ-sD3">
@@ -894,7 +894,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="vRU-hP-1dF">
             <objects>
-                <tabBarController id="kuB-34-XHm" customClass="TabBarViewController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" id="kuB-34-XHm" customClass="TabBarViewController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zkW-4k-SJg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -924,7 +924,7 @@
         <!--Movie Details Controller-->
         <scene sceneID="YCd-3d-w7A">
             <objects>
-                <viewController storyboardIdentifier="MovieDetailsControllerIdentifier" id="ag3-Id-TTr" customClass="MovieDetailsController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailsController" id="ag3-Id-TTr" customClass="MovieDetailsController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hm5-9F-qu8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1786,7 +1786,7 @@
         <!--Person Details Controller-->
         <scene sceneID="LrS-fT-RLU">
             <objects>
-                <viewController storyboardIdentifier="PersonDetailsIdentifier" id="ZWk-TC-GzC" customClass="PersonDetailsController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonDetails" id="ZWk-TC-GzC" customClass="PersonDetailsController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s00-Mr-oEs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2404,7 +2404,7 @@
         <!--Home-->
         <scene sceneID="lQU-9e-pei">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1JK-DC-0E1" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="1JK-DC-0E1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="HomeIcon" id="CxX-SC-aVp">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
@@ -2426,7 +2426,7 @@
         <!--Account-->
         <scene sceneID="noh-MF-m5i">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="APv-XT-ubh" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="APv-XT-ubh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Account" image="PersonIcon" id="v7Z-JC-FIQ">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
@@ -2448,7 +2448,7 @@
         <!--Genres-->
         <scene sceneID="ZzA-UQ-NP2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="654-2B-9QH" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GenreNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="654-2B-9QH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Genres" image="GenreIcon" id="SNn-f2-Oa3">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
@@ -2478,7 +2478,7 @@
         <!--Week-->
         <scene sceneID="Llf-0R-gI8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0iw-nO-U5X" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="WeekNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="0iw-nO-U5X" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Week" image="CalendarIcon" id="Vg2-al-AC9">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
@@ -2517,10 +2517,10 @@
         <image name="WikiIcon-white" width="33.333332061767578" height="33.333332061767578"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NY9-Ax-6xf"/>
+        <segue reference="4xh-fM-kOo"/>
         <segue reference="SDY-zf-33V"/>
         <segue reference="0id-y1-ljg"/>
         <segue reference="Y1R-tw-geC"/>
-        <segue reference="wL5-LE-Cmb"/>
+        <segue reference="0K0-GG-5HY"/>
     </inferredMetricsTieBreakers>
 </document>

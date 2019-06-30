@@ -3,6 +3,9 @@ PODS:
   - Hero (1.4.0)
   - Kingfisher (5.6.0)
   - ObjectMapper (3.5.0)
+  - R.swift (5.0.3):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.1)
   - RxAlamofire (5.0.0):
     - RxAlamofire/Core (= 5.0.0)
   - RxAlamofire/Core (5.0.0):
@@ -22,6 +25,7 @@ DEPENDENCIES:
   - Hero
   - Kingfisher
   - ObjectMapper
+  - R.swift
   - RxAlamofire
   - RxCocoa
   - RxSwift
@@ -33,6 +37,8 @@ SPEC CHECKSUMS:
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   Kingfisher: 1a50df6880a60bae26f3e21a0df3d17b892f5e0b
   ObjectMapper: 078b564ed25c6578b62588e306bf1da3924636d4
+  R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
+  R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
   RxAlamofire: e7875a012aff55345672d0f70a2a9cd6aeb0f211
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
@@ -40,6 +46,6 @@ SPEC CHECKSUMS:
   UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
   YoutubePlayer-in-WKWebView: 17a33b2fa619d357c9ddd763942ce556660facae
 
-PODFILE CHECKSUM: ce239b4f2a3dfe3e7c5de93bcf2caab37ad711bf
+PODFILE CHECKSUM: 5d180009a3c5a103d5076131e24369c698224d68
 
 COCOAPODS: 1.4.0

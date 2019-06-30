@@ -38,6 +38,12 @@ class UIGradientImageView: UIImageView {
         return [0.2,  0.9]
     }
     
+    func updateColor(color: UIColor) {
+        color.withAlphaComponent(0.6)
+        
+        updateColors(colors: [UIColor.clear.cgColor, color.cgColor])
+    }
+    
     func updateColors(colors: [CGColor]) {
         self.colors = colors
         

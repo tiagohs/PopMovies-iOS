@@ -99,14 +99,6 @@ class PersonDetailsKnownForCell: UITableViewCell {
         collection.reloadData()
     }
     
-    @IBAction func didSeeAllImagesClicked(_ sender: Any) {
-        knownForListener?.didSeeAllImagesSelect(allImages)
-    }
-    
-    @IBAction func didSeeAllMoviesClicked(_ sender: Any) {
-        
-    }
-    
 }
 
 extension PersonDetailsKnownForCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -176,5 +168,4 @@ extension PersonDetailsKnownForCell: UICollectionViewDelegate, UICollectionViewD
 protocol IKnownForListener {
     func didMovieSelect(_ movie: Movie)
     func didImageSelect(_ image: Image, allImages: [Image], indexPath: IndexPath)
-    func didSeeAllImagesSelect(_ allImages: [Image])
 }
