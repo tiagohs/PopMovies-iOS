@@ -169,6 +169,7 @@
 		A2A64C2B22C9A8A500710E0B /* RootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A64C2A22C9A8A500710E0B /* RootInteractor.swift */; };
 		A2A64C2D22C9A9E200710E0B /* RootTabBarWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A64C2C22C9A9E200710E0B /* RootTabBarWireframe.swift */; };
 		A2A64C2F22C9C11300710E0B /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A64C2E22C9C11300710E0B /* SplashScreen.storyboard */; };
+		A2A64C3322CA677F00710E0B /* Weeks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A64C3222CA677F00710E0B /* Weeks.storyboard */; };
 		A2D6AF97226B821E004254D4 /* SimpleItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D6AF95226B821E004254D4 /* SimpleItemCell.swift */; };
 		A2FE0225226BCBE200BCB8AC /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0224226BCBE200BCB8AC /* PersonCell.swift */; };
 		A2FE0227226BCF6000BCB8AC /* PersonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0226226BCF6000BCB8AC /* PersonItem.swift */; };
@@ -402,6 +403,7 @@
 		A2A64C2A22C9A8A500710E0B /* RootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInteractor.swift; sourceTree = "<group>"; };
 		A2A64C2C22C9A9E200710E0B /* RootTabBarWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarWireframe.swift; sourceTree = "<group>"; };
 		A2A64C2E22C9C11300710E0B /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
+		A2A64C3222CA677F00710E0B /* Weeks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Weeks.storyboard; sourceTree = "<group>"; };
 		A2D6AF95226B821E004254D4 /* SimpleItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleItemCell.swift; sourceTree = "<group>"; };
 		A2FE0224226BCBE200BCB8AC /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		A2FE0226226BCF6000BCB8AC /* PersonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonItem.swift; sourceTree = "<group>"; };
@@ -1206,6 +1208,7 @@
 			children = (
 				A2A64C1822C9A15F00710E0B /* WeekController.swift */,
 				A2A64C1A22C9A16800710E0B /* Week.storyboard */,
+				A2A64C3222CA677F00710E0B /* Weeks.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1376,6 +1379,7 @@
 				A2A64C0D22C99D5500710E0B /* ImageViewer.storyboard in Resources */,
 				A2FE02912278E94B00BCB8AC /* Roboto-Regular.ttf in Resources */,
 				A2FE023D226E369F00BCB8AC /* MovieCell.xib in Resources */,
+				A2A64C3322CA677F00710E0B /* Weeks.storyboard in Resources */,
 				A2A64BFA22C98E7000710E0B /* MovieList.storyboard in Resources */,
 				A2FE02572272982100BCB8AC /* MovieSmallCell.xib in Resources */,
 				A2FE02952278E94B00BCB8AC /* SF-Pro-Display-Bold.otf in Resources */,
