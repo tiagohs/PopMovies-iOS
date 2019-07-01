@@ -33,7 +33,7 @@ class MovieDetailsController: BaseViewController {
     // MARK: Properties
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return style
     }
     
     var style: UIStatusBarStyle = .lightContent
@@ -71,7 +71,6 @@ extension MovieDetailsController {
         super.viewDidDisappear(animated)
         
         presenter?.viewDidDisappear(animated)
-        presenter = nil
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -151,6 +150,9 @@ extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
         
         if (self.movie != nil) { cell.movie = self.movie }
         if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
+        if (cell.movieDetailsOverviewDelegate == nil) {
+            cell.movieDetailsOverviewDelegate = self
+        }
         
         return cell
     }

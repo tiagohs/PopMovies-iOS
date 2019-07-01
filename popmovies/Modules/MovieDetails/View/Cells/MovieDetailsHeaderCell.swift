@@ -107,6 +107,8 @@ private extension MovieDetailsHeaderCell {
             movieBackdropView.setTMDBImageBy(url: movie.backdropPath, contentSize: TMDB.ImageSize.BACKDROP.w780, contentMode: .scaleAspectFill, placeholder: nil)
             moviePosterView.setTMDBImageBy(url: movie.posterPath, contentSize: TMDB.ImageSize.POSTER.w500, contentMode: .scaleAspectFill, placeholder: nil)
             
+            movieBackdropView.updateColor(color: UIColor.black)
+            
             movieBackdropView.hero.id = String(describing: movie.backdropPath)
             moviePosterView.hero.id = String(describing: movie.posterPath)
             

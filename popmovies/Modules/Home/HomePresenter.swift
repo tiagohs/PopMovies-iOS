@@ -38,12 +38,10 @@ extension HomePresenter: HomePresenterInterface {
     
     func viewDidDisappear(_ animated: Bool) {
         self.interactor?.outputFinished()
-        self.interactor = nil
-        self.view = nil
     }
     
     func viewWillAppear(_ animated: Bool) {
-        self.view?.showNavigationBar(animated)
+        self.view?.hideNavigationBar(animated)
     }
     
     func viewWillDisappear(_ animated: Bool) {
@@ -57,7 +55,7 @@ extension HomePresenter: HomePresenterInterface {
 extension HomePresenter {
     
     func fetchPopularMovies() {
-        interactor?.fetchNowPlayingMovies()
+        interactor?.fetchPopularMovies()
     }
     
     func fetchNowPlayingMovies() {

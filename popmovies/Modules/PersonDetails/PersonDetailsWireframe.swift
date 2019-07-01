@@ -26,7 +26,7 @@ class PersonDetailsWireframe: PersonDetailsWireframsInterface {
     func presentDetails(for movie: Movie) {
         let movieDetailsModule = MovieDetailsWireframe.buildModule(with: movie)
         
-        self.viewController?.navigationController?.present(movieDetailsModule, animated: true, completion: nil)
+        self.viewController?.present(movieDetailsModule, animated: true, completion: nil)
     }
     
     func presentImageViewer(for image: Image, _ allImages: [Image], _ person: Person, indexPath: IndexPath) {
@@ -41,7 +41,8 @@ class PersonDetailsWireframe: PersonDetailsWireframsInterface {
         let title = person.name ?? "Movie List"
         let movieListModule = MovieListWireframe.buildModuleFromUINavigation(with: allMovies, title: title)
         
-        self.viewController?.navigationController?.pushViewController(movieListModule, animated: true)
+        movieListModule.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(movieListModule, animated: true, completion: nil)
     }
     
     func pushToImageList(_ allImages: [Image], _ person: Person) {
@@ -69,7 +70,7 @@ extension PersonDetailsWireframe {
     
     static func buildModule() -> UIViewController {
         let wireframe = PersonDetailsWireframe()
-        let view = R.storyboard.main.personDetails()
+        let view = R.storyboard.personDetails.personDetails()
         let presenter = PersonDetailsPresenter(view: view)
         let interactor = PersonDetailsInteractor(output: presenter)
         

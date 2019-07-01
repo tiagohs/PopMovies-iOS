@@ -56,8 +56,22 @@ class HomeWireframe: HomeWireframaInterface {
 extension HomeWireframe {
     
     static func buildModule() -> UIViewController {
+        let view = R.storyboard.home.homeController()
+        
+        return build(view)
+    }
+    
+    static func buildModuleFromUINavigation() -> UIViewController {
+        let navigationController = R.storyboard.home.homeNavigationController()
+        let view = navigationController?.viewControllers.first as! HomeController
+        
+        _ = build(view)
+        
+        return navigationController!
+    }
+    
+    private static func build(_ view: HomeController?) -> UIViewController {
         let wireframe = HomeWireframe()
-        let view = R.storyboard.main.homeController()
         let presenter = HomePresenter(view: view)
         let interactor = HomeInteractor(output: presenter)
         
@@ -66,7 +80,7 @@ extension HomeWireframe {
         presenter.view = view
         presenter.interactor = interactor
         presenter.wireframe = wireframe
-       
+        
         interactor.output = presenter
         wireframe.viewController = view
         

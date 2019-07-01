@@ -37,7 +37,7 @@ extension VideoListWireframe {
     
     static func buildModule() -> UIViewController {
         let wireframe = VideoListWireframe()
-        let view = R.storyboard.main.videoListController()
+        let view = R.storyboard.videoList.videoListController()
         let presenter = VideoListPresenter(view: view)
         let interactor = VideoListInteractor(output: presenter)
         

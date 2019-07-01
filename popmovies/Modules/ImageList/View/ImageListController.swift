@@ -70,7 +70,6 @@ extension ImageListController {
         super.viewDidDisappear(animated)
         
         presenter?.viewDidDisappear(animated)
-        presenter = nil
     }
     
 }
@@ -201,11 +200,3 @@ extension ImageListController: HeroViewControllerDelegate {
     }
 }
 
-// MARK: Actions Methods
-
-private extension MovieListController {
-    
-    @IBAction func dismiss() {
-        hero.dismissViewController()
-    }
-}

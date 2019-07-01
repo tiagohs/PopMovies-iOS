@@ -39,8 +39,6 @@ protocol ImageViewerInteractorOutputInterface {
 
 protocol ImageViewerWireframaInterface {
     
-    var viewController: UIViewController? { get set }
-    
     func pushToImageList(allImages: [Image], _ movie: Movie?, _ person: Person?)
     
     static func buildModule(_ image: Image, allImages: [Image], _ indexPath: IndexPath, _ movie: Movie?, _ person: Person?) -> UIViewController

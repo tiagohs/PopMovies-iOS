@@ -38,7 +38,7 @@ extension VideoViewerWireframe {
     
     static func buildModule() -> UIViewController {
         let wireframe = VideoViewerWireframe()
-        let view = R.storyboard.main.videoViewerController()
+        let view = R.storyboard.videoViewer.videoViewerController()
         let presenter = VideoViewerPresenter(view: view)
         let interactor = VideoViewerInteractor(output: presenter)
         

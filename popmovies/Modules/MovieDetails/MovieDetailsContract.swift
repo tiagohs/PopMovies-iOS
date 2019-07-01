@@ -52,9 +52,7 @@ protocol MovieDetailsInteractorOutputInterface {
     func movieRankingsDidFetch(_ error: DefaultError)
 }
 
-protocol MovieDetailsWireframeInterface {
-    
-    var viewController: UIViewController? { get set }
+protocol MovieDetailsWireframeInterface: BaseWireframeInterface {
     
     func presentExternalLink(from url: String)
     func presentDetails(for person: Person)

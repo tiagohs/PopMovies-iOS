@@ -59,7 +59,6 @@ extension GenreListController {
         super.viewDidDisappear(animated)
         
         presenter?.viewDidDisappear(animated)
-        presenter = nil
     }
     
 }

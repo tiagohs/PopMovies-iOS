@@ -53,7 +53,6 @@ extension MovieListController {
         super.viewDidDisappear(animated)
         
         self.presenter?.viewDidDisappear(animated)
-        self.presenter = nil
     }
 }
 

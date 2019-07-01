@@ -37,9 +37,7 @@ protocol MovieListInteractorOutputInterface {
     func moviesDidError(_ error: DefaultError)
 }
 
-protocol MovieListWireframeInterface {
-    
-    var viewController: UIViewController? { get set }
+protocol MovieListWireframeInterface: BaseWireframeInterface {
     
     func presentDetails(for movie: Movie)
     

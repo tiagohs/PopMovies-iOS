@@ -53,7 +53,7 @@ class MovieDetailsWireframe: MovieDetailsWireframeInterface {
     }
     
     func pushToRelatedMovies(with movie: Movie) {
-        guard let movieId = movie.id, let navigationController = self.viewController?.navigationController else {
+        guard let movieId = movie.id else {
             return
         }
         let url = TMDB.URL.MOVIES.buildSimilarMoviesUrl(movieId: movieId)
@@ -61,8 +61,8 @@ class MovieDetailsWireframe: MovieDetailsWireframeInterface {
         let title = movie.title ?? "Similar Movies"
         let movieListModule = MovieListWireframe.buildModuleFromUINavigation(url: url, parameters: parameters, title: title)
         
-        navigationController.hero.navigationAnimationType = .slide(direction: .left)
-        navigationController.pushViewController(movieListModule, animated: true)
+        movieListModule.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(movieListModule, animated: true, completion: nil)
     }
     
     func pushToMovieListByGenre(_ genre: Genre) {
@@ -76,7 +76,8 @@ class MovieDetailsWireframe: MovieDetailsWireframeInterface {
         
         let movieListModule = MovieListWireframe.buildModuleFromUINavigation(url: url, parameters: parameters, title: title)
         
-        self.viewController?.navigationController?.pushViewController(movieListModule, animated: true)
+        movieListModule.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(movieListModule, animated: true, completion: nil)
     }
     
     func pushToVideoList(_ allVideos: [Video], _ movie: Movie) {
@@ -111,7 +112,7 @@ extension MovieDetailsWireframe {
     
     static func buildModule() -> UIViewController {
         let wireframe = MovieDetailsWireframe()
-        let view = R.storyboard.main.movieDetailsController()
+        let view = R.storyboard.movieDetails.movieDetailsController()
         let presenter = MovieDetailsPresenter(view: view)
         let interactor = MovieDetailsInteractor(output: presenter)
         

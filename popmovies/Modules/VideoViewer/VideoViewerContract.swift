@@ -34,9 +34,7 @@ protocol VideoViewerInteractorOutputInterface {
     
 }
 
-protocol VideoViewerWireframaInterface {
-    
-    var viewController: UIViewController? { get set }
+protocol VideoViewerWireframaInterface: BaseWireframeInterface {
     
     func pushToVideoList(_ allVideos: [Video], _ movie: Movie?, _ person: Person?)
     

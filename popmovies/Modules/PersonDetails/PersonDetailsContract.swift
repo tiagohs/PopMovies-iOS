@@ -44,9 +44,7 @@ protocol PersonDetailsInteractorOutputInterface {
     func personDetailsDidError(_ error: DefaultError)
 }
 
-protocol PersonDetailsWireframsInterface {
-    
-    var viewController: UIViewController? { get set }
+protocol PersonDetailsWireframsInterface: BaseWireframeInterface {
     
     func presentExternalLink(from url: String)
     func presentDetails(for movie: Movie)

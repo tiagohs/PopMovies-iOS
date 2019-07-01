@@ -32,9 +32,7 @@ protocol VideoListInteractorOutputInterface {
     
 }
 
-protocol VideoListWireframeInterface {
-    
-    var viewController: UIViewController? { get set }
+protocol VideoListWireframeInterface: BaseWireframeInterface {
     
     func presentVideoViewer(for video: Video, _ allVideos: [Video], _ movie: Movie?,_ person: Person?)
     

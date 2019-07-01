@@ -39,8 +39,6 @@ extension GenreListPresenter: GenreListPresenterInterface {
     
     func viewDidDisappear(_ animated: Bool) {
         self.interactor?.outputFinished()
-        self.interactor = nil
-        self.view = nil
     }
     
     func viewWillAppear(_ animated: Bool) {}

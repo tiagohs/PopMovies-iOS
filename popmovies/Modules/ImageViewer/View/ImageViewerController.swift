@@ -63,7 +63,6 @@ extension ImageViewerController {
         super.viewDidDisappear(animated)
         
         presenter?.viewDidDisappear(animated)
-        presenter = nil
     }
     
     override func viewWillLayoutSubviews() {

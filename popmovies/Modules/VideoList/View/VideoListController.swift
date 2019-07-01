@@ -51,7 +51,6 @@ extension VideoListController {
         super.viewDidDisappear(animated)
         
         presenter?.viewDidDisappear(animated)
-        presenter = nil
     }
 }
 
@@ -60,7 +59,8 @@ extension VideoListController {
 extension VideoListController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allVideos.count
+        return 0
+        //return allVideos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -78,6 +78,7 @@ extension VideoListController: VideoListViewInterface {
     
     func setupUI() {
         backButton.layer.cornerRadius = backButton.bounds.width / 2
+        backButton.imageView?.setImageColorBy(uiColor: UIColor.white)
     }
     
 }

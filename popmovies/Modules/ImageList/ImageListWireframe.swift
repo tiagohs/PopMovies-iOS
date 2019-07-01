@@ -42,7 +42,7 @@ extension ImageListWireframe {
     
     static func buildModule() -> UIViewController {
         let wireframe = ImageListWireframe()
-        let view = R.storyboard.main.imageListController()
+        let view = R.storyboard.imageList.imageListController()
         let presenter = ImageListPresenter(view: view) 
         let interactor = ImageListInteractor(output: presenter)
         

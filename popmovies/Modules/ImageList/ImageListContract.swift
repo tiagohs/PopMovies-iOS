@@ -37,9 +37,7 @@ protocol ImageListInteractorOutputInterface {
     
 }
 
-protocol ImageListWireframaInterface {
-    
-    var viewController: UIViewController? { get set }
+protocol ImageListWireframaInterface: BaseWireframeInterface {
     
     func presentImageViewer(for image: Image, _ allImages: [Image], _ movie: Movie?,_ person: Person?, indexPath: IndexPath)
     

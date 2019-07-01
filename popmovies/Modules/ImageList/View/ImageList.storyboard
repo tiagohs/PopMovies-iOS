@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Image List Controller-->
+        <scene sceneID="oxD-H3-UE7">
+            <objects>
+                <viewController storyboardIdentifier="ImageListController" id="W2n-Hm-uFP" customClass="ImageListController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jad-zu-vOK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lvV-QF-atZ">
+                                <rect key="frame" x="0.0" y="110" width="414" height="786"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="o3g-JN-Tag">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="W2n-Hm-uFP" id="1ek-Az-5Qh"/>
+                                    <outlet property="delegate" destination="W2n-Hm-uFP" id="VQ6-Xg-yqL"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5B5-3K-6oq">
+                                <rect key="frame" x="349" y="50" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="BHI-Kc-q5q"/>
+                                    <constraint firstAttribute="width" constant="35" id="rOM-s5-yle"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="Close">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="back"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="hero_dismissViewController" destination="W2n-Hm-uFP" eventType="touchUpInside" id="R4Q-k6-Wo9"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S8q-Ao-iP7">
+                                <rect key="frame" x="30" y="47" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4df-mI-QnM"/>
+                                    <constraint firstAttribute="width" constant="40" id="v5b-4b-hSQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toy Story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMf-R6-jP2">
+                                <rect key="frame" x="78" y="47" width="263" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40 Fotos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPO-xi-yiF">
+                                <rect key="frame" x="78" y="71" width="263" height="19.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nMf-R6-jP2" firstAttribute="leading" secondItem="S8q-Ao-iP7" secondAttribute="trailing" constant="8" id="1Tg-Wi-din"/>
+                            <constraint firstItem="5B5-3K-6oq" firstAttribute="leading" secondItem="nMf-R6-jP2" secondAttribute="trailing" constant="8" id="49J-dY-jsQ"/>
+                            <constraint firstItem="aPO-xi-yiF" firstAttribute="top" secondItem="nMf-R6-jP2" secondAttribute="bottom" constant="2" id="6QP-Bz-c4Z"/>
+                            <constraint firstItem="lvV-QF-atZ" firstAttribute="leading" secondItem="7BL-ca-SKA" secondAttribute="leading" id="Bzz-dD-lXl"/>
+                            <constraint firstItem="5B5-3K-6oq" firstAttribute="top" secondItem="Jad-zu-vOK" secondAttribute="top" constant="50" id="RjX-OF-3iu"/>
+                            <constraint firstItem="5B5-3K-6oq" firstAttribute="leading" secondItem="aPO-xi-yiF" secondAttribute="trailing" constant="8" id="WuW-rd-XLp"/>
+                            <constraint firstItem="lvV-QF-atZ" firstAttribute="trailing" secondItem="7BL-ca-SKA" secondAttribute="trailing" id="bVS-hd-XaB"/>
+                            <constraint firstItem="nMf-R6-jP2" firstAttribute="top" secondItem="7BL-ca-SKA" secondAttribute="top" constant="3" id="exp-Ca-pdn"/>
+                            <constraint firstItem="S8q-Ao-iP7" firstAttribute="leading" secondItem="Jad-zu-vOK" secondAttribute="leading" constant="30" id="g2f-b5-3bv"/>
+                            <constraint firstItem="S8q-Ao-iP7" firstAttribute="top" secondItem="Jad-zu-vOK" secondAttribute="top" constant="47" id="knN-yZ-eEM"/>
+                            <constraint firstAttribute="bottom" secondItem="lvV-QF-atZ" secondAttribute="bottom" id="ko1-a2-dge"/>
+                            <constraint firstItem="aPO-xi-yiF" firstAttribute="leading" secondItem="S8q-Ao-iP7" secondAttribute="trailing" constant="8" id="nDx-vy-bEc"/>
+                            <constraint firstItem="7BL-ca-SKA" firstAttribute="trailing" secondItem="5B5-3K-6oq" secondAttribute="trailing" constant="30" id="r4Y-gn-M9N"/>
+                            <constraint firstItem="lvV-QF-atZ" firstAttribute="top" secondItem="5B5-3K-6oq" secondAttribute="bottom" constant="25" id="zee-JP-Lan"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7BL-ca-SKA"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="backButton" destination="5B5-3K-6oq" id="8VC-8o-DCB"/>
+                        <outlet property="imageListCollectionView" destination="lvV-QF-atZ" id="DKe-Hm-m1d"/>
+                        <outlet property="imageListCollectionViewFlow" destination="o3g-JN-Tag" id="Kqb-mc-ATu"/>
+                        <outlet property="imageQuantityLabel" destination="aPO-xi-yiF" id="6gw-tW-a52"/>
+                        <outlet property="nameLabel" destination="nMf-R6-jP2" id="ObF-FL-fi1"/>
+                        <outlet property="posterImage" destination="S8q-Ao-iP7" id="9d5-jp-SuG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z7w-nZ-yj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4668" y="-133"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Close" width="30" height="30"/>
+    </resources>
+</document>

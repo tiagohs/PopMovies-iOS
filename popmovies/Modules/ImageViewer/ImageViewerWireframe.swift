@@ -44,7 +44,7 @@ extension ImageViewerWireframe {
     
     static func buildModule() -> UIViewController {
         let wireframe = ImageViewerWireframe()
-        let view = R.storyboard.main.imageViewerController()
+        let view = R.storyboard.imageViewer.imageViewerController()
         let presenter = ImageViewerPresenter(view: view)
         let interactor = ImageViewerInteractor(output: presenter)
         

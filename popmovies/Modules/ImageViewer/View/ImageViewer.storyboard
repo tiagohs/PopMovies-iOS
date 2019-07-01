@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Image Viewer Controller-->
+        <scene sceneID="m74-U6-8kc">
+            <objects>
+                <viewController storyboardIdentifier="ImageViewerController" automaticallyAdjustsScrollViewInsets="NO" id="Ye5-nS-jiB" customClass="ImageViewerController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mm6-Pw-80O">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BOd-Ml-Svu">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pCI-gL-rqs">
+                                    <size key="itemSize" width="372" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="ImageViewerItemCellIdentifier" id="n22-mq-aVt" customClass="ImageViewerItemCell" customModule="popmovies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="372" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="372" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ye5-nS-jiB" id="sFL-FS-DFx"/>
+                                    <outlet property="delegate" destination="Ye5-nS-jiB" id="rGs-jV-DJo"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DA4-kx-WZk">
+                                <rect key="frame" x="349" y="50" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="I2G-s4-Lk7"/>
+                                    <constraint firstAttribute="width" constant="35" id="eiJ-yO-WdN"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="ShareIcon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmM-os-rhk">
+                                <rect key="frame" x="30" y="50" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="8XO-N2-BKm"/>
+                                    <constraint firstAttribute="width" constant="35" id="juY-rg-1w5"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="BackIcon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="back"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="dismiss" destination="Ye5-nS-jiB" eventType="touchDragInside" id="kUY-LN-7JB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dN-xu-5ef">
+                                <rect key="frame" x="306" y="50" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="XAg-Oz-HeB"/>
+                                    <constraint firstAttribute="width" constant="35" id="lgl-8Y-X8J"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="ImageGridIcon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didGalleryButtonClicked" destination="Ye5-nS-jiB" eventType="touchUpInside" id="6p8-ub-D2l"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="BOd-Ml-Svu" secondAttribute="bottom" id="DTT-X4-zPQ"/>
+                            <constraint firstItem="BOd-Ml-Svu" firstAttribute="leading" secondItem="Hs8-KG-bIG" secondAttribute="leading" id="EyF-ev-mZg"/>
+                            <constraint firstItem="9dN-xu-5ef" firstAttribute="top" secondItem="Mm6-Pw-80O" secondAttribute="top" constant="50" id="F3h-pO-fMj"/>
+                            <constraint firstItem="DA4-kx-WZk" firstAttribute="leading" secondItem="9dN-xu-5ef" secondAttribute="trailing" constant="8" id="XFx-Dw-kPY"/>
+                            <constraint firstItem="mmM-os-rhk" firstAttribute="leading" secondItem="Mm6-Pw-80O" secondAttribute="leading" constant="30" id="XRa-qM-4TH"/>
+                            <constraint firstItem="BOd-Ml-Svu" firstAttribute="top" secondItem="Mm6-Pw-80O" secondAttribute="top" id="YeZ-a8-YW3"/>
+                            <constraint firstItem="mmM-os-rhk" firstAttribute="top" secondItem="Mm6-Pw-80O" secondAttribute="top" constant="50" id="YrF-cE-nhB"/>
+                            <constraint firstItem="BOd-Ml-Svu" firstAttribute="trailing" secondItem="Hs8-KG-bIG" secondAttribute="trailing" id="guF-gj-w0G"/>
+                            <constraint firstAttribute="trailing" secondItem="DA4-kx-WZk" secondAttribute="trailing" constant="30" id="owM-JZ-RLD"/>
+                            <constraint firstItem="DA4-kx-WZk" firstAttribute="top" secondItem="Mm6-Pw-80O" secondAttribute="top" constant="50" id="qIN-jK-6e4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Hs8-KG-bIG"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="backButton" destination="mmM-os-rhk" id="yZQ-sS-Asn"/>
+                        <outlet property="galleryButton" destination="9dN-xu-5ef" id="Se3-Wy-PJZ"/>
+                        <outlet property="imageViewerCollectionView" destination="BOd-Ml-Svu" id="sGO-uz-m6Q"/>
+                        <outlet property="panGesture" destination="RcG-j6-0Y0" id="bA2-ah-ixP"/>
+                        <outlet property="shareButton" destination="DA4-kx-WZk" id="4g8-ZV-G4a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uGl-bg-WZL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="RcG-j6-0Y0">
+                    <connections>
+                        <action selector="handlePan:" destination="Ye5-nS-jiB" id="C74-z6-oMc"/>
+                        <outlet property="delegate" destination="Ye5-nS-jiB" id="VC3-5v-QI2"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="5612" y="-133"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BackIcon" width="30" height="30"/>
+        <image name="ImageGridIcon" width="30" height="30"/>
+        <image name="ShareIcon" width="32" height="32"/>
+    </resources>
+</document>

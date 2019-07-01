@@ -63,7 +63,6 @@ extension HomeController {
         super.viewDidDisappear(animated)
         
         presenter?.viewDidDisappear(animated)
-        presenter = nil
     }
 }
 

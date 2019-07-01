@@ -45,8 +45,6 @@ extension MovieListPresenter: MovieListPresenterInterface {
     
     func viewDidDisappear(_ animated: Bool) {
         self.interactor?.outputFinished()
-        self.interactor = nil
-        self.view = nil
     }
     
     func viewWillAppear(_ animated: Bool) {}
@@ -105,7 +103,7 @@ extension MovieListPresenter: MovieListInteractorOutputInterface {
         }
         
         self.view?.hideActivityIndicator()
-        self.view?.showMovies(with: movies)
+        self.view?.showMovies(with: self.movies!)
     }
     
     func moviesDidError(_ error: DefaultError) {

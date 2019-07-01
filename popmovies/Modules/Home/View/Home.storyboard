@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Oswald-Bold.ttf">
+            <string>Oswald-Bold</string>
+        </array>
+        <array key="Oswald-Regular.ttf">
+            <string>Oswald-Regular</string>
+        </array>
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Início-->
+        <scene sceneID="7gA-nE-kRW">
+            <objects>
+                <viewController storyboardIdentifier="HomeController" id="Nnw-zy-IIj" userLabel="Início" customClass="HomeController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bcz-rF-6mC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="280" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EBE-iO-b1y">
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NowPlayingMovieCell" rowHeight="216" id="CKG-Ba-xK9" userLabel="NowPlayingMovieCell" customClass="NowPlayingMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="216"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CKG-Ba-xK9" id="hiy-1c-w9W">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Fw-WU-SUJ" userLabel="NowPlayingMoviesCollection">
+                                                    <rect key="frame" x="0.0" y="11" width="375" height="215"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="215" id="h8I-jU-WOY"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="S6G-5e-Z6G">
+                                                        <size key="itemSize" width="375" height="210.66666666666666"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="CKG-Ba-xK9" id="RDE-tL-ORx"/>
+                                                        <outlet property="delegate" destination="CKG-Ba-xK9" id="Afk-nE-hE0"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="6Fw-WU-SUJ" secondAttribute="trailing" id="9Wa-zS-FkN"/>
+                                                <constraint firstItem="6Fw-WU-SUJ" firstAttribute="leading" secondItem="hiy-1c-w9W" secondAttribute="leading" id="KpF-Sc-DQF"/>
+                                                <constraint firstAttribute="bottom" secondItem="6Fw-WU-SUJ" secondAttribute="bottom" id="gSz-B7-o6R"/>
+                                                <constraint firstItem="6Fw-WU-SUJ" firstAttribute="top" secondItem="hiy-1c-w9W" secondAttribute="top" constant="11" id="tlJ-1U-HeS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="moviesCollectionView" destination="6Fw-WU-SUJ" id="f1a-qK-tGF"/>
+                                            <outlet property="moviesCollectionViewViewFlow" destination="S6G-5e-Z6G" id="Iuu-5u-g4z"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopularMoviesCell" rowHeight="339" id="ahd-PZ-7dD" userLabel="PopularMoviesCell" customClass="PopularMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="244" width="414" height="339"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ahd-PZ-7dD" id="lHW-1E-ieH">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="339"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feV-F1-rZN">
+                                                    <rect key="frame" x="10" y="10" width="64" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="mP6-eg-bDu"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eme-Is-gOg">
+                                                    <rect key="frame" x="79" y="14" width="50" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ju7-A7-JQZ" userLabel="PopularMoviesCollection">
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="280"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="280" id="Wx1-Kv-PS2"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sfe-Kc-sHP">
+                                                        <size key="itemSize" width="137" height="270"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="ahd-PZ-7dD" id="EVE-oV-hja"/>
+                                                        <outlet property="delegate" destination="ahd-PZ-7dD" id="6U3-Kw-C9b"/>
+                                                    </connections>
+                                                </collectionView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEC-ii-Uti">
+                                                    <rect key="frame" x="316" y="14" width="43" height="21.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21.329999999999998" id="zML-SQ-38j"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                    <state key="normal" title="See All"/>
+                                                    <connections>
+                                                        <action selector="didSeeAllPopularMoviesSelected" destination="Nnw-zy-IIj" eventType="touchUpInside" id="J2O-6h-DbS"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ju7-A7-JQZ" firstAttribute="top" secondItem="feV-F1-rZN" secondAttribute="bottom" constant="8" id="4af-4W-FpE"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ju7-A7-JQZ" secondAttribute="bottom" constant="10" id="Dfy-ek-9wj"/>
+                                                <constraint firstItem="feV-F1-rZN" firstAttribute="leading" secondItem="lHW-1E-ieH" secondAttribute="leading" constant="10" id="IYa-Oj-3d8"/>
+                                                <constraint firstItem="Eme-Is-gOg" firstAttribute="top" secondItem="lHW-1E-ieH" secondAttribute="topMargin" constant="3" id="Ly4-OM-3ZA"/>
+                                                <constraint firstAttribute="trailing" secondItem="UEC-ii-Uti" secondAttribute="trailing" constant="16" id="Ugy-Ga-6b0"/>
+                                                <constraint firstItem="feV-F1-rZN" firstAttribute="top" secondItem="lHW-1E-ieH" secondAttribute="top" constant="10" id="aVC-hN-43n"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ju7-A7-JQZ" secondAttribute="trailing" id="eJE-0X-TQf"/>
+                                                <constraint firstItem="Ju7-A7-JQZ" firstAttribute="leading" secondItem="lHW-1E-ieH" secondAttribute="leading" id="pAm-5l-tdV"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ju7-A7-JQZ" secondAttribute="bottom" constant="11" id="s9T-C6-BUq"/>
+                                                <constraint firstItem="Eme-Is-gOg" firstAttribute="leading" secondItem="feV-F1-rZN" secondAttribute="trailing" constant="5" id="sV1-86-7K7"/>
+                                                <constraint firstItem="UEC-ii-Uti" firstAttribute="top" secondItem="lHW-1E-ieH" secondAttribute="top" constant="14" id="tlm-Tk-2Ao"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="moviesCollectionView" destination="Ju7-A7-JQZ" id="PVv-3Y-tvA"/>
+                                            <outlet property="moviesCollectionViewViewFlow" destination="sfe-Kc-sHP" id="5bB-2M-lH3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopRatedMoviesCell" rowHeight="288" id="aYj-Jp-IWc" userLabel="TopRatedMoviesCell" customClass="TopRatedMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="583" width="414" height="288"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aYj-Jp-IWc" id="fI0-Xj-yRM">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="288"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Na3-xA-c8x" userLabel="TopRatedMoviesCollection">
+                                                    <rect key="frame" x="0.0" y="47" width="375" height="230"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="230" id="MEa-pK-zIm"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="b3a-0P-vbx">
+                                                        <size key="itemSize" width="137" height="241"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="aYj-Jp-IWc" id="U06-tL-YaV"/>
+                                                        <outlet property="delegate" destination="aYj-Jp-IWc" id="TXh-Zc-fn2"/>
+                                                    </connections>
+                                                </collectionView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Rated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amK-9c-I2t">
+                                                    <rect key="frame" x="10" y="10" width="81.5" height="27"/>
+                                                    <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlA-1V-10V">
+                                                    <rect key="frame" x="96.5" y="10" width="50" height="28.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28.670000000000002" id="WJR-Cs-1VV"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsN-VP-eB4">
+                                                    <rect key="frame" x="316" y="10" width="43" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="wtq-vT-atW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                    <state key="normal" title="See All"/>
+                                                    <connections>
+                                                        <action selector="didSeeAllTopRatedMoviesSelected" destination="Nnw-zy-IIj" eventType="touchUpInside" id="4hx-Rs-qkb"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Na3-xA-c8x" secondAttribute="bottom" constant="11" id="GFb-bM-6fR"/>
+                                                <constraint firstAttribute="trailing" secondItem="Na3-xA-c8x" secondAttribute="trailing" id="RdK-mm-mjh"/>
+                                                <constraint firstAttribute="trailing" secondItem="MsN-VP-eB4" secondAttribute="trailing" constant="16" id="ctq-qN-SlR"/>
+                                                <constraint firstItem="LlA-1V-10V" firstAttribute="top" secondItem="fI0-Xj-yRM" secondAttribute="top" constant="10" id="g6D-IS-Zil"/>
+                                                <constraint firstItem="LlA-1V-10V" firstAttribute="leading" secondItem="amK-9c-I2t" secondAttribute="trailing" constant="5" id="hpC-hZ-Pjn"/>
+                                                <constraint firstItem="Na3-xA-c8x" firstAttribute="leading" secondItem="fI0-Xj-yRM" secondAttribute="leading" id="ipn-ae-irp"/>
+                                                <constraint firstItem="amK-9c-I2t" firstAttribute="leading" secondItem="fI0-Xj-yRM" secondAttribute="leading" constant="10" id="kcg-Rl-oAm"/>
+                                                <constraint firstItem="MsN-VP-eB4" firstAttribute="top" secondItem="fI0-Xj-yRM" secondAttribute="top" constant="10" id="omh-xB-BVd"/>
+                                                <constraint firstItem="Na3-xA-c8x" firstAttribute="top" secondItem="amK-9c-I2t" secondAttribute="bottom" constant="10" id="pVi-AI-hiB"/>
+                                                <constraint firstItem="amK-9c-I2t" firstAttribute="top" secondItem="fI0-Xj-yRM" secondAttribute="top" constant="10" id="vvp-L8-2Sh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="moviesCollectionView" destination="Na3-xA-c8x" id="pfT-Lp-gqf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UpcomingMoviesCell" rowHeight="288" id="78a-9Q-18T" userLabel="UpcomingMoviesCell" customClass="UpcomingMoviesCell" customModule="popmovies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="871" width="414" height="288"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="78a-9Q-18T" id="bVi-pg-ijq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="287.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WFN-Aa-qnz" userLabel="UpcomingMoviesCollection">
+                                                    <rect key="frame" x="0.0" y="46.5" width="375" height="230"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="230" id="jRD-ea-68T"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cyr-Sw-h00">
+                                                        <size key="itemSize" width="137" height="241"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="78a-9Q-18T" id="Sob-JP-xSf"/>
+                                                        <outlet property="delegate" destination="78a-9Q-18T" id="oUr-7N-h1f"/>
+                                                    </connections>
+                                                </collectionView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ex-oR-Wb4">
+                                                    <rect key="frame" x="10" y="10" width="81.5" height="26.5"/>
+                                                    <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JY-FQ-Zll">
+                                                    <rect key="frame" x="96.5" y="10" width="50" height="28.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28.670000000000002" id="KdG-MK-M1j"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faR-vB-j6n">
+                                                    <rect key="frame" x="316" y="10" width="43" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="8rw-h0-DKp"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                    <state key="normal" title="See All"/>
+                                                    <connections>
+                                                        <action selector="didSeeAllUpcomingMoviesSelected" destination="Nnw-zy-IIj" eventType="touchUpInside" id="XLI-R8-pjr"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="faR-vB-j6n" firstAttribute="top" secondItem="bVi-pg-ijq" secondAttribute="top" constant="10" id="7EV-cy-aYy"/>
+                                                <constraint firstItem="WFN-Aa-qnz" firstAttribute="top" secondItem="6ex-oR-Wb4" secondAttribute="bottom" constant="10" id="8bC-HR-Sua"/>
+                                                <constraint firstItem="6ex-oR-Wb4" firstAttribute="top" secondItem="bVi-pg-ijq" secondAttribute="top" constant="10" id="AfQ-aX-XWl"/>
+                                                <constraint firstAttribute="trailing" secondItem="WFN-Aa-qnz" secondAttribute="trailing" id="MoI-tx-Cth"/>
+                                                <constraint firstAttribute="bottom" secondItem="WFN-Aa-qnz" secondAttribute="bottom" constant="11" id="VUG-pm-SMD"/>
+                                                <constraint firstItem="7JY-FQ-Zll" firstAttribute="top" secondItem="bVi-pg-ijq" secondAttribute="top" constant="10" id="Xge-Xo-pr6"/>
+                                                <constraint firstItem="WFN-Aa-qnz" firstAttribute="leading" secondItem="bVi-pg-ijq" secondAttribute="leading" id="aYC-PT-rjl"/>
+                                                <constraint firstAttribute="trailing" secondItem="faR-vB-j6n" secondAttribute="trailing" constant="16" id="auu-in-tHr"/>
+                                                <constraint firstItem="6ex-oR-Wb4" firstAttribute="leading" secondItem="bVi-pg-ijq" secondAttribute="leading" constant="10" id="geF-VX-ouq"/>
+                                                <constraint firstItem="7JY-FQ-Zll" firstAttribute="leading" secondItem="6ex-oR-Wb4" secondAttribute="trailing" constant="5" id="gh8-RY-igj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="moviesCollectionView" destination="WFN-Aa-qnz" id="EA3-Wh-Rpx"/>
+                                            <outlet property="moviesCollectionViewViewFlow" destination="Cyr-Sw-h00" id="zGH-p6-UUy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Nnw-zy-IIj" id="ozc-M7-0ba"/>
+                                    <outlet property="delegate" destination="Nnw-zy-IIj" id="GF1-WL-gjO"/>
+                                </connections>
+                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconApp" translatesAutoresizingMaskIntoConstraints="NO" id="nrp-vP-H3U">
+                                <rect key="frame" x="16" y="55" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="BYH-9X-AQj"/>
+                                    <constraint firstAttribute="height" constant="35" id="sW5-nD-bJe"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="topImage"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PopMovies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SaN-zA-5US">
+                                <rect key="frame" x="59" y="59" width="111" height="26"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="topTitle"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EBE-iO-b1y" firstAttribute="trailing" secondItem="RHB-iy-0Oj" secondAttribute="trailing" id="99V-mq-VdP"/>
+                            <constraint firstItem="SaN-zA-5US" firstAttribute="leading" secondItem="nrp-vP-H3U" secondAttribute="trailing" constant="8" id="DdC-Y7-Ls3"/>
+                            <constraint firstAttribute="bottom" secondItem="EBE-iO-b1y" secondAttribute="bottom" id="GiR-35-7DT"/>
+                            <constraint firstItem="EBE-iO-b1y" firstAttribute="leading" secondItem="RHB-iy-0Oj" secondAttribute="leading" id="VMf-4d-gaf"/>
+                            <constraint firstItem="SaN-zA-5US" firstAttribute="top" secondItem="bcz-rF-6mC" secondAttribute="top" constant="59" id="WU2-gN-s2M"/>
+                            <constraint firstItem="nrp-vP-H3U" firstAttribute="top" secondItem="bcz-rF-6mC" secondAttribute="top" constant="55" id="Zt3-HC-eaR"/>
+                            <constraint firstItem="EBE-iO-b1y" firstAttribute="top" secondItem="nrp-vP-H3U" secondAttribute="bottom" constant="10" id="jVf-S5-rGy"/>
+                            <constraint firstItem="nrp-vP-H3U" firstAttribute="leading" secondItem="RHB-iy-0Oj" secondAttribute="leading" constant="16" id="oSp-gG-HKJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RHB-iy-0Oj"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6pw-aE-H6F"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="logoImageView" destination="nrp-vP-H3U" id="xOs-0i-Phq"/>
+                        <outlet property="tableView" destination="EBE-iO-b1y" id="epo-XZ-z1L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="33E-ka-yPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3476.811594202899" y="-703.125"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="s8W-Uc-NKi">
+            <objects>
+                <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="zU1-ID-93d" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FBB-LE-1hG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="Nnw-zy-IIj" kind="relationship" relationship="rootViewController" id="Z6v-9R-Jmp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tak-4j-8u0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2566.666666666667" y="-703.125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="IconApp" width="30" height="30"/>
+    </resources>
+</document>

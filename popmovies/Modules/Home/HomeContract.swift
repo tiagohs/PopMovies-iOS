@@ -57,9 +57,7 @@ protocol HomeInteractorOutputInterface {
     func upcomingMoviesDidError(_ error: DefaultError)
 }
 
-protocol HomeWireframaInterface {
-    
-    var viewController: UIViewController? { get set }
+protocol HomeWireframaInterface: BaseWireframeInterface {
     
     func presentDetails(for movie: Movie)
     func pushToPopularMoviesList()
@@ -67,4 +65,5 @@ protocol HomeWireframaInterface {
     func pushToUpcomingMoviesList()
     
     static func buildModule() -> UIViewController
+    static func buildModuleFromUINavigation() -> UIViewController
 }

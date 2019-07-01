@@ -22,7 +22,7 @@ class GenreListWireframe: GenreListWireframeInterface {
         let parameters = TMDB.URL.GENRES.buildMovieListByGenreParameters("BR", 1, "pt_BR")
         let title = genre.name ?? "Movies"
         
-        let movieListModule = MovieListWireframe.buildModuleFromUINavigation(url: url, parameters: parameters, title: title)
+        let movieListModule = MovieListWireframe.buildModule(url: url, parameters: parameters, title: title)
         
         self.viewController?.navigationController?.pushViewController(movieListModule, animated: true)
     }
@@ -34,8 +34,21 @@ class GenreListWireframe: GenreListWireframeInterface {
 extension GenreListWireframe {
     
     static func buildModule() -> UIViewController {
+        let view = R.storyboard.genreList.genreListController()
+        return build(view)
+    }
+    
+    static func buildModuleFromUINavigation() -> UIViewController {
+        let navigationController = R.storyboard.genreList.genreNavigationController()
+        let view = navigationController?.viewControllers.first as! GenreListController
+        
+        _ = build(view)
+        
+        return navigationController!
+    }
+    
+    private static func build(_ view: GenreListController?) -> UIViewController  {
         let wireframe = GenreListWireframe()
-        let view = R.storyboard.main.genreListController()
         let presenter = GenreListPresenter(view: view)
         let interactor = GenreListIntractor(output: presenter)
         

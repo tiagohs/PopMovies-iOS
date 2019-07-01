@@ -48,13 +48,13 @@ extension MovieListWireframe {
     }
     
     static func buildModule() -> UIViewController {
-        let view = R.storyboard.main.movieListController()
+        let view = R.storyboard.movieList.movieListController()
         
         return build(view)
     }
     
     static func buildModuleFromUINavigation() -> UIViewController {
-        let navigationController = R.storyboard.main.movieListNavigationController()
+        let navigationController = R.storyboard.movieList.movieListNavigationController()
         let view = navigationController?.viewControllers.first as! MovieListController
         
         _ = build(view)

@@ -24,7 +24,7 @@ class MovieListInteractor: BaseInteractor {
 
 // MARK: MovieListInteractorInputInterface - Output Lifecycle Methods
 
-extension MovieListInteractor {
+extension MovieListInteractor: MovieListInteractorInputInterface {
     
     func outputDidLoad() {}
     
@@ -37,7 +37,7 @@ extension MovieListInteractor {
 
 // MARK: MovieListInteractorInputInterface - Fetch methods
 
-extension MovieListInteractor: MovieListInteractorInputInterface {
+extension MovieListInteractor {
     
     func fetchMovies(from url: String, with parameters: [String : String]) {
         add(service.getMovieList(url: url, paramenters: parameters)

@@ -39,9 +39,7 @@ protocol GenreListInteractorOutputInterface {
     func genresDidError(_ error: DefaultError)
 }
 
-protocol GenreListWireframeInterface {
-    
-    var viewController: UIViewController? { get set }
+protocol GenreListWireframeInterface: BaseWireframeInterface {
     
     func pushToMovieListByGenre(_ genre: Genre)
     

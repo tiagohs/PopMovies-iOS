@@ -36,4 +36,5 @@ protocol BaseInteractorInterface {
 
 protocol BaseWireframeInterface {
     
+    var viewController: UIViewController? { get set }
 }

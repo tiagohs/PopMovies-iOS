@@ -17,6 +17,8 @@ class VideoViewerController: BaseViewController {
     // MARK: Outlets
     
     @IBOutlet weak var videoView: WKYTPlayerView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!
 
@@ -51,7 +53,6 @@ extension VideoViewerController {
         super.viewDidDisappear(animated)
         
         presenter?.viewDidDisappear(animated)
-        presenter = nil
     }
     
     override func viewWillLayoutSubviews() {
@@ -86,8 +87,12 @@ extension VideoViewerController: UIGestureRecognizerDelegate {
 extension VideoViewerController: VideoViewerViewInterface {
     
     func setupUI() {
+        backButton.layer.cornerRadius = backButton.bounds.width / 2
+        shareButton.layer.cornerRadius = shareButton.bounds.width / 2
+        
         containerView.addGestureRecognizer(panGesture)
         videoView.addGestureRecognizer(panGesture)
+        
         videoView.delegate = self
     }
     

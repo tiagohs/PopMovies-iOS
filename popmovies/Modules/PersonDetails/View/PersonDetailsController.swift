@@ -67,7 +67,6 @@ extension PersonDetailsController {
         super.viewDidDisappear(animated)
         
         presenter?.viewDidDisappear(animated)
-        presenter = nil
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

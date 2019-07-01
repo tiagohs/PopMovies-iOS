@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Video Viewer Controller-->
+        <scene sceneID="8KV-9Y-40r">
+            <objects>
+                <viewController storyboardIdentifier="VideoViewerController" id="S4R-hS-0OL" customClass="VideoViewerController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MY2-eu-oSG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLf-b4-wHJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TH5-KV-L5Z" customClass="WKYTPlayerView">
+                                <rect key="frame" x="0.0" y="343" width="414" height="210"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="lSz-FE-SUY"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1v4-5g-dsN">
+                                <rect key="frame" x="349" y="50" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="Gss-CT-npK"/>
+                                    <constraint firstAttribute="height" constant="35" id="fBC-qO-uf5"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="ShareIcon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8J-PE-68M">
+                                <rect key="frame" x="30" y="50" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="ST3-wh-UyV"/>
+                                    <constraint firstAttribute="height" constant="35" id="w3Q-0v-O0c"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="BackIcon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="back"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="dismiss" destination="S4R-hS-0OL" eventType="touchUpInside" id="SDQ-MN-oK4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TH5-KV-L5Z" firstAttribute="leading" secondItem="Wcw-ot-vtB" secondAttribute="leading" id="1Uf-lB-8fi"/>
+                            <constraint firstItem="I8J-PE-68M" firstAttribute="top" secondItem="MY2-eu-oSG" secondAttribute="top" constant="50" id="36O-lV-SUf"/>
+                            <constraint firstItem="vLf-b4-wHJ" firstAttribute="top" secondItem="MY2-eu-oSG" secondAttribute="top" id="6l6-Aj-YM2"/>
+                            <constraint firstItem="vLf-b4-wHJ" firstAttribute="trailing" secondItem="Wcw-ot-vtB" secondAttribute="trailing" id="J8D-6H-7mO"/>
+                            <constraint firstAttribute="trailing" secondItem="1v4-5g-dsN" secondAttribute="trailing" constant="30" id="O7x-kC-JAR"/>
+                            <constraint firstItem="1v4-5g-dsN" firstAttribute="top" secondItem="MY2-eu-oSG" secondAttribute="top" constant="50" id="OUf-Mx-W9f"/>
+                            <constraint firstItem="TH5-KV-L5Z" firstAttribute="trailing" secondItem="Wcw-ot-vtB" secondAttribute="trailing" id="bwC-jc-FO4"/>
+                            <constraint firstItem="vLf-b4-wHJ" firstAttribute="leading" secondItem="Wcw-ot-vtB" secondAttribute="leading" id="eG1-Nc-91p"/>
+                            <constraint firstAttribute="bottom" secondItem="vLf-b4-wHJ" secondAttribute="bottom" id="ebU-hi-83q"/>
+                            <constraint firstItem="TH5-KV-L5Z" firstAttribute="centerY" secondItem="MY2-eu-oSG" secondAttribute="centerY" id="imq-W4-2OZ"/>
+                            <constraint firstItem="I8J-PE-68M" firstAttribute="leading" secondItem="MY2-eu-oSG" secondAttribute="leading" constant="30" id="oEj-S5-4yF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wcw-ot-vtB"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="backButton" destination="I8J-PE-68M" id="YfQ-id-hR9"/>
+                        <outlet property="containerView" destination="vLf-b4-wHJ" id="c74-Hb-5jY"/>
+                        <outlet property="panGesture" destination="0Rl-Pw-c8O" id="fzr-HG-55w"/>
+                        <outlet property="shareButton" destination="1v4-5g-dsN" id="02W-zr-vzf"/>
+                        <outlet property="videoView" destination="TH5-KV-L5Z" id="Q1y-hl-UIh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UPa-xU-gUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="0Rl-Pw-c8O">
+                    <connections>
+                        <action selector="handlePan:" destination="S4R-hS-0OL" id="Hdl-3P-mKm"/>
+                        <outlet property="delegate" destination="S4R-hS-0OL" id="7z3-7J-Wuz"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="4668" y="-1627"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BackIcon" width="30" height="30"/>
+        <image name="ShareIcon" width="32" height="32"/>
+    </resources>
+</document>
