@@ -28,6 +28,23 @@ class Genre : BaseModel {
         return nil
     }
     
+    static func createGenresFromId(listOfId: [Int]) -> [Genre] {
+        var localGenres = TMDB.GENRES_ID
+        var finalGenres: [Genre] = []
+        
+        listOfId.forEach { (genreID) in
+            if let value = localGenres[genreID] {
+                let genre = Genre()
+                
+                genre.name = value
+                genre.id = genreID
+                
+                finalGenres.append(genre)
+            }
+        }
+        
+        return finalGenres
+    }
 }
 
 class GenreResult : BaseModel {

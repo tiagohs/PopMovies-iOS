@@ -41,7 +41,7 @@ class MovieDetailsMidiaCell: UITableViewCell {
     var allImages: [Image] = []
     var allVideos: [Video] = []
     
-    var movieDetailsMidiaDelegate: MovieDetailsMidiaDelegate?
+    var delegate: MovieDetailsMidiaDelegate?
     var movie: Movie? {
         didSet { bindMidiaContent(movie: movie!) }
     }
@@ -77,11 +77,11 @@ extension MovieDetailsMidiaCell {
 extension MovieDetailsMidiaCell {
     
     @IBAction func didSeeAllVideosClicked(_ sender: Any) {
-        movieDetailsMidiaDelegate?.didSeeAllVideosClicked(allVideos)
+        delegate?.didSeeAllVideosClicked(allVideos)
     }
     
     @IBAction func didSeeAllImagesClicked(_ sender: Any) {
-        movieDetailsMidiaDelegate?.didSeeAllWallpapersClicked(allImages)
+        delegate?.didSeeAllWallpapersClicked(allImages)
     }
 }
 
@@ -148,13 +148,13 @@ extension MovieDetailsMidiaCell: UICollectionViewDelegate, UICollectionViewDataS
     private func didVideoSelected(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let video = allVideos[indexPath.row]
         
-        movieDetailsMidiaDelegate?.didVideoSelected(video, allVideos)
+        delegate?.didVideoSelected(video, allVideos)
     }
     
     private func didImageSelected(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let image = allImages[indexPath.row]
         
-        movieDetailsMidiaDelegate?.didImageSelected(image, allImages, indexPath: indexPath)
+        delegate?.didImageSelected(image, allImages, indexPath: indexPath)
     }
     
 }

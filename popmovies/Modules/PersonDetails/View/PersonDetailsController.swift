@@ -136,8 +136,8 @@ extension PersonDetailsController: UITableViewDelegate, UITableViewDataSource {
                 cell.bindBackdropImage(person!)
             }
         }
-        if cell.personDetailsHeaderDelegate == nil {
-            cell.personDetailsHeaderDelegate = self
+        if cell.delegate == nil {
+            cell.delegate = self
         }
         
         return cell
@@ -149,8 +149,8 @@ extension PersonDetailsController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if person != nil { cell.person = person }
-        if cell.personDetailsOverviewDelegate == nil {
-            cell.personDetailsOverviewDelegate = self
+        if cell.delegate == nil {
+            cell.delegate = self
         }
         
         return cell
@@ -162,8 +162,8 @@ extension PersonDetailsController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if person != nil { cell.person = person }
-        if cell.personDetailsKnownForDelegate == nil {
-            cell.personDetailsKnownForDelegate = self
+        if cell.delegate == nil {
+            cell.delegate = self
         }
         
         return cell

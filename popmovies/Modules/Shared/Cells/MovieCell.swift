@@ -15,6 +15,7 @@ class MovieCell: UICollectionViewCell {
     @IBOutlet weak var movieBackground: UIImageView!
     @IBOutlet weak var movieTitle: UITextField!
     @IBOutlet weak var movieSubtitle: UITextField!
+    @IBOutlet weak var overviewView: UILabel!
     @IBOutlet weak var moviePoster: UIGradientImageView!
     @IBOutlet weak var imageShadowView: UIView!
     
@@ -103,5 +104,39 @@ class MovieCell: UICollectionViewCell {
         
         movieTitle.text = movie.title
         movieSubtitle.text = movie.releaseDate?.year
+    }
+    
+    func bindMovieCellDetails(movie: Movie) {
+        self.movie = movie
+        
+        guard let moviePosterView = self.moviePoster else { return }
+        
+        if let posterUrl = ImageUtils.formatImageUrl(imageID: movie.posterPath, imageSize: TMDB.ImageSize.POSTER.w500) {
+            
+            moviePosterView.setImage( imageUrl: posterUrl, contentMode: .scaleAspectFill, placeholderImageName: "PosterPlaceholder")
+            moviePosterView.hero.id = String(describing: movie.posterPath)
+        } else {
+            moviePosterView.image = UIImage(named: "PosterPlaceholder")
+        }
+        
+        movieTitle.text = movie.title
+        
+        var subtitle: String = ""
+        
+        if let releaseDate = movie.releaseDate {
+            subtitle.append(releaseDate.formatDate())
+        }
+        
+        if let genresID = movie.genreIds {
+            if genresID.count > 0 {
+                let genres: [Genre] = Genre.createGenresFromId(listOfId: genresID)
+                let genresName = genres.map { (genre) -> String in return genre.name ?? "" }
+                
+                subtitle.append(" / \(genresName.joined(separator: ", "))")
+            }
+        }
+        
+        movieSubtitle.text = subtitle
+        overviewView.text = movie.overview
     }
 }

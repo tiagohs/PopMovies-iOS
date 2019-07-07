@@ -26,7 +26,7 @@ class PersonDetailsOverviewCell: UITableViewCell {
     // MARK: Properties
 
     var isExternalLinksViewBinded = false
-    var personDetailsOverviewDelegate: PersonDetailsOverviewDelegate?
+    var delegate: PersonDetailsOverviewDelegate?
     var person: Person? {
         didSet { bindPerson(self.person!) }
     }
@@ -85,11 +85,11 @@ private extension PersonDetailsOverviewCell {
 private extension PersonDetailsOverviewCell {
     
     @IBAction func didImdbLinkTaped() {
-        personDetailsOverviewDelegate?.didImdbLinkClicked()
+        delegate?.didImdbLinkClicked()
     }
     
     @IBAction func didWikiLinkTaped() {
-        personDetailsOverviewDelegate?.didWikiLinkClicked()
+        delegate?.didWikiLinkClicked()
     }
 }
 

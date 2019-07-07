@@ -12,7 +12,7 @@ import RxSwift
 // MARK: HomeInteractor: BaseInteractor
 
 class HomeInteractor: BaseInteractor {
-    let movieService: IMovieService
+    let movieService: MovieServiceInterface
     
     var output: HomeInteractorOutputInterface?
     

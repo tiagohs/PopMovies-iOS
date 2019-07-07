@@ -19,9 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupStatusBar()
         setupApp()
-        
-        UITabBar.appearance().tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
-        UITabBar.appearance().backgroundColor = UIColor.white
+        setupTabBar()
         
         return true
     }
@@ -44,6 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
     }
     
-    
+    private func setupTabBar() {
+        UITabBar.appearance().tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
+        UITabBar.appearance().backgroundColor = UIColor.white
+    }
 }
 

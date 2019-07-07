@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Register Controller-->
+        <scene sceneID="C92-HI-nPQ">
+            <objects>
+                <viewController storyboardIdentifier="RegisterController" id="aIV-Ub-ftr" customClass="RegisterController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w2I-Ns-zRv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68B-AK-1Uk">
+                                <rect key="frame" x="30" y="50" width="35" height="35"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="49i-zk-2N9"/>
+                                    <constraint firstAttribute="width" constant="35" id="eBF-RU-N9r"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="BackIcon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="back"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54n-or-tYi">
+                                <rect key="frame" x="16" y="125" width="113.5" height="41"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="30"/>
+                                <color key="textColor" red="0.39735966919999999" green="0.2266873717" blue="0.70865720509999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter with your Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n1s-Jk-aUG" customClass="CustomTextField" customModule="popmovies" customModuleProvider="target">
+                                <rect key="frame" x="16" y="259.5" width="382" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="mif-t0-HKy"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="next" textContentType="name"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="insetX">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="insetY">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TG9-vK-Do3">
+                                <rect key="frame" x="16" y="226" width="48" height="23.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter with your Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j39-mL-naL" customClass="CustomTextField" customModule="popmovies" customModuleProvider="target">
+                                <rect key="frame" x="16" y="359" width="382" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ZDh-yo-BBC"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="light" returnKeyType="next" textContentType="email"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="insetX">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="insetY">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEs-CL-gmE">
+                                <rect key="frame" x="16" y="325.5" width="43.5" height="23.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter with your Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uns-3i-Ifl" customClass="CustomTextField" customModule="popmovies" customModuleProvider="target">
+                                <rect key="frame" x="16" y="459" width="382" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="K6P-j7-mFV"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="next" textContentType="new-password"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="insetX">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="insetY">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sh-IX-RIV">
+                                <rect key="frame" x="16" y="425" width="77" height="24"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm your Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lc0-P4-OAy" customClass="CustomTextField" customModule="popmovies" customModuleProvider="target">
+                                <rect key="frame" x="16" y="559" width="382" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ufi-9X-a6e"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="insetX">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="insetY">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWb-4V-Rhw">
+                                <rect key="frame" x="16" y="525" width="145.5" height="24"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpg-VB-mdQ">
+                                <rect key="frame" x="16" y="649" width="382" height="50"/>
+                                <color key="backgroundColor" red="0.39735966919999999" green="0.2266873717" blue="0.70865720509999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="i28-dc-34Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Login"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aXT-jO-fNe" firstAttribute="trailing" secondItem="lc0-P4-OAy" secondAttribute="trailing" constant="16" id="1Pr-yM-tmd"/>
+                            <constraint firstItem="aXT-jO-fNe" firstAttribute="trailing" secondItem="uns-3i-Ifl" secondAttribute="trailing" constant="16" id="2dW-2j-kBc"/>
+                            <constraint firstItem="3sh-IX-RIV" firstAttribute="leading" secondItem="aXT-jO-fNe" secondAttribute="leading" constant="16" id="65I-fK-Ogu"/>
+                            <constraint firstItem="3sh-IX-RIV" firstAttribute="top" secondItem="j39-mL-naL" secondAttribute="bottom" constant="16" id="7gO-Ld-DcF"/>
+                            <constraint firstItem="TG9-vK-Do3" firstAttribute="leading" secondItem="aXT-jO-fNe" secondAttribute="leading" constant="16" id="8wk-9u-MQT"/>
+                            <constraint firstAttribute="trailing" secondItem="rpg-VB-mdQ" secondAttribute="trailing" constant="16" id="BxQ-Ar-8Pu"/>
+                            <constraint firstItem="rpg-VB-mdQ" firstAttribute="leading" secondItem="aXT-jO-fNe" secondAttribute="leading" constant="16" id="D0m-bg-Ogr"/>
+                            <constraint firstItem="j39-mL-naL" firstAttribute="top" secondItem="CEs-CL-gmE" secondAttribute="bottom" constant="10" id="D1S-Bl-Uim"/>
+                            <constraint firstItem="FWb-4V-Rhw" firstAttribute="leading" secondItem="aXT-jO-fNe" secondAttribute="leading" constant="16" id="Hqh-4y-LJZ"/>
+                            <constraint firstItem="TG9-vK-Do3" firstAttribute="top" secondItem="54n-or-tYi" secondAttribute="bottom" constant="60" id="MBr-Sz-GbL"/>
+                            <constraint firstItem="68B-AK-1Uk" firstAttribute="top" secondItem="w2I-Ns-zRv" secondAttribute="top" constant="50" id="MWw-Dg-nU9"/>
+                            <constraint firstItem="lc0-P4-OAy" firstAttribute="leading" secondItem="aXT-jO-fNe" secondAttribute="leading" constant="16" id="OCF-lc-ddn"/>
+                            <constraint firstItem="uns-3i-Ifl" firstAttribute="top" secondItem="3sh-IX-RIV" secondAttribute="bottom" constant="10" id="P2A-KS-jBG"/>
+                            <constraint firstItem="lc0-P4-OAy" firstAttribute="top" secondItem="FWb-4V-Rhw" secondAttribute="bottom" constant="10" id="W9o-j3-yJX"/>
+                            <constraint firstItem="n1s-Jk-aUG" firstAttribute="leading" secondItem="aXT-jO-fNe" secondAttribute="leading" constant="16" id="WPS-g4-f3c"/>
+                            <constraint firstItem="CEs-CL-gmE" firstAttribute="leading" secondItem="aXT-jO-fNe" secondAttribute="leading" constant="16" id="XVn-bS-gUG"/>
+                            <constraint firstItem="rpg-VB-mdQ" firstAttribute="top" secondItem="lc0-P4-OAy" secondAttribute="bottom" constant="40" id="Xka-IQ-cna"/>
+                            <constraint firstItem="68B-AK-1Uk" firstAttribute="leading" secondItem="w2I-Ns-zRv" secondAttribute="leading" constant="30" id="cqt-bZ-jQa"/>
+                            <constraint firstItem="CEs-CL-gmE" firstAttribute="top" secondItem="n1s-Jk-aUG" secondAttribute="bottom" constant="16" id="f6c-45-H4r"/>
+                            <constraint firstItem="aXT-jO-fNe" firstAttribute="trailing" secondItem="n1s-Jk-aUG" secondAttribute="trailing" constant="16" id="fjV-Ng-VHA"/>
+                            <constraint firstItem="j39-mL-naL" firstAttribute="leading" secondItem="aXT-jO-fNe" secondAttribute="leading" constant="16" id="hh1-DR-Xhl"/>
+                            <constraint firstItem="uns-3i-Ifl" firstAttribute="leading" secondItem="aXT-jO-fNe" secondAttribute="leading" constant="16" id="jLL-cY-KyF"/>
+                            <constraint firstItem="n1s-Jk-aUG" firstAttribute="top" secondItem="TG9-vK-Do3" secondAttribute="bottom" constant="10" id="lk7-zG-rrO"/>
+                            <constraint firstItem="FWb-4V-Rhw" firstAttribute="top" secondItem="uns-3i-Ifl" secondAttribute="bottom" constant="16" id="oQW-Z9-gE8"/>
+                            <constraint firstItem="54n-or-tYi" firstAttribute="leading" secondItem="aXT-jO-fNe" secondAttribute="leading" constant="16" id="oxm-g0-EdV"/>
+                            <constraint firstItem="aXT-jO-fNe" firstAttribute="trailing" secondItem="j39-mL-naL" secondAttribute="trailing" constant="16" id="sWj-Xa-rvb"/>
+                            <constraint firstItem="54n-or-tYi" firstAttribute="top" secondItem="68B-AK-1Uk" secondAttribute="bottom" constant="40" id="v2y-0s-v6W"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aXT-jO-fNe"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="68B-AK-1Uk" id="Af0-k9-rMw"/>
+                        <outlet property="confirmPasswordTextField" destination="lc0-P4-OAy" id="9tr-ue-QlM"/>
+                        <outlet property="emailTextField" destination="j39-mL-naL" id="eMY-op-C2s"/>
+                        <outlet property="loginButton" destination="rpg-VB-mdQ" id="Hoa-6z-SIx"/>
+                        <outlet property="nameTextField" destination="n1s-Jk-aUG" id="x7y-Zo-Wv6"/>
+                        <outlet property="passwordTextField" destination="uns-3i-Ifl" id="JRC-ch-Z4R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QRW-QF-htm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="156.52173913043478" y="128.57142857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BackIcon" width="30" height="30"/>
+    </resources>
+</document>

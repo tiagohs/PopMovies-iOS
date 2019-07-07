@@ -36,7 +36,7 @@ class PersonDetailsKnownForCell: UITableViewCell {
     
     // MARK: Properties
     
-    var personDetailsKnownForDelegate: PersonDetailsKnownForDelegate?
+    var delegate: PersonDetailsKnownForDelegate?
     var person: Person? {
         didSet { bindPerson(self.person!) }
     }
@@ -106,13 +106,13 @@ extension PersonDetailsKnownForCell: UICollectionViewDelegate, UICollectionViewD
     private func didSelectItemAtImagesCollectionView(_ indexPath: IndexPath) {
         let image = allImages[indexPath.row]
         
-        personDetailsKnownForDelegate?.didImageSelect(image, indexPath: indexPath)
+        delegate?.didImageSelect(image, indexPath: indexPath)
     }
     
     private func didSelectItemAtKnownForCollectionView(_ indexPath: IndexPath) {
         let movie = allMovies[indexPath.row]
         
-        personDetailsKnownForDelegate?.didMovieSelect(movie)
+        delegate?.didMovieSelect(movie)
     }
 }
 

@@ -138,7 +138,7 @@ extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
         
         if (self.movie != nil) { cell.movie = self.movie }
         if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
-        if (cell.movieDetailsHeaderDelegate == nil) { cell.movieDetailsHeaderDelegate = self }
+        if (cell.delegate == nil) { cell.delegate = self }
         
         return cell
     }
@@ -150,8 +150,8 @@ extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
         
         if (self.movie != nil) { cell.movie = self.movie }
         if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
-        if (cell.movieDetailsOverviewDelegate == nil) {
-            cell.movieDetailsOverviewDelegate = self
+        if (cell.delegate == nil) {
+            cell.delegate = self
         }
         
         return cell
@@ -163,8 +163,8 @@ extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if (self.movie != nil) { cell.movie = self.movie }
-        if (cell.movieDetailsCreditsDelegate == nil) {
-            cell.movieDetailsCreditsDelegate = self
+        if (cell.delegate == nil) {
+            cell.delegate = self
         }
         
         return cell
@@ -176,7 +176,7 @@ extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if (self.movie != nil) { cell.movie = self.movie }
-        if (cell.movieDetailsMidiaDelegate == nil) { cell.movieDetailsMidiaDelegate = self }
+        if (cell.delegate == nil) { cell.delegate = self }
         
         return cell
     }
@@ -188,8 +188,8 @@ extension MovieDetailsController: UITableViewDelegate, UITableViewDataSource {
         
         if (self.movie != nil) { cell.movie = self.movie }
         if (self.movieRankings != nil) { cell.movieRanking = self.movieRankings }
-        if (cell.movieDetailsRelatedDelegate == nil) {
-            cell.movieDetailsRelatedDelegate = self
+        if (cell.delegate == nil) {
+            cell.delegate = self
         }
         
         return cell

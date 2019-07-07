@@ -48,7 +48,7 @@
 		<string>OpenSans-Bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>SplashScreen</string>
+	<string>Splash</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Home</string>
 	<key>UIRequiredDeviceCapabilities</key>

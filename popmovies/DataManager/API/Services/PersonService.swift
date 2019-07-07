@@ -10,16 +10,9 @@ import Foundation
 import RxSwift
 import RxAlamofire
 
-// MARK: IPersonService
+// MARK: PersonService: PersonServiceInterface
 
-protocol IPersonService {
-    
-    func getDetails(personId: Int, appendToResponse: [String], language: String) -> Observable<Person>
-}
-
-// MARK: PersonService: IPersonService
-
-class PersonService: IPersonService {
+class PersonService: PersonServiceInterface {
     
     func getDetails(personId: Int, appendToResponse: [String], language: String) -> Observable<Person> {
         let url = TMDB.URL.PERSON.buidPersonDetailsUrl(personId: personId)

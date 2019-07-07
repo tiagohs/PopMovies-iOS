@@ -10,26 +10,9 @@ import Foundation
 import RxSwift
 import RxAlamofire
 
-// MARK: IMovieService
+// MARK: MovieService: MovieServiceInterface
 
-protocol IMovieService {
-    
-    func getMovieRankings(imdbId: String) -> Observable<MovieOMDB>
-    func getDetails(movieId: Int, appendToResponse: [String], language: String) -> Observable<Movie>
-    
-    func getImages(movieId: Int, includeImageLanguage: [String], language: String?) -> Observable<Images>
-    func getVideos(movieId: Int, language: String?) -> Observable<Results<Video>>
-    
-    func getPopularMovies(page: Int, region: String) -> Observable<Results<Movie>>
-    func getNowPlaying(page: Int, region: String) -> Observable<Results<Movie>>
-    func getTopRated(page: Int, region: String) -> Observable<Results<Movie>>
-    func getUpcoming(page: Int, region: String) -> Observable<Results<Movie>>
-    func getMovieList(url: String, paramenters: [String : String]) -> Observable<Results<Movie>> 
-}
-
-// MARK: MovieService: IMovieService
-
-class MovieService: IMovieService {
+class MovieService: MovieServiceInterface {
     
     func getMovieRankings(imdbId: String) -> Observable<MovieOMDB> {
         let baseUrl = OMDB.BASE_URL
@@ -65,6 +48,15 @@ class MovieService: IMovieService {
         return requestJSON(.get, url, parameters: parameters)
             .debug()
             .mapObject(type: Results<Video>.self)
+    }
+    
+    func getMovieDiscover(page: Int, discoverMovie: DiscoverMovie) -> Observable<Results<Movie>> {
+        let url = TMDB.URL.MOVIES.DISCOVER_MOVIES_URL
+        let parameters = TMDB.URL.MOVIES.buildMovieDiscoverParameters(discoverMovie, page, "pt_BR")
+        
+        return requestJSON(.get, url, parameters: parameters)
+            .debug()
+            .mapObject(type: Results<Movie>.self)
     }
     
     func getSimilarMovies(movieId: Int, page: Int, region: String = "BR") -> Observable<Results<Movie>> {

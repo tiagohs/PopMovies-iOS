@@ -27,7 +27,7 @@ class PersonDetailsHeaderCell: UITableViewCell {
     
     // MARK: Properties
     
-    var personDetailsHeaderDelegate: PersonDetailsHeaderDelegate?
+    var delegate: PersonDetailsHeaderDelegate?
     var person: Person? {
         didSet { bindPerson(self.person!) }
     }
@@ -117,14 +117,14 @@ extension PersonDetailsHeaderCell {
 private extension PersonDetailsHeaderCell {
     
     @IBAction func didFacebookClicked() {
-        personDetailsHeaderDelegate?.didFacebookClicked()
+        delegate?.didFacebookClicked()
     }
     
     @IBAction func didTwitterClicked() {
-        personDetailsHeaderDelegate?.didTwitterClicked()
+        delegate?.didTwitterClicked()
     }
     
     @IBAction func didInstagramClicked() {
-        personDetailsHeaderDelegate?.didInstagramClicked()
+        delegate?.didInstagramClicked()
     }
 }

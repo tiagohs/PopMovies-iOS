@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.2)
+  - FSCalendar (2.8.0)
   - Hero (1.4.0)
   - Kingfisher (5.6.0)
   - ObjectMapper (3.5.0)
@@ -22,6 +23,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - FSCalendar
   - Hero
   - Kingfisher
   - ObjectMapper
@@ -34,6 +36,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   Kingfisher: 1a50df6880a60bae26f3e21a0df3d17b892f5e0b
   ObjectMapper: 078b564ed25c6578b62588e306bf1da3924636d4
@@ -46,6 +49,6 @@ SPEC CHECKSUMS:
   UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
   YoutubePlayer-in-WKWebView: 17a33b2fa619d357c9ddd763942ce556660facae
 
-PODFILE CHECKSUM: 5d180009a3c5a103d5076131e24369c698224d68
+PODFILE CHECKSUM: 2c2682fa38b3bda9ca7872fa89b35545a2feee6e
 
 COCOAPODS: 1.4.0

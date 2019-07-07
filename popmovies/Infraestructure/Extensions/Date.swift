@@ -24,6 +24,18 @@ extension Date {
         return String(currentMonthInt)
     }
     
+    var startOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 1, to: sunday)
+    }
+    
+    var endOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 7, to: sunday)
+    }
+    
     func formatDate(pattner: String = "dd/MM/yyyy") -> String {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
@@ -33,4 +45,9 @@ extension Date {
         
         return dateFormatterPrint.string(from: self);
     }
+    
+    func dateFrom(numberOfDays: Int) -> Date? {
+        return Calendar.current.date(byAdding: .day, value: numberOfDays, to: self)
+    }
+    
 }

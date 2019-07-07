@@ -12,7 +12,7 @@ import RxSwift
 // MovieListInteractor: BaseInteractor
 
 class MovieListInteractor: BaseInteractor {
-    let service: IMovieService
+    let service: MovieServiceInterface
     
     var output: MovieListInteractorOutputInterface?
     

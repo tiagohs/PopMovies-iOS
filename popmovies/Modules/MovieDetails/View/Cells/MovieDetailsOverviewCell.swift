@@ -26,7 +26,7 @@ class MovieDetailsOverviewCell: UITableViewCell {
         didSet { bindMovie(self.movie!) }
     }
     
-    var movieDetailsOverviewDelegate: MovieDetailsOverviewDelegate?
+    var delegate: MovieDetailsOverviewDelegate?
     var movieRanking: MovieOMDB?
     var isExternalLinksViewBinded = false
     
@@ -70,15 +70,15 @@ private extension MovieDetailsOverviewCell {
 private extension MovieDetailsOverviewCell {
     
     @IBAction func didImdbLinkTaped() {
-        self.movieDetailsOverviewDelegate?.didImdbLinkButtonClicked()
+        self.delegate?.didImdbLinkButtonClicked()
     }
     
     @IBAction func didTomatoesLinkTaped() {
-        self.movieDetailsOverviewDelegate?.didTomatoesLinkButtonClicked()
+        self.delegate?.didTomatoesLinkButtonClicked()
     }
     
     @IBAction func didWikiLinkTaped() {
-        self.movieDetailsOverviewDelegate?.didWikiLinkButtonClicked()
+        self.delegate?.didWikiLinkButtonClicked()
     }
     
 }

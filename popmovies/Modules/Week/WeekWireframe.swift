@@ -13,6 +13,23 @@ class WeekWireframe: WeekWireframeInterface {
     
     weak var viewController: UIViewController?
     
+    func presentCalendar() {
+        let calendarModule = CalendarWireframe.buildModule() as! CalendarController
+        let weekController = self.viewController as! WeekController
+        
+        calendarModule.delegate = weekController
+        
+        self.viewController?.hero.modalAnimationType = .zoomSlide(direction: .up)
+        self.viewController?.navigationController?.present(calendarModule, animated: true, completion: nil)
+
+    }
+    
+    func presentDetails(for movie: Movie) {
+        let movieDetailsModule = MovieDetailsWireframe.buildModule(with: movie)
+        
+        self.viewController?.navigationController?.present(movieDetailsModule, animated: true, completion: nil)
+    }
+    
 }
 
 extension WeekWireframe {

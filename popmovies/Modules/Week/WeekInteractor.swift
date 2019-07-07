@@ -7,15 +7,19 @@
 //
 
 import Foundation
+import RxSwift
 
 // MARK: WeekInteractor: BaseInteractor
 
 class WeekInteractor: BaseInteractor {
     
+    var movieService: MovieServiceInterface!
+    
     var output: WeekInteractorOutputInterface?
     
     init(output: WeekInteractorOutputInterface?) {
         self.output = output
+        self.movieService = MovieService()
     }
 }
 
@@ -27,8 +31,28 @@ extension WeekInteractor: WeekInteractorInputInterface {
     
     func outputFinished() {
         disposibles.dispose()
-        
-        self.output = nil
     }
     
+}
+
+// MARK: WeekInteractorInputInterface - Fetch Methods
+
+extension WeekInteractor {
+    
+    func fetchMoviesFromCurrentWeek(discoverModel: DiscoverMovie, page: Int) {
+        add(movieService.getMovieDiscover(page: page, discoverMovie: discoverModel)
+                    .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+                    .observeOn(MainScheduler.instance)
+                    .subscribe(onNext: { (moviesResult) in
+                        guard let movies = moviesResult.results else {
+                            self.output?.moviesFromCurrentWeekDidError(DefaultError(message: "Erro ao buscar os filmes na semana selecionada."))
+                            return
+                        }
+                        
+                        self.output?.moviesFromCurrentWeekDidFetch(movies)
+                    }, onError: { (error) in
+                        self.output?.moviesFromCurrentWeekDidError(DefaultError(message: "Erro ao buscar os filmes na semana selecionada."))
+                    })
+        )
+    }
 }

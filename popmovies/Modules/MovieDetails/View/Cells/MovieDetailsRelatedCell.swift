@@ -34,7 +34,7 @@ class MovieDetailsRelatedCell: UITableViewCell {
     
     // MARK: Properties
     
-    var movieDetailsRelatedDelegate: MovieDetailsRelatedDelegate?
+    var delegate: MovieDetailsRelatedDelegate?
     var movie: Movie? {
         didSet { bindMovieContent(self.movie!) }
     }
@@ -103,7 +103,7 @@ extension MovieDetailsRelatedCell: UICollectionViewDelegate, UICollectionViewDat
         }
         let similarMovie = similarMovies[indexPath.row]
         
-        movieDetailsRelatedDelegate?.didMovieSelect(similarMovie)
+        delegate?.didMovieSelect(similarMovie)
     }
     
 }
@@ -113,7 +113,7 @@ extension MovieDetailsRelatedCell: UICollectionViewDelegate, UICollectionViewDat
 extension MovieDetailsRelatedCell {
     
     @IBAction func didSeeAllRelatedMoviesClicked(_ sender: Any?) {
-        movieDetailsRelatedDelegate?.didSeeAllRelatedMoviesClicked()
+        delegate?.didSeeAllRelatedMoviesClicked()
     }
     
 }

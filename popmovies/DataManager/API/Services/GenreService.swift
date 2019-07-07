@@ -10,17 +10,9 @@ import Foundation
 import RxSwift
 import RxAlamofire
 
-// MARK: IGenreService
+// MARK: GenreService: GenreServiceInterface
 
-protocol IGenreService {
-    
-    func getGenres(language: String) -> Observable<[Genre]>
-    func getMoviesByGenre(genreId: Int, page: Int, language: String) -> Observable<Results<Movie>>
-}
-
-// MARK: GenreService: IGenreService
-
-class GenreService: IGenreService {
+class GenreService: GenreServiceInterface {
     
     func getGenres(language: String) -> Observable<[Genre]> {
         let url = TMDB.URL.GENRES.GENRES_LIST_URL

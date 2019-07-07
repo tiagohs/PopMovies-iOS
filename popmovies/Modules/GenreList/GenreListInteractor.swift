@@ -12,7 +12,7 @@ import RxSwift
 // MARK: GenreListIntractor: BaseInteractor
 
 class GenreListIntractor: BaseInteractor {
-    let service: IGenreService
+    let service: GenreServiceInterface
     
     var output: GenreListInteractorOutputInterface?
     

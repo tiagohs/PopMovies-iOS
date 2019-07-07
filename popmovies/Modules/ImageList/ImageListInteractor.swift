@@ -11,8 +11,8 @@ import Foundation
 // MARK: ImageListInteractor: BaseInteractor
 
 class ImageListInteractor: BaseInteractor {
-    let movieService: IMovieService
-    let personService: IPersonService
+    let movieService: MovieServiceInterface
+    let personService: PersonServiceInterface
     
     var output: ImageListInteractorOutputInterface?
     

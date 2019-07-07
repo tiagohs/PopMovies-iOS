@@ -12,7 +12,7 @@ import RxSwift
 
 class MovieDetailsInteractor: BaseInteractor {
     
-    let movieService: IMovieService!
+    let movieService: MovieServiceInterface!
     
     var output: MovieDetailsInteractorOutputInterface?
     
@@ -47,7 +47,6 @@ extension MovieDetailsInteractor {
 
         let languages = "en,pt_BR,\(String(describing: movie.originalLanguage)),null"
         let appendToResponse = ["videos", "images", "keywords", "releases", "similar_movies", "credits"]
-        
         
         add(movieService.getDetails(movieId: movieId, appendToResponse: appendToResponse, language: languages)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))

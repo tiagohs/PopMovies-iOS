@@ -10,7 +10,10 @@ import UIKit
 
 protocol WeekViewInterface: BaseViewInterface {
     var presenter: WeekPresenterInterface? { get set }
+        
+    func showMovies(_ movies: [Movie])
     
+    func formatDates(_ startDateFormat: String, _ endDateFormat: String, _ monthAndYear : String)
 }
 
 protocol WeekPresenterInterface: BasePresenterInterface {
@@ -19,18 +22,31 @@ protocol WeekPresenterInterface: BasePresenterInterface {
     var interactor: WeekInteractorInputInterface? { get set }
     var wireframe: WeekWireframeInterface? { get set }
     
+    func fetchMoviesFromCurrentWeek(startDate: Date, endDate: Date)
+    
+    func didSelectNewDate(_ startDate: Date, _ endDate: Date)
+    func didSelectDateFromCalendarClicked()
+    func didSelectMovie(_ movie: Movie)
+    func didNextClicked()
+    func didPreviousClicked()
 }
 
 protocol WeekInteractorInputInterface: BaseInteractorInterface {
     var output: WeekInteractorOutputInterface? { get set }
     
+    func fetchMoviesFromCurrentWeek(discoverModel: DiscoverMovie, page: Int)
 }
 
 protocol WeekInteractorOutputInterface {
     
+    func moviesFromCurrentWeekDidFetch(_ movies: [Movie])
+    func moviesFromCurrentWeekDidError(_ error: DefaultError)
 }
 
 protocol WeekWireframeInterface: BaseWireframeInterface {
+    
+    func presentCalendar()
+    func presentDetails(for movie: Movie)
     
     static func buildModule() -> UIViewController
 }

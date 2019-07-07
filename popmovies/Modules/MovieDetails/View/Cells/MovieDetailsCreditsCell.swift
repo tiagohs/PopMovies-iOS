@@ -36,7 +36,7 @@ class MovieDetailsCreditsCell: UITableViewCell {
     
     // MARK: Properties
     
-    var movieDetailsCreditsDelegate: MovieDetailsCreditsDelegate?
+    var delegate: MovieDetailsCreditsDelegate?
     var movie: Movie? {
         didSet { bindMovieCredits(self.movie!) }
     }
@@ -148,7 +148,7 @@ extension MovieDetailsCreditsCell: UICollectionViewDelegate, UICollectionViewDat
         person.name = name
         person.profilePath = profilePath
         
-        movieDetailsCreditsDelegate?.didSelectPerson(person)
+        delegate?.didSelectPerson(person)
     }
     
 }

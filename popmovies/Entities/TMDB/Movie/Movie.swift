@@ -26,6 +26,7 @@ class Movie: BaseModel, Hashable {
     var voteAverage: Double?
     var voteCount: Int?
     var releaseDate: Date?
+    var genreIds: [Int]?
     
     var genres: [Genre]?
     var productionCompanies: [ProductionCompany]?
@@ -51,6 +52,7 @@ class Movie: BaseModel, Hashable {
         backdropPath            <-  map["backdrop_path"]
         belongsToCollection     <-  map["belongs_to_collection"]
         budget                  <-  map["budget"]
+        genreIds                <-  map["genre_ids"]
         homepage                <-  map["homepage"]
         imdbID                  <-  map["imdb_id"]
         originalLanguage        <-  map["original_language"]

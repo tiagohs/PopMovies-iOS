@@ -51,7 +51,7 @@ class MovieDetailsHeaderCell: UITableViewCell {
     }
     
     var movieColors: UIImageColors?
-    var movieDetailsHeaderDelegate: MovieDetailsHeaderDelegate?
+    var delegate: MovieDetailsHeaderDelegate?
     
     var isImagesBind = false
     
@@ -82,7 +82,7 @@ extension MovieDetailsHeaderCell: UICollectionViewDelegate, UICollectionViewData
         }
         let genre = genres[indexPath.row]
         
-        movieDetailsHeaderDelegate?.didGenreSelected(genre)
+        delegate?.didGenreSelected(genre)
     }
 }
 

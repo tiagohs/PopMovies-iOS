@@ -21,6 +21,31 @@ struct TMDB {
         static let include_image_language   = "include_image_language"
         static let page                     = "page"
         static let region                   = "region"
+        static let sort_by                  = "sort_by"
+        static let certification_country    = "certification_country"
+        static let certification            = "certification"
+        static let certification_lte        = "certification.lte"
+        static let include_adult            = "include_adult"
+        static let include_video            = "include_video"
+        static let primary_release_year     = "primary_release_year"
+        static let primary_release_date_gte = "primary_release_date.gte"
+        static let primary_release_date_lte = "primary_release_date.lte"
+        static let release_date_gte         = "release_date.gte"
+        static let release_date_lte         = "release_date.lte"
+        static let vote_count_gte           = "vote_count.gte"
+        static let with_cast                = "with_cast"
+        static let with_crew                = "with_crew"
+        static let with_companies           = "with_companies"
+        static let with_genres              = "with_genres"
+        static let with_keywords            = "with_keywords"
+        static let with_people              = "with_people"
+        static let without_genres           = "without_genres"
+        static let without_keywords         = "without_keywords"
+        static let with_runtime_gte         = "with_runtime.gte"
+        static let with_runtime_lte         = "with_runtime.lte"
+        static let with_release_type        = "with_release_type"
+        static let with_original_language   = "with_original_language"
+
     }
     
     struct URL {
@@ -30,6 +55,7 @@ struct TMDB {
             static let UPCOMING_MOVIES_URL      = "\(BASE_URL)/upcoming"
             static let TOP_RATED_MOVIES_URL     = "\(BASE_URL)/top_rated"
             static let NOW_PLAYING_MOVIES_URL   = "\(BASE_URL)/now_playing"
+            static let DISCOVER_MOVIES_URL      = "\(TMDB.BASE_URL)discover/movie"
             
             static func buidMovieDetailsUrl(movieId: Int) -> String {
                 return "\(TMDB.BASE_URL)movie/\(String(describing: movieId))"
@@ -60,6 +86,48 @@ struct TMDB {
                     Parameters.page: String(page),
                     Parameters.region: region
                 ]
+            }
+            
+            static func buildMovieDiscoverParameters(_ discoverModel: DiscoverMovie,_ page: Int = 1, _ language: String = "pt_BR") -> [ String : String ] {
+                var parameters = [
+                    Parameters.apiKey: API_KEY,
+                    Parameters.language: language,
+                    Parameters.page: String(page),
+                    Parameters.append_to_response: URL.buildParameterListValue(discoverModel.appendToResponse),
+                    Parameters.include_adult: String(discoverModel.includeAdult),
+                    Parameters.include_video: String(discoverModel.includeVideo)
+                ]
+                
+                URL.addStringValueNotNull(key: TMDB.Parameters.region, value: discoverModel.region, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.sort_by, value: discoverModel.sortBy, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.vote_count_gte, value: discoverModel.voteCountGte, &parameters)
+                
+                URL.addStringValueNotNull(key: TMDB.Parameters.release_date_gte, value: discoverModel.releaseDateGte, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.release_date_lte, value: discoverModel.releaseDateLte, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.primary_release_date_gte, value: discoverModel.primaryReleaseDateGte, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.primary_release_date_lte, value: discoverModel.primaryRelaseDateLte, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.primary_release_year, value: discoverModel.primaryReleaseYear, &parameters)
+                
+                URL.addStringValueNotNull(key: TMDB.Parameters.certification_country, value: discoverModel.certificationCountry, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.certification, value: discoverModel.certification, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.certification_lte, value: discoverModel.certificationLte, &parameters)
+                
+                URL.addStringValueNotNull(key: TMDB.Parameters.with_genres, value: discoverModel.withGenres, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.with_keywords, value: discoverModel.withKeywords, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.with_cast, value: discoverModel.withCast, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.with_crew, value: discoverModel.withCrew, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.with_people, value: discoverModel.withPeople, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.with_companies, value: discoverModel.withCompanies, &parameters)
+                URL.addIntValueNotNull(key: TMDB.Parameters.with_runtime_gte, value: discoverModel.withRuntimeGte, &parameters)
+                URL.addIntValueNotNull(key: TMDB.Parameters.with_runtime_lte, value: discoverModel.withRuntimeLte, &parameters)
+                URL.addStringValueNotNull(key: TMDB.Parameters.with_release_type, value: discoverModel.withReleaseType, &parameters)
+                
+                URL.addIntValueNotNull(key: TMDB.Parameters.without_genres, value: discoverModel.withoutGenres, &parameters)
+                URL.addIntValueNotNull(key: TMDB.Parameters.without_keywords, value: discoverModel.withoutKeywords, &parameters)
+                
+                URL.addStringValueNotNull(key: TMDB.Parameters.with_original_language, value: discoverModel.withOriginalLanguage, &parameters)
+                
+                return parameters
             }
             
             static func buildMovieDetailsParameters(_ appendToResponse: [String],_ language: String) -> [String : String] {
@@ -148,6 +216,22 @@ struct TMDB {
         static func buildParameterListValue(_ list: [String]) -> String {
             return list.joined(separator: ",")
         }
+        
+        static func addStringValueNotNull(key: String, value: String?, _ parameters: inout [String : String]) {
+            guard let value = value else {
+                return
+            }
+            
+            parameters.append(with: [key : value])
+        }
+        
+        static func addIntValueNotNull(key: String, value: Int?, _ parameters: inout [String : String]) {
+            guard let value = value else {
+                return
+            }
+            
+            parameters.append(with: [key : String(value)])
+        }
     }
     
     struct ImageSize {
@@ -213,6 +297,28 @@ struct TMDB {
         53:     Constants.IMAGES.GENRE_THRILLER,
         10752:  Constants.IMAGES.GENRE_WAR,
         37:     Constants.IMAGES.GENRE_WESTERON
+    ]
+    
+    static let GENRES_ID = [
+        28:     "Action",
+        12:     "Adventure",
+        16:     "Animation",
+        35:     "Comedy",
+        80:     "Crime",
+        99:     "Documentary",
+        18:     "Drama",
+        10751:  "Family",
+        14:     "Fantasy",
+        36:     "History",
+        27:     "Horror",
+        10402:  "Music",
+        9648:   "Mistery",
+        10749:  "Romance",
+        878:    "Science Fiction",
+        10770:  "TV Movie",
+        53:     "Thriller",
+        10752:  "War",
+        37:     "Westeron"
     ]
     
 }

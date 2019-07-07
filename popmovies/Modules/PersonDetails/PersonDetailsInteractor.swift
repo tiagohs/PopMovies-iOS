@@ -12,7 +12,7 @@ import RxSwift
 // MARK: PersonDetailsInteractor: BaseInteractor
 
 class PersonDetailsInteractor: BaseInteractor {
-    let personService: IPersonService
+    let personService: PersonServiceInterface
     
     var output: PersonDetailsInteractorOutputInterface?
     
