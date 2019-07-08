@@ -34,9 +34,13 @@ extension ProfilePresenter: ProfilePresenterInterface {
         self.interactor?.outputFinished()
     }
     
-    func viewWillAppear(_ animated: Bool) {}
+    func viewWillAppear(_ animated: Bool) {
+        self.view?.hideNavigationBar(animated)
+    }
     
-    func viewWillDisappear(_ animated: Bool) {}
+    func viewWillDisappear(_ animated: Bool) {
+        self.view?.showNavigationBar(animated)
+    }
     
 }
 

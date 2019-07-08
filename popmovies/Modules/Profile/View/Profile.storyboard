@@ -17,13 +17,43 @@
                     <view key="view" contentMode="scaleToFill" id="wcN-1H-qXG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adventure" translatesAutoresizingMaskIntoConstraints="NO" id="O4l-Yd-6YM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="UIh-k7-M5w"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="600" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mna-fu-lGn">
+                                <rect key="frame" x="16" y="0.0" width="382" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="290" maxX="0.0" maxY="100"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Xug-oK-pRQ" id="vLV-PW-7Zl"/>
+                                    <outlet property="delegate" destination="Xug-oK-pRQ" id="NdM-2w-UpW"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Mna-fu-lGn" firstAttribute="leading" secondItem="M9Z-An-AcM" secondAttribute="leading" constant="16" id="3bh-3L-4hy"/>
+                            <constraint firstAttribute="bottom" secondItem="Mna-fu-lGn" secondAttribute="bottom" id="Agu-It-Wg8"/>
+                            <constraint firstItem="O4l-Yd-6YM" firstAttribute="top" secondItem="wcN-1H-qXG" secondAttribute="top" id="GU1-EE-k6w"/>
+                            <constraint firstItem="O4l-Yd-6YM" firstAttribute="leading" secondItem="M9Z-An-AcM" secondAttribute="leading" id="JuP-DN-9an"/>
+                            <constraint firstItem="Mna-fu-lGn" firstAttribute="top" secondItem="wcN-1H-qXG" secondAttribute="top" id="PN7-sW-dWE"/>
+                            <constraint firstItem="M9Z-An-AcM" firstAttribute="trailing" secondItem="Mna-fu-lGn" secondAttribute="trailing" constant="16" id="bEh-V8-14Y"/>
+                            <constraint firstItem="O4l-Yd-6YM" firstAttribute="trailing" secondItem="M9Z-An-AcM" secondAttribute="trailing" id="x8l-z0-OqY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="M9Z-An-AcM"/>
                     </view>
                     <navigationItem key="navigationItem" title="Perfil" id="Kom-JC-4kk"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="tableView" destination="Mna-fu-lGn" id="Wty-26-Xvt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mg-fg-zJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -34,7 +64,7 @@
             <objects>
                 <navigationController storyboardIdentifier="ProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Mcs-H9-smd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ffO-c5-A8d">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ffO-c5-A8d">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -51,4 +81,7 @@
             <point key="canvasLocation" x="2566.666666666667" y="6.0267857142857144"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="adventure" width="1280" height="720"/>
+    </resources>
 </document>

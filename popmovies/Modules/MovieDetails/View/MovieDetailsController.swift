@@ -83,6 +83,7 @@ extension MovieDetailsController {
         } else {
             updateStatusBarStyle(offset: offset, barStyle: .black)
         }
+        
     }
     
     private func updateStatusBarStyle(offset: CGFloat, barStyle: UIBarStyle) {
@@ -103,6 +104,7 @@ extension MovieDetailsController {
         
         setNeedsStatusBarAppearanceUpdate()
     }
+    
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource

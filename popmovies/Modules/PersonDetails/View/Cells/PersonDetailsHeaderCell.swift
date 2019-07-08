@@ -91,9 +91,19 @@ extension PersonDetailsHeaderCell {
         twitterButton.layer.cornerRadius = twitterButton.bounds.width / 2
         instagramButton.layer.cornerRadius = instagramButton.bounds.width / 2
         
-        facebookButton.isEnabled = person.externalIds?.facebookId != nil
-        twitterButton.isEnabled = person.externalIds?.twitterId != nil
-        instagramButton.isEnabled = person.externalIds?.instagramId != nil
+        if person.externalIds != nil {
+            bindSocialButton(facebookButton, person.externalIds?.facebookId)
+            bindSocialButton(twitterButton, person.externalIds?.twitterId)
+            bindSocialButton(instagramButton, person.externalIds?.instagramId)
+        }
+    }
+    
+    private func bindSocialButton(_ button: UIButton, _ externalLinkKey: String?) {
+        if externalLinkKey != nil { return }
+        
+        button.isEnabled = false
+        button.backgroundColor = UIColor.darkGray
+        button.alpha = 0.5
     }
     
     private func bindContent(_ person: Person) {
