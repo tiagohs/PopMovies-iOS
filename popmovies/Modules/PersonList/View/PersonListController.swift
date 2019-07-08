@@ -6,16 +6,29 @@
 //  Copyright © 2019 Tiago Silva. All rights reserved.
 //
 
-
 import UIKit
+
 
 // MARK: PersonListController: BaseViewController
 
 class PersonListController: BaseViewController {
+    // MARK: Constants
+    
+    let PersonCellIdentifier                     = "PersonCellIdentifier"
+    let PersonCellName                           = R.nib.personCell.name
+    
+    let numberOfCollunms = 2
+    
+    // MARK: Outlets
+    
+    @IBOutlet weak var personsCollectionView: UICollectionView!
     
     // MARK: Properties
 
+    var persons: [Person]?
     var presenter: PersonListPresenterInterface?
+    
+    lazy var cellSize: CGSize = CGSize(width: self.personsCollectionView.bounds.width / CGFloat(self.numberOfCollunms), height: (self.personsCollectionView.bounds.width / CGFloat(self.numberOfCollunms)) + CGFloat(115))
 }
 
 // MARK: Lifecycle Methods
@@ -50,4 +63,11 @@ extension PersonListController: PersonListViewInterface {
         
     }
     
+}
+
+extension PersonListController {
+    
+    func showPersons(with persons: [Person]) {
+        
+    }
 }

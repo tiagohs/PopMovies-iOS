@@ -13,10 +13,13 @@ import RxSwift
 // MARK: PersonListInteractor: BaseInteractor
 
 class PersonListInteractor: BaseInteractor {
+    let service: PersonServiceInterface!
+    
     var output: PersonListInteractorOutputInterface?
     
     init(output: PersonListInteractorOutputInterface?) {
         self.output = output
+        self.service = PersonService()
     }
 }
 
@@ -34,3 +37,33 @@ extension PersonListInteractor: PersonListInteractorInputInterface {
     
 }
 
+// MARK: PersonListInteractorInputInterface - Fetch methods
+
+extension PersonListInteractor {
+    
+    func fetchPersons(from url: String,with parameters: [String : String ]) {
+        add(service.getPersonList(url: url, paramenters: parameters)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (personsResult) in
+                guard let persons = personsResult.results else {
+                    self.onError()
+                    return
+                }
+                guard let totalPages = personsResult.total_pages else {
+                    self.onError()
+                    return
+                }
+                
+                self.output?.personsDidFetch(persons, totalPages: totalPages)
+            }, onError: { (error) in
+                self.onError()
+            })
+        )
+    }
+    
+    private func onError(message: String = "Houve um erro ou não encontramos nenhum pessoa .") {
+        self.output?.personsDidError(DefaultError(message: message))
+    }
+    
+}

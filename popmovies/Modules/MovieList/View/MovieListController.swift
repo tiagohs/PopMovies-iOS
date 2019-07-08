@@ -28,6 +28,8 @@ class MovieListController: BaseViewController {
     var movies: [Movie]?
     var presenter: MovieListPresenterInterface?
     
+    var infiniteScrollView: UIScrollView?
+    
     lazy var cellSize: CGSize = CGSize(width: self.moviesCollectionView.bounds.width / CGFloat(self.numberOfCollunms), height: (self.moviesCollectionView.bounds.width / CGFloat(self.numberOfCollunms)) + CGFloat(115))
     
 }
@@ -84,10 +86,6 @@ extension MovieListController: UICollectionViewDelegate, UICollectionViewDataSou
         presenter?.didSelectMovie(movie)
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        presenter?.fetchMovies()
-    }
-    
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
@@ -107,8 +105,13 @@ extension MovieListController: MovieListViewInterface {
         self.movies = movies
         
         moviesCollectionView.reloadData()
+        
+        stopInfiniteScroll()
     }
     
+    func stopInfiniteScroll() {
+        self.moviesCollectionView.finishInfiniteScroll()
+    }
 }
 
 // MARK: MovieListViewInterface - Setup Methods
@@ -116,6 +119,19 @@ extension MovieListController: MovieListViewInterface {
 extension MovieListController {
     
     func setupUI() {
+        let activityIndicator = UIActivityIndicatorView.init(style: UIActivityIndicatorView.Style.white)
+        activityIndicator.color = UIColor.init(white: 160.0 / 255.0, alpha: 1.0)
+        activityIndicator.startAnimating()
+        
         moviesCollectionView.configureNibs(nibName: MovieCellName, identifier: MovieCellIdentifier)
+        
+        moviesCollectionView.infiniteScrollIndicatorView = activityIndicator
+        moviesCollectionView.infiniteScrollIndicatorMargin = 20
+        moviesCollectionView.addInfiniteScroll { (scrollView) in
+            self.infiniteScrollView = scrollView
+            
+            self.presenter?.fetchMovies()
+        }
+        
     }
 }

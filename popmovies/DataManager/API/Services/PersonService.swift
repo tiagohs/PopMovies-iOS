@@ -22,4 +22,11 @@ class PersonService: PersonServiceInterface {
             .debug()
             .mapObject(type: Person.self)
     }
+    
+    func getPersonList(url: String, paramenters: [String : String]) -> Observable<Results<Person>> {
+        
+        return requestJSON(.get, url, parameters: paramenters)
+            .debug()
+            .mapObject(type: Results<Person>.self)
+    }
 }

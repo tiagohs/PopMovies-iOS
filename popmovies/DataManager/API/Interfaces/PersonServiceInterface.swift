@@ -14,4 +14,6 @@ import RxAlamofire
 protocol PersonServiceInterface {
     
     func getDetails(personId: Int, appendToResponse: [String], language: String) -> Observable<Person>
+    
+    func getPersonList(url: String, paramenters: [String : String]) -> Observable<Results<Person>>
 }

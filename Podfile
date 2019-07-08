@@ -17,6 +17,7 @@ target 'popmovies' do
   pod 'YoutubePlayer-in-WKWebView'
   pod 'R.swift'
   pod 'FSCalendar'
+  pod 'UIScrollView-InfiniteScroll'
   
   target 'popmoviesTests' do
     inherit! :search_paths

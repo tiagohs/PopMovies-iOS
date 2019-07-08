@@ -13,6 +13,7 @@ import UIKit
 protocol PersonListViewInterface: BaseViewInterface {
     var presenter: PersonListPresenterInterface? { get set }
     
+    func showPersons(with persons: [Person])
 }
 
 protocol PersonListPresenterInterface: BasePresenterInterface {
@@ -21,18 +22,26 @@ protocol PersonListPresenterInterface: BasePresenterInterface {
     var interactor: PersonListInteractorInputInterface? { get set }
     var wireframe: PersonListWireframeInterface? { get set }
     
+    func fetchPersons()
+    
+    func didSelectPerson(_ person: Person)
 }
 
 protocol PersonListInteractorInputInterface: BaseInteractorInterface {
     var output: PersonListInteractorOutputInterface? { get set }
     
+    func fetchPersons(from url: String,with parameters: [String : String ])
 }
 
 protocol PersonListInteractorOutputInterface {
     
+    func personsDidFetch(_ persons: [Person], totalPages: Int)
+    func personsDidError(_ error: DefaultError)
 }
 
 protocol PersonListWireframeInterface: BaseWireframeInterface {
+    
+    func presentDetails(for person: Person) 
     
     static func buildModule() -> UIViewController
 }

@@ -495,6 +495,7 @@
 		A2E9F4D722D3A8CE0001E089 /* PersonListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListController.swift; sourceTree = "<group>"; };
 		A2E9F4D822D3A8CE0001E089 /* PersonListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListInteractor.swift; sourceTree = "<group>"; };
 		A2E9F4D922D3A8CE0001E089 /* PersonListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListWireframe.swift; sourceTree = "<group>"; };
+		A2E9F4E222D3C4630001E089 /* popmovies-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "popmovies-Bridging-Header.h"; sourceTree = "<group>"; };
 		A2FE0224226BCBE200BCB8AC /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		A2FE0226226BCF6000BCB8AC /* PersonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonItem.swift; sourceTree = "<group>"; };
 		A2FE0231226D1AA400BCB8AC /* MovieOMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOMDB.swift; sourceTree = "<group>"; };
@@ -927,6 +928,7 @@
 				A27F1D8B225E924100B15976 /* Info.plist */,
 				A27F1D7F225E923F00B15976 /* AppDelegate.swift */,
 				A233E27222D12EAB00AC6F21 /* R.generated.swift */,
+				A2E9F4E222D3C4630001E089 /* popmovies-Bridging-Header.h */,
 				A23EEBB122C7F15B009E60B6 /* Infraestructure */,
 				A23EEBAD22C7ECD8009E60B6 /* Modules */,
 				A21693A32263D35A009988F1 /* Entities */,
@@ -1614,6 +1616,7 @@
 				TargetAttributes = {
 					A27F1D7B225E923F00B15976 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					A27F1D8F225E924100B15976 = {
 						CreatedOnToolsVersion = 10.1;
@@ -1753,6 +1756,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework",
+				"${BUILT_PRODUCTS_DIR}/UIScrollView-InfiniteScroll/UIScrollView_InfiniteScroll.framework",
 				"${BUILT_PRODUCTS_DIR}/YoutubePlayer-in-WKWebView/YoutubePlayer_in_WKWebView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1768,6 +1772,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageColors.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIScrollView_InfiniteScroll.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YoutubePlayer_in_WKWebView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2263,6 +2268,7 @@
 			baseConfigurationReference = 28DDACC5D7906EF1CFB0D3EB /* Pods-popmovies.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KNXL4958SP;
 				INFOPLIST_FILE = popmovies/Info.plist;
@@ -2272,6 +2278,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tiagohs.popmovies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "popmovies/popmovies-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2282,6 +2290,7 @@
 			baseConfigurationReference = 5AF9BD86AB74E95F24DC379A /* Pods-popmovies.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KNXL4958SP;
 				INFOPLIST_FILE = popmovies/Info.plist;
@@ -2291,6 +2300,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tiagohs.popmovies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "popmovies/popmovies-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

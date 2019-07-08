@@ -15,6 +15,12 @@ class PersonListWireframe: PersonListWireframeInterface {
     
     weak var viewController: UIViewController?
     
+    func presentDetails(for person: Person) {
+        let personDetailsModule = PersonDetailsWireframe.buildModule(with: person)
+        
+        self.viewController?.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(personDetailsModule, animated: true, completion: nil)
+    }
 }
 
 // MARK: build's Module

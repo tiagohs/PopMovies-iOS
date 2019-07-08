@@ -72,8 +72,6 @@ extension MovieListPresenter {
             TMDB.Parameters.page: String(page)
             ])
         
-        self.view?.showActivityIndicator()
-        
         interactor?.fetchMovies(from: url, with: parameters)
     }
 }
@@ -102,7 +100,6 @@ extension MovieListPresenter: MovieListInteractorOutputInterface {
             self.movies = movies
         }
         
-        self.view?.hideActivityIndicator()
         self.view?.showMovies(with: self.movies!)
     }
     
