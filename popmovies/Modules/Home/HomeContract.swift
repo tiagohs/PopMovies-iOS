@@ -33,6 +33,7 @@ protocol HomePresenterInterface: BasePresenterInterface {
     func didSelectSeeAllTopRatedMovies()
     func didSelectSeeAllUpcomingMovies()
     func didSelectMovie(_ movie: Movie)
+    func didSearchClicked()
 }
 
 protocol HomeInteractorInputInterface: BaseInteractorInterface {
@@ -59,6 +60,7 @@ protocol HomeInteractorOutputInterface {
 
 protocol HomeWireframaInterface: BaseWireframeInterface {
     
+    func presentSearch() 
     func presentDetails(for movie: Movie)
     func pushToPopularMoviesList()
     func pushToTopRatedMoviesList()

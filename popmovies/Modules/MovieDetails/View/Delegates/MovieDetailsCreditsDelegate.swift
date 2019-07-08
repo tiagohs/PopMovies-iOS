@@ -11,4 +11,6 @@ import Foundation
 protocol MovieDetailsCreditsDelegate {
     
     func didSelectPerson(_ person: Person)
+    func didSeeAllCastClicked()
+    func didSeeAllCrewClicked()
 }

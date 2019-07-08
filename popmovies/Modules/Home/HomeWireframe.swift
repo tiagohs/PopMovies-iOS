@@ -14,6 +14,13 @@ class HomeWireframe: HomeWireframaInterface {
     
     weak var viewController: UIViewController?
     
+    func presentSearch() {
+        let module = SearchWireframe.buildModule()
+        
+        self.viewController?.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(module, animated: true, completion: nil)
+    }
+    
     func presentDetails(for movie: Movie) {
         let movieDetailsModule = MovieDetailsWireframe.buildModule(with: movie)
         

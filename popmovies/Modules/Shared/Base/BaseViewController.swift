@@ -77,4 +77,15 @@ class BaseViewController: UIViewController {
         activityIndicator = nil
         activityIndicatorContainer = nil
     }
+    
+    func createDefaultActivityIndicator(autoStart: Bool = true) -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView.init(style: UIActivityIndicatorView.Style.white)
+        activityIndicator.color = UIColor.init(white: 160.0 / 255.0, alpha: 1.0)
+        
+        if autoStart {
+            activityIndicator.startAnimating()
+        }
+        
+        return activityIndicator
+    }
 }

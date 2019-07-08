@@ -44,7 +44,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Fw-WU-SUJ" userLabel="NowPlayingMoviesCollection">
-                                                    <rect key="frame" x="0.0" y="11" width="375" height="215"/>
+                                                    <rect key="frame" x="0.0" y="11" width="414" height="215"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="215" id="h8I-jU-WOY"/>
@@ -81,7 +81,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopularMoviesCell" rowHeight="339" id="ahd-PZ-7dD" userLabel="PopularMoviesCell" customClass="PopularMoviesCell" customModule="popmovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="244" width="414" height="339"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ahd-PZ-7dD" id="lHW-1E-ieH">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ahd-PZ-7dD" id="lHW-1E-ieH">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="339"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -101,7 +101,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ju7-A7-JQZ" userLabel="PopularMoviesCollection">
-                                                    <rect key="frame" x="0.0" y="48" width="375" height="280"/>
+                                                    <rect key="frame" x="0.0" y="48" width="414" height="280"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="280" id="Wx1-Kv-PS2"/>
@@ -119,7 +119,7 @@
                                                     </connections>
                                                 </collectionView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEC-ii-Uti">
-                                                    <rect key="frame" x="316" y="14" width="43" height="21.5"/>
+                                                    <rect key="frame" x="355" y="14" width="43" height="21.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21.329999999999998" id="zML-SQ-38j"/>
                                                     </constraints>
@@ -132,14 +132,13 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ju7-A7-JQZ" firstAttribute="top" secondItem="feV-F1-rZN" secondAttribute="bottom" constant="8" id="4af-4W-FpE"/>
-                                                <constraint firstAttribute="bottom" secondItem="Ju7-A7-JQZ" secondAttribute="bottom" constant="10" id="Dfy-ek-9wj"/>
                                                 <constraint firstItem="feV-F1-rZN" firstAttribute="leading" secondItem="lHW-1E-ieH" secondAttribute="leading" constant="10" id="IYa-Oj-3d8"/>
                                                 <constraint firstItem="Eme-Is-gOg" firstAttribute="top" secondItem="lHW-1E-ieH" secondAttribute="topMargin" constant="3" id="Ly4-OM-3ZA"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ju7-A7-JQZ" secondAttribute="bottom" constant="11" id="NMd-WA-PSh"/>
                                                 <constraint firstAttribute="trailing" secondItem="UEC-ii-Uti" secondAttribute="trailing" constant="16" id="Ugy-Ga-6b0"/>
                                                 <constraint firstItem="feV-F1-rZN" firstAttribute="top" secondItem="lHW-1E-ieH" secondAttribute="top" constant="10" id="aVC-hN-43n"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ju7-A7-JQZ" secondAttribute="trailing" id="eJE-0X-TQf"/>
                                                 <constraint firstItem="Ju7-A7-JQZ" firstAttribute="leading" secondItem="lHW-1E-ieH" secondAttribute="leading" id="pAm-5l-tdV"/>
-                                                <constraint firstAttribute="bottom" secondItem="Ju7-A7-JQZ" secondAttribute="bottom" constant="11" id="s9T-C6-BUq"/>
                                                 <constraint firstItem="Eme-Is-gOg" firstAttribute="leading" secondItem="feV-F1-rZN" secondAttribute="trailing" constant="5" id="sV1-86-7K7"/>
                                                 <constraint firstItem="UEC-ii-Uti" firstAttribute="top" secondItem="lHW-1E-ieH" secondAttribute="top" constant="14" id="tlm-Tk-2Ao"/>
                                             </constraints>
@@ -157,7 +156,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Na3-xA-c8x" userLabel="TopRatedMoviesCollection">
-                                                    <rect key="frame" x="0.0" y="47" width="375" height="230"/>
+                                                    <rect key="frame" x="0.0" y="47" width="414" height="230"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="230" id="MEa-pK-zIm"/>
@@ -190,7 +189,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsN-VP-eB4">
-                                                    <rect key="frame" x="316" y="10" width="43" height="27"/>
+                                                    <rect key="frame" x="355" y="10" width="43" height="27"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="wtq-vT-atW"/>
                                                     </constraints>
@@ -226,7 +225,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WFN-Aa-qnz" userLabel="UpcomingMoviesCollection">
-                                                    <rect key="frame" x="0.0" y="46.5" width="375" height="230"/>
+                                                    <rect key="frame" x="0.0" y="46.5" width="414" height="230"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="230" id="jRD-ea-68T"/>
@@ -259,7 +258,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faR-vB-j6n">
-                                                    <rect key="frame" x="316" y="10" width="43" height="27"/>
+                                                    <rect key="frame" x="355" y="10" width="43" height="27"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="8rw-h0-DKp"/>
                                                     </constraints>
@@ -316,15 +315,29 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaG-91-8fd">
+                                <rect key="frame" x="363" y="55" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="3OI-eT-4bV"/>
+                                    <constraint firstAttribute="width" constant="35" id="OZM-au-idd"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="SearchIcon"/>
+                                <connections>
+                                    <action selector="didSearchClicked:" destination="Nnw-zy-IIj" eventType="touchUpInside" id="Dxo-ix-35Q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="EBE-iO-b1y" firstAttribute="trailing" secondItem="RHB-iy-0Oj" secondAttribute="trailing" id="99V-mq-VdP"/>
                             <constraint firstItem="SaN-zA-5US" firstAttribute="leading" secondItem="nrp-vP-H3U" secondAttribute="trailing" constant="8" id="DdC-Y7-Ls3"/>
                             <constraint firstAttribute="bottom" secondItem="EBE-iO-b1y" secondAttribute="bottom" id="GiR-35-7DT"/>
+                            <constraint firstItem="oaG-91-8fd" firstAttribute="top" secondItem="bcz-rF-6mC" secondAttribute="top" constant="55" id="ING-pp-ajj"/>
                             <constraint firstItem="EBE-iO-b1y" firstAttribute="leading" secondItem="RHB-iy-0Oj" secondAttribute="leading" id="VMf-4d-gaf"/>
                             <constraint firstItem="SaN-zA-5US" firstAttribute="top" secondItem="bcz-rF-6mC" secondAttribute="top" constant="59" id="WU2-gN-s2M"/>
                             <constraint firstItem="nrp-vP-H3U" firstAttribute="top" secondItem="bcz-rF-6mC" secondAttribute="top" constant="55" id="Zt3-HC-eaR"/>
+                            <constraint firstItem="RHB-iy-0Oj" firstAttribute="trailing" secondItem="oaG-91-8fd" secondAttribute="trailing" constant="16" id="ccq-Tr-oKa"/>
                             <constraint firstItem="EBE-iO-b1y" firstAttribute="top" secondItem="nrp-vP-H3U" secondAttribute="bottom" constant="10" id="jVf-S5-rGy"/>
                             <constraint firstItem="nrp-vP-H3U" firstAttribute="leading" secondItem="RHB-iy-0Oj" secondAttribute="leading" constant="16" id="oSp-gG-HKJ"/>
                         </constraints>
@@ -367,5 +380,6 @@
     </scenes>
     <resources>
         <image name="IconApp" width="30" height="30"/>
+        <image name="SearchIcon" width="30" height="30"/>
     </resources>
 </document>

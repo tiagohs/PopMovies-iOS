@@ -13,6 +13,7 @@ protocol MovieListViewInterface: BaseViewInterface {
     var presenter: MovieListPresenterInterface? { get set }
     
     func showMovies(with movies: [Movie])
+    func stopInfiniteScroll()
 }
 
 protocol MovieListPresenterInterface: BasePresenterInterface {
@@ -23,6 +24,7 @@ protocol MovieListPresenterInterface: BasePresenterInterface {
     
     func fetchMovies()
     func didSelectMovie(_ movie: Movie)
+    func didSearchClicked()
 }
 
 protocol MovieListInteractorInputInterface: BaseInteractorInterface {
@@ -40,6 +42,7 @@ protocol MovieListInteractorOutputInterface {
 protocol MovieListWireframeInterface: BaseWireframeInterface {
     
     func presentDetails(for movie: Movie)
+    func presentSearch()
     
     static func buildModule(url: String, parameters: [String : String], title: String) -> UIViewController
     static func buildModule(with movies: [Movie], title: String) -> UIViewController

@@ -174,4 +174,8 @@ private extension HomeController {
     @IBAction func didSeeAllTopRatedMoviesSelected() {
         presenter?.didSelectSeeAllTopRatedMovies()
     }
+    
+    @IBAction func didSearchClicked(_ sender: Any) {
+        presenter?.didSearchClicked()
+    }
 }

@@ -40,7 +40,10 @@ extension MovieListPresenter: MovieListPresenterInterface {
         
         if movies == nil {
             self.fetchMovies()
+            return
         }
+        
+        view?.stopInfiniteScroll()
     }
     
     func viewDidDisappear(_ animated: Bool) {
@@ -57,7 +60,10 @@ extension MovieListPresenter: MovieListPresenterInterface {
 extension MovieListPresenter {
     
     func fetchMovies() {
-        if page > totalPage { return }
+        if page > totalPage {
+            view?.stopInfiniteScroll()
+            return
+        }
         
         guard let url = url else {
             self.view?.onError(message: "Houve um erro ao buscar os filmes.")
@@ -82,6 +88,10 @@ extension MovieListPresenter {
     
     func didSelectMovie(_ movie: Movie) {
         wireframe?.presentDetails(for: movie)
+    }
+    
+    func didSearchClicked() {
+        wireframe?.presentSearch()
     }
     
 }

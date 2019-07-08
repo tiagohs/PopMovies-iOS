@@ -46,8 +46,15 @@
                     <navigationItem key="navigationItem" title="Movies" id="XqZ-HK-fxT">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="BackIcon" id="lq9-rW-Vou">
                             <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
+                            <color key="tintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="hero_dismissViewController" destination="Qpz-Bq-3md" id="g7x-U6-Gkd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="QG7-gc-XEF">
+                            <color key="tintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="didSearchClicked:" destination="Qpz-Bq-3md" id="3e1-sf-jL5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

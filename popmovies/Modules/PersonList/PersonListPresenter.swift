@@ -20,7 +20,7 @@ class PersonListPresenter {
     var page: Int = 1
     var totalPage: Int = 1
     
-    var persons: [Person]?
+    var persons: [PersonItem]?
     
     var parameters: [String : String]?
     var url: String?
@@ -40,7 +40,10 @@ extension PersonListPresenter: PersonListPresenterInterface {
         
         if persons == nil {
             self.fetchPersons()
+            return
         }
+        
+        view?.stopInfiniteScroll()
     }
     
     func viewDidDisappear(_ animated: Bool) {
@@ -58,7 +61,10 @@ extension PersonListPresenter: PersonListPresenterInterface {
 extension PersonListPresenter {
     
     func fetchPersons() {
-        if page > totalPage { return }
+        if page > totalPage {
+            view?.stopInfiniteScroll()
+            return
+        }
         
         guard let url = url else {
             self.view?.onError(message: "Houve um erro ao buscar os atores ou atrizes.")
@@ -84,7 +90,7 @@ extension PersonListPresenter {
 
 extension PersonListPresenter {
     
-    func didSelectPerson(_ person: Person) {
+    func didSelectPerson(_ person: PersonItem) {
         wireframe?.presentDetails(for: person)
     }
     
@@ -92,7 +98,7 @@ extension PersonListPresenter {
 
 extension PersonListPresenter: PersonListInteractorOutputInterface {
     
-    func personsDidFetch(_ persons: [Person], totalPages: Int) {
+    func personsDidFetch(_ persons: [PersonItem], totalPages: Int) {
         self.totalPage = totalPages
         self.page += 1
         

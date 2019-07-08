@@ -19,6 +19,13 @@ class MovieListWireframe: MovieListWireframeInterface {
         
         self.viewController?.navigationController?.present(movieDetailsModule, animated: true, completion: nil)
     }
+    
+    func presentSearch() {
+        let module = SearchWireframe.buildModule()
+        
+        self.viewController?.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(module, animated: true, completion: nil)
+    }
 }
 
 // MARK: build's Module

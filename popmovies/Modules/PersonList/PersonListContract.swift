@@ -13,7 +13,9 @@ import UIKit
 protocol PersonListViewInterface: BaseViewInterface {
     var presenter: PersonListPresenterInterface? { get set }
     
-    func showPersons(with persons: [Person])
+    func showPersons(with persons: [PersonItem])
+    
+    func stopInfiniteScroll()
 }
 
 protocol PersonListPresenterInterface: BasePresenterInterface {
@@ -24,7 +26,7 @@ protocol PersonListPresenterInterface: BasePresenterInterface {
     
     func fetchPersons()
     
-    func didSelectPerson(_ person: Person)
+    func didSelectPerson(_ person: PersonItem)
 }
 
 protocol PersonListInteractorInputInterface: BaseInteractorInterface {
@@ -35,13 +37,20 @@ protocol PersonListInteractorInputInterface: BaseInteractorInterface {
 
 protocol PersonListInteractorOutputInterface {
     
-    func personsDidFetch(_ persons: [Person], totalPages: Int)
+    func personsDidFetch(_ persons: [PersonItem], totalPages: Int)
     func personsDidError(_ error: DefaultError)
 }
 
 protocol PersonListWireframeInterface: BaseWireframeInterface {
     
-    func presentDetails(for person: Person) 
+    func presentDetails(for person: PersonItem) 
+    
+    static func buildModule(with persons: [PersonItem], title: String) -> UIViewController
+    static func buildModule(url: String, parameters: [String : String], title: String) -> UIViewController
+    
+    static func buildModuleFromUINavigation(with persons: [PersonItem], title: String) -> UIViewController
+    static func buildModuleFromUINavigation(url: String, parameters: [String : String], title: String) -> UIViewController
     
     static func buildModule() -> UIViewController
+    static func buildModuleFromUINavigation() -> UIViewController
 }

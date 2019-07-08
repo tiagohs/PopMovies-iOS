@@ -71,6 +71,7 @@ extension HomePresenter {
     }
 }
 
+
 // MARK: HomePresenterInterface - User click methods
 
 extension HomePresenter {
@@ -91,6 +92,9 @@ extension HomePresenter {
         wireframe?.presentDetails(for: movie)
     }
     
+    func didSearchClicked() {
+        wireframe?.presentSearch()
+    }
 }
 
 // MARK: HomeInteractorOutputInterface

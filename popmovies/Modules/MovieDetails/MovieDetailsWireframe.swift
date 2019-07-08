@@ -94,6 +94,13 @@ class MovieDetailsWireframe: MovieDetailsWireframeInterface {
         self.viewController?.present(imageListModule, animated: true, completion: nil)
     }
     
+    func pushToPersonList(_ allPersons: [PersonItem], title: String) {
+        let module = PersonListWireframe.buildModuleFromUINavigation(with: allPersons, title: title)
+        
+        self.viewController?.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(module, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: build's Module

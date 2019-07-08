@@ -115,6 +115,40 @@ extension MovieDetailsPresenter {
     func didSelectGenre(_ genre: Genre) {
         wireframe?.pushToMovieListByGenre(genre)
     }
+    
+    func didSeeAllCastClicked() {
+        guard let cast = movie?.credits?.cast else {
+            return
+        }
+        let persons = cast.map { (cast) -> PersonItem in
+            let personItem = PersonItem(
+                                id: cast.id!,
+                                name: cast.name ?? "",
+                                subtitle: cast.character ?? "",
+                                pictureId: cast.profilePath)
+            
+            return personItem
+        }
+        
+        wireframe?.pushToPersonList(persons, title: "\(String(describing: movie?.title)) cast")
+    }
+    
+    func didSeeAllCrewClicked() {
+        guard let crew = movie?.credits?.crew else {
+            return
+        }
+        let persons = crew.map { (crewItem) -> PersonItem in
+            let personItem = PersonItem(
+                        id: crewItem.id!,
+                        name: crewItem.name ?? "",
+                        subtitle: crewItem.department ?? "",
+                        pictureId: crewItem.profilePath)
+            
+            return personItem
+        }
+        
+        wireframe?.pushToPersonList(persons, title: "\(String(describing: movie?.title)) crew")
+    }
 }
 
 // MARK: MovieDetailsInteractorOutputInterface

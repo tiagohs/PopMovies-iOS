@@ -54,8 +54,17 @@ extension PersonListInteractor {
                     self.onError()
                     return
                 }
+                let personsItems = persons.map({ (person) -> PersonItem in
+                    let personItem = PersonItem(
+                        id: person.id!,
+                        name: person.name ?? "",
+                        subtitle: person.knownForDepartment ?? "",
+                        pictureId: person.profilePath)
+                    
+                    return personItem
+                })
                 
-                self.output?.personsDidFetch(persons, totalPages: totalPages)
+                self.output?.personsDidFetch(personsItems, totalPages: totalPages)
             }, onError: { (error) in
                 self.onError()
             })

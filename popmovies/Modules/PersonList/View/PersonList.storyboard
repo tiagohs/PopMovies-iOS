@@ -10,20 +10,81 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--PersonList Controller-->
+        <!--Persons-->
         <scene sceneID="C92-HI-nPQ">
             <objects>
                 <viewController storyboardIdentifier="PersonListController" id="aIV-Ub-ftr" customClass="PersonListController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w2I-Ns-zRv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aDg-In-064">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pog-or-hNb">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="aIV-Ub-ftr" id="pQP-hx-RtF"/>
+                                    <outlet property="delegate" destination="aIV-Ub-ftr" id="aJv-fm-TC6"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="aDg-In-064" secondAttribute="bottom" id="GXr-I5-zCs"/>
+                            <constraint firstItem="aDg-In-064" firstAttribute="top" secondItem="w2I-Ns-zRv" secondAttribute="top" id="X9Y-DM-l8n"/>
+                            <constraint firstItem="aDg-In-064" firstAttribute="leading" secondItem="aXT-jO-fNe" secondAttribute="leading" id="c5D-DO-LmL"/>
+                            <constraint firstItem="aDg-In-064" firstAttribute="trailing" secondItem="aXT-jO-fNe" secondAttribute="trailing" id="f7v-oY-m3R"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aXT-jO-fNe"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Persons" id="ujt-aD-v1q">
+                        <barButtonItem key="leftBarButtonItem" image="BackIcon" id="RJ6-Zy-zng">
+                            <connections>
+                                <action selector="hero_dismissViewController" destination="aIV-Ub-ftr" id="y3Y-Ea-vFR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="personsCollectionView" destination="aDg-In-064" id="sXY-ai-DmV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRW-QF-htm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159" y="129"/>
+            <point key="canvasLocation" x="1066.6666666666667" y="128.57142857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="I1p-8E-ncM">
+            <objects>
+                <navigationController storyboardIdentifier="PersonListNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="3q0-YR-OCT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lkj-Z9-VmQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="aIV-Ub-ftr" kind="relationship" relationship="rootViewController" id="Dpi-4Q-pzA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2mJ-mm-xyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157.97101449275362" y="128.57142857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BackIcon" width="30" height="30"/>
+    </resources>
 </document>

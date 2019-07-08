@@ -170,3 +170,16 @@ private extension MovieDetailsCreditsCell {
     }
     
 }
+
+// MARK: Actions methods
+
+private extension MovieDetailsCreditsCell {
+    
+    @IBAction func didSeeAllCastClicked(_ sender: Any?) {
+        delegate?.didSeeAllCastClicked()
+    }
+    
+    @IBAction func didSeeAllCrewClicked(_ sender: Any?) {
+        delegate?.didSeeAllCrewClicked()
+    }
+}

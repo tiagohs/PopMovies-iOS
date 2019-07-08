@@ -103,7 +103,7 @@ extension PersonDetailsHeaderCell {
         
         button.isEnabled = false
         button.backgroundColor = UIColor.darkGray
-        button.alpha = 0.5
+        button.alpha = 0.8
     }
     
     private func bindContent(_ person: Person) {

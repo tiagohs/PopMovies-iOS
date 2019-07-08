@@ -277,6 +277,14 @@ extension MovieDetailsController: MovieDetailsCreditsDelegate {
         self.presenter?.didSelectPerson(person)
     }
     
+    func didSeeAllCastClicked() {
+        self.presenter?.didSeeAllCastClicked()
+    }
+    
+    func didSeeAllCrewClicked() {
+        self.presenter?.didSeeAllCrewClicked()
+    }
+    
 }
 
 // MARK: MovieDetailsRelatedDelegate

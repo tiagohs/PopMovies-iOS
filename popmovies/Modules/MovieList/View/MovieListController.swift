@@ -28,8 +28,6 @@ class MovieListController: BaseViewController {
     var movies: [Movie]?
     var presenter: MovieListPresenterInterface?
     
-    var infiniteScrollView: UIScrollView?
-    
     lazy var cellSize: CGSize = CGSize(width: self.moviesCollectionView.bounds.width / CGFloat(self.numberOfCollunms), height: (self.moviesCollectionView.bounds.width / CGFloat(self.numberOfCollunms)) + CGFloat(115))
     
 }
@@ -106,11 +104,13 @@ extension MovieListController: MovieListViewInterface {
         
         moviesCollectionView.reloadData()
         
-        stopInfiniteScroll()
+        self.moviesCollectionView.finishInfiniteScroll()
     }
     
     func stopInfiniteScroll() {
-        self.moviesCollectionView.finishInfiniteScroll()
+        moviesCollectionView.setShouldShowInfiniteScrollHandler { _ -> Bool in
+            return false
+        }
     }
 }
 
@@ -119,19 +119,29 @@ extension MovieListController: MovieListViewInterface {
 extension MovieListController {
     
     func setupUI() {
-        let activityIndicator = UIActivityIndicatorView.init(style: UIActivityIndicatorView.Style.white)
-        activityIndicator.color = UIColor.init(white: 160.0 / 255.0, alpha: 1.0)
-        activityIndicator.startAnimating()
-        
         moviesCollectionView.configureNibs(nibName: MovieCellName, identifier: MovieCellIdentifier)
         
-        moviesCollectionView.infiniteScrollIndicatorView = activityIndicator
+        moviesCollectionView.infiniteScrollIndicatorView = createDefaultActivityIndicator()
+        moviesCollectionView.infiniteScrollTriggerOffset = 500
         moviesCollectionView.infiniteScrollIndicatorMargin = 20
+        
         moviesCollectionView.addInfiniteScroll { (scrollView) in
-            self.infiniteScrollView = scrollView
             
-            self.presenter?.fetchMovies()
+            scrollView.performBatchUpdates({ () -> Void in
+                self.presenter?.fetchMovies()
+            }, completion: { (finished) -> Void in
+                
+                scrollView.finishInfiniteScroll()
+            });
         }
         
     }
+}
+
+private extension MovieListController {
+    
+    @IBAction func didSearchClicked(_ sender: Any) {
+        presenter?.didSearchClicked()
+    }
+    
 }

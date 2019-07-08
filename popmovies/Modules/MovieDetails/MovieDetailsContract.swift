@@ -34,6 +34,8 @@ protocol MovieDetailsPresenterInterface: BasePresenterInterface {
     func didSeeAllVideosClicked(_ allVideos: [Video])
     func didSeeAllWallpapersClicked(_ allImages: [Image])
     func didSeeAllRelatedMoviesClicked()
+    func didSeeAllCastClicked()
+    func didSeeAllCrewClicked()
 }
 
 protocol MovieDetailsInteractorInputInterface: BaseInteractorInterface {
@@ -63,6 +65,7 @@ protocol MovieDetailsWireframeInterface: BaseWireframeInterface {
     func pushToMovieListByGenre(_ genre: Genre)
     func pushToVideoList(_ allVideos: [Video], _ movie: Movie)
     func pushToImageList(_ allImages: [Image], _ movie: Movie)
+    func pushToPersonList(_ allPersons: [PersonItem], title: String)
     
     static func buildModule(with movie: Movie?) -> UIViewController
     static func buildModule() -> UIViewController
