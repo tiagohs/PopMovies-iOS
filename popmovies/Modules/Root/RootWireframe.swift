@@ -15,9 +15,9 @@ class RootWireframe: RootWireframeInterface {
 
 extension RootWireframe {
     
-    static func buildModule(with submodules: Submodules) -> UIViewController {
+    static func buildModule() -> UIViewController {
         let wireframe = RootWireframe()
-        let tabs = RootTabBarWireframe.buildTabs(with: submodules)
+        let tabs = RootTabBarWireframe.buildTabs()
         let view = RootController(tabs: tabs)
         let presenter = RootPresenter(view: view)
         let interactor = RootInteractor(output: presenter)

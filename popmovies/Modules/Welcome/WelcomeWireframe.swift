@@ -15,6 +15,19 @@ class WelcomeWireframe: WelcomeWireframeInterface {
     
     weak var viewController: UIViewController?
     
+    func presentLogin() {
+        let module = LoginWireframe.buildModule()
+        
+        self.viewController?.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(module, animated: true, completion: nil)
+    }
+    
+    func presentRegister() {
+        let module = RegisterWireframe.buildModule()
+        
+        self.viewController?.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(module, animated: true, completion: nil)
+    }
 }
 
 // MARK: build's Module

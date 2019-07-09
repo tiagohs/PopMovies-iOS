@@ -21,6 +21,7 @@ protocol RegisterPresenterInterface: BasePresenterInterface {
     var interactor: RegisterInteractorInputInterface? { get set }
     var wireframe: RegisterWireframeInterface? { get set }
     
+    func didRegisterClicked()
 }
 
 protocol RegisterInteractorInputInterface: BaseInteractorInterface {

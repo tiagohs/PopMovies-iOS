@@ -57,3 +57,19 @@ extension WelcomeController: WelcomeViewInterface {
     }
     
 }
+
+extension WelcomeController {
+    
+    @IBAction func didLoginClicked(_ sender: Any) {
+        presenter?.didLoginClicked()
+    }
+    
+    @IBAction func didRegisterClicked(_ sender: Any) {
+        presenter?.didRegisterClicked()
+    }
+    
+    @IBAction func didLoginWithFaceIDClicked(_ sender: Any) {
+        
+    }
+    
+}

@@ -12,10 +12,30 @@ import Foundation
 
 class ProfileInteractor: BaseInteractor {
     
+    let authManager: AuthManager!
+    
     var output: ProfileInteractorOutputInterface?
     
     init(output: ProfileInteractorOutputInterface?) {
         self.output = output
+        self.authManager = AuthManager.shared
+    }
+}
+
+// MARK: ProfileInteractorInputInterface
+
+extension ProfileInteractor {
+    
+    func didSingUpClicked() {
+        self.authManager.signOut { (error) in
+            if let error = error {
+                self.output?.didSignOutError(error)
+                return
+            }
+            
+            self.output?.didSignOutFinished()
+        }
+        
     }
 }
 

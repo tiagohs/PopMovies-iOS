@@ -29,6 +29,7 @@ extension LoginPresenter: LoginPresenterInterface {
     
     func viewDidLoad() {
         self.view?.setupUI()
+        self.view?.setupGoogleAuthUI()
     }
     
     func viewDidDisappear(_ animated: Bool) {
@@ -41,6 +42,51 @@ extension LoginPresenter: LoginPresenterInterface {
     
 }
 
+// MARK: HomePresenterInterface - User click methods
+
+extension LoginPresenter {
+    
+    func didSignUpClicked() {
+        wireframe?.presentSignUp()
+    }
+    
+    func didSignWithEmailClicked(_ email: String, _ password: String) {
+        
+    }
+    
+    func didSignWithFaceIdClicked() {
+        
+    }
+    
+    func didSignWithFacebookClicked() {
+        
+    }
+    
+    func didSignWithTwitterClicked() {
+        
+    }
+    
+    func didSignWithGoogleClicked() {
+        view?.showActivityIndicator()
+        
+        interactor?.didSignWithGoogle()
+    }
+    
+}
+
+// MARK: LoginInteractorOutputInterface
+
 extension LoginPresenter: LoginInteractorOutputInterface {
     
+    func didLoginSuccess(user: UserLocal) {
+        view?.hideActivityIndicator()
+        
+        wireframe?.presentRootScreen()
+    }
+    
+    func didLoginError(error: DefaultError) {
+        view?.hideActivityIndicator()
+        
+        self.view?.onError(message: error.message)
+    }
 }

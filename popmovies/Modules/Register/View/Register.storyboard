@@ -35,11 +35,14 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                <state key="normal" image="BackIcon"/>
+                                <state key="normal" image="Close"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="back"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="hero_dismissViewController" destination="aIV-Ub-ftr" eventType="touchUpInside" id="6ph-wq-GGQ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54n-or-tYi">
                                 <rect key="frame" x="16" y="125" width="113.5" height="41"/>
@@ -163,7 +166,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpg-VB-mdQ">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpg-VB-mdQ">
                                 <rect key="frame" x="16" y="649" width="382" height="50"/>
                                 <color key="backgroundColor" red="0.39735966919999999" green="0.2266873717" blue="0.70865720509999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -171,12 +174,15 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Register"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didRegisterClicked:" destination="aIV-Ub-ftr" eventType="touchUpInside" id="Rtx-fB-ma2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -211,6 +217,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aXT-jO-fNe"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="backButton" destination="68B-AK-1Uk" id="Af0-k9-rMw"/>
                         <outlet property="confirmPasswordTextField" destination="lc0-P4-OAy" id="9tr-ue-QlM"/>
@@ -226,6 +235,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BackIcon" width="30" height="30"/>
+        <image name="Close" width="30" height="30"/>
     </resources>
 </document>

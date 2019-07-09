@@ -8,6 +8,7 @@
 
 
 import UIKit
+import GoogleSignIn
 
 // MARK: LoginController: BaseViewController
 
@@ -20,7 +21,7 @@ class LoginController: BaseViewController {
     @IBOutlet weak var loginFaceIDButton: UIButton!
     @IBOutlet weak var loginFacebookButton: UIButton!
     @IBOutlet weak var loginTwitterButton: UIButton!
-    @IBOutlet weak var loginGoogleButton: UIButton!
+    @IBOutlet weak var loginGoogleButton: GIDSignInButton!
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -54,6 +55,10 @@ extension LoginController {
     }
 }
 
+extension LoginController: GIDSignInUIDelegate {
+    
+}
+
 // MARK: LoginViewInterface - Setup Methods
 
 extension LoginController: LoginViewInterface {
@@ -67,6 +72,23 @@ extension LoginController: LoginViewInterface {
         passwordTextField.layer.borderColor = UIColor.gray.cgColor
     }
     
+    func setupGoogleAuthUI() {
+        GoogleAuthManager.shared.setupUI(delegate: self)
+    }
+}
+
+extension LoginController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        loginButton.isEnabled =
+           ( usernameTextField.text != nil && !(usernameTextField.text?.isEmpty ?? true) ) &&
+           ( passwordTextField.text != nil && !(passwordTextField.text?.isEmpty ?? true) )
+        
+        
+        return true
+    }
+    
 }
 
 // MARK: Actions Methods
@@ -74,6 +96,33 @@ extension LoginController: LoginViewInterface {
 extension LoginController {
     
     @IBAction func didSignUpClicked(_ sender: Any) {
+        presenter?.didSignUpClicked()
+    }
+    
+    @IBAction func didSignWithEmailClicked(_ sender: Any) {
+        guard let email = usernameTextField.text else {
+            return
+        }
+        guard let password = passwordTextField.text else {
+            return
+        }
         
+        presenter?.didSignWithEmailClicked(email, password)
+    }
+    
+    @IBAction func didSignWithFaceIdClicked(_ sender: Any) {
+        presenter?.didSignWithFaceIdClicked()
+    }
+    
+    @IBAction func didSignWithFacebookClicked(_ sender: Any) {
+        presenter?.didSignWithFacebookClicked()
+    }
+    
+    @IBAction func didSignWithTwitterClicked(_ sender: Any) {
+        presenter?.didSignWithTwitterClicked()
+    }
+    
+    @IBAction func didSignWithGoogleClicked(_ sender: Any) {
+        presenter?.didSignWithGoogleClicked()
     }
 }

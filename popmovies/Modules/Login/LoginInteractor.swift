@@ -14,12 +14,14 @@ import RxSwift
 
 class LoginInteractor: BaseInteractor {
     let movieService: MovieServiceInterface
+    let authManager: AuthManager!
     
     var output: LoginInteractorOutputInterface?
     
     init(output: LoginInteractorOutputInterface?) {
         self.output = output
         self.movieService = MovieService()
+        self.authManager = AuthManager.shared
     }
 }
 
@@ -33,6 +35,42 @@ extension LoginInteractor: LoginInteractorInputInterface {
         disposibles.dispose()
         
         self.output = nil
+    }
+    
+}
+
+extension LoginInteractor {
+    
+    func didSignWithGoogle() {
+        authManager.signIn(with: .google) { (user, error) in
+            if let error = error {
+                self.output?.didLoginError(error: error)
+                return
+            }
+            
+            guard let user = user else {
+                self.output?.didLoginError(error: DefaultError(message: "Error during the login"))
+                return
+            }
+            
+            self.output?.didLoginSuccess(user: user)
+        }
+    }
+    
+    func didSignWithFacebook() {
+        
+    }
+    
+    func didSignWithTwitter() {
+        
+    }
+    
+    func didSignWithEmail(_ email: String, _ password: String) {
+        
+    }
+    
+    func didSignWithFaceID() {
+        
     }
     
 }

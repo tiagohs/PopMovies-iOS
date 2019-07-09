@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,34 +19,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        setupFirebase()
+        setupSocialLogins()
         setupStatusBar()
         setupApp()
         setupTabBar()
         
         return true
     }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return GoogleAuthManager.shared.handle(open: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+            return GoogleAuthManager.shared.handle(open: url, options: options)
+    }
+}
 
-    private func setupStatusBar() {
+// MARK: Setup Methods
+
+private extension AppDelegate {
+    func setupStatusBar() {
         let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
         statusBar?.backgroundColor = UIColor.clear
     }
     
-    private func setupApp() {
-        let submodules = (
-            home: HomeWireframe.buildModuleFromUINavigation(),
-            week: WeekWireframe.buildModuleFromUINavigation(),
-            genre: GenreListWireframe.buildModuleFromUINavigation(),
-            profile: ProfileWireframe.buildModuleFromUINavigation()
-        )
-        let rootController = RootWireframe.buildModule(with: submodules)
+    func setupApp() {
+        let authManager = AuthManager.shared
         
-        self.window?.rootViewController = rootController
+        self.window?.rootViewController = authManager.getRootControllerByUserStatus()
         self.window?.makeKeyAndVisible()
     }
     
-    private func setupTabBar() {
+    func setupTabBar() {
         UITabBar.appearance().tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
         UITabBar.appearance().backgroundColor = UIColor.white
     }
+    
+    func setupFirebase() {
+        FirebaseApp.configure()
+    }
+    
+    func setupSocialLogins() {
+        GoogleAuthManager.shared.setup(delegate: self)
+    }
+    
 }
 
+// MARK: GIDSignInDelegate
+
+extension AppDelegate: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        GoogleAuthManager.shared.sign(signIn, didSignInFor: user, withError: error)
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        GoogleAuthManager.shared.sign(signIn, didDisconnectWith: user, withError: error)
+    }
+}

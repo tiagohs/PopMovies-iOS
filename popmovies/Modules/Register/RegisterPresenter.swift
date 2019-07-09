@@ -23,7 +23,7 @@ class RegisterPresenter {
     
 }
 
-// MARK: HomePresenterInterface - Lifecycle methods
+// MARK: RegisterPresenterInterface - Lifecycle methods
 
 extension RegisterPresenter: RegisterPresenterInterface {
     
@@ -40,6 +40,18 @@ extension RegisterPresenter: RegisterPresenterInterface {
     func viewWillDisappear(_ animated: Bool) {}
     
 }
+
+// MARK: RegisterPresenterInterface - User click methods
+
+extension RegisterPresenter {
+    
+    func didRegisterClicked() {
+        
+    }
+    
+}
+
+// MARK: RegisterInteractorOutputInterface
 
 extension RegisterPresenter: RegisterInteractorOutputInterface {
     

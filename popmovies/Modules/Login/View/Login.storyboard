@@ -35,11 +35,14 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                <state key="normal" image="BackIcon"/>
+                                <state key="normal" image="Close"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="back"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="hero_dismissViewController" destination="aIV-Ub-ftr" eventType="touchUpInside" id="MAk-EI-PI0"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucX-OG-4V7">
                                 <rect key="frame" x="16" y="125" width="76.5" height="41"/>
@@ -69,6 +72,9 @@
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="aIV-Ub-ftr" id="DMz-EH-8lh"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username or Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftP-7y-R4W">
                                 <rect key="frame" x="16" y="226" width="152" height="23.5"/>
@@ -98,6 +104,9 @@
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="aIV-Ub-ftr" id="0yD-G8-xy7"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEH-eh-e9Z">
                                 <rect key="frame" x="16" y="334.5" width="77" height="23.5"/>
@@ -111,7 +120,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smr-fm-71R">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smr-fm-71R">
                                 <rect key="frame" x="16" y="458" width="322" height="50"/>
                                 <color key="backgroundColor" red="0.39735966919999999" green="0.2266873717" blue="0.70865720509999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -125,6 +134,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didSignWithEmailClicked:" destination="aIV-Ub-ftr" eventType="touchUpInside" id="Yad-bC-hqn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ie-RF-yfS">
                                 <rect key="frame" x="348" y="458" width="50" height="50"/>
@@ -140,6 +152,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didSignWithFaceIdClicked:" destination="aIV-Ub-ftr" eventType="touchUpInside" id="0AC-eo-u5W"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjK-Pb-1ZI">
                                 <rect key="frame" x="16" y="562" width="382" height="50"/>
@@ -154,6 +169,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didSignWithFacebookClicked:" destination="aIV-Ub-ftr" eventType="touchUpInside" id="PQJ-aL-hYC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQX-HD-UFF">
                                 <rect key="frame" x="16" y="622" width="382" height="50"/>
@@ -168,6 +186,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didSignWithGoogleClicked:" destination="aIV-Ub-ftr" eventType="touchUpInside" id="hB8-ld-2gk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cax-lY-qK6">
                                 <rect key="frame" x="16" y="682" width="382" height="50"/>
@@ -182,6 +203,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didSignWithTwitterClicked:" destination="aIV-Ub-ftr" eventType="touchUpInside" id="0Kb-i6-LOH"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yb0-4j-kxL">
                                 <rect key="frame" x="81.5" y="808" width="251" height="24"/>
@@ -254,6 +278,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aXT-jO-fNe"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="backButton" destination="XHl-L4-Lle" id="8df-XH-MeX"/>
                         <outlet property="loginButton" destination="Smr-fm-71R" id="4Ny-SM-HIk"/>
@@ -276,7 +303,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BackIcon" width="30" height="30"/>
+        <image name="Close" width="30" height="30"/>
         <image name="FaceIdIcon" width="30" height="30"/>
     </resources>
 </document>

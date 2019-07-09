@@ -62,3 +62,11 @@ extension RegisterController: RegisterViewInterface {
     }
     
 }
+
+extension RegisterController {
+    
+    @IBAction func didRegisterClicked(_ sender: Any) {
+        
+    }
+    
+}

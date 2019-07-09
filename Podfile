@@ -18,6 +18,9 @@ target 'popmovies' do
   pod 'R.swift'
   pod 'FSCalendar'
   pod 'UIScrollView-InfiniteScroll'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
   
   target 'popmoviesTests' do
     inherit! :search_paths

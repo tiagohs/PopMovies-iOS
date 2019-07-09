@@ -21,6 +21,8 @@ protocol WelcomePresenterInterface: BasePresenterInterface {
     var interactor: WelcomeInteractorInputInterface? { get set }
     var wireframe: WelcomeWireframeInterface? { get set }
     
+    func didLoginClicked()
+    func didRegisterClicked()
 }
 
 protocol WelcomeInteractorInputInterface: BaseInteractorInterface {
@@ -33,6 +35,9 @@ protocol WelcomeInteractorOutputInterface {
 }
 
 protocol WelcomeWireframeInterface: BaseWireframeInterface {
+    
+    func presentLogin()
+    func presentRegister()
     
     static func buildModule() -> UIViewController
 }

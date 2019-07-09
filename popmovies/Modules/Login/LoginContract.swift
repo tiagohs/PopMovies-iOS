@@ -13,6 +13,7 @@ import UIKit
 protocol LoginViewInterface: BaseViewInterface {
     var presenter: LoginPresenterInterface? { get set }
     
+    func setupGoogleAuthUI()
 }
 
 protocol LoginPresenterInterface: BasePresenterInterface {
@@ -21,18 +22,34 @@ protocol LoginPresenterInterface: BasePresenterInterface {
     var interactor: LoginInteractorInputInterface? { get set }
     var wireframe: LoginWireframeInterface? { get set }
     
+    func didSignUpClicked()
+    func didSignWithEmailClicked(_ email: String, _ password: String)
+    func didSignWithFaceIdClicked()
+    func didSignWithFacebookClicked()
+    func didSignWithTwitterClicked()
+    func didSignWithGoogleClicked()
 }
 
 protocol LoginInteractorInputInterface: BaseInteractorInterface {
     var output: LoginInteractorOutputInterface? { get set }
     
+    func didSignWithGoogle()
+    func didSignWithFacebook()
+    func didSignWithTwitter()
+    func didSignWithEmail(_ email: String, _ password: String)
+    func didSignWithFaceID()
 }
 
 protocol LoginInteractorOutputInterface {
     
+    func didLoginSuccess(user: UserLocal)
+    func didLoginError(error: DefaultError)
 }
 
 protocol LoginWireframeInterface: BaseWireframeInterface {
+    
+    func presentSignUp()
+    func presentRootScreen()
     
     static func buildModule() -> UIViewController
 }

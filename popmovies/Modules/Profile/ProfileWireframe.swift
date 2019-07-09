@@ -12,6 +12,11 @@ class ProfileWireframe: ProfileWireframeInterface {
     
     weak var viewController: UIViewController?
     
+    func presentWelcomeScreen() {
+        let module = WelcomeWireframe.buildModule()
+        
+        self.viewController?.tabBarController?.hero.replaceViewController(with: module)
+    }
 }
 
 extension ProfileWireframe {

@@ -15,6 +15,19 @@ class LoginWireframe: LoginWireframeInterface {
     
     weak var viewController: UIViewController?
     
+    func presentRootScreen() {
+        let module = RootWireframe.buildModule()
+        
+        self.viewController?.hero.replaceViewController(with: module)
+    }
+    
+    func presentSignUp() {
+        let module = RegisterWireframe.buildModule()
+        
+        self.viewController?.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(module, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: build's Module

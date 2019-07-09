@@ -34,5 +34,5 @@ protocol RootInteractorOutputInterface {
 
 protocol RootWireframeInterface: BaseWireframeInterface {
     
-    static func buildModule(with submodules: Submodules) -> UIViewController
+    static func buildModule() -> UIViewController
 }

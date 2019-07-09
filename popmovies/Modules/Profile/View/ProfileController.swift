@@ -29,6 +29,7 @@ class ProfileController: BaseViewController {
     // MARK: Outlets
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var signOutButton: UIButton!
     
     // MARK: Properties
     
@@ -65,6 +66,8 @@ extension ProfileController {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var offset = scrollView.contentOffset.y / 180
+        let color = UIColor(white: 1.0 - offset, alpha: 1.0)
+        let imageColor = UIColor(white: offset, alpha: 1.0)
         
         if offset > 1 {
             offset = 1
@@ -74,6 +77,7 @@ extension ProfileController {
             updateStatusBarStyle(offset: offset, barStyle: .black)
         }
         
+        updateButtonStyle(signOutButton, color, imageColor)
     }
     
     private func updateStatusBarStyle(offset: CGFloat, barStyle: UIBarStyle) {
@@ -86,6 +90,13 @@ extension ProfileController {
         
         setNeedsStatusBarAppearanceUpdate()
     }
+    
+    private func updateButtonStyle(_ button: UIButton, _ backgroundColor: UIColor, _ imageColor: UIColor) {
+        
+        button.backgroundColor = backgroundColor
+        button.imageView?.setImageColorBy(uiColor: imageColor)
+    }
+    
 }
 
 // MARK: ProfileViewInterface - Setup Methods
@@ -93,6 +104,8 @@ extension ProfileController {
 extension ProfileController: ProfileViewInterface {
     
     func setupUI() {
+        signOutButton.layer.cornerRadius = signOutButton.bounds.width / 2
+        
         setupTableView()
     }
     
@@ -165,5 +178,12 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+}
+
+extension ProfileController {
+    
+    @IBAction func didSingUpClicked(_ sender: Any) {
+        presenter?.didSingUpClicked()
     }
 }

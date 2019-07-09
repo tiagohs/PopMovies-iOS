@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>769423231247-edte802a60le81b7q4m07uutluo4brqu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.769423231247-edte802a60le81b7q4m07uutluo4brqu</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>769423231247-bra48d21715tfi4m4es23ffl8qf2kcgs.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBhR1CLXwE2W_jHttrs5aeaE7KmZWnOZrg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>769423231247</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tiagohs.popmovies</string>
+	<key>PROJECT_ID</key>
+	<string>popmovies-141719</string>
+	<key>STORAGE_BUCKET</key>
+	<string>popmovies-141719.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:769423231247:ios:0a917acc5c554685</string>
+	<key>DATABASE_URL</key>
+	<string>https://popmovies-141719.firebaseio.com</string>
+</dict>
+</plist>

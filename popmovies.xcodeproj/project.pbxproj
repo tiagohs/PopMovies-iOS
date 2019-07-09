@@ -224,6 +224,12 @@
 		A2E9F4F322D3F55F0001E089 /* SearchWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9F4ED22D3F55F0001E089 /* SearchWireframe.swift */; };
 		A2E9F50922D50F830001E089 /* MovieDetailsCell+TableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2E9F50822D50F830001E089 /* MovieDetailsCell+TableView.xib */; };
 		A2E9F50B22D50FAA0001E089 /* MovieCell+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9F50A22D50FAA0001E089 /* MovieCell+TableView.swift */; };
+		A2E9F50D22D525C60001E089 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2E9F50C22D525C60001E089 /* GoogleService-Info.plist */; };
+		A2E9F51022D531650001E089 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9F50F22D531650001E089 /* AuthManager.swift */; };
+		A2E9F51222D534860001E089 /* LoginMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9F51122D534860001E089 /* LoginMethod.swift */; };
+		A2E9F51422D53E890001E089 /* UserLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9F51322D53E890001E089 /* UserLocal.swift */; };
+		A2E9F51622D54B8D0001E089 /* GoogleAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9F51522D54B8D0001E089 /* GoogleAuthManager.swift */; };
+		A2E9F51922D551610001E089 /* GoogleAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9F51822D551610001E089 /* GoogleAuthDelegate.swift */; };
 		A2FE0225226BCBE200BCB8AC /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0224226BCBE200BCB8AC /* PersonCell.swift */; };
 		A2FE0227226BCF6000BCB8AC /* PersonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0226226BCF6000BCB8AC /* PersonItem.swift */; };
 		A2FE0232226D1AA400BCB8AC /* MovieOMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0231226D1AA400BCB8AC /* MovieOMDB.swift */; };
@@ -512,6 +518,12 @@
 		A2E9F4ED22D3F55F0001E089 /* SearchWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWireframe.swift; sourceTree = "<group>"; };
 		A2E9F50822D50F830001E089 /* MovieDetailsCell+TableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MovieDetailsCell+TableView.xib"; sourceTree = "<group>"; };
 		A2E9F50A22D50FAA0001E089 /* MovieCell+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MovieCell+TableView.swift"; sourceTree = "<group>"; };
+		A2E9F50C22D525C60001E089 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		A2E9F50F22D531650001E089 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		A2E9F51122D534860001E089 /* LoginMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMethod.swift; sourceTree = "<group>"; };
+		A2E9F51322D53E890001E089 /* UserLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocal.swift; sourceTree = "<group>"; };
+		A2E9F51522D54B8D0001E089 /* GoogleAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthManager.swift; sourceTree = "<group>"; };
+		A2E9F51822D551610001E089 /* GoogleAuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthDelegate.swift; sourceTree = "<group>"; };
 		A2FE0224226BCBE200BCB8AC /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		A2FE0226226BCF6000BCB8AC /* PersonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonItem.swift; sourceTree = "<group>"; };
 		A2FE0231226D1AA400BCB8AC /* MovieOMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOMDB.swift; sourceTree = "<group>"; };
@@ -628,6 +640,7 @@
 				A21693A72263D658009988F1 /* BaseModel.swift */,
 				A22A9252226ACC7F00F74BD5 /* SimpleItem.swift */,
 				A2FE0226226BCF6000BCB8AC /* PersonItem.swift */,
+				A2E9F51322D53E890001E089 /* UserLocal.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -946,10 +959,12 @@
 				A27F1D7F225E923F00B15976 /* AppDelegate.swift */,
 				A233E27222D12EAB00AC6F21 /* R.generated.swift */,
 				A2E9F4E222D3C4630001E089 /* popmovies-Bridging-Header.h */,
+				A2E9F50C22D525C60001E089 /* GoogleService-Info.plist */,
 				A23EEBB122C7F15B009E60B6 /* Infraestructure */,
 				A23EEBAD22C7ECD8009E60B6 /* Modules */,
 				A21693A32263D35A009988F1 /* Entities */,
 				A2A64C7622CFEDBF00710E0B /* DataManager */,
+				A2E9F50E22D5314C0001E089 /* Managers */,
 				A22A920E226A1CBA00F74BD5 /* Resources */,
 				A20716D722C2A60700645BBE /* Constants */,
 			);
@@ -1550,6 +1565,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A2E9F50E22D5314C0001E089 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A2E9F51722D551400001E089 /* Delegates */,
+				A2E9F50F22D531650001E089 /* AuthManager.swift */,
+				A2E9F51522D54B8D0001E089 /* GoogleAuthManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		A2E9F51722D551400001E089 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				A2E9F51822D551610001E089 /* GoogleAuthDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		A2FE0230226D1A8E00BCB8AC /* OMDB */ = {
 			isa = PBXGroup;
 			children = (
@@ -1574,6 +1607,7 @@
 			children = (
 				A2FE025F22739D3700BCB8AC /* UIView.swift */,
 				A20716CF22C17E0C00645BBE /* MovieListType.swift */,
+				A2E9F51122D534860001E089 /* LoginMethod.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1704,6 +1738,7 @@
 				A2FE023D226E369F00BCB8AC /* MovieCell.xib in Resources */,
 				A2A64BFA22C98E7000710E0B /* MovieList.storyboard in Resources */,
 				A2FE02572272982100BCB8AC /* MovieSmallCell.xib in Resources */,
+				A2E9F50D22D525C60001E089 /* GoogleService-Info.plist in Resources */,
 				A2E9F4CE22D2C1440001E089 /* ProfileWatchedCell.xib in Resources */,
 				A2FE02952278E94B00BCB8AC /* SF-Pro-Display-Bold.otf in Resources */,
 				A2A64C8F22CFF6EC00710E0B /* Register.storyboard in Resources */,
@@ -1771,9 +1806,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-popmovies/Pods-popmovies-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1789,6 +1827,9 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-popmovies/Pods-popmovies-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
@@ -1800,11 +1841,15 @@
 				"${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework",
 				"${BUILT_PRODUCTS_DIR}/UIScrollView-InfiniteScroll/UIScrollView_InfiniteScroll.framework",
 				"${BUILT_PRODUCTS_DIR}/YoutubePlayer-in-WKWebView/YoutubePlayer_in_WKWebView.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -1816,6 +1861,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIScrollView_InfiniteScroll.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YoutubePlayer_in_WKWebView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1976,6 +2022,8 @@
 				A2A64BDB22C948F500710E0B /* VideoListContract.swift in Sources */,
 				A20716D422C1811800645BBE /* MovieListPresenter.swift in Sources */,
 				A21693C32263E76A009988F1 /* Dictionary.swift in Sources */,
+				A2E9F51422D53E890001E089 /* UserLocal.swift in Sources */,
+				A2E9F51222D534860001E089 /* LoginMethod.swift in Sources */,
 				A22A92072269215D00F74BD5 /* TranslationData.swift in Sources */,
 				A2A64C8522CFF69500710E0B /* WelcomeController.swift in Sources */,
 				A27F4F85225FC6A700B15976 /* BaseInteractor.swift in Sources */,
@@ -2072,6 +2120,7 @@
 				A2208BBA22BBD6D300CD8EFB /* MediaCreditCast.swift in Sources */,
 				A2E9F4F022D3F55F0001E089 /* SearchPresenter.swift in Sources */,
 				A2A64BEF22C9627B00710E0B /* VideoViewerContract.swift in Sources */,
+				A2E9F51922D551610001E089 /* GoogleAuthDelegate.swift in Sources */,
 				A2A64BEB22C9624B00710E0B /* VideoViewerInteractor.swift in Sources */,
 				A22A920022691E0000F74BD5 /* ReleaseCountry.swift in Sources */,
 				A2A64BE722C9564600710E0B /* GenreListController.swift in Sources */,
@@ -2090,6 +2139,7 @@
 				A2FE025B2272A7D800BCB8AC /* DateFormatTransform.swift in Sources */,
 				A2E9F4DC22D3A8CE0001E089 /* PersonListPresenter.swift in Sources */,
 				A2A64BA422C8374C00710E0B /* MovieListWireframe.swift in Sources */,
+				A2E9F51622D54B8D0001E089 /* GoogleAuthManager.swift in Sources */,
 				A2E9F4F322D3F55F0001E089 /* SearchWireframe.swift in Sources */,
 				A29562D522BC0261006C438A /* MovieDetailsOverviewCell.swift in Sources */,
 				A22A91F422691A1500F74BD5 /* CreditCast.swift in Sources */,
@@ -2134,6 +2184,7 @@
 				A22A91E32268F51E00F74BD5 /* MovieDetailsContract.swift in Sources */,
 				A21693A62263D580009988F1 /* Constants.swift in Sources */,
 				A21693AA2263D700009988F1 /* MovieService.swift in Sources */,
+				A2E9F51022D531650001E089 /* AuthManager.swift in Sources */,
 				A2A64C2722C9A5EC00710E0B /* RootContract.swift in Sources */,
 				A233E26E22D12BF500AC6F21 /* CalendarPresenter.swift in Sources */,
 				A2FE026222763CBF00BCB8AC /* URLUtils.swift in Sources */,

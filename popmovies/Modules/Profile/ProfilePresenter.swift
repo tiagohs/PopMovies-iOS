@@ -44,8 +44,29 @@ extension ProfilePresenter: ProfilePresenterInterface {
     
 }
 
+extension ProfilePresenter {
+    
+    func didSingUpClicked() {
+        view?.showActivityIndicator()
+        
+        interactor?.didSingUpClicked()
+    }
+    
+}
+
 // MARK: ProfileInteractorOutputInterface
 
 extension ProfilePresenter: ProfileInteractorOutputInterface {
     
+    func didSignOutFinished() {
+        self.view?.hideActivityIndicator()
+        
+        wireframe?.presentWelcomeScreen()
+    }
+    
+    func didSignOutError(_ error: DefaultError) {
+        self.view?.hideActivityIndicator()
+        
+        self.view?.onError(message: error.message)
+    }
 }

@@ -23,7 +23,7 @@ class WelcomePresenter {
     
 }
 
-// MARK: HomePresenterInterface - Lifecycle methods
+// MARK: WelcomePresenterInterface - Lifecycle methods
 
 extension WelcomePresenter: WelcomePresenterInterface {
     
@@ -40,6 +40,22 @@ extension WelcomePresenter: WelcomePresenterInterface {
     func viewWillDisappear(_ animated: Bool) {}
     
 }
+
+// MARK: WelcomePresenterInterface - User click methods
+
+extension WelcomePresenter {
+    
+    func didLoginClicked() {
+        wireframe?.presentLogin()
+    }
+    
+    func didRegisterClicked() {
+        wireframe?.presentRegister()
+    }
+    
+}
+
+// MARK: WelcomeInteractorOutputInterface
 
 extension WelcomePresenter: WelcomeInteractorOutputInterface {
     

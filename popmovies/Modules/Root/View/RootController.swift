@@ -8,26 +8,14 @@
 
 import UIKit
 
-typealias RootTabs = (
-    home: UIViewController,
-    week: UIViewController,
-    genre: UIViewController,
-    profile: UIViewController
-)
-
 class RootController: UITabBarController, RootViewInterface {
     
     var presenter: RootPresenterInterface?
     
-    init(tabs: RootTabs) {
+    init(tabs: [UIViewController]) {
         super.init(nibName: nil, bundle: nil)
         
-        viewControllers = [
-            tabs.home,
-            tabs.week,
-            tabs.genre,
-            tabs.profile
-        ]
+        viewControllers = tabs
         
         self.hero.isEnabled = true
     }

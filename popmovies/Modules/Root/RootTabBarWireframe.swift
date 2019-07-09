@@ -17,22 +17,35 @@ typealias Submodules = (
 
 class RootTabBarWireframe {
     
-    static func buildTabs(with subModules: Submodules) -> RootTabs {
-        let homeTabBarItem = UITabBarItem(title: "Home", image: R.image.homeIcon(), tag: 0)
-        let weekTabBarItem = UITabBarItem(title: "Week", image: R.image.calendarIcon(), tag: 1)
-        let searchTabBarItem = UITabBarItem(title: "Genre", image: R.image.genreIcon(), tag: 2)
-        let profileTabBarItem = UITabBarItem(title: "Profile", image: R.image.personIcon(), tag: 3)
+    static func buildTabs() -> [UIViewController] {
+        let home = buildTabBarItem(
+                        controller: HomeWireframe.buildModuleFromUINavigation(),
+                        title: "Home",
+                        image: R.image.homeIcon(),
+                        tag: 0 )
+        let week = buildTabBarItem(
+                        controller: WeekWireframe.buildModuleFromUINavigation(),
+                        title: "Week",
+                        image: R.image.calendarIcon(),
+                        tag: 1 )
+        let genre = buildTabBarItem(
+                        controller: GenreListWireframe.buildModuleFromUINavigation(),
+                        title: "Genre",
+                        image: R.image.genreIcon(),
+                        tag: 2 )
+        let profile = buildTabBarItem(
+                        controller: ProfileWireframe.buildModuleFromUINavigation(),
+                        title: "Profile",
+                        image: R.image.personIcon(),
+                        tag: 3 )
         
-        subModules.home.tabBarItem = homeTabBarItem
-        subModules.week.tabBarItem = weekTabBarItem
-        subModules.genre.tabBarItem = searchTabBarItem
-        subModules.profile.tabBarItem = profileTabBarItem
+        return [ home, week, genre, profile ]
+    }
+    
+    private static func buildTabBarItem(controller: UIViewController, title: String, image: UIImage?, tag: Int) -> UIViewController {
         
-        return (
-            home: subModules.home,
-            week: subModules.week,
-            genre: subModules.genre,
-            profile: subModules.profile
-        )
+        controller.tabBarItem = UITabBarItem(title: title, image: image, tag: tag)
+        
+        return controller
     }
 }
