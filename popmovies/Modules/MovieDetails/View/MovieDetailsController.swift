@@ -28,6 +28,8 @@ class MovieDetailsController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var markAsWatchButton: UIButton!
+    @IBOutlet weak var markAsFavoriteButton: UIButton!
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!
     
     // MARK: Properties
@@ -90,11 +92,10 @@ extension MovieDetailsController {
         let color = UIColor(white: 1.0 - offset, alpha: 1.0)
         let imageColor = UIColor(white: offset, alpha: 1.0)
         
-        closeButton.backgroundColor = color
-        closeButton.imageView?.setImageColorBy(uiColor: imageColor)
-        
-        shareButton.backgroundColor = color
-        shareButton.imageView?.setImageColorBy(uiColor: imageColor)
+        self.updateButtonStyle(closeButton, color, imageColor)
+        self.updateButtonStyle(shareButton, color, imageColor)
+        self.updateButtonStyle(markAsFavoriteButton, color, imageColor)
+        self.updateButtonStyle(markAsWatchButton, color, imageColor)
         
         if (offset > 0.3) {
             self.style = .default
@@ -103,6 +104,12 @@ extension MovieDetailsController {
         }
         
         setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    private func updateButtonStyle(_ button: UIButton, _ backgroundColor: UIColor, _ imageColor: UIColor) {
+        
+        button.backgroundColor = backgroundColor
+        button.imageView?.setImageColorBy(uiColor: imageColor)
     }
     
 }
@@ -230,6 +237,8 @@ extension MovieDetailsController {
         
         closeButton.layer.cornerRadius = closeButton.bounds.width / 2
         shareButton.layer.cornerRadius = shareButton.bounds.width / 2
+        markAsWatchButton.layer.cornerRadius = markAsWatchButton.bounds.width / 2
+        markAsFavoriteButton.layer.cornerRadius = markAsFavoriteButton.bounds.width / 2
         
         self.title = movie?.title
     }

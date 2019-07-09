@@ -13,6 +13,11 @@ import UIKit
 
 class SearchController: BaseViewController {
     
+    // MARK: Constants
+    
+    let MovieCell                   = R.nib.movieDetailsCellTableView.name
+    let MovieCellIdentifier         = "MovieCellIdentifier"
+    
     // MARK: Outlets
     
     @IBOutlet weak var tableView: UITableView!
@@ -20,6 +25,8 @@ class SearchController: BaseViewController {
     // MARK: Properties
     
     var presenter: SearchPresenterInterface?
+    
+    var movies: [Movie] = []
     
     let searchController = UISearchController(searchResultsController: nil)
 }
@@ -53,11 +60,26 @@ extension SearchController {
 extension SearchController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCellIdentifier, for: indexPath) as? MovieTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        let movie = movies[indexPath.row]
+        
+        cell.movie = movie
+        cell.bindMovieCellDetails(movie: movie)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie = movies[indexPath.row]
+        
+        self.presenter?.didSelectMovie(with: movie)
     }
     
 }
@@ -67,7 +89,23 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
 extension SearchController: SearchViewInterface {
     
     func setupUI() {
+        setupTableView()
+    }
+    
+    func setupTableView() {
+        tableView.configureNibs(nibName: MovieCell, identifier: MovieCellIdentifier)
         
+        tableView.infiniteScrollIndicatorView = createDefaultActivityIndicator()
+        tableView.infiniteScrollTriggerOffset = 500
+        tableView.infiniteScrollIndicatorMargin = 20
+        
+        tableView.addInfiniteScroll { (scrollView) in
+            self.presenter?.searchMovies(with: nil)
+            
+            scrollView.finishInfiniteScroll()
+        }
+        
+        tableView.reloadData()
     }
     
     func setupSearchController() {
@@ -76,8 +114,9 @@ extension SearchController: SearchViewInterface {
         definesPresentationContext = true
         
         searchController.searchBar.barTintColor = UIColor.white
-        searchController.searchBar.backgroundImage = UIImage()
         searchController.searchBar.showsCancelButton = true
+        searchController.searchBar.layer.borderWidth = 1
+        searchController.searchBar.layer.borderColor = UIColor.white.cgColor
         
         if let txfSearchField = searchController.searchBar.value(forKey: "_searchField") as? UITextField {
             txfSearchField.borderStyle = .none
@@ -100,6 +139,22 @@ extension SearchController: SearchViewInterface {
     
 }
 
+extension SearchController {
+    
+    func showMovies(with movies: [Movie]) {
+        self.movies = movies
+        
+        self.tableView.reloadData()
+        self.tableView.finishInfiniteScroll()
+    }
+    
+    func stopInfiniteScroll() {
+        self.tableView.setShouldShowInfiniteScrollHandler { _ -> Bool in
+            return false
+        }
+    }
+    
+}
 
 extension SearchController: UISearchResultsUpdating {
     
@@ -112,7 +167,7 @@ extension SearchController: UISearchResultsUpdating {
     }
     
     func searchMovies(for searchText: String) {
-        
+        presenter?.searchMovies(with: searchText)
     }
     
 }

@@ -15,6 +15,13 @@ class SearchWireframe: SearchWireframeInterface {
     
     weak var viewController: UIViewController?
     
+    func presentDetails(for movie: Movie) {
+        let movieDetailsModule = MovieDetailsWireframe.buildModule(with: movie)
+        
+        self.viewController?.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.show(movieDetailsModule, sender: nil)
+    }
+    
 }
 
 // MARK: build's Module

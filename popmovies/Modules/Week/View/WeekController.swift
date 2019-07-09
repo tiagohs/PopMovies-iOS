@@ -14,7 +14,7 @@ import FSCalendar
 class WeekController: BaseViewController {
     // MARK: Constants
     
-    let MovieDetailsCell                    = R.nib.movieDetailsCell.name
+    let MovieDetailsCell                    = R.nib.movieDetailsCellCollectionView.name
     let MovieDetailsCellIdentifier          = "MovieDetailsCellIdentifier"
     
     // MARK: Properties
@@ -70,7 +70,7 @@ extension WeekController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieDetailsCellIdentifier, for: indexPath) as? MovieCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieDetailsCellIdentifier, for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
         

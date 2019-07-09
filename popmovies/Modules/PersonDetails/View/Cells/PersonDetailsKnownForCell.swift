@@ -74,7 +74,7 @@ extension PersonDetailsKnownForCell: UICollectionViewDelegate, UICollectionViewD
     }
     
     private func setupMoviesCollectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCellIdentifier, for: indexPath) as! MovieCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCellIdentifier, for: indexPath) as! MovieCollectionViewCell
         let movie = allMovies[indexPath.row]
         
         cell.bindMovieCellDefault(movie: movie)

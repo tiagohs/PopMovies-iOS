@@ -89,7 +89,7 @@ extension MovieDetailsRelatedCell: UICollectionViewDelegate, UICollectionViewDat
             return UICollectionViewCell()
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCellIdentifier, for: indexPath) as! MovieCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCellIdentifier, for: indexPath) as! MovieCollectionViewCell
         let movie = movies[indexPath.row]
         
         cell.bindMovieCellDefault(movie: movie)

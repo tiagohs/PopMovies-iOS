@@ -71,8 +71,8 @@ class BaseViewController: UIViewController {
     }
     
     func hideActivityIndicator() {
-        activityIndicator.stopAnimating()
-        activityIndicatorContainer.removeFromSuperview()
+        activityIndicator?.stopAnimating()
+        activityIndicatorContainer?.removeFromSuperview()
         
         activityIndicator = nil
         activityIndicatorContainer = nil

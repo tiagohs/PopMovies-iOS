@@ -21,6 +21,7 @@ struct TMDB {
         static let include_image_language   = "include_image_language"
         static let page                     = "page"
         static let region                   = "region"
+        static let query                    = "query"
         static let sort_by                  = "sort_by"
         static let certification_country    = "certification_country"
         static let certification            = "certification"
@@ -56,6 +57,7 @@ struct TMDB {
             static let TOP_RATED_MOVIES_URL     = "\(BASE_URL)/top_rated"
             static let NOW_PLAYING_MOVIES_URL   = "\(BASE_URL)/now_playing"
             static let DISCOVER_MOVIES_URL      = "\(TMDB.BASE_URL)discover/movie"
+            static let SEARCH_MOVIES_URL      = "\(TMDB.BASE_URL)search/movie"
             
             static func buidMovieDetailsUrl(movieId: Int) -> String {
                 return "\(TMDB.BASE_URL)movie/\(String(describing: movieId))"
@@ -77,6 +79,16 @@ struct TMDB {
                 let movieDetailsUrl = buidMovieDetailsUrl(movieId: movieId)
                 
                 return "\(movieDetailsUrl)/similar"
+            }
+            
+            static func buildSearchParameters(_ query: String, _ region: String = "BR",_ page: Int = 1,_ language: String = "pt_BR") -> [String : String] {
+                return [
+                    Parameters.apiKey: API_KEY,
+                    Parameters.language: language,
+                    Parameters.page: String(page),
+                    Parameters.region: region,
+                    Parameters.query: query
+                ]
             }
             
             static func buildMovieListParameters(_ region: String = "BR",_ page: Int = 1,_ language: String = "pt_BR") -> [String : String] {

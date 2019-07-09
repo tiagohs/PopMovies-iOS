@@ -39,7 +39,7 @@ class MovieListCell: UITableViewCell {
         self.moviesCollectionView.configureNibs(nibName: nibName, identifier: MovieCellIdentifier)
     }
     
-    func bindMovieCell(cell: MovieCell, movie: Movie, index: Int) -> UICollectionViewCell {
+    func bindMovieCell(cell: MovieCollectionViewCell, movie: Movie, index: Int) -> UICollectionViewCell {
         fatalError("Not Implemented")
     }
     
@@ -54,7 +54,7 @@ extension MovieListCell: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCellIdentifier, for: indexPath) as? MovieCell, let movies = self.movies else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCellIdentifier, for: indexPath) as? MovieCollectionViewCell, let movies = self.movies else { return UICollectionViewCell() }
         let movie = movies[indexPath.row]
         
         return self.bindMovieCell(cell: cell, movie: movie, index: indexPath.row)

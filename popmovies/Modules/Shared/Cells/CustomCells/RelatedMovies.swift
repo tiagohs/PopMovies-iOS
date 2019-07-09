@@ -15,7 +15,7 @@ class RelatedMovies: MovieListCell {
         set {}
     }
     
-    override func bindMovieCell(cell: MovieCell, movie: Movie, index: Int) -> UICollectionViewCell {
+    override func bindMovieCell(cell: MovieCollectionViewCell, movie: Movie, index: Int) -> UICollectionViewCell {
         cell.bindMovieCellDefault(movie: movie)
         
         return cell

@@ -17,6 +17,8 @@ protocol MovieServiceInterface {
     func getImages(movieId: Int, includeImageLanguage: [String], language: String?) -> Observable<Images>
     func getVideos(movieId: Int, language: String?) -> Observable<Results<Video>>
     
+    func searchMovie(with query: String, page: Int, language: String, region: String) -> Observable<Results<Movie>> 
+    
     func getMovieDiscover(page: Int, discoverMovie: DiscoverMovie) -> Observable<Results<Movie>>
     func getPopularMovies(page: Int, region: String) -> Observable<Results<Movie>>
     func getNowPlaying(page: Int, region: String) -> Observable<Results<Movie>>

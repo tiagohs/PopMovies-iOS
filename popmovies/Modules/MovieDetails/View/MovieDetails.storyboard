@@ -844,9 +844,37 @@
                                     <constraint firstAttribute="height" constant="35" id="ggQ-Uc-BmQ"/>
                                     <constraint firstAttribute="width" constant="35" id="rbE-a3-TV9"/>
                                 </constraints>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="CheckApp"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3K-PO-oo0">
+                                <rect key="frame" x="349" y="95" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="9Bh-yJ-gRL"/>
+                                    <constraint firstAttribute="height" constant="35" id="ISu-Fr-tiU"/>
+                                </constraints>
                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <state key="normal" image="ShareIcon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvH-z0-mgQ">
+                                <rect key="frame" x="304" y="50" width="35" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="9WK-oG-h8J"/>
+                                    <constraint firstAttribute="height" constant="35" id="u12-9H-MgW"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="HeartOutline"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
@@ -861,8 +889,12 @@
                             <constraint firstItem="E7e-BT-cLZ" firstAttribute="bottom" secondItem="pZH-GQ-x3y" secondAttribute="bottom" id="DuY-wy-AgY"/>
                             <constraint firstItem="HRV-Ba-iI1" firstAttribute="top" secondItem="Peh-N8-UFt" secondAttribute="top" constant="50" id="EOx-DT-HuV"/>
                             <constraint firstItem="E7e-BT-cLZ" firstAttribute="top" secondItem="Peh-N8-UFt" secondAttribute="top" id="HzW-jA-YgO"/>
+                            <constraint firstItem="QvH-z0-mgQ" firstAttribute="top" secondItem="Peh-N8-UFt" secondAttribute="top" constant="50" id="I9v-UZ-a2V"/>
                             <constraint firstItem="SE4-wD-zRK" firstAttribute="top" secondItem="Peh-N8-UFt" secondAttribute="top" constant="50" id="c95-JW-UMA"/>
                             <constraint firstAttribute="trailing" secondItem="HRV-Ba-iI1" secondAttribute="trailing" constant="30" id="kZ7-gp-5zF"/>
+                            <constraint firstItem="HRV-Ba-iI1" firstAttribute="leading" secondItem="QvH-z0-mgQ" secondAttribute="trailing" constant="10" id="lPi-iv-FhB"/>
+                            <constraint firstItem="T3K-PO-oo0" firstAttribute="top" secondItem="HRV-Ba-iI1" secondAttribute="bottom" constant="10" id="nHj-NX-mOf"/>
+                            <constraint firstItem="pZH-GQ-x3y" firstAttribute="trailing" secondItem="T3K-PO-oo0" secondAttribute="trailing" constant="30" id="qLc-Qo-sex"/>
                             <constraint firstItem="SE4-wD-zRK" firstAttribute="leading" secondItem="pZH-GQ-x3y" secondAttribute="leading" constant="30" id="vgX-8G-K5f"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pZH-GQ-x3y"/>
@@ -878,8 +910,10 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="closeButton" destination="SE4-wD-zRK" id="7gq-0y-YwG"/>
+                        <outlet property="markAsFavoriteButton" destination="QvH-z0-mgQ" id="BSc-NO-ln0"/>
+                        <outlet property="markAsWatchButton" destination="HRV-Ba-iI1" id="uk9-sS-myF"/>
                         <outlet property="panGesture" destination="rrw-6x-FgO" id="Icy-9X-gYE"/>
-                        <outlet property="shareButton" destination="HRV-Ba-iI1" id="PcT-wH-bQe"/>
+                        <outlet property="shareButton" destination="T3K-PO-oo0" id="fw3-wJ-aiJ"/>
                         <outlet property="tableView" destination="E7e-BT-cLZ" id="Kya-xe-a7R"/>
                     </connections>
                 </viewController>
@@ -894,7 +928,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CheckApp" width="30" height="30"/>
         <image name="Close" width="30" height="30"/>
+        <image name="HeartOutline" width="32" height="32"/>
         <image name="ImdbIcon-white" width="50" height="50"/>
         <image name="ShareIcon" width="32" height="32"/>
         <image name="TomatoesIcon-white" width="50" height="50"/>

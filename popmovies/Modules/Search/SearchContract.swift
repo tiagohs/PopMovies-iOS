@@ -13,7 +13,10 @@ import UIKit
 protocol SearchViewInterface: BaseViewInterface {
     var presenter: SearchPresenterInterface? { get set }
     
-    func setupSearchController() 
+    func setupSearchController()
+    
+    func showMovies(with movies: [Movie])
+    func stopInfiniteScroll()
 }
 
 protocol SearchPresenterInterface: BasePresenterInterface {
@@ -22,18 +25,26 @@ protocol SearchPresenterInterface: BasePresenterInterface {
     var interactor: SearchInteractorInputInterface? { get set }
     var wireframe: SearchWireframeInterface? { get set }
     
+    func searchMovies(with query: String?)
+    
+    func didSelectMovie(with movie: Movie)
 }
 
 protocol SearchInteractorInputInterface: BaseInteractorInterface {
     var output: SearchInteractorOutputInterface? { get set }
     
+    func searchMovie(with query: String, page: Int)
 }
 
 protocol SearchInteractorOutputInterface {
     
+    func didSearchMovieFetch(_ movies: [Movie], _ totalPages: Int)
+    func didSearchMovieError(_ error: DefaultError)
 }
 
 protocol SearchWireframeInterface: BaseWireframeInterface {
+    
+    func presentDetails(for movie: Movie)
     
     static func buildModule() -> UIViewController
 }

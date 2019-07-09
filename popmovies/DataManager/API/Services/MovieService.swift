@@ -50,6 +50,15 @@ class MovieService: MovieServiceInterface {
             .mapObject(type: Results<Video>.self)
     }
     
+    func searchMovie(with query: String, page: Int, language: String, region: String = "BR") -> Observable<Results<Movie>> {
+        let url = TMDB.URL.MOVIES.SEARCH_MOVIES_URL
+        let parameters = TMDB.URL.MOVIES.buildSearchParameters(query, region, page, language)
+        
+        return requestJSON(.get, url, parameters: parameters)
+            .debug()
+            .mapObject(type: Results<Movie>.self)
+    }
+    
     func getMovieDiscover(page: Int, discoverMovie: DiscoverMovie) -> Observable<Results<Movie>> {
         let url = TMDB.URL.MOVIES.DISCOVER_MOVIES_URL
         let parameters = TMDB.URL.MOVIES.buildMovieDiscoverParameters(discoverMovie, page, "pt_BR")
