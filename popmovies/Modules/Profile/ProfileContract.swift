@@ -12,6 +12,7 @@ import UIKit
 protocol ProfileViewInterface: BaseViewInterface {
     var presenter: ProfilePresenterInterface? { get set }
     
+    func setupProfileUI(with user: UserLocal)
 }
 
 protocol ProfilePresenterInterface: BasePresenterInterface {

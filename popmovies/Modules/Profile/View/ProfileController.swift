@@ -39,6 +39,7 @@ class ProfileController: BaseViewController {
     
     var style: UIStatusBarStyle = .lightContent
     var presenter: ProfilePresenterInterface?
+    var user: UserLocal?
 }
 
 // MARK: Lifecycle Methods
@@ -122,6 +123,11 @@ extension ProfileController: ProfileViewInterface {
         tableView.reloadData()
     }
     
+    func setupProfileUI(with user: UserLocal) {
+        self.user = user
+        
+        tableView.reloadData()
+    }
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
@@ -152,6 +158,8 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileHeaderCellIdentifier) as? ProfileHeaderCell else {
             return UITableViewCell()
         }
+        
+        if (self.user != nil) { cell.user = self.user }
         
         return cell
     }

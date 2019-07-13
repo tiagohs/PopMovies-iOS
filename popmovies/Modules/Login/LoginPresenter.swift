@@ -51,19 +51,25 @@ extension LoginPresenter {
     }
     
     func didSignWithEmailClicked(_ email: String, _ password: String) {
+        view?.showActivityIndicator()
         
+        self.interactor?.didSignWithEmail(email, password)
     }
     
     func didSignWithFaceIdClicked() {
         
     }
     
-    func didSignWithFacebookClicked() {
+    func didSignWithFacebookClicked(with viewController: UIViewController) {
+        view?.showActivityIndicator()
         
+        self.interactor?.didSignWithFacebook(with: viewController)
     }
     
-    func didSignWithTwitterClicked() {
+    func didSignWithTwitterClicked(with viewController: UIViewController) {
+        view?.showActivityIndicator()
         
+        self.interactor?.didSignWithTwitter(with: viewController)
     }
     
     func didSignWithGoogleClicked() {

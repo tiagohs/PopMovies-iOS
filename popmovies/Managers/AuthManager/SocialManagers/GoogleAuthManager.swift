@@ -17,7 +17,7 @@ class GoogleAuthManager {
     
     private init() {}
     
-    var googleAuthDelegate: GoogleAuthDelegate?
+    var delegate: GoogleAuthDelegate?
     
     func startSignInFlow() {
         GIDSignIn.sharedInstance()?.signIn()
@@ -46,7 +46,7 @@ extension GoogleAuthManager {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
-            googleAuthDelegate?.didSignFinished(with: DefaultError(message: error.localizedDescription))
+            delegate?.didSignFinished(with: DefaultError(message: error.localizedDescription))
             return
         }
         
@@ -54,7 +54,7 @@ extension GoogleAuthManager {
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         
-        googleAuthDelegate?.didSignFinished(with: credential)
+        delegate?.didSignFinished(with: credential)
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

@@ -21,6 +21,10 @@ target 'popmovies' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'TwitterKit'
   
   target 'popmoviesTests' do
     inherit! :search_paths

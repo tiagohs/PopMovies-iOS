@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,13 +30,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return GoogleAuthManager.shared.handle(open: url, sourceApplication: sourceApplication, annotation: annotation)
+        
+        if FacebookAuthManager.shared.handle(application, open: url, sourceApplication: sourceApplication, annotation: annotation) {
+            return true
+        }
+        
+        if GoogleAuthManager.shared.handle(open: url, sourceApplication: sourceApplication, annotation: annotation) {
+            return true
+        }
+        
+        return false
     }
     
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-            return GoogleAuthManager.shared.handle(open: url, options: options)
+        
+        if TwitterAuthManager.shared.handle(application, open: url, options: options) {
+            return true
+        }
+        
+        if GoogleAuthManager.shared.handle(open: url, options: options) {
+            return true
+        }
+        
+        if FacebookAuthManager.shared.handle(application, open: url, options: options) {
+            return true
+        }
+        
+        return false
     }
+    
 }
 
 // MARK: Setup Methods
@@ -64,6 +88,7 @@ private extension AppDelegate {
     
     func setupSocialLogins() {
         GoogleAuthManager.shared.setup(delegate: self)
+        TwitterAuthManager.shared.setup()
     }
     
 }

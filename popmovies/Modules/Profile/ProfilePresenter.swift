@@ -27,7 +27,10 @@ class ProfilePresenter {
 extension ProfilePresenter: ProfilePresenterInterface {
     
     func viewDidLoad() {
+        let userLocal = ProfileManager.shared.getCurrentUser()
+        
         self.view?.setupUI()
+        self.view?.setupProfileUI(with: userLocal)
     }
     
     func viewDidDisappear(_ animated: Bool) {

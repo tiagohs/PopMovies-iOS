@@ -32,9 +32,6 @@ extension LoginInteractor: LoginInteractorInputInterface {
     func outputDidLoad() {}
     
     func outputFinished() {
-        disposibles.dispose()
-        
-        self.output = nil
     }
     
 }
@@ -43,35 +40,48 @@ extension LoginInteractor {
     
     func didSignWithGoogle() {
         authManager.signIn(with: .google) { (user, error) in
-            if let error = error {
-                self.output?.didLoginError(error: error)
-                return
-            }
-            
-            guard let user = user else {
-                self.output?.didLoginError(error: DefaultError(message: "Error during the login"))
-                return
-            }
-            
-            self.output?.didLoginSuccess(user: user)
+            self.onLogin(user, error)
         }
     }
     
-    func didSignWithFacebook() {
+    func didSignWithFacebook(with viewController: UIViewController) {
+        authManager.viewController = viewController
         
+        authManager.signIn(with: .facebook) { (user, error) in
+            self.onLogin(user, error)
+        }
     }
     
-    func didSignWithTwitter() {
-        
+    func didSignWithTwitter(with viewController: UIViewController) {
+        authManager.viewController = viewController
+
+        authManager.signIn(with: .twitter) { (user, error) in
+            self.onLogin(user, error)
+        }
     }
     
     func didSignWithEmail(_ email: String, _ password: String) {
-        
+        authManager.signIn(with: email, password) { (user, error) in
+            self.onLogin(user, error)
+        }
     }
     
     func didSignWithFaceID() {
         
     }
     
+    private func onLogin(_ user: UserLocal?, _ error: DefaultError?) {
+        if let error = error {
+            self.output?.didLoginError(error: error)
+            return
+        }
+        
+        guard let user = user else {
+            self.output?.didLoginError(error: DefaultError(message: "Error during the login"))
+            return
+        }
+        
+        self.output?.didLoginSuccess(user: user)
+    }
 }
 

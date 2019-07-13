@@ -115,11 +115,11 @@ extension LoginController {
     }
     
     @IBAction func didSignWithFacebookClicked(_ sender: Any) {
-        presenter?.didSignWithFacebookClicked()
+        presenter?.didSignWithFacebookClicked(with: self)
     }
     
     @IBAction func didSignWithTwitterClicked(_ sender: Any) {
-        presenter?.didSignWithTwitterClicked()
+        presenter?.didSignWithTwitterClicked(with: self)
     }
     
     @IBAction func didSignWithGoogleClicked(_ sender: Any) {

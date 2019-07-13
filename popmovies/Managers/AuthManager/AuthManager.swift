@@ -8,6 +8,9 @@
 
 import Foundation
 import Firebase
+import FBSDKLoginKit
+
+// MARK: AuthManager
 
 class AuthManager {
     
@@ -15,6 +18,7 @@ class AuthManager {
     
     let firebaseAuth: Auth!
     
+    var viewController: UIViewController?
     var signInCompletion: ((UserLocal?, DefaultError?) -> Void)?
     
     private init() {
@@ -50,6 +54,12 @@ extension AuthManager {
         }
     }
     
+    func signIn(with credentials: AuthCredential) {
+        firebaseAuth.signIn(with: credentials) { (authDataResult, error) in
+            self.onAuthResult(authDataResult, error, self.signInCompletion)
+        }
+    }
+    
     func signOut(signOutCompletionHandler: @escaping (DefaultError?) -> Void) {
         if !isUserLogged() { return }
         
@@ -69,17 +79,29 @@ extension AuthManager {
 extension AuthManager {
     
     private func signInWithFacebook(_ signInCompletionHandler: @escaping (UserLocal?, DefaultError?) -> Void) {
+        self.signInCompletion = signInCompletionHandler
         
+        FacebookAuthManager.shared.delegate = self
+        
+        if let viewController = self.viewController {
+            FacebookAuthManager.shared.startSignInFlow(from: viewController)
+        }
     }
     
     private func signInWithTwitter(_ signInCompletionHandler: @escaping (UserLocal?, DefaultError?) -> Void) {
+        self.signInCompletion = signInCompletionHandler
         
+        TwitterAuthManager.shared.delegate = self
+        
+        if let viewController = self.viewController {
+            TwitterAuthManager.shared.startSignInFlow(from: viewController)
+        }
     }
     
     private func signInWithGoogle(_ signInCompletionHandler: @escaping (UserLocal?, DefaultError?) -> Void) {
         self.signInCompletion = signInCompletionHandler
         
-        GoogleAuthManager.shared.googleAuthDelegate = self
+        GoogleAuthManager.shared.delegate = self
         GoogleAuthManager.shared.startSignInFlow()
     }
 }
@@ -89,13 +111,37 @@ extension AuthManager {
 extension AuthManager: GoogleAuthDelegate {
     
     func didSignFinished(with credentials: AuthCredential) {
-        firebaseAuth.signIn(with: credentials) { (authDataResult, error) in
-            self.onAuthResult(authDataResult, error, self.signInCompletion)
-        }
+        self.signIn(with: credentials)
     }
     
     func didSignFinished(with error: DefaultError) {
         self.signInCompletion?(nil, DefaultError(message: error.localizedDescription))
+    }
+    
+}
+
+// MARK: FacebookAuthDelegate
+
+extension AuthManager: FacebookAuthDelegate {
+    
+    func didSignFinished(with token: AccessToken) {
+        let credentials = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
+        
+        self.signIn(with: credentials)
+    }
+    
+    func didSignCancelled() {
+        self.signInCompletion?(nil, DefaultError(message: "Processo de login com o Facebook cancelado."))
+    }
+    
+}
+
+// MARK: TwitterAuthDelegate
+
+extension AuthManager: TwitterAuthDelegate {
+    
+    func didTwitterSignFinished(with credentials: AuthCredential) {
+        self.signIn(with: credentials)
     }
     
 }
@@ -113,7 +159,7 @@ extension AuthManager {
                 return
             }
             
-            self.updateProfile(name: name, completionHandler: { (error) in
+            ProfileManager.shared.updateProfile(name: name, completionHandler: { (error) in
                 if let error = error {
                     signUpCompletionHandler(nil, DefaultError(message: error.localizedDescription))
                     return
@@ -123,27 +169,6 @@ extension AuthManager {
             })
             
         }
-    }
-    
-    func updateProfile(name: String?, photoUrl: String? = nil, completionHandler: @escaping (DefaultError?) -> Void) {
-        if firebaseAuth.currentUser == nil { return }
-        
-        let changeRequest = firebaseAuth.currentUser?.createProfileChangeRequest()
-        
-        changeRequest?.displayName = name
-        
-        if let photoUrl = photoUrl{
-            changeRequest?.photoURL = URL(string: photoUrl)
-        }
-        
-        changeRequest?.commitChanges(completion: { (error) in
-            if let error = error {
-                completionHandler(DefaultError(message: error.localizedDescription))
-                return
-            }
-            
-            completionHandler(nil)
-        })
     }
     
 }

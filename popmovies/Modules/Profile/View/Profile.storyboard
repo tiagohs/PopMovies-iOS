@@ -42,7 +42,7 @@
                                     <constraint firstAttribute="width" constant="35" id="ucB-sJ-BNg"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                <state key="normal" image="CheckApp"/>
+                                <state key="normal" image="SignOutIcon"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
@@ -102,7 +102,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CheckApp" width="30" height="30"/>
+        <image name="SignOutIcon" width="30" height="30"/>
         <image name="adventure" width="1280" height="720"/>
     </resources>
 </document>

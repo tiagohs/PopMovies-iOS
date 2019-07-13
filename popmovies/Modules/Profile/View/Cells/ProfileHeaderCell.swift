@@ -17,6 +17,10 @@ class ProfileHeaderCell: UITableViewCell {
     @IBOutlet weak var instagramButton: UIButton!
     @IBOutlet weak var twitterButton: UIButton!
     
+    var user: UserLocal? {
+        didSet { bindUI(user!) }
+    }
+    
     //MARK: init
     
     override func awakeFromNib() {
@@ -31,5 +35,14 @@ class ProfileHeaderCell: UITableViewCell {
         facebookButton.layer.cornerRadius = facebookButton.bounds.width / 2
         instagramButton.layer.cornerRadius = instagramButton.bounds.width / 2
         twitterButton.layer.cornerRadius = twitterButton.bounds.width / 2
+    }
+    
+    func bindUI(_ user: UserLocal) {
+        nameLabel.text = user.name
+        emailLabel.text = user.email
+        
+        if let profileImage = user.photoURL {
+            profileImageView.setImage(imageUrl: profileImage.absoluteString, contentMode: .scaleAspectFill, placeholderImageName: Constants.IMAGES.PLACEHOLDER_POSTER_PROFILE)
+        }
     }
 }

@@ -25,8 +25,8 @@ protocol LoginPresenterInterface: BasePresenterInterface {
     func didSignUpClicked()
     func didSignWithEmailClicked(_ email: String, _ password: String)
     func didSignWithFaceIdClicked()
-    func didSignWithFacebookClicked()
-    func didSignWithTwitterClicked()
+    func didSignWithFacebookClicked(with viewController: UIViewController)
+    func didSignWithTwitterClicked(with viewController: UIViewController)
     func didSignWithGoogleClicked()
 }
 
@@ -34,8 +34,8 @@ protocol LoginInteractorInputInterface: BaseInteractorInterface {
     var output: LoginInteractorOutputInterface? { get set }
     
     func didSignWithGoogle()
-    func didSignWithFacebook()
-    func didSignWithTwitter()
+    func didSignWithFacebook(with viewController: UIViewController)
+    func didSignWithTwitter(with viewController: UIViewController)
     func didSignWithEmail(_ email: String, _ password: String)
     func didSignWithFaceID()
 }

@@ -230,6 +230,12 @@
 		A2E9F51422D53E890001E089 /* UserLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9F51322D53E890001E089 /* UserLocal.swift */; };
 		A2E9F51622D54B8D0001E089 /* GoogleAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9F51522D54B8D0001E089 /* GoogleAuthManager.swift */; };
 		A2E9F51922D551610001E089 /* GoogleAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9F51822D551610001E089 /* GoogleAuthDelegate.swift */; };
+		A2FCAB4822D69FF9001CA39A /* FacebookAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCAB4722D69FF9001CA39A /* FacebookAuthManager.swift */; };
+		A2FCAB4A22D7B90E001CA39A /* TwitterAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCAB4922D7B90E001CA39A /* TwitterAuthManager.swift */; };
+		A2FCAB9822DA68B2001CA39A /* FacebookAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCAB9722DA68B2001CA39A /* FacebookAuthDelegate.swift */; };
+		A2FCAB9A22DA7038001CA39A /* TwitterAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCAB9922DA7038001CA39A /* TwitterAuthDelegate.swift */; };
+		A2FCAB9C22DA77D1001CA39A /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2FCAB9B22DA77D1001CA39A /* SafariServices.framework */; };
+		A2FCABA022DA7FF0001CA39A /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCAB9F22DA7FF0001CA39A /* ProfileManager.swift */; };
 		A2FE0225226BCBE200BCB8AC /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0224226BCBE200BCB8AC /* PersonCell.swift */; };
 		A2FE0227226BCF6000BCB8AC /* PersonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0226226BCF6000BCB8AC /* PersonItem.swift */; };
 		A2FE0232226D1AA400BCB8AC /* MovieOMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE0231226D1AA400BCB8AC /* MovieOMDB.swift */; };
@@ -524,6 +530,12 @@
 		A2E9F51322D53E890001E089 /* UserLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocal.swift; sourceTree = "<group>"; };
 		A2E9F51522D54B8D0001E089 /* GoogleAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthManager.swift; sourceTree = "<group>"; };
 		A2E9F51822D551610001E089 /* GoogleAuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthDelegate.swift; sourceTree = "<group>"; };
+		A2FCAB4722D69FF9001CA39A /* FacebookAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthManager.swift; sourceTree = "<group>"; };
+		A2FCAB4922D7B90E001CA39A /* TwitterAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAuthManager.swift; sourceTree = "<group>"; };
+		A2FCAB9722DA68B2001CA39A /* FacebookAuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthDelegate.swift; sourceTree = "<group>"; };
+		A2FCAB9922DA7038001CA39A /* TwitterAuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAuthDelegate.swift; sourceTree = "<group>"; };
+		A2FCAB9B22DA77D1001CA39A /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		A2FCAB9F22DA7FF0001CA39A /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		A2FE0224226BCBE200BCB8AC /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		A2FE0226226BCF6000BCB8AC /* PersonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonItem.swift; sourceTree = "<group>"; };
 		A2FE0231226D1AA400BCB8AC /* MovieOMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOMDB.swift; sourceTree = "<group>"; };
@@ -577,6 +589,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2FCAB9C22DA77D1001CA39A /* SafariServices.framework in Frameworks */,
 				36875851E9DB53AFE9002B58 /* Pods_popmovies.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,6 +616,7 @@
 		22312F74EF7B54A7125AD865 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A2FCAB9B22DA77D1001CA39A /* SafariServices.framework */,
 				DBEE69AB622BE17688070CB2 /* Pods_popmovies.framework */,
 				2A5D0AAE09D2ACB7815B87C1 /* Pods_popmoviesTests.framework */,
 				480AEAD8487605BDBEC2F646 /* Pods_popmoviesUITests.framework */,
@@ -963,8 +977,7 @@
 				A23EEBB122C7F15B009E60B6 /* Infraestructure */,
 				A23EEBAD22C7ECD8009E60B6 /* Modules */,
 				A21693A32263D35A009988F1 /* Entities */,
-				A2A64C7622CFEDBF00710E0B /* DataManager */,
-				A2E9F50E22D5314C0001E089 /* Managers */,
+				A2FCAB9D22DA7FAD001CA39A /* Managers */,
 				A22A920E226A1CBA00F74BD5 /* Resources */,
 				A20716D722C2A60700645BBE /* Constants */,
 			);
@@ -1565,22 +1578,52 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		A2E9F50E22D5314C0001E089 /* Managers */ = {
+		A2E9F50E22D5314C0001E089 /* AuthManager */ = {
 			isa = PBXGroup;
 			children = (
 				A2E9F51722D551400001E089 /* Delegates */,
+				A2FCAB4622D69C00001CA39A /* SocialManagers */,
 				A2E9F50F22D531650001E089 /* AuthManager.swift */,
-				A2E9F51522D54B8D0001E089 /* GoogleAuthManager.swift */,
 			);
-			path = Managers;
+			path = AuthManager;
 			sourceTree = "<group>";
 		};
 		A2E9F51722D551400001E089 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
 				A2E9F51822D551610001E089 /* GoogleAuthDelegate.swift */,
+				A2FCAB9722DA68B2001CA39A /* FacebookAuthDelegate.swift */,
+				A2FCAB9922DA7038001CA39A /* TwitterAuthDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		A2FCAB4622D69C00001CA39A /* SocialManagers */ = {
+			isa = PBXGroup;
+			children = (
+				A2E9F51522D54B8D0001E089 /* GoogleAuthManager.swift */,
+				A2FCAB4722D69FF9001CA39A /* FacebookAuthManager.swift */,
+				A2FCAB4922D7B90E001CA39A /* TwitterAuthManager.swift */,
+			);
+			path = SocialManagers;
+			sourceTree = "<group>";
+		};
+		A2FCAB9D22DA7FAD001CA39A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A2FCAB9E22DA7FDF001CA39A /* ProfileManager */,
+				A2A64C7622CFEDBF00710E0B /* DataManager */,
+				A2E9F50E22D5314C0001E089 /* AuthManager */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		A2FCAB9E22DA7FDF001CA39A /* ProfileManager */ = {
+			isa = PBXGroup;
+			children = (
+				A2FCAB9F22DA7FF0001CA39A /* ProfileManager.swift */,
+			);
+			path = ProfileManager;
 			sourceTree = "<group>";
 		};
 		A2FE0230226D1A8E00BCB8AC /* OMDB */ = {
@@ -1808,10 +1851,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-popmovies/Pods-popmovies-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1826,7 +1871,11 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-popmovies/Pods-popmovies-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -1838,6 +1887,8 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework",
 				"${BUILT_PRODUCTS_DIR}/UIScrollView-InfiniteScroll/UIScrollView_InfiniteScroll.framework",
 				"${BUILT_PRODUCTS_DIR}/YoutubePlayer-in-WKWebView/YoutubePlayer_in_WKWebView.framework",
@@ -1846,7 +1897,11 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -1858,6 +1913,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIScrollView_InfiniteScroll.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YoutubePlayer_in_WKWebView.framework",
@@ -2031,6 +2088,7 @@
 				A2A64C2B22C9A8A500710E0B /* RootInteractor.swift in Sources */,
 				A216945E2263EFDE009988F1 /* ProductionCountry.swift in Sources */,
 				A2E9F50B22D50FAA0001E089 /* MovieCell+TableView.swift in Sources */,
+				A2FCABA022DA7FF0001CA39A /* ProfileManager.swift in Sources */,
 				A2A64BFF22C9919B00710E0B /* ProfilePresenter.swift in Sources */,
 				A2E9F4DF22D3A8CE0001E089 /* PersonListWireframe.swift in Sources */,
 				A2208BA722BAE40A00CD8EFB /* PersonDetailsHeaderCell.swift in Sources */,
@@ -2088,6 +2146,7 @@
 				A22A9245226A791100F74BD5 /* MovieDetailsHeaderCell.swift in Sources */,
 				A29562E022BC2E89006C438A /* PersonDetailsKnownForCell.swift in Sources */,
 				A216945F2263EFDE009988F1 /* ProductionCompany.swift in Sources */,
+				A2FCAB9A22DA7038001CA39A /* TwitterAuthDelegate.swift in Sources */,
 				A2A64BC422C93A7700710E0B /* ImageListPresenter.swift in Sources */,
 				A20716CC22C164EA00645BBE /* GenreListInteractor.swift in Sources */,
 				A22A91FE22691DC100F74BD5 /* Release.swift in Sources */,
@@ -2157,8 +2216,10 @@
 				A2FE0225226BCBE200BCB8AC /* PersonCell.swift in Sources */,
 				A2A64BDD22C9490100710E0B /* VideoListPresenter.swift in Sources */,
 				A2A64C0522C991C100710E0B /* ProfileWireframe.swift in Sources */,
+				A2FCAB4A22D7B90E001CA39A /* TwitterAuthManager.swift in Sources */,
 				A2A64B9D22C80B7B00710E0B /* DefaultError.swift in Sources */,
 				A2A64BC822C93A9500710E0B /* ImageListInteractor.swift in Sources */,
+				A2FCAB4822D69FF9001CA39A /* FacebookAuthManager.swift in Sources */,
 				A2208BA222BAC69B00CD8EFB /* PersonDetailsController.swift in Sources */,
 				A2A64C1F22C9A28500710E0B /* WeekInteractor.swift in Sources */,
 				A233E27122D12BF500AC6F21 /* CalendarWireframe.swift in Sources */,
@@ -2184,6 +2245,7 @@
 				A22A91E32268F51E00F74BD5 /* MovieDetailsContract.swift in Sources */,
 				A21693A62263D580009988F1 /* Constants.swift in Sources */,
 				A21693AA2263D700009988F1 /* MovieService.swift in Sources */,
+				A2FCAB9822DA68B2001CA39A /* FacebookAuthDelegate.swift in Sources */,
 				A2E9F51022D531650001E089 /* AuthManager.swift in Sources */,
 				A2A64C2722C9A5EC00710E0B /* RootContract.swift in Sources */,
 				A233E26E22D12BF500AC6F21 /* CalendarPresenter.swift in Sources */,

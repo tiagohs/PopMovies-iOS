@@ -26,9 +26,24 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.769423231247-edte802a60le81b7q4m07uutluo4brqu</string>
+                <string>fb1628004524169901</string>
+                <string>twitterkit-jdkgQcLjuDjupwwKRbtUoIAwE</string>
 			</array>
 		</dict>
 	</array>
+    <key>FacebookAppID</key>
+    <string>1628004524169901</string>
+    <key>FacebookDisplayName</key>
+    <string>PopMovies</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-share-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+        <string>twitter</string>
+        <string>twitterauth</string>
+    </array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>

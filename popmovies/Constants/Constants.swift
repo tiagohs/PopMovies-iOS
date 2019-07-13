@@ -10,6 +10,11 @@ import Foundation
 
 struct Constants {
     
+    struct TWITTER {
+        static let CONSUMER_KEY         = "jdkgQcLjuDjupwwKRbtUoIAwE"
+        static let CONSTUMER_SECRET     = "XaXjpdRIQTybYvGYH8p9FesYKwNcJ8glGxo02XT96FwgNNtgNI"
+    }
+    
     struct URL {
         static let IMDB_URL             = "https://www.imdb.com/"
         static let WIKI_URL             = "https://en.wikipedia.org/w/"
