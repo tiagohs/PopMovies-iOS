@@ -10,16 +10,20 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    let coreDataStore: CoreDataStore = CoreDataStore()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        setupDatabase()
         setupFirebase()
         setupSocialLogins()
         setupStatusBar()
@@ -60,11 +64,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
     
+    func applicationWillTerminate(_ application: UIApplication) {
+        coreDataStore.saveContext()
+    }
 }
 
 // MARK: Setup Methods
 
 private extension AppDelegate {
+    
+    func setupDatabase() {
+        coreDataStore.loadPersistentContainer()
+    }
+    
     func setupStatusBar() {
         let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
         statusBar?.backgroundColor = UIColor.clear

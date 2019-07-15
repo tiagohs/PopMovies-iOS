@@ -33,7 +33,7 @@ class AuthManager {
     }
 }
 
-// MARK: Login Manager
+// MARK: Sign In
 
 extension AuthManager {
     
