@@ -9,60 +9,27 @@
 import Foundation
 import CoreData
 
-class MovieRepository: MovieRepositoryInterface {
-    
-    private var movieManagedObject: NSManagedObject?
-    
-    let coreDataStore: CoreDataStore!
-    
-    var items: [MovieDB] = []
+class MovieRepository: BaseRepository<MovieDB>, MovieRepositoryInterface {
     
     init() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        coreDataStore = appDelegate.coreDataStore
-        movieManagedObject = coreDataStore.getManagedEntity(with: MovieDB.tableName)
-        
-        self.fetchItems()
+        super.init(MovieDB.tableName, MovieDB.tableRows.creationDate)
     }
     
-    private func fetchItems() {
-        let context: NSManagedObjectContext = coreDataStore.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<MovieDB> = MovieDB.fetchRequest()
-        let sortDescriptor: NSSortDescriptor = NSSortDescriptor(key: MovieDB.tableRows.creationDate, ascending: false)
-        
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        if let result = try? context.fetch(fetchRequest) {
-            self.items = result
-        }
-    }
+}
+
+extension MovieRepository {
     
     func add(with movie: Movie, complationHandler: ((DefaultError?) -> Void)? = nil) {
         let context = self.coreDataStore.persistentContainer.viewContext
         let movieDB = MovieDB.create(from: movie, context: context)
         
-        self.items.insert(movieDB, at: 0)
-        
-        self.coreDataStore.saveContext() { (error) in
-            complationHandler?(error)
-        }
+        self.addItem(with: movieDB, complationHandler: complationHandler)
     }
     
     func remove(with movie: Movie, complationHandler: ((DefaultError?) -> Void)? = nil) {
-        let context = self.coreDataStore.persistentContainer.viewContext
         let movieDB = self.getDBObject(with: movie)
         
-        if let movieToRemove = movieDB {
-            context.delete(movieToRemove)
-            
-            self.coreDataStore.saveContext() { (error) in
-                complationHandler?(error)
-            }
-            return
-        }
-        
-        complationHandler?(DefaultError(message: "Não foi possível remover o filme."))
+        self.removeItem(with: movieDB, complationHandler: complationHandler)
     }
     
     func getAll() -> [Movie] {
@@ -82,9 +49,15 @@ class MovieRepository: MovieRepositoryInterface {
             return movieDB.id == Int32(id)
         }
     }
+    
 }
 
+
 extension MovieRepository {
+    
+    func getFavoriteMovies() -> [Movie] {
+        return getAll().filter({ (movie) -> Bool in return movie.isFavorite })
+    }
     
     func addOrRemoveToFavorite(with movie: Movie) -> Bool {
         guard let movieDB = getDBObject(with: movie) else {
