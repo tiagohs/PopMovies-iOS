@@ -850,6 +850,9 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didWatchedClicked:" destination="YTz-uZ-EHc" eventType="touchUpInside" id="SpN-wA-3cW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3K-PO-oo0">
                                 <rect key="frame" x="349" y="95" width="35" height="35"/>
@@ -879,6 +882,9 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didFavoriteClicked:" destination="YTz-uZ-EHc" eventType="touchUpInside" id="ezY-aA-4oG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

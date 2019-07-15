@@ -12,7 +12,7 @@ import CoreData
 extension MovieDB {
     
     static let tableName = Database.CORE_DATA.MovieTable.name
-    static let tableRows = Database.CORE_DATA.MovieTable.Rows
+    static let tableRows = Database.CORE_DATA.MovieTable.Rows.self
     
     
     func toMovie() -> Movie {
@@ -23,6 +23,9 @@ extension MovieDB {
         movie.overview = self.overview
         movie.posterPath = self.posterPath
         movie.backdropPath = self.backdropPath
+        movie.isFavorite = self.isFavorite
+        movie.isWatched = true
+        movie.isWantToSee = self.isWantToSee
         
         return movie
     }
@@ -51,6 +54,9 @@ extension MovieDB {
         }
         
         movieDB.creationDate = Date()
+        
+        movieDB.isFavorite = movie.isFavorite
+        movieDB.isWantToSee = movie.isWantToSee
         
         return movieDB
     }

@@ -45,6 +45,9 @@ class Movie: BaseModel, Hashable {
     var reviews: [Review]?
     
     var allImages: [Image] = []
+    var isFavorite: Bool = false
+    var isWatched: Bool = false
+    var isWantToSee: Bool = false
     
     override func mapping(map: Map) {
         id                      <-  map["id"]

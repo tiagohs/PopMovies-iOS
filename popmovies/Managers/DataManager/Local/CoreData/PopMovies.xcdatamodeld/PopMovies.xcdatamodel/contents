@@ -4,6 +4,8 @@
         <attribute name="backdropPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isWantToSee" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="overview" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="posterPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -17,7 +19,7 @@
         <relationship name="watchedMovies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MovieDB" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MovieDB" positionX="-128.18359375" positionY="-12.64453125" width="128" height="133"/>
+        <element name="MovieDB" positionX="-128.18359375" positionY="-12.64453125" width="128" height="165"/>
         <element name="UserDB" positionX="-476.46484375" positionY="-61.49609375" width="128" height="133"/>
     </elements>
 </model>

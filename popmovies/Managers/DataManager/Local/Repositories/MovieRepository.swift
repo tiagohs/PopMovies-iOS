@@ -22,6 +22,8 @@ class MovieRepository: MovieRepositoryInterface {
         
         coreDataStore = appDelegate.coreDataStore
         movieManagedObject = coreDataStore.getManagedEntity(with: MovieDB.tableName)
+        
+        self.fetchItems()
     }
     
     private func fetchItems() {
@@ -80,4 +82,70 @@ class MovieRepository: MovieRepositoryInterface {
             return movieDB.id == Int32(id)
         }
     }
+}
+
+extension MovieRepository {
+    
+    func addOrRemoveToFavorite(with movie: Movie) -> Bool {
+        guard let movieDB = getDBObject(with: movie) else {
+            movie.isFavorite = true
+            add(with: movie)
+            return true
+        }
+        
+        movieDB.isFavorite = !movieDB.isFavorite
+        
+        self.coreDataStore.saveContext()
+        
+        return movieDB.isFavorite
+    }
+    
+    func addOrRemoveToWatched(with movie: Movie) -> Bool {
+        
+        if getDBObject(with: movie) != nil {
+            remove(with: movie)
+            return false
+        }
+        
+        add(with: movie)
+        
+        self.coreDataStore.saveContext()
+        
+        return true
+    }
+    
+    func addOrRemoveToWantToSee(with movie: Movie) -> Bool {
+        guard let movieDB = getDBObject(with: movie) else {
+            movie.isWantToSee = true
+            add(with: movie)
+            return true
+        }
+        
+        movieDB.isWantToSee = !movieDB.isWantToSee
+        
+        self.coreDataStore.saveContext()
+        
+        return movieDB.isWantToSee
+    }
+    
+    func isFavoriteMovie(with movie: Movie) -> Bool {
+        guard let movieDB = getDBObject(with: movie) else {
+            return false
+        }
+        
+        return movieDB.isFavorite
+    }
+    
+    func isWatchedMovie(with movie: Movie) -> Bool {
+        return getDBObject(with: movie) != nil
+    }
+    
+    func isWantToSeeMovie(with movie: Movie) -> Bool {
+        guard let movieDB = getDBObject(with: movie) else {
+            return false
+        }
+        
+        return movieDB.isWantToSee
+    }
+    
 }

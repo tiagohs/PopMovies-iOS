@@ -13,12 +13,14 @@ import RxSwift
 class MovieDetailsInteractor: BaseInteractor {
     
     let movieService: MovieServiceInterface!
+    let movieRepository: MovieRepositoryInterface!
     
     var output: MovieDetailsInteractorOutputInterface?
     
     init(output: MovieDetailsInteractorOutputInterface) {
         self.output = output
         self.movieService = MovieService()
+        self.movieRepository = MovieRepository()
     }
     
 }
@@ -52,6 +54,10 @@ extension MovieDetailsInteractor {
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (movieResult) in
+                movieResult.isFavorite = self.movieRepository.isFavoriteMovie(with: movieResult)
+                movieResult.isWantToSee = self.movieRepository.isWantToSeeMovie(with: movieResult)
+                movieResult.isWatched = self.movieRepository.isWatchedMovie(with: movieResult)
+                
                 self.output?.movieDetailsDidFetch(movieResult)
                 
                 self.fetchMovieRankings(imdbId: movieResult.imdbID)
@@ -75,6 +81,37 @@ extension MovieDetailsInteractor {
                 self.output?.movieRankingsDidFetch(DefaultError(message: "Houve um erro ao buscar mais informações sobre esse filme"))
             })
         )
+    }
+    
+}
+
+extension MovieDetailsInteractor {
+    
+    func didFavoriteClicked(with movie: Movie) -> Bool {
+        return self.movieRepository.addOrRemoveToFavorite(with: movie)
+    }
+    
+    func didWatchedClicked(with movie: Movie) -> Bool {
+        return self.movieRepository.addOrRemoveToWatched(with: movie)
+    }
+    func didWantToSeeClicked(with movie: Movie) -> Bool {
+        return self.movieRepository.addOrRemoveToWantToSee(with: movie)
+    }
+    
+}
+
+extension MovieDetailsInteractor {
+    
+    func isFavoriteMovie(with movie: Movie) -> Bool {
+        return self.movieRepository.isFavoriteMovie(with: movie)
+    }
+    
+    func isWatchedMovie(with movie: Movie) -> Bool {
+        return self.movieRepository.isWatchedMovie(with: movie)
+    }
+    
+    func isWantToSeeMovie(with movie: Movie) -> Bool {
+        return self.movieRepository.isWantToSeeMovie(with: movie)
     }
     
 }

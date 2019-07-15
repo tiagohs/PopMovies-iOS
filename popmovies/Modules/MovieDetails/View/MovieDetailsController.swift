@@ -30,6 +30,7 @@ class MovieDetailsController: BaseViewController {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var markAsWatchButton: UIButton!
     @IBOutlet weak var markAsFavoriteButton: UIButton!
+    
     @IBOutlet weak var panGesture: UIPanGestureRecognizer!
     
     // MARK: Properties
@@ -40,6 +41,8 @@ class MovieDetailsController: BaseViewController {
     
     var style: UIStatusBarStyle = .lightContent
     var isTabMidiaConfigured = false
+    var headerButtonImageViewColor: UIColor = UIColor.clear
+    var headerButtonBackgroundColor: UIColor = UIColor.white
     
     var presenter: MovieDetailsPresenterInterface?
     
@@ -89,13 +92,21 @@ extension MovieDetailsController {
     }
     
     private func updateStatusBarStyle(offset: CGFloat, barStyle: UIBarStyle) {
-        let color = UIColor(white: 1.0 - offset, alpha: 1.0)
-        let imageColor = UIColor(white: offset, alpha: 1.0)
+        self.headerButtonBackgroundColor = UIColor(white: 1.0 - offset, alpha: 1.0)
+        self.headerButtonImageViewColor = UIColor(white: offset, alpha: 1.0)
         
-        self.updateButtonStyle(closeButton, color, imageColor)
-        self.updateButtonStyle(shareButton, color, imageColor)
-        self.updateButtonStyle(markAsFavoriteButton, color, imageColor)
-        self.updateButtonStyle(markAsWatchButton, color, imageColor)
+        self.updateButtonStyle(closeButton, self.headerButtonBackgroundColor, self.headerButtonImageViewColor)
+        self.updateButtonStyle(shareButton, self.headerButtonBackgroundColor, self.headerButtonImageViewColor)
+        
+        if (self.movie?.isFavorite ?? false) {
+            self.updateButtonStyle(markAsFavoriteButton, self.headerButtonBackgroundColor, UIColor.red)
+        } else {
+            self.updateButtonStyle(markAsFavoriteButton, self.headerButtonBackgroundColor, self.headerButtonImageViewColor)
+        }
+        
+        if !(self.movie?.isWatched ?? false) {
+            self.updateButtonStyle(markAsWatchButton, self.headerButtonBackgroundColor, self.headerButtonImageViewColor)
+        }
         
         if (offset > 0.3) {
             self.style = .default
@@ -106,10 +117,12 @@ extension MovieDetailsController {
         setNeedsStatusBarAppearanceUpdate()
     }
     
-    private func updateButtonStyle(_ button: UIButton, _ backgroundColor: UIColor, _ imageColor: UIColor) {
-        
+    private func updateButtonStyle(_ button: UIButton, _ backgroundColor: UIColor, _ imageColor: UIColor?) {
         button.backgroundColor = backgroundColor
-        button.imageView?.setImageColorBy(uiColor: imageColor)
+        
+        if imageColor != nil {
+            button.imageView?.setImageColorBy(uiColor: imageColor!)
+        }
     }
     
 }
@@ -242,6 +255,25 @@ extension MovieDetailsController {
         
         self.title = movie?.title
     }
+    
+    func setupButtons(_ movie: Movie) {
+        self.movie = movie
+        
+        if movie.isFavorite {
+            markAsFavoriteButton.setImage(R.image.heartFilled(), for: .normal)
+            markAsFavoriteButton.imageView?.setImageColorBy(uiColor: UIColor.red)
+        } else {
+            markAsFavoriteButton.setImage(R.image.heartOutline(), for: .normal)
+        }
+        
+        if movie.isWatched {
+            markAsWatchButton.imageView?.setImageColorBy(uiColor: UIColor.white)
+            markAsWatchButton.backgroundColor = UIColor.green
+        } else {
+            markAsWatchButton.imageView?.setImageColorBy(uiColor: self.headerButtonImageViewColor)
+            markAsWatchButton.backgroundColor = self.headerButtonBackgroundColor
+        }
+    }
 }
 
 // MARK: MovieDetailsHeaderDelegate
@@ -361,4 +393,17 @@ private extension MovieDetailsController {
     @IBAction func dismiss() {
         hero.dismissViewController()
     }
+    
+    @IBAction func didFavoriteClicked(_ sender: Any) {
+        self.presenter?.didFavoriteClicked()
+    }
+    
+    @IBAction func didWatchedClicked(_ sender: Any) {
+        self.presenter?.didWatchedClicked()
+    }
+    
+    @IBAction func didWantToSeeClicked(_ sender: Any) {
+        self.presenter?.didWantToSeeClicked()
+    }
+    
 }

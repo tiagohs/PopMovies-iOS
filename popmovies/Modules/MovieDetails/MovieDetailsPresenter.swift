@@ -31,6 +31,7 @@ extension MovieDetailsPresenter: MovieDetailsPresenterInterface {
     
     func viewDidLoad() {
         self.view?.setupUI()
+        
         self.fetchMovieDetails()
     }
     
@@ -149,6 +150,44 @@ extension MovieDetailsPresenter {
         
         wireframe?.pushToPersonList(persons, title: "\(String(describing: movie?.title)) crew")
     }
+    
+    func didFavoriteClicked() {
+        guard let movie = self.movie else {
+            return
+        }
+        
+        movie.isFavorite = self.interactor?.didFavoriteClicked(with: movie) ?? false
+        
+        if movie.isFavorite && !movie.isWatched {
+            movie.isWatched = true
+        }
+        
+        self.view?.setupButtons(movie)
+    }
+    
+    func didWatchedClicked() {
+        guard let movie = self.movie else {
+            return
+        }
+        
+        movie.isWatched = self.interactor?.didWatchedClicked(with: movie) ?? false
+        
+        if !movie.isWatched {
+            movie.isFavorite = false
+        }
+        
+        self.view?.setupButtons(movie)
+    }
+    
+    func didWantToSeeClicked() {
+        guard let movie = self.movie else {
+            return
+        }
+        
+        movie.isWantToSee = self.interactor?.didWantToSeeClicked(with: movie) ?? false
+        
+        self.view?.setupButtons(movie)
+    }
 }
 
 // MARK: MovieDetailsInteractorOutputInterface
@@ -167,7 +206,12 @@ extension MovieDetailsPresenter: MovieDetailsInteractorOutputInterface {
         self.movie?.similiarMovies = movie.similiarMovies
         self.movie?.genres = movie.genres
         
+        self.movie?.isFavorite = movie.isFavorite
+        self.movie?.isWantToSee = movie.isWantToSee
+        self.movie?.isWatched = movie.isWatched
+        
         self.view?.showMovie(with: movie)
+        self.view?.setupButtons(movie)
     }
     
     func movieRankingsDidFetch(_ movie: MovieOMDB) {

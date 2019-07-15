@@ -15,6 +15,8 @@ protocol MovieDetailsViewInterface: BaseViewInterface {
     
     func showMovie(with movie: Movie)
     func showMovieRankings(with movieRankings: MovieOMDB)
+    
+    func setupButtons(_ movie: Movie)
 }
 
 protocol MovieDetailsPresenterInterface: BasePresenterInterface {
@@ -36,6 +38,9 @@ protocol MovieDetailsPresenterInterface: BasePresenterInterface {
     func didSeeAllRelatedMoviesClicked()
     func didSeeAllCastClicked()
     func didSeeAllCrewClicked()
+    func didFavoriteClicked()
+    func didWatchedClicked()
+    func didWantToSeeClicked()
 }
 
 protocol MovieDetailsInteractorInputInterface: BaseInteractorInterface {
@@ -43,6 +48,14 @@ protocol MovieDetailsInteractorInputInterface: BaseInteractorInterface {
     
     func fetchMovieDetails(movie: Movie)
     func fetchMovieRankings(imdbId: String?)
+    
+    func didFavoriteClicked(with movie: Movie) -> Bool
+    func didWatchedClicked(with movie: Movie) -> Bool
+    func didWantToSeeClicked(with movie: Movie) -> Bool
+    
+    func isFavoriteMovie(with movie: Movie) -> Bool
+    func isWatchedMovie(with movie: Movie) -> Bool
+    func isWantToSeeMovie(with movie: Movie) -> Bool
 }
 
 protocol MovieDetailsInteractorOutputInterface {

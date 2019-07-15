@@ -9,5 +9,16 @@
 import Foundation
 
 protocol MovieRepositoryInterface {
+    func add(with movie: Movie, complationHandler: ((DefaultError?) -> Void)?)
+    func remove(with movie: Movie, complationHandler: ((DefaultError?) -> Void)?)
+    func getAll() -> [Movie]
+    func get(with movie: Movie) -> Movie?
     
+    func isFavoriteMovie(with movie: Movie) -> Bool
+    func isWatchedMovie(with movie: Movie) -> Bool
+    func isWantToSeeMovie(with movie: Movie) -> Bool
+    
+    func addOrRemoveToFavorite(with movie: Movie) -> Bool
+    func addOrRemoveToWatched(with movie: Movie) -> Bool
+    func addOrRemoveToWantToSee(with movie: Movie) -> Bool
 }
