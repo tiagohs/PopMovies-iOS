@@ -66,7 +66,7 @@ extension RegisterController: RegisterViewInterface {
 extension RegisterController {
     
     @IBAction func didRegisterClicked(_ sender: Any) {
-        
+        self.presenter?.didRegisterClicked(nameTextField.text, emailTextField.text, passwordTextField.text, confirmPasswordTextField.text)
     }
     
 }

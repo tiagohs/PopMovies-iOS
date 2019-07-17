@@ -15,6 +15,12 @@ class RegisterWireframe: RegisterWireframeInterface {
     
     weak var viewController: UIViewController?
     
+    func presentRootScreen() {
+        let module = RootWireframe.buildModule()
+        
+        self.viewController?.hero.replaceViewController(with: module)
+    }
+    
 }
 
 // MARK: build's Module

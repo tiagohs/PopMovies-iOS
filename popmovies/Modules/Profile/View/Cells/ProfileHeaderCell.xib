@@ -76,7 +76,7 @@
                                         <constraint firstAttribute="height" constant="30" id="7cz-ld-oOw"/>
                                     </constraints>
                                     <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                    <state key="normal" image="InstagramIcon-white"/>
+                                    <state key="normal" image="GoogleIcon"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huU-Mg-B7P">
                                     <rect key="frame" x="80" y="0.0" width="30" height="30"/>
@@ -270,7 +270,7 @@
     </objects>
     <resources>
         <image name="FacebookIcon-white" width="30" height="30"/>
-        <image name="InstagramIcon-white" width="30" height="30"/>
+        <image name="GoogleIcon" width="30" height="30"/>
         <image name="ProfilePlaceholder" width="255" height="363"/>
         <image name="TwitterIcon-white" width="30" height="30"/>
     </resources>

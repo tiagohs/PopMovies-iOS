@@ -14,6 +14,10 @@ class UserLocal {
     var email: String?
     var photoURL: URL?
     
+    var isGoogle = false
+    var isFacebook = false
+    var isTwitter = false
+    
     var totalMovies: Int = 0
     var totalDuration: (Int, Int, Int) = (0, 0, 0)
     

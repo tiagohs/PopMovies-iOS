@@ -13,13 +13,13 @@ import RxSwift
 // MARK: RegisterInteractor: BaseInteractor
 
 class RegisterInteractor: BaseInteractor {
-    let movieService: MovieServiceInterface
+    let authManager: AuthManager!
     
     var output: RegisterInteractorOutputInterface?
     
     init(output: RegisterInteractorOutputInterface?) {
         self.output = output
-        self.movieService = MovieService()
+        self.authManager = AuthManager.shared
     }
 }
 
@@ -37,3 +37,17 @@ extension RegisterInteractor: RegisterInteractorInputInterface {
     
 }
 
+extension RegisterInteractor {
+    
+    func didRegisterClicked(_ name: String, _ email: String, _ password: String) {
+        self.authManager.signUp(with: email, password, name) { (user, error) in
+            if error != nil {
+                self.output?.registerDidFinished(with: error!)
+                return
+            }
+            
+            self.output?.registerDidFinished()
+        }
+    }
+    
+}

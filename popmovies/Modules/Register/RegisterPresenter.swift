@@ -45,8 +45,27 @@ extension RegisterPresenter: RegisterPresenterInterface {
 
 extension RegisterPresenter {
     
-    func didRegisterClicked() {
+    func didRegisterClicked(_ name: String?, _ email: String?, _ password: String?, _ confirmPassword: String?) {
+        guard let name = name,
+            let email = email,
+            let password = password,
+            let confirmPassword = confirmPassword else {
+                self.view?.onError(message: "É necessário que todos os campos estejam preenxidos.")
+                return
+        }
         
+        if password != confirmPassword {
+            self.view?.onError(message: "Senha e confirmar senha devem ser iguais.")
+            return
+        }
+        
+        if !email.isValidEmail() {
+            self.view?.onError(message: "Entre com um email valido.")
+            return
+        }
+        
+        self.view?.showActivityIndicator()
+        self.interactor?.didRegisterClicked(name, email, password)
     }
     
 }
@@ -55,4 +74,13 @@ extension RegisterPresenter {
 
 extension RegisterPresenter: RegisterInteractorOutputInterface {
     
+    func registerDidFinished() {
+        self.view?.hideActivityIndicator()
+        self.wireframe?.presentRootScreen()
+    }
+    
+    func registerDidFinished(with error: DefaultError) {
+        self.view?.hideActivityIndicator()
+        self.view?.onError(message: error.message)
+    }
 }

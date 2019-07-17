@@ -115,7 +115,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="next" textContentType="new-password"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="next" secureTextEntry="YES" textContentType="new-password"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="insetX">
                                         <real key="value" value="10"/>
@@ -166,7 +166,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpg-VB-mdQ">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpg-VB-mdQ">
                                 <rect key="frame" x="16" y="649" width="382" height="50"/>
                                 <color key="backgroundColor" red="0.39735966919999999" green="0.2266873717" blue="0.70865720509999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

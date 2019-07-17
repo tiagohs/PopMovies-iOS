@@ -21,19 +21,24 @@ protocol RegisterPresenterInterface: BasePresenterInterface {
     var interactor: RegisterInteractorInputInterface? { get set }
     var wireframe: RegisterWireframeInterface? { get set }
     
-    func didRegisterClicked()
+    func didRegisterClicked(_ name: String?, _ email: String?, _ password: String?, _ confirmPassword: String?)
 }
 
 protocol RegisterInteractorInputInterface: BaseInteractorInterface {
     var output: RegisterInteractorOutputInterface? { get set }
     
+    func didRegisterClicked(_ name: String, _ email: String, _ password: String)
 }
 
 protocol RegisterInteractorOutputInterface {
     
+    func registerDidFinished()
+    func registerDidFinished(with error: DefaultError)
 }
 
 protocol RegisterWireframeInterface: BaseWireframeInterface {
+    
+    func presentRootScreen()
     
     static func buildModule() -> UIViewController
 }

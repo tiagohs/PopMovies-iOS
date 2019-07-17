@@ -51,6 +51,8 @@ extension ProfileInteractor: ProfileInteractorInputInterface {
     
 }
 
+// MARK: ProfileInteractorInputInterface - Fetch Methods
+
 extension ProfileInteractor {
     
     func fetchWatchedMovies() {

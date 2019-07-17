@@ -21,6 +21,10 @@ class AuthManager {
     var viewController: UIViewController?
     var signInCompletion: ((UserLocal?, DefaultError?) -> Void)?
     
+    var isFacebook = false
+    var isGoogle = false
+    var isTwitter = false
+    
     private init() {
         firebaseAuth = Auth.auth()
     }
@@ -111,6 +115,8 @@ extension AuthManager {
 extension AuthManager: GoogleAuthDelegate {
     
     func didSignFinished(with credentials: AuthCredential) {
+        self.isGoogle = true
+        
         self.signIn(with: credentials)
     }
     
@@ -126,6 +132,7 @@ extension AuthManager: FacebookAuthDelegate {
     
     func didSignFinished(with token: AccessToken) {
         let credentials = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
+        self.isFacebook = true
         
         self.signIn(with: credentials)
     }
@@ -141,6 +148,8 @@ extension AuthManager: FacebookAuthDelegate {
 extension AuthManager: TwitterAuthDelegate {
     
     func didTwitterSignFinished(with credentials: AuthCredential) {
+        self.isTwitter = true
+        
         self.signIn(with: credentials)
     }
     
@@ -187,6 +196,9 @@ extension AuthManager {
         user.email = self.firebaseAuth?.currentUser?.email
         user.name = self.firebaseAuth?.currentUser?.displayName
         user.photoURL = self.firebaseAuth?.currentUser?.photoURL
+        user.isTwitter = self.isTwitter
+        user.isFacebook = self.isFacebook
+        user.isGoogle = self.isGoogle
         
         return user
     }
@@ -194,9 +206,18 @@ extension AuthManager {
     private func onAuthResult(_ authDataResult: AuthDataResult?, _ error: Error?, _ signInCompletionHandler: ((UserLocal?, DefaultError?) -> Void)?) {
         if let error = error {
             signInCompletionHandler?(nil, DefaultError(message: error.localizedDescription))
+            resetValues()
             return
         }
         
         signInCompletionHandler?(self.createUser(), nil)
+        
+        resetValues()
+    }
+    
+    private func resetValues() {
+        isFacebook = false
+        isGoogle = false
+        isTwitter = false
     }
 }
