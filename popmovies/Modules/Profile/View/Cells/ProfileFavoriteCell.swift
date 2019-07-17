@@ -8,6 +8,10 @@
 
 import UIKit
 
-class ProfileFavoriteCell: UITableViewCell {
+class ProfileFavoriteCell: BaseProfileMoviesCell {
     
+    override var listName: String {
+        get { return "Favorites" }
+        set {}
+    }
 }

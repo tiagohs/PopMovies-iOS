@@ -31,6 +31,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                     <state key="normal" title="See All"/>
+                    <connections>
+                        <action selector="didSeeAllClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="R7I-ic-QC0"/>
+                    </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="J5g-wW-idh" userLabel="ImagesCollectionView">
                     <rect key="frame" x="0.0" y="48" width="414" height="205"/>
@@ -45,6 +48,10 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                     <cells/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="EpW-6X-Bxw"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="b3b-oJ-Njt"/>
+                    </connections>
                 </collectionView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watched" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iR5-sI-B5o">
                     <rect key="frame" x="16" y="10" width="71" height="22"/>
@@ -69,6 +76,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="moviesCollectionView" destination="J5g-wW-idh" id="jVs-BM-wqe"/>
+                <outlet property="moviesCollectionViewViewFlow" destination="OrC-g1-GpH" id="SFs-8v-BsK"/>
+            </connections>
             <point key="canvasLocation" x="47.826086956521742" y="-179.79910714285714"/>
         </view>
     </objects>

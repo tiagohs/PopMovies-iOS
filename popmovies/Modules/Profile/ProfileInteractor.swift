@@ -13,12 +13,14 @@ import Foundation
 class ProfileInteractor: BaseInteractor {
     
     let authManager: AuthManager!
+    let movieRepository: MovieRepositoryInterface!
     
     var output: ProfileInteractorOutputInterface?
     
     init(output: ProfileInteractorOutputInterface?) {
         self.output = output
         self.authManager = AuthManager.shared
+        self.movieRepository = MovieRepository()
     }
 }
 
@@ -45,10 +47,31 @@ extension ProfileInteractor: ProfileInteractorInputInterface {
     
     func outputDidLoad() {}
     
-    func outputFinished() {
-        disposibles.dispose()
+    func outputFinished() {}
+    
+}
+
+extension ProfileInteractor {
+    
+    func fetchWatchedMovies() {
+        let movies = self.movieRepository.getAll().filter { (movie) -> Bool in return movie.id != 0}
         
-        self.output = nil
+        self.output?.didWatchedMoviesFetch(movies)
+        
+        self.updateProfileDetails(movies.count)
     }
     
+    func fetchFavoriteMovies() {
+        let movies = self.movieRepository.getFavoriteMovies()
+        
+        self.output?.didFavoriteMoviesFetch(movies)
+    }
+    
+    func updateProfileDetails(_ totalMovies: Int) {
+        guard let totalTime = self.movieRepository?.getHoursMinutesSeconds() else {
+            return
+        }
+        
+        self.output?.updateProfileDetails(totalMovies, totalDuration: totalTime)
+    }
 }

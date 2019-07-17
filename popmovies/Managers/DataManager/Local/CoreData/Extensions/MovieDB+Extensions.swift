@@ -23,6 +23,7 @@ extension MovieDB {
         movie.overview = self.overview
         movie.posterPath = self.posterPath
         movie.backdropPath = self.backdropPath
+        movie.runtime = Int(self.duration)
         movie.isFavorite = self.isFavorite
         movie.isWatched = true
         movie.isWantToSee = self.isWantToSee
@@ -35,6 +36,10 @@ extension MovieDB {
         
         if let id = movie.id {
             movieDB.id = Int32(id)
+        }
+        
+        if let runtime = movie.runtime {
+            movieDB.duration = Int32(runtime)
         }
         
         if let title = movie.title {

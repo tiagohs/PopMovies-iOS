@@ -17,6 +17,11 @@ class ProfileHeaderCell: UITableViewCell {
     @IBOutlet weak var instagramButton: UIButton!
     @IBOutlet weak var twitterButton: UIButton!
     
+    @IBOutlet weak var totalMoviesLabel: UILabel!
+    @IBOutlet weak var hoursLabel: UILabel!
+    @IBOutlet weak var daysLabel: UILabel!
+    @IBOutlet weak var monthsLabel: UILabel!
+    
     var user: UserLocal? {
         didSet { bindUI(user!) }
     }
@@ -40,9 +45,15 @@ class ProfileHeaderCell: UITableViewCell {
     func bindUI(_ user: UserLocal) {
         nameLabel.text = user.name
         emailLabel.text = user.email
+        totalMoviesLabel.text = String(format: user.totalMovies < 10 ? "%02d" : "%d", user.totalMovies)
         
         if let profileImage = user.photoURL {
             profileImageView.setImage(imageUrl: profileImage.absoluteString, contentMode: .scaleAspectFill, placeholderImageName: Constants.IMAGES.PLACEHOLDER_POSTER_PROFILE)
         }
+        let (months, days, hours) = user.totalDuration
+        
+        hoursLabel.text = String(format: hours < 10 ? "%02d" : "%d", hours)
+        daysLabel.text = String(format: days < 10 ? "%02d" : "%d", days)
+        monthsLabel.text = String(format: months < 10 ? "%02d" : "%d", months)
     }
 }

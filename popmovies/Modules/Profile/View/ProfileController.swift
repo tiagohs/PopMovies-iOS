@@ -40,6 +40,9 @@ class ProfileController: BaseViewController {
     var style: UIStatusBarStyle = .lightContent
     var presenter: ProfilePresenterInterface?
     var user: UserLocal?
+    
+    var watchedMovies: [Movie] = []
+    var favoriteMovies: [Movie] = []
 }
 
 // MARK: Lifecycle Methods
@@ -117,7 +120,6 @@ extension ProfileController: ProfileViewInterface {
 
         tableView.configureNibs(nibName: ProfileHeaderCell, identifier: ProfileHeaderCellIdentifier)
         tableView.configureNibs(nibName: ProfileFavoriteCell, identifier: ProfileFavoriteCellIdentifier)
-        tableView.configureNibs(nibName: ProfileWantToSeeCell, identifier: ProfileWantToSeeCellIdentifier)
         tableView.configureNibs(nibName: ProfileWatchedCell, identifier: ProfileWatchedCellIdentifier)
         
         tableView.reloadData()
@@ -130,12 +132,38 @@ extension ProfileController: ProfileViewInterface {
     }
 }
 
+extension ProfileController {
+    
+    func updateUserData(_ user: UserLocal) {
+        self.user = user
+        
+        self.updateRow(itemIndex: 0)
+    }
+    
+    func showFavorites(with movies: [Movie]) {
+        self.favoriteMovies = movies
+        
+        self.updateRow(itemIndex: 1)
+    }
+    
+    func showWatched(with movies: [Movie]) {
+        self.watchedMovies = movies
+        
+        self.updateRow(itemIndex: 2)
+    }
+    
+    private func updateRow(itemIndex: Int) {
+        let indexPath = IndexPath(item: itemIndex, section: 0)
+        self.tableView.reloadRows(at: [indexPath], with: .left)
+    }
+}
+
 // MARK: UITableViewDelegate, UITableViewDataSource
 
 extension ProfileController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -146,8 +174,6 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return setupProfileFavorite(tableView, cellForRowAt: indexPath)
         case 2:
-            return setupProfileWantToSee(tableView, cellForRowAt: indexPath)
-        case 3:
             return setupProfileWatched(tableView, cellForRowAt: indexPath)
         default:
             return UITableViewCell()
@@ -169,6 +195,9 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.delegate = self
+        cell.bindContent(self.favoriteMovies)
+        
         return cell
     }
     
@@ -185,7 +214,21 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.delegate = self
+        cell.bindContent(self.watchedMovies)
+        
         return cell
+    }
+}
+
+extension ProfileController: ProfileMoviesCellDelegate {
+    
+    func didSelectMovie(with movie: Movie) {
+        self.presenter?.didSelectMovie(movie)
+    }
+    
+    func didSeeAllClicked(with movies: [Movie], _ listName: String) {
+        self.presenter?.didSeeAllClicked(with: movies, listName)
     }
 }
 

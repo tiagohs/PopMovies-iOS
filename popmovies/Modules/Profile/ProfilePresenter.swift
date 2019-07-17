@@ -16,6 +16,10 @@ class ProfilePresenter {
     var interactor: ProfileInteractorInputInterface?
     var wireframe: ProfileWireframeInterface?
     
+    var watchedMovies: [Movie] = []
+    var favoriteMovies: [Movie] = []
+    var user: UserLocal?
+    
     init(view: ProfileViewInterface?) {
         self.view = view
     }
@@ -27,10 +31,10 @@ class ProfilePresenter {
 extension ProfilePresenter: ProfilePresenterInterface {
     
     func viewDidLoad() {
-        let userLocal = ProfileManager.shared.getCurrentUser()
+        self.user = ProfileManager.shared.getCurrentUser()
         
         self.view?.setupUI()
-        self.view?.setupProfileUI(with: userLocal)
+        self.view?.setupProfileUI(with: user!) 
     }
     
     func viewDidDisappear(_ animated: Bool) {
@@ -39,6 +43,9 @@ extension ProfilePresenter: ProfilePresenterInterface {
     
     func viewWillAppear(_ animated: Bool) {
         self.view?.hideNavigationBar(animated)
+        
+        self.interactor?.fetchWatchedMovies()
+        self.interactor?.fetchFavoriteMovies()
     }
     
     func viewWillDisappear(_ animated: Bool) {
@@ -55,6 +62,16 @@ extension ProfilePresenter {
         interactor?.didSingUpClicked()
     }
     
+    func didSelectMovie(_ movie: Movie) {
+        self.wireframe?.presentDetails(for: movie)
+    }
+    
+    func didSeeAllClicked(with movies: [Movie], _ listName: String) {
+        guard let userLocal = self.user, let name = userLocal.name else {
+            return
+        }
+        self.wireframe?.pushToMovieList(movies, title: "\(name) \(listName)")
+    }
 }
 
 // MARK: ProfileInteractorOutputInterface
@@ -72,4 +89,31 @@ extension ProfilePresenter: ProfileInteractorOutputInterface {
         
         self.view?.onError(message: error.message)
     }
+}
+
+extension ProfilePresenter {
+    
+    func didWatchedMoviesFetch(_ movies: [Movie]) {
+        self.watchedMovies = movies
+        
+        self.view?.showWatched(with: self.watchedMovies)
+    }
+    
+    func didFavoriteMoviesFetch(_ movies: [Movie]) {
+        self.favoriteMovies = movies
+        
+        self.view?.showFavorites(with: self.favoriteMovies)
+    }
+    
+    func updateProfileDetails(_ totalMovies: Int, totalDuration: (Int, Int, Int)) {
+        guard let user = self.user else {
+            return
+        }
+        
+        user.totalMovies = totalMovies
+        user.totalDuration = totalDuration
+        
+        self.view?.updateUserData(user)
+    }
+    
 }

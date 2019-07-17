@@ -55,6 +55,21 @@ extension MovieRepository {
 
 extension MovieRepository {
     
+    func getTotalDuration() -> Int {
+        return getAll().map({ (movie) -> Int in
+            return movie.runtime ?? 0
+        }).reduce(0, +)
+    }
+    
+    func getHoursMinutesSeconds() -> (Int, Int, Int) {
+        let duration = self.getTotalDuration()
+        let months =  (duration%(365*24*60))/(12*24*60);
+        let days =  (duration%(365*24*60))/(24*60);
+        let hours =  (duration%(365*24*60)) / 60;
+        
+        return (months, days, hours)
+    }
+    
     func getFavoriteMovies() -> [Movie] {
         return getAll().filter({ (movie) -> Bool in return movie.isFavorite })
     }

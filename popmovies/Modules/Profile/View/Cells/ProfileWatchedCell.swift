@@ -8,6 +8,10 @@
 
 import UIKit
 
-class ProfileWatchedCell: UITableViewCell {
+class ProfileWatchedCell: BaseProfileMoviesCell {
     
+    override var listName: String {
+        get { return "Watched" }
+        set {}
+    }
 }

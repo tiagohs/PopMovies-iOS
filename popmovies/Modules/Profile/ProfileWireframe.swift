@@ -17,6 +17,20 @@ class ProfileWireframe: ProfileWireframeInterface {
         
         self.viewController?.tabBarController?.hero.replaceViewController(with: module)
     }
+    
+    func presentDetails(for movie: Movie) {
+        let movieDetailsModule = MovieDetailsWireframe.buildModule(with: movie)
+        
+        self.viewController?.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(movieDetailsModule, animated: true, completion: nil)
+    }
+    
+    func pushToMovieList(_ movies: [Movie], title: String) {
+        let movieListModule = MovieListWireframe.buildModuleFromUINavigation(with: movies, title: title)
+        
+        movieListModule.hero.modalAnimationType = .slide(direction: .left)
+        self.viewController?.present(movieListModule, animated: true, completion: nil)
+    }
 }
 
 extension ProfileWireframe {
