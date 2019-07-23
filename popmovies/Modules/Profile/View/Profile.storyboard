@@ -66,7 +66,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M9Z-An-AcM"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Perfil" id="Kom-JC-4kk"/>
+                    <navigationItem key="navigationItem" title="Perfil" id="Kom-JC-4kk">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="xibPlaceholderLocKey" value="Profile:Title"/>
+                        </userDefinedRuntimeAttributes>
+                    </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>

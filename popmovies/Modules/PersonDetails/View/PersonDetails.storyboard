@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -69,7 +70,7 @@
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obT-kh-vRG">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                            <color key="backgroundColor" red="0.23529411759999999" green="0.35294117650000001" blue="0.59999999999999998" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" name="FacebookColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="8QK-Hf-OyF"/>
                                                                 <constraint firstAttribute="height" constant="60" id="hqC-7Q-PaZ"/>
@@ -85,7 +86,7 @@
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETd-gt-NU5">
                                                             <rect key="frame" x="130" y="0.0" width="60" height="60"/>
-                                                            <color key="backgroundColor" red="0.96078431369999995" green="0.37647058820000001" blue="0.25098039220000001" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" name="InstagramColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="IZ0-nt-BIg"/>
                                                                 <constraint firstAttribute="height" constant="60" id="Ioh-kd-kwh"/>
@@ -101,7 +102,7 @@
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nde-Xb-4RE">
                                                             <rect key="frame" x="65" y="0.0" width="60" height="60"/>
-                                                            <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.94901960780000005" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" name="TwitterColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="60" id="3aY-pC-7N2"/>
                                                                 <constraint firstAttribute="width" constant="60" id="MtO-e1-Laq"/>
@@ -559,7 +560,7 @@
                                         <rect key="frame" x="0.0" y="1328" width="414" height="567"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XsF-Lq-r3D" id="QKp-F8-hni">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="567"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="566.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -653,5 +654,14 @@
         <image name="ShareIcon" width="32" height="32"/>
         <image name="TwitterIcon-white" width="30" height="30"/>
         <image name="WikiIcon-white" width="50" height="50"/>
+        <namedColor name="FacebookColor">
+            <color red="0.23529411764705882" green="0.35294117647058826" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="InstagramColor">
+            <color red="0.96078431372549022" green="0.37647058823529411" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TwitterColor">
+            <color red="0.11372549019607843" green="0.63137254901960782" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -90,7 +90,7 @@ private extension AppDelegate {
     }
     
     func setupTabBar() {
-        UITabBar.appearance().tintColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimary)
+        UITabBar.appearance().tintColor = R.color.primaryColor()
         UITabBar.appearance().backgroundColor = UIColor.white
     }
     

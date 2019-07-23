@@ -1,0 +1,36 @@
+
+/* Class = "UILabel"; text = "months"; ObjectID = "3o9-uU-XfY"; */
+"3o9-uU-XfY.text" = "meses";
+
+/* Class = "UILabel"; text = "hours"; ObjectID = "C9d-w3-PPf"; */
+"C9d-w3-PPf.text" = "horas";
+
+/* Class = "UILabel"; text = "Library"; ObjectID = "Ipd-dk-2zS"; */
+"Ipd-dk-2zS.text" = "Assistidos";
+
+/* Class = "UILabel"; text = "00"; ObjectID = "KTR-lY-Dn8"; */
+"KTR-lY-Dn8.text" = "00";
+
+/* Class = "UILabel"; text = "Movies"; ObjectID = "KTT-nW-DMp"; */
+"KTT-nW-DMp.text" = "Filmes";
+
+/* Class = "UILabel"; text = "01"; ObjectID = "LOI-kd-yMh"; */
+"LOI-kd-yMh.text" = "01";
+
+/* Class = "UILabel"; text = "tiago.silva.93@hotmail.com"; ObjectID = "Nmp-Zm-6po"; */
+"Nmp-Zm-6po.text" = "tiago.silva.93@hotmail.com";
+
+/* Class = "UILabel"; text = "Time Spent"; ObjectID = "Xyz-10-cfr"; */
+"Xyz-10-cfr.text" = "Tempo assistido";
+
+/* Class = "UILabel"; text = "00"; ObjectID = "dav-wX-qO7"; */
+"dav-wX-qO7.text" = "00";
+
+/* Class = "UILabel"; text = "Tiago Silva"; ObjectID = "ir8-7z-v8k"; */
+"ir8-7z-v8k.text" = "Tiago Silva";
+
+/* Class = "UILabel"; text = "days"; ObjectID = "njj-3L-2Nr"; */
+"njj-3L-2Nr.text" = "dias";
+
+/* Class = "UILabel"; text = "00"; ObjectID = "ydS-mu-f20"; */
+"ydS-mu-f20.text" = "00";

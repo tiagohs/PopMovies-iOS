@@ -87,9 +87,6 @@ extension VideoViewerController: UIGestureRecognizerDelegate {
 extension VideoViewerController: VideoViewerViewInterface {
     
     func setupUI() {
-        backButton.layer.cornerRadius = backButton.bounds.width / 2
-        shareButton.layer.cornerRadius = shareButton.bounds.width / 2
-        
         containerView.addGestureRecognizer(panGesture)
         videoView.addGestureRecognizer(panGesture)
         

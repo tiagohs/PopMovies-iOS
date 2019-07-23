@@ -138,12 +138,6 @@ extension ImageViewerController: ImageViewerViewInterface {
         view.layoutIfNeeded()
     }
     
-    func setupButtons() {
-        backButton.layer.cornerRadius = backButton.bounds.width / 2
-        shareButton.layer.cornerRadius = shareButton.bounds.width / 2
-        galleryButton.layer.cornerRadius = galleryButton.bounds.width / 2
-    }
-    
     func setupImageViewerCollectionView() {
         imageViewerCollectionView.contentInsetAdjustmentBehavior = .always
         imageViewerCollectionView.reloadData()

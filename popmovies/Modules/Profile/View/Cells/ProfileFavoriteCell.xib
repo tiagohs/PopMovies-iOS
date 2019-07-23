@@ -31,6 +31,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                     <state key="normal" title="See All"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Button:SeeAll"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didSeeAllClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="1h5-Wn-WuH"/>
                     </connections>
@@ -61,6 +64,9 @@
                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Profile:ProfileFavorite:Title"/>
+                    </userDefinedRuntimeAttributes>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

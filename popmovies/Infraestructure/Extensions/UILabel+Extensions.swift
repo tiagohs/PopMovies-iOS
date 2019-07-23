@@ -9,10 +9,16 @@
 import UIKit
 
 extension UILabel {
-    
     func setText(_ text: String?, defaultText: String) {
         self.text = text == nil ? defaultText : text
     }
-    
-    
+}
+
+extension UILabel: XIBLocalizable {
+    @IBInspectable var xibLocKey: String? {
+        get { return nil }
+        set(key) {
+            text = key?.localized
+        }
+    }
 }

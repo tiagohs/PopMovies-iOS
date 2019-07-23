@@ -76,9 +76,6 @@ extension VideoListController: UICollectionViewDataSource, UICollectionViewDeleg
 
 extension VideoListController: VideoListViewInterface {
     
-    func setupUI() {
-        backButton.layer.cornerRadius = backButton.bounds.width / 2
-        backButton.imageView?.setImageColorBy(uiColor: UIColor.white)
-    }
+    func setupUI() {}
     
 }

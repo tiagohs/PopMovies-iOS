@@ -28,6 +28,10 @@ struct Database {
         
         struct UserTable {
             static let name             = "MovieDB"
+            
+            struct Rows {
+                
+            }
         }
     }
 }

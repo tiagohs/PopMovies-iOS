@@ -43,7 +43,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4u7-9r-XxH"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Genres" id="S4e-6U-zTe"/>
+                    <navigationItem key="navigationItem" title="Genres" id="S4e-6U-zTe">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="xibPlaceholderLocKey" value="GenreList:Title"/>
+                        </userDefinedRuntimeAttributes>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>

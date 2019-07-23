@@ -48,10 +48,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
         
         if let backdropUrl = ImageUtils.formatImageUrl(imageID: movie.backdropPath, imageSize: TMDB.ImageSize.BACKDROP.w780) {
             
-            movieBackdropView.setImage( imageUrl: backdropUrl, contentMode: .scaleAspectFill, placeholderImageName: "BackdropPlaceholder")
+            movieBackdropView.setImage( imageUrl: backdropUrl, contentMode: .scaleAspectFill, placeholderImageName: R.image.backdropPlaceholder.name)
             movieBackdropView.hero.id = String(describing: movie.backdropPath)
         } else {
-            movieBackdropView.image = UIImage(named: "BackdropPlaceholder")
+            movieBackdropView.image = R.image.backdropPlaceholder()
         }
     
     }
@@ -92,15 +92,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
     func bindMovieCellDefault(movie: Movie) {
         self.movie = movie
         
-        guard let moviePosterView = self.moviePoster else { return }
-        
-        if let posterUrl = ImageUtils.formatImageUrl(imageID: movie.posterPath, imageSize: TMDB.ImageSize.POSTER.w500) {
-            
-            moviePosterView.setImage( imageUrl: posterUrl, contentMode: .scaleAspectFill, placeholderImageName: "PosterPlaceholder")
-            moviePosterView.hero.id = String(describing: movie.posterPath)
-        } else {
-            moviePosterView.image = UIImage(named: "PosterPlaceholder")
-        }
+        moviePoster.setTMDBImageBy(url: movie.posterPath, contentSize: TMDB.ImageSize.POSTER.w500, contentMode: .scaleAspectFill, placeholder: R.image.moviePlaceholder.name)
+        moviePoster.hero.id = String(describing: movie.posterPath)
         
         movieTitle.text = movie.title
         movieSubtitle.text = movie.releaseDate?.year
@@ -109,17 +102,11 @@ class MovieCollectionViewCell: UICollectionViewCell {
     func bindMovieCellDetails(movie: Movie) {
         self.movie = movie
         
-        guard let moviePosterView = self.moviePoster else { return }
-        
-        if let posterUrl = ImageUtils.formatImageUrl(imageID: movie.posterPath, imageSize: TMDB.ImageSize.POSTER.w500) {
-            
-            moviePosterView.setImage( imageUrl: posterUrl, contentMode: .scaleAspectFill, placeholderImageName: "PosterPlaceholder")
-            moviePosterView.hero.id = String(describing: movie.posterPath)
-        } else {
-            moviePosterView.image = UIImage(named: "PosterPlaceholder")
-        }
-        
         movieTitle.text = movie.title
+        overviewView.text = movie.overview
+        
+        moviePoster.setTMDBImageBy(url: movie.posterPath, contentSize: TMDB.ImageSize.POSTER.w500, contentMode: .scaleAspectFill, placeholder: R.image.moviePlaceholder.name)
+        moviePoster.hero.id = String(describing: movie.posterPath)
         
         var subtitle: String = ""
         
@@ -127,16 +114,14 @@ class MovieCollectionViewCell: UICollectionViewCell {
             subtitle.append(releaseDate.formatDate())
         }
         
-        if let genresID = movie.genreIds {
-            if genresID.count > 0 {
-                let genres: [Genre] = Genre.createGenresFromId(listOfId: genresID)
-                let genresName = genres.map { (genre) -> String in return genre.name ?? "" }
-                
-                subtitle.append(" / \(genresName.joined(separator: ", "))")
-            }
+        if let genresID = movie.genreIds, genresID.count > 0 {
+            let genres: [Genre] = Genre.createGenresFromId(listOfId: genresID)
+            let listOfGenresName = genres.map { (genre) -> String in return genre.name ?? "" }
+            let genresName = listOfGenresName.joined(separator: ", ")
+            
+            subtitle.append(" / \(genresName)")
         }
         
         movieSubtitle.text = subtitle
-        overviewView.text = movie.overview
     }
 }

@@ -56,11 +56,7 @@ extension RegisterController {
 
 extension RegisterController: RegisterViewInterface {
     
-    func setupUI() {
-        backButton.layer.cornerRadius = backButton.bounds.width / 2
-        backButton.imageView?.setImageColorBy(uiColor: UIColor.white)
-    }
-    
+    func setupUI() {}
 }
 
 extension RegisterController {

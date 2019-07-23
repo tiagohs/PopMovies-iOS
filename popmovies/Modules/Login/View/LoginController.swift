@@ -63,14 +63,7 @@ extension LoginController: GIDSignInUIDelegate {
 
 extension LoginController: LoginViewInterface {
     
-    func setupUI() {
-        backButton.layer.cornerRadius = backButton.bounds.width / 2
-        backButton.imageView?.setImageColorBy(uiColor: UIColor.white)
-        
-        usernameTextField.layer.borderColor = UIColor.gray.cgColor
-        
-        passwordTextField.layer.borderColor = UIColor.gray.cgColor
-    }
+    func setupUI() {}
     
     func setupGoogleAuthUI() {
         GoogleAuthManager.shared.setupUI(delegate: self)

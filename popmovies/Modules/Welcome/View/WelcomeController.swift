@@ -53,7 +53,7 @@ extension WelcomeController {
 extension WelcomeController: WelcomeViewInterface {
     
     func setupUI() {
-        registerButton.layer.borderColor = ViewUtils.UIColorFromHEX(hex: Constants.COLOR.colorPrimaryLight).cgColor
+        registerButton.layer.borderColor = R.color.primaryLightColor()?.cgColor
     }
     
 }

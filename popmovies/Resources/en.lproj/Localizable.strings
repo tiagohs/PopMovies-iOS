@@ -1,0 +1,87 @@
+/* 
+  Localizable.strings
+  popmovies
+
+  Created by Tiago Silva on 18/07/19.
+  Copyright © 2019 Tiago Silva. All rights reserved.
+*/
+
+// MARK: Application Level Properties
+"AppName" = "PopMovies";
+
+// MARK: Buttons
+"Button:Login" = "Login";
+"Button:LoginFacebook" = "Login with Facebook";
+"Button:LoginTwitter" = "Register with Twitter";
+"Button:LoginGoogle" = "Login with Google";
+"Button:Register" = "Register";
+"Button:SeeAll" = "See all";
+
+// MARK: TextFields
+
+"TextField:Email:Placeholder" = "Enter with your Email";
+"TextField:Password:Placeholder" = "Enter with your Password";
+"TextField:ConfirmPassword:Placeholder" = "Enter with your Password Again";
+"TextField:Name:Placeholder" = "Enter with your Name";
+
+// MARK: Labels
+
+"Label:Email" = "Email";
+"Label:Password" = "Password";
+"Label:ConfirmPassword" = "Confirm Password";
+"Label:Name" = "Name";
+
+// MARK: Welcome Module
+
+"Welcome:Description1" = "Welcome to the best discover movies app, PopMovies.";
+"Welcome:Description2" = "Find and create lists with your favorite movies.";
+
+// MARK: Register Module
+
+"Register:Title" = "Register";
+"Register:SignUpMessage" = "Don't have an account?";
+
+// MARK: Login Module
+
+"Login:Title" = "Login";
+
+// MARK: Week Module
+
+"Week:Title" = "Week";
+"Week:SmallTitle" = "Week";
+
+// MARK: Profile Module
+
+"Profile:Title" = "Profile";
+"Profile:ProfileHeader:Library" = "Library";
+"Profile:ProfileHeader:TimeSpent" = "Time spent";
+"Profile:ProfileHeader:Movie" = "Movie";
+"Profile:ProfileHeader:Months" = "Months";
+"Profile:ProfileHeader:Days" = "Days";
+"Profile:ProfileHeader:Hours" = "Hours";
+"Profile:ProfileFavorite:Title" = "Favorites";
+"Profile:ProfileWantToSee:Title" = "Want To See";
+"Profile:ProfileWatched:Title" = "Watched";
+
+// MARK: GenreList Module
+
+"GenreList:Title" = "Genres";
+
+// MARK: Home Module
+
+"Home:Title" = "Home";
+"Home:PopularMoviesCell:Title1" = "Popular";
+"Home:PopularMoviesCell:Title2" = "Movies";
+"Home:TopRatedCell:Title1" = "Top Tated";
+"Home:TopRatedCell:Title2" = "Movies";
+"Home:UpcomingCell:Title1" = "Upcoming";
+"Home:UpcomingCell:Title2" = "Movies";
+
+// MARK: Persons Module
+
+"Persons:Title" = "Persons";
+
+// MARK: MovieList Module
+
+"MovieList:Title" = "Movies";
+

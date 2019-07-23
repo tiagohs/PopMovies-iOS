@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+// MARK: MovieRepository: BaseRepository<MovieDB>, MovieRepositoryInterface
+
 class MovieRepository: BaseRepository<MovieDB>, MovieRepositoryInterface {
     
     init() {
@@ -16,6 +18,8 @@ class MovieRepository: BaseRepository<MovieDB>, MovieRepositoryInterface {
     }
     
 }
+
+// MARK: Default Methods
 
 extension MovieRepository {
     
@@ -52,6 +56,7 @@ extension MovieRepository {
     
 }
 
+// MARK: MovieRepository Custom Methods
 
 extension MovieRepository {
     
@@ -137,3 +142,4 @@ extension MovieRepository {
     }
     
 }
+

@@ -122,7 +122,7 @@ extension SearchController: SearchViewInterface {
             txfSearchField.borderStyle = .none
             txfSearchField.layer.cornerRadius = 10
             txfSearchField.clipsToBounds = true
-            txfSearchField.backgroundColor = ViewUtils.UIColorFromHEX(hex: "#F8F8F8")
+            txfSearchField.backgroundColor = R.color.searchBackgroundColor()
         }
         
         searchController.searchBar.resignFirstResponder()

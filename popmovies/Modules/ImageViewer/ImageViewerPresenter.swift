@@ -32,7 +32,6 @@ class ImageViewerPresenter {
 extension ImageViewerPresenter: ImageViewerPresenterInterface {
     
     func viewDidLoad() {
-        self.view?.setupButtons()
         self.view?.setupUI()
         self.view?.setupImageViewerCollectionView()
         

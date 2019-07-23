@@ -290,25 +290,25 @@ struct TMDB {
     }
     
     static let GENRES_IMAGES = [
-        28:     Constants.IMAGES.GENRE_ACTION,
-        12:     Constants.IMAGES.GENRE_ADVENTURE,
-        16:     Constants.IMAGES.GENRE_ANIMATION,
-        35:     Constants.IMAGES.GENRE_COMEDY,
-        80:     Constants.IMAGES.GENRE_CRIME,
-        99:     Constants.IMAGES.GENRE_DOCUMENTARY,
-        18:     Constants.IMAGES.GENRE_DRAMA,
-        10751:  Constants.IMAGES.GENRE_FAMILY,
-        14:     Constants.IMAGES.GENRE_FANTASY,
-        36:     Constants.IMAGES.GENRE_HISTORY,
-        27:     Constants.IMAGES.GENRE_HORROR,
-        10402:  Constants.IMAGES.GENRE_MUSIC,
-        9648:   Constants.IMAGES.GENRE_MISTERY,
-        10749:  Constants.IMAGES.GENRE_ROMANCE,
-        878:    Constants.IMAGES.GENRE_SCIENCE_FICTION,
-        10770:  Constants.IMAGES.GENRE_TV_MOVIE,
-        53:     Constants.IMAGES.GENRE_THRILLER,
-        10752:  Constants.IMAGES.GENRE_WAR,
-        37:     Constants.IMAGES.GENRE_WESTERON
+        28:     R.image.action.name,
+        12:     R.image.adventure.name,
+        16:     R.image.animation.name,
+        35:     R.image.comedy.name,
+        80:     R.image.crime.name,
+        99:     R.image.documentary.name,
+        18:     R.image.drama.name,
+        10751:  R.image.family.name,
+        14:     R.image.fantasy.name,
+        36:     R.image.history.name,
+        27:     R.image.horror.name,
+        10402:  R.image.music.name,
+        9648:   R.image.mistery.name,
+        10749:  R.image.romance.name,
+        878:    R.image.science_fiction.name,
+        10770:  R.image.tv_movie.name,
+        53:     R.image.thriller.name,
+        10752:  R.image.war.name,
+        37:     R.image.westeron.name
     ]
     
     static let GENRES_ID = [

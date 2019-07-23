@@ -11,6 +11,19 @@ import Kingfisher
 
 extension UIImageView {
     
+    @IBInspectable var isRounded: Bool {
+        set {
+            if newValue {
+                self.layer.cornerRadius = self.bounds.width / 2
+            } else {
+                self.layer.cornerRadius = 0
+            }
+        }
+        get {
+            return false
+        }
+    }
+    
     func setImage(imageUrl: String, contentMode: UIView.ContentMode?, placeholderImageName: String?, completionHandler: ((Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil) {
         let url = URL(string: imageUrl)
         
@@ -53,12 +66,6 @@ extension UIImageView {
         } else if let placeholder = placeholder {
             self.image = UIImage(named: placeholder)
         }
-    }
-    
-    func setImageColorBy(hexColor: String) {
-        let color = ViewUtils.UIColorFromHEX(hex: hexColor)
-        
-        setImageColorBy(uiColor: color)
     }
     
     func setImageColorBy(uiColor: UIColor) {

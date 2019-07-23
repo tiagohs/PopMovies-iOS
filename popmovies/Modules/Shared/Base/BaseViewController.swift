@@ -55,7 +55,7 @@ class BaseViewController: UIViewController {
         let loadingView: UIView = UIView()
         loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         loadingView.center = view.center
-        loadingView.backgroundColor = ViewUtils.UIColorFromHEX(hex: "#444444").withAlphaComponent(0.7)
+        loadingView.backgroundColor = R.color.activityIndicatorBackgroundColor()
         loadingView.clipsToBounds = true
         loadingView.layer.cornerRadius = 10
         

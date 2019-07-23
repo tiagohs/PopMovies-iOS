@@ -20,22 +20,22 @@ class RootTabBarWireframe {
     static func buildTabs() -> [UIViewController] {
         let home = buildTabBarItem(
                         controller: HomeWireframe.buildModuleFromUINavigation(),
-                        title: "Home",
+                        title: R.string.localizable.homeTitle(),
                         image: R.image.homeIcon(),
                         tag: 0 )
         let week = buildTabBarItem(
                         controller: WeekWireframe.buildModuleFromUINavigation(),
-                        title: "Week",
+                        title: R.string.localizable.weekSmallTitle(),
                         image: R.image.calendarIcon(),
                         tag: 1 )
         let genre = buildTabBarItem(
                         controller: GenreListWireframe.buildModuleFromUINavigation(),
-                        title: "Genre",
+                        title: R.string.localizable.genreListTitle(),
                         image: R.image.genreIcon(),
                         tag: 2 )
         let profile = buildTabBarItem(
                         controller: ProfileWireframe.buildModuleFromUINavigation(),
-                        title: "Profile",
+                        title: R.string.localizable.profileTitle(),
                         image: R.image.personIcon(),
                         tag: 3 )
         

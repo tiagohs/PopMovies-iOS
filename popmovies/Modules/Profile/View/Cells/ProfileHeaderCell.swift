@@ -48,7 +48,7 @@ class ProfileHeaderCell: UITableViewCell {
         totalMoviesLabel.text = String(format: user.totalMovies < 10 ? "%02d" : "%d", user.totalMovies)
         
         if let profileImage = user.photoURL {
-            profileImageView.setImage(imageUrl: profileImage.absoluteString, contentMode: .scaleAspectFill, placeholderImageName: Constants.IMAGES.PLACEHOLDER_POSTER_PROFILE)
+            profileImageView.setImage(imageUrl: profileImage.absoluteString, contentMode: .scaleAspectFill, placeholderImageName: R.image.moviePlaceholder.name)
         }
         let (months, days, hours) = user.totalDuration
         

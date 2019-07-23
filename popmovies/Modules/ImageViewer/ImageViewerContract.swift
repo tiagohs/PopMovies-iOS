@@ -12,7 +12,6 @@ protocol ImageViewerViewInterface: BaseViewInterface {
     
     var presenter: ImageViewerPresenterInterface? { get set }
     
-    func setupButtons()
     func setupImageViewerCollectionView()
     func setupImageCollectionViewCells() 
 }

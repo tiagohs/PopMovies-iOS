@@ -64,13 +64,7 @@ extension CalendarController: FSCalendarDataSource, FSCalendarDelegate {
 
 extension CalendarController: CalendarViewInterface {
     
-    func setupUI() {
-        closeButton.layer.cornerRadius = closeButton.bounds.width / 2
-        finishButton.layer.cornerRadius = finishButton.bounds.width / 2
-        
-        closeButton.imageView?.setImageColorBy(uiColor: UIColor.white)
-        finishButton.imageView?.setImageColorBy(uiColor: UIColor.white)
-    }
+    func setupUI() {}
     
 }
 

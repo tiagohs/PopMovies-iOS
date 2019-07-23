@@ -117,12 +117,7 @@ extension ImageListController: ImageListViewInterface {
     func setupUI() {
         imageListCollectionView.configureNibs(nibName: ImageListItem, identifier: ImageListCellIdentifier)
         
-        backButton.layer.cornerRadius = backButton.bounds.width / 2
-        posterImage.layer.cornerRadius = posterImage.bounds.width / 2
-        
         imageListCollectionView.indicatorStyle = .black
-        backButton.imageView?.setImageColorBy(uiColor: UIColor.black)
-        
         imageListCollectionView.reloadData()
     }
     

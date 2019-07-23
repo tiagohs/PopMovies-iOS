@@ -34,7 +34,7 @@ class PersonCell: UICollectionViewCell {
     
     private func bindPersonCellContent(person: PersonItem) {
         
-        personPictureView.setTMDBImageBy(url: person.pictureId, contentSize: TMDB.ImageSize.PROFILE.w185, contentMode: .scaleAspectFill, placeholder: Constants.IMAGES.PLACEHOLDER_POSTER_PROFILE)
+        personPictureView.setTMDBImageBy(url: person.pictureId, contentSize: TMDB.ImageSize.PROFILE.w185, contentMode: .scaleAspectFill, placeholder: R.image.profilePlaceholder.name)
         
         personPictureView.layer.cornerRadius = personPictureView.bounds.width / 2
         personPictureView.layer.masksToBounds = true
