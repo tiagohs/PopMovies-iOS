@@ -53,11 +53,11 @@ extension ImageListPresenter: ImageListPresenterInterface {
 extension ImageListPresenter {
     
     func prepareUI() {
-        let imageQuantity = "\(allImages.count) Images"
+        let imageQuantity = "\(allImages.count) \(R.string.localizable.imageListTitle())"
         
         if let movie = self.movie {
             let posterPath = movie.posterPath
-            let title = movie.title ?? "Images"
+            let title = movie.title ?? R.string.localizable.imageListTitle()
             
             self.view?.bindUI(posterPath, imageQuantity, title)
             return
@@ -65,7 +65,7 @@ extension ImageListPresenter {
         
         if let person = self.person {
             let posterPath = person.profilePath
-            let title = person.name ?? "Images"
+            let title = person.name ?? R.string.localizable.imageListTitle()
             
             self.view?.bindUI(posterPath, imageQuantity, title)
         }

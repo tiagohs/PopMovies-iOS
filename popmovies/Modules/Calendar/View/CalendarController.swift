@@ -68,6 +68,8 @@ extension CalendarController: CalendarViewInterface {
     
 }
 
+// MARK: Action Methods
+
 extension CalendarController {
     
     @IBAction func didFinishButtonClicked(_ sender: Any) {

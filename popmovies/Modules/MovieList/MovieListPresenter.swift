@@ -66,11 +66,11 @@ extension MovieListPresenter {
         }
         
         guard let url = url else {
-            self.view?.onError(message: "Houve um erro ao buscar os filmes.")
+            self.view?.onError(message: R.string.localizable.moviesFetchUnknownError())
             return
         }
         guard let baseParameters = parameters else {
-            self.view?.onError(message: "Houve um erro ao buscar os filmes.")
+            self.view?.onError(message: R.string.localizable.moviesFetchUnknownError())
             return
         }
         

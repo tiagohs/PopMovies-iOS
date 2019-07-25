@@ -67,11 +67,11 @@ extension PersonListPresenter {
         }
         
         guard let url = url else {
-            self.view?.onError(message: "Houve um erro ao buscar os atores ou atrizes.")
+            self.view?.onError(message: R.string.localizable.castOrCrewNotFound())
             return
         }
         guard let baseParameters = parameters else {
-            self.view?.onError(message: "Houve um erro ao buscar os atores ou atrizes.")
+            self.view?.onError(message: R.string.localizable.castOrCrewNotFound())
             return
         }
         
@@ -95,6 +95,8 @@ extension PersonListPresenter {
     }
     
 }
+
+// MARK: PersonListInteractorOutputInterface
 
 extension PersonListPresenter: PersonListInteractorOutputInterface {
     

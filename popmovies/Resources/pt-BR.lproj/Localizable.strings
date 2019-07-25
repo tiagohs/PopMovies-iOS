@@ -8,8 +8,28 @@
 
 // MARK: Application Level Properties
 "AppName" = "PopMovies";
+"Female"    = "Feminino";
+"Male"      = "Masculino";
+"Unknown"   = "Não definido";
+
+// MARK: Error Messages
+
+"MoviesNotFound" = "Não há nenhum filme disponível.";
+"MoviesFetchUnknownError" = "Houve um erro inesperado ao buscar os filmes, tente novamente.";
+"GenresNotFound" = "Houve um erro ao buscar os gêneros.";
+"LoginUnknownError" = "Houve um erro durante o login.";
+"PersonsNotFound" = "Houve um erro ou não encontramos nenhum pessoa.";
+"CastOrCrewNotFound" = "Houve um erro ao buscar os atores ou atrizes.";
+"UnknownError" = "Houve um erro inesperado.";
+"PersonsDetailsNotFound" = "Erro ao buscar mais informações sobre essa pessoa.";
+"PersonsImagesNotFound" = "Não foram encontradas nenhuma imagem dessa pessoa.";
+"LoginFacebookCancelled" = "Processo de login com o Facebook cancelado.";
+"LoginFacebookUnknownError" = "Houve um erro ao tentar o login com o facebook.";
+"RegisterUnknownError" = "Houve um erro ao finalizar o registro, tente novamente.";
+"DataManagerMovieSaveError" = "Não foi possível remover o filme.";
 
 // MARK: Buttons
+
 "Button:Login" = "Entrar";
 "Button:LoginFacebook" = "Entrar com o Facebook";
 "Button:LoginTwitter" = "Entrar com o Twitter";
@@ -85,3 +105,27 @@
 // MARK: MovieList Module
 
 "MovieList:Title" = "Filmes";
+
+// MARK: ImageList Module
+
+"ImageList:Title" = "Imagens";
+
+// MARK: PersonDetails Module
+
+"PersonDetails:Movies" = "Filmes";
+"PersonDetails:Photos" = "Fotos";
+"PersonDetails:Genre" = "Gênero";
+"PersonDetails:Birth" = "Aniversário";
+"PersonDetails:Birthday" = "Nascimento";
+"PersonDetails:KnownFor" = "Conhecido por";
+"PersonDetails:PosterWallpaper" = "Posters e Wallpapers";
+
+// MARK: MovieDetails Module
+
+"MovieDetails:Cast" = "Elenco";
+"MovieDetails:Crew" = "Equipe técnica";
+"MovieDetails:Videos" = "Videos e Trailers";
+"MovieDetails:PosterWallpaper" = "Posters e Wallpapers";
+"MovieDetails:SimilarMovies" = "Filmes Similares";
+"MovieDetails:RelatedMovies:Title1" = "Filmes";
+"MovieDetails:RelatedMovies:Title2" = "Relacionados";

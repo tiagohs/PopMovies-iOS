@@ -131,7 +131,7 @@ extension MovieDetailsPresenter {
             return personItem
         }
         
-        wireframe?.pushToPersonList(persons, title: "\(String(describing: movie?.title)) cast")
+        wireframe?.pushToPersonList(persons, title: "\(String(describing: movie?.title)) \(R.string.localizable.movieDetailsCast())")
     }
     
     func didSeeAllCrewClicked() {
@@ -148,7 +148,7 @@ extension MovieDetailsPresenter {
             return personItem
         }
         
-        wireframe?.pushToPersonList(persons, title: "\(String(describing: movie?.title)) crew")
+        wireframe?.pushToPersonList(persons, title: "\(String(describing: movie?.title)) \(R.string.localizable.movieDetailsCrew())")
     }
     
     func didFavoriteClicked() {

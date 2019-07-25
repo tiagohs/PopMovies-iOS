@@ -53,7 +53,7 @@ extension PersonDetailsPresenter {
     
     func fetchPersonDetails() {
         guard let personId = self.person?.id else {
-            self.view?.onError(message: "Erro ao buscar mais informações sobre essa pessoa.")
+            self.view?.onError(message: R.string.localizable.personsDetailsNotFound())
             return
         }
         
@@ -72,6 +72,7 @@ extension PersonDetailsPresenter {
     
     func didImageSelect(_ image: Image, indexPath: IndexPath) {
         guard let person = self.person, !person.allImages.isEmpty else {
+            self.view?.onError(message: R.string.localizable.personsImagesNotFound())
             return
         }
         

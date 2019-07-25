@@ -20,7 +20,7 @@ class GenreListWireframe: GenreListWireframeInterface {
         
         let url = TMDB.URL.GENRES.buildMovieListByGenreUrl(id)
         let parameters = TMDB.URL.GENRES.buildMovieListByGenreParameters("BR", 1, "pt_BR")
-        let title = genre.name ?? "Movies"
+        let title = genre.name ?? R.string.localizable.movieListTitle()
         
         let movieListModule = MovieListWireframe.buildModule(url: url, parameters: parameters, title: title)
         

@@ -278,6 +278,9 @@
                                                             </constraints>
                                                             <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
                                                             <state key="normal" image="ImdbIcon-white"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="didImdbLinkTaped" destination="yfD-wY-0tJ" eventType="touchUpInside" id="JUK-XG-d9l"/>
                                                             </connections>
@@ -291,6 +294,9 @@
                                                             </constraints>
                                                             <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
                                                             <state key="normal" image="TomatoesIcon-white"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="didTomatoesLinkTaped" destination="yfD-wY-0tJ" eventType="touchUpInside" id="krU-dX-Xym"/>
                                                             </connections>
@@ -304,6 +310,9 @@
                                                             </constraints>
                                                             <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
                                                             <state key="normal" image="WikiIcon-white"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="didWikiLinkTaped" destination="yfD-wY-0tJ" eventType="touchUpInside" id="Ism-hM-TS3"/>
                                                             </connections>
@@ -362,6 +371,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                     <state key="normal" title="See All"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Button:SeeAll"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="didSeeAllCastClicked:" destination="6fe-Ux-5De" eventType="touchUpInside" id="1yg-sb-kPJ"/>
                                                     </connections>
@@ -371,12 +383,18 @@
                                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="MovieDetails:Cast"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crew" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kn1-sM-BVi">
                                                     <rect key="frame" x="16" y="173.5" width="42" height="22"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="MovieDetails:Crew"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7J-ac-pTb">
                                                     <rect key="frame" x="355" y="173.5" width="43" height="21"/>
@@ -385,6 +403,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                     <state key="normal" title="See All"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Button:SeeAll"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="didSeeAllCrewClicked:" destination="6fe-Ux-5De" eventType="touchUpInside" id="4tw-CB-TRX"/>
                                                     </connections>
@@ -437,7 +458,7 @@
                                         <rect key="frame" x="0.0" y="885" width="414" height="414"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xpI-v2-N8w" id="bfV-dB-eGf">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="413.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iga-Uh-uVC">
@@ -447,6 +468,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                     <state key="normal" title="See All"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Button:SeeAll"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="didSeeAllVideosClicked:" destination="xpI-v2-N8w" eventType="touchUpInside" id="GaA-85-kiO"/>
                                                     </connections>
@@ -458,6 +482,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                     <state key="normal" title="See All"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Button:SeeAll"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="didSeeAllImagesClicked:" destination="xpI-v2-N8w" eventType="touchUpInside" id="tVd-mu-jqh"/>
                                                     </connections>
@@ -470,6 +497,9 @@
                                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="MovieDetails:Videos"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posters and Wallpapers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYy-pf-sTa">
                                                     <rect key="frame" x="16" y="219.5" width="192" height="22"/>
@@ -479,6 +509,9 @@
                                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="MovieDetails:PosterWallpaper"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="WallpapersCollectionViewIdentifier" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Krx-zA-AhH" userLabel="ImagesCollectionView">
                                                     <rect key="frame" x="0.0" y="257.5" width="414" height="150"/>
@@ -548,7 +581,7 @@
                                         <rect key="frame" x="0.0" y="1299" width="414" height="499"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XwJ-Gu-nBB" id="uIl-lc-kgJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="498.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="499"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qf0-k8-3mB">
@@ -558,6 +591,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                     <state key="normal" title="See All"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Button:SeeAll"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="didSeeAllRelatedMoviesClicked:" destination="XwJ-Gu-nBB" eventType="touchUpInside" id="EmC-Ys-nVC"/>
                                                     </connections>
@@ -570,6 +606,9 @@
                                                     <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="MovieDetails:RelatedMovies:Title1"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FuA-ae-cuL">
                                                     <rect key="frame" x="78" y="241" width="45" height="27"/>
@@ -579,6 +618,9 @@
                                                     <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="MovieDetails:RelatedMovies:Title2"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjB-Lb-DYm">
                                                     <rect key="frame" x="16" y="10" width="56" height="21"/>
@@ -831,6 +873,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="back"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="dismiss" destination="YTz-uZ-EHc" eventType="touchUpInside" id="A2i-Ia-ONN"/>
@@ -849,6 +892,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didWatchedClicked:" destination="YTz-uZ-EHc" eventType="touchUpInside" id="SpN-wA-3cW"/>
@@ -867,6 +911,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvH-z0-mgQ">
@@ -881,6 +926,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didFavoriteClicked:" destination="YTz-uZ-EHc" eventType="touchUpInside" id="ezY-aA-4oG"/>

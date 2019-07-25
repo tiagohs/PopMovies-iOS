@@ -55,7 +55,6 @@ private extension MovieDetailsOverviewCell {
     }
     
     func setupExternalLinkView(_ buttonView: UIButton) {
-        buttonView.layer.cornerRadius = buttonView.bounds.width / 2
         buttonView.layer.shadowColor = UIColor.black.cgColor
         buttonView.layer.shadowOffset = shadowOffset
         buttonView.layer.shadowOpacity = 0.5

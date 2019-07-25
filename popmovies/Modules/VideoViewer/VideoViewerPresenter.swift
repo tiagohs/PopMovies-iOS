@@ -31,6 +31,7 @@ extension VideoViewerPresenter: VideoViewerPresenterInterface {
         self.view?.setupUI()
         
         guard let video = self.video, let youtubeKey = video.key, let videoID = video.id else {
+            self.view?.onError(message: R.string.localizable.unknownError())
             return
         }
         

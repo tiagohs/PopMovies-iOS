@@ -29,7 +29,7 @@ class BaseProfileMoviesCell: UITableViewCell {
     var delegate: ProfileMoviesCellDelegate?
     
     var movies: [Movie] = []
-    var listName = "Movie List"
+    var listName = R.string.localizable.movieListTitle()
 }
 
 

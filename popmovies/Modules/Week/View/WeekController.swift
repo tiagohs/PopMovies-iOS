@@ -14,8 +14,8 @@ import FSCalendar
 class WeekController: BaseViewController {
     // MARK: Constants
     
-    let MovieDetailsCell                    = R.nib.movieDetailsCellCollectionView.name
-    let MovieDetailsCellIdentifier          = "MovieDetailsCellIdentifier"
+    let MovieDetailsCell                        = R.nib.movieDetailsCellCollectionView.name
+    let MovieDetailsCellIdentifier              = "MovieDetailsCellIdentifier"
     
     // MARK: Properties
     
@@ -23,17 +23,12 @@ class WeekController: BaseViewController {
     @IBOutlet weak var selectDaysLabel: UILabel!
     
     @IBOutlet weak var weekMoviesCollectionView: UICollectionView!
-    @IBOutlet weak var weekMoviesCollectionViewViewFlow: UICollectionViewFlowLayout!  {
-        didSet {
-            //weekMoviesCollectionViewViewFlow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        }
-    }
     
     // MARK: Properties
     
     var presenter: WeekPresenterInterface?
     
-    var movies: [Movie] = []
+    var movies: [Movie]                         = []
     lazy var cellSize: CGSize                   = CGSize(width: self.view.bounds.width, height: CGFloat(209))
 }
 
@@ -134,8 +129,6 @@ extension WeekController {
     }
     
 }
-
-
 
 // MARK: Action Methods
 

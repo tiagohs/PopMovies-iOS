@@ -7,9 +7,29 @@
 */
 
 // MARK: Application Level Properties
-"AppName" = "PopMovies";
+"AppName"   = "PopMovies";
+"Female"    = "Female";
+"Male"      = "Male";
+"Unknown"   = "Unknown";
+
+// MARK: Error Messages
+
+"MoviesNotFound" = "No one movie found.";
+"MoviesFetchUnknownError" = "An unknown error occurred. Please try again.";
+"GenresNotFound" = "No one genre found.";
+"LoginUnknownError" = "Error during the login.";
+"PersonsNotFound" = "No one person found.";
+"CastOrCrewNotFound" = "No one cast or crew found.";
+"VideoViewerUnknownError" = "An unknown error occured.";
+"PersonsDetailsNotFound" = "No informations about this persons was founded.";
+"PersonsImagesNotFound" = "No images from this person was founded.";
+"LoginFacebookCancelled" = "Login with Facebook cancelled.";
+"LoginFacebookUnknownError" = "Error during the login with facebook.";
+"RegisterUnknownError" = "Error during the register, try again.";
+"DataManagerMovieSaveError" = "An error occurred during the save.";
 
 // MARK: Buttons
+
 "Button:Login" = "Login";
 "Button:LoginFacebook" = "Login with Facebook";
 "Button:LoginTwitter" = "Register with Twitter";
@@ -84,4 +104,28 @@
 // MARK: MovieList Module
 
 "MovieList:Title" = "Movies";
+
+// MARK: ImageList Module
+
+"ImageList:Title" = "Images";
+
+// MARK: PersonDetails Module
+
+"PersonDetails:Movies" = "Movies";
+"PersonDetails:Photos" = "Photos";
+"PersonDetails:Genre" = "Genre";
+"PersonDetails:Birth" = "Birthday";
+"PersonDetails:Birthday" = "Place of Birth";
+"PersonDetails:KnownFor" = "Known for";
+"PersonDetails:PosterWallpaper" = "Posters and Wallpapers";
+
+// MARK: MovieDetails Module
+
+"MovieDetails:Cast" = "Cast";
+"MovieDetails:Crew" = "Crew";
+"MovieDetails:Videos" = "Videos and Trailers";
+"MovieDetails:PosterWallpaper" = "Posters and Wallpapers";
+"MovieDetails:SimilarMovies" = "Similar Movies";
+"MovieDetails:RelatedMovies:Title1" = "Related";
+"MovieDetails:RelatedMovies:Title2" = "Movies";
 

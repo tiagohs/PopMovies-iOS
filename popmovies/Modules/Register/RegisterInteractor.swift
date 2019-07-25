@@ -37,6 +37,8 @@ extension RegisterInteractor: RegisterInteractorInputInterface {
     
 }
 
+// MARK: RegisterInteractorInputInterface - Click methods
+
 extension RegisterInteractor {
     
     func didRegisterClicked(_ name: String, _ email: String, _ password: String) {

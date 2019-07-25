@@ -71,7 +71,7 @@ extension PersonListInteractor {
         )
     }
     
-    private func onError(message: String = "Houve um erro ou não encontramos nenhum pessoa .") {
+    private func onError(message: String = R.string.localizable.personsNotFound()) {
         self.output?.personsDidError(DefaultError(message: message))
     }
     

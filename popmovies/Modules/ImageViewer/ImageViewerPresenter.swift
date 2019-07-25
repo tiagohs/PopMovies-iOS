@@ -34,8 +34,6 @@ extension ImageViewerPresenter: ImageViewerPresenterInterface {
     func viewDidLoad() {
         self.view?.setupUI()
         self.view?.setupImageViewerCollectionView()
-        
-        
     }
     
     func viewDidDisappear(_ animated: Bool) {

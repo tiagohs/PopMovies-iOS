@@ -246,7 +246,6 @@
 		A2FCABA322DAB256001CA39A /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCABA222DAB256001CA39A /* Database.swift */; };
 		A2FCABA622DAB59E001CA39A /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCABA522DAB59E001CA39A /* CoreDataStore.swift */; };
 		A2FCABA922DAB624001CA39A /* PopMovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2FCABA722DAB624001CA39A /* PopMovies.xcdatamodeld */; };
-		A2FCABAB22DAB74B001CA39A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCABAA22DAB74B001CA39A /* DataManager.swift */; };
 		A2FCABAE22DAB79A001CA39A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCABAD22DAB79A001CA39A /* Store.swift */; };
 		A2FCABB122DAC291001CA39A /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCABB022DAC291001CA39A /* MovieRepository.swift */; };
 		A2FCABB322DAC2A5001CA39A /* MovieRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCABB222DAC2A5001CA39A /* MovieRepositoryInterface.swift */; };
@@ -562,7 +561,6 @@
 		A2FCABA222DAB256001CA39A /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		A2FCABA522DAB59E001CA39A /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		A2FCABA822DAB624001CA39A /* PopMovies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PopMovies.xcdatamodel; sourceTree = "<group>"; };
-		A2FCABAA22DAB74B001CA39A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A2FCABAD22DAB79A001CA39A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		A2FCABB022DAC291001CA39A /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
 		A2FCABB222DAC2A5001CA39A /* MovieRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepositoryInterface.swift; sourceTree = "<group>"; };
@@ -1499,7 +1497,6 @@
 				A2FCABAC22DAB783001CA39A /* Interfaces */,
 				A2FCABA422DAB58E001CA39A /* CoreData */,
 				A2FCABAF22DAC261001CA39A /* Repositories */,
-				A2FCABAA22DAB74B001CA39A /* DataManager.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -2182,7 +2179,6 @@
 				A27F4F85225FC6A700B15976 /* BaseInteractor.swift in Sources */,
 				A21693AD2263D8A7009988F1 /* Movie.swift in Sources */,
 				A2A64C2B22C9A8A500710E0B /* RootInteractor.swift in Sources */,
-				A2FCABAB22DAB74B001CA39A /* DataManager.swift in Sources */,
 				A216945E2263EFDE009988F1 /* ProductionCountry.swift in Sources */,
 				A2E9F50B22D50FAA0001E089 /* MovieCell+TableView.swift in Sources */,
 				A2FCABA022DA7FF0001CA39A /* ProfileManager.swift in Sources */,

@@ -25,10 +25,5 @@ extension VideoListInteractor: VideoListInteractorInputInterface {
     
     func outputDidLoad() {}
     
-    func outputFinished() {
-        disposibles.dispose()
-        
-        self.output = nil
-    }
-    
+    func outputFinished() {}
 }

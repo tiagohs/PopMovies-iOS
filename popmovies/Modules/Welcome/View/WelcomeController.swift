@@ -58,6 +58,8 @@ extension WelcomeController: WelcomeViewInterface {
     
 }
 
+// MARK: Action Methods
+
 extension WelcomeController {
     
     @IBAction func didLoginClicked(_ sender: Any) {

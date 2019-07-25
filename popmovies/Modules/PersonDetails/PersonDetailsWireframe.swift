@@ -38,7 +38,7 @@ class PersonDetailsWireframe: PersonDetailsWireframsInterface {
     }
     
     func pushToMovieList(_ allMovies: [Movie], _ person: Person) {
-        let title = person.name ?? "Movie List"
+        let title = person.name ?? R.string.localizable.movieListTitle()
         let movieListModule = MovieListWireframe.buildModuleFromUINavigation(with: allMovies, title: title)
         
         movieListModule.hero.modalAnimationType = .slide(direction: .left)

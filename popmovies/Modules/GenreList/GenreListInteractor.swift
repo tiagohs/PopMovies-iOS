@@ -49,7 +49,7 @@ extension GenreListIntractor {
             .subscribe(onNext: { (genres) in
                 self.output?.genresDidFetch(genres)
             }, onError: { (error) in
-                self.output?.genresDidError(DefaultError(message: "Houve um erro ao buscar os gêneros"))
+                self.output?.genresDidError(DefaultError(message: R.string.localizable.genresNotFound()))
             })
         )
     }

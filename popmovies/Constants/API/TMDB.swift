@@ -46,7 +46,10 @@ struct TMDB {
         static let with_runtime_lte         = "with_runtime.lte"
         static let with_release_type        = "with_release_type"
         static let with_original_language   = "with_original_language"
-
+        static let tagged_images            = "tagged_images"
+        static let images                   = "images"
+        static let movie_credits            = "movie_credits"
+        static let external_ids             = "external_ids"
     }
     
     struct URL {

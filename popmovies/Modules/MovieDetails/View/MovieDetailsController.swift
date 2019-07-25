@@ -248,11 +248,6 @@ extension MovieDetailsController {
     func setupUI() {
         setupScreenTableView(tableView: tableView)
         
-        closeButton.layer.cornerRadius = closeButton.bounds.width / 2
-        shareButton.layer.cornerRadius = shareButton.bounds.width / 2
-        markAsWatchButton.layer.cornerRadius = markAsWatchButton.bounds.width / 2
-        markAsFavoriteButton.layer.cornerRadius = markAsFavoriteButton.bounds.width / 2
-        
         self.title = movie?.title
     }
     

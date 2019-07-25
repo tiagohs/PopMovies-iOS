@@ -64,6 +64,9 @@
                                                         <constraint firstAttribute="height" constant="200" id="EmR-zU-4aq"/>
                                                         <constraint firstAttribute="width" constant="200" id="Hzv-6i-k41"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IkR-m6-zv2">
                                                     <rect key="frame" x="112" y="367" width="190" height="60"/>
@@ -79,6 +82,7 @@
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="facebook"/>
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="scale(0.7)"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="didFacebookClicked" destination="jiQ-Oe-VFr" eventType="touchUpInside" id="PrU-AU-MEr"/>
@@ -95,6 +99,7 @@
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="scale(0.7)"/>
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="instagram"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="didInstagramClicked" destination="jiQ-Oe-VFr" eventType="touchUpInside" id="Qd4-1W-eeh"/>
@@ -111,6 +116,7 @@
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="scale(0.7)"/>
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="twitter"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="didTwitterClicked" destination="jiQ-Oe-VFr" eventType="touchUpInside" id="4Zf-Uo-2nc"/>
@@ -153,6 +159,9 @@
                                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="PersonDetails:Movies"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dr-4T-I6p">
                                                                     <rect key="frame" x="82.5" y="20.5" width="42.5" height="43.5"/>
@@ -184,6 +193,9 @@
                                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="PersonDetails:Photos"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arj-ji-OrG">
                                                                     <rect key="frame" x="82.5" y="20.5" width="42.5" height="43.5"/>
@@ -280,6 +292,9 @@
                                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                                     <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="PersonDetails:Genre"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OT" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19T-jg-nhV">
                                                                     <rect key="frame" x="100" y="0.0" width="282" height="19.5"/>
@@ -307,6 +322,9 @@
                                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                                     <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="PersonDetails:Birth"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OT" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5p-1h-AGR">
                                                                     <rect key="frame" x="100" y="0.0" width="282" height="19.5"/>
@@ -335,6 +353,9 @@
                                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                                     <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="PersonDetails:Birthday"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OT" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sd3-LN-kf2">
                                                                     <rect key="frame" x="100" y="0.0" width="282" height="19.5"/>
@@ -362,6 +383,9 @@
                                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                                     <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="PersonDetails:KnownFor"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OT" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huA-71-Lwd">
                                                                     <rect key="frame" x="100" y="0.0" width="282" height="19.5"/>
@@ -461,6 +485,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                     <state key="normal" title="See All"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Button:SeeAll"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="didSeeAllMoviesClicked:" destination="Zkk-2Y-9eW" eventType="touchUpInside" id="KcE-K8-EOT"/>
                                                     </connections>
@@ -473,6 +500,9 @@
                                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="PersonDetails:KnownFor"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="WallpapersCollectionViewIdentifier" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DAM-Ju-QMT" userLabel="VideosCollectionView">
                                                     <rect key="frame" x="0.0" y="313" width="414" height="149"/>
@@ -500,6 +530,9 @@
                                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="PersonDetails:PosterWallpaper"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="KnownForCollectionViewIdentifier" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ldv-Q2-7Ae" userLabel="ImagesCollectionView">
                                                     <rect key="frame" x="0.0" y="54" width="414" height="205"/>
@@ -526,6 +559,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                     <state key="normal" title="See All"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Button:SeeAll"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="didSeeAllImagesClicked:" destination="Zkk-2Y-9eW" eventType="touchUpInside" id="hsf-J9-bqY"/>
                                                     </connections>
@@ -560,7 +596,7 @@
                                         <rect key="frame" x="0.0" y="1328" width="414" height="567"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XsF-Lq-r3D" id="QKp-F8-hni">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="566.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="567"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -583,6 +619,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="back"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="dismiss" destination="Zkk-2Y-9eW" eventType="touchUpInside" id="UnH-cx-hhI"/>
@@ -601,6 +638,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -150)"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="share"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>

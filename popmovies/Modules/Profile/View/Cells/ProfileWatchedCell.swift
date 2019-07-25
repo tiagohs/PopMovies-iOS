@@ -11,7 +11,7 @@ import UIKit
 class ProfileWatchedCell: BaseProfileMoviesCell {
     
     override var listName: String {
-        get { return "Watched" }
+        get { return R.string.localizable.profileProfileWatchedTitle() }
         set {}
     }
 }

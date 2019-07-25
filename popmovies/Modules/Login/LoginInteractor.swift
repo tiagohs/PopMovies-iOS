@@ -36,6 +36,8 @@ extension LoginInteractor: LoginInteractorInputInterface {
     
 }
 
+// MARK: LoginInteractorInputInterface - Login Methods
+
 extension LoginInteractor {
     
     func didSignWithGoogle() {
@@ -77,7 +79,7 @@ extension LoginInteractor {
         }
         
         guard let user = user else {
-            self.output?.didLoginError(error: DefaultError(message: "Error during the login"))
+            self.output?.didLoginError(error: DefaultError(message: R.string.localizable.loginUnknownError()))
             return
         }
         

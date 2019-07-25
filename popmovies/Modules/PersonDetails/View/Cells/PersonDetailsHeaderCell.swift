@@ -79,17 +79,12 @@ extension PersonDetailsHeaderCell {
             profileImageView.hero.id = String(describing: person.id)
             profileImageView.hero.modifiers = [.scale(0.6)]
             
-            profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2
-            
             isProfileImageBind = true
         }
         
     }
     
     private func bindSocialLinks(_ person: Person) {
-        facebookButton.layer.cornerRadius = facebookButton.bounds.width / 2
-        twitterButton.layer.cornerRadius = twitterButton.bounds.width / 2
-        instagramButton.layer.cornerRadius = instagramButton.bounds.width / 2
         
         if person.externalIds != nil {
             bindSocialButton(facebookButton, person.externalIds?.facebookId)

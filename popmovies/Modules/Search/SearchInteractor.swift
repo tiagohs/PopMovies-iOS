@@ -29,11 +29,11 @@ extension SearchInteractor: SearchInteractorInputInterface {
     
     func outputDidLoad() {}
     
-    func outputFinished() {
-        
-    }
+    func outputFinished() {}
     
 }
+
+// MARK: SearchInteractorInputInterface - search methods
 
 extension SearchInteractor {
     
@@ -58,7 +58,7 @@ extension SearchInteractor {
         )
     }
     
-    private func onError(message: String = "Houve um erro ou não encontramos nenhum filme.") {
+    private func onError(message: String = R.string.localizable.moviesNotFound()) {
         self.output?.didSearchMovieError(DefaultError(message: message))
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class ProfileFavoriteCell: BaseProfileMoviesCell {
     
     override var listName: String {
-        get { return "Favorites" }
+        get { return R.string.localizable.profileProfileFavoriteTitle() }
         set {}
     }
 }

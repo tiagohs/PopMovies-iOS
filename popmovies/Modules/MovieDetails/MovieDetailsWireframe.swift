@@ -58,7 +58,7 @@ class MovieDetailsWireframe: MovieDetailsWireframeInterface {
         }
         let url = TMDB.URL.MOVIES.buildSimilarMoviesUrl(movieId: movieId)
         let parameters = TMDB.URL.MOVIES.buildMovieListParameters()
-        let title = movie.title ?? "Similar Movies"
+        let title = movie.title ?? R.string.localizable.movieDetailsSimilarMovies()
         let movieListModule = MovieListWireframe.buildModuleFromUINavigation(url: url, parameters: parameters, title: title)
         
         movieListModule.hero.modalAnimationType = .slide(direction: .left)
@@ -72,7 +72,7 @@ class MovieDetailsWireframe: MovieDetailsWireframeInterface {
         
         let url = TMDB.URL.GENRES.buildMovieListByGenreUrl(id)
         let parameters = TMDB.URL.GENRES.buildMovieListByGenreParameters("BR", 1, "pt_BR")
-        let title = genre.name ?? "Movies"
+        let title = genre.name ?? R.string.localizable.movieListTitle()
         
         let movieListModule = MovieListWireframe.buildModuleFromUINavigation(url: url, parameters: parameters, title: title)
         

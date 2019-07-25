@@ -29,10 +29,6 @@ extension ImageListInteractor: ImageListInteractorInputInterface {
     
     func outputDidLoad() {}
     
-    func outputFinished() {
-        disposibles.dispose()
-        
-        self.output = nil
-    }
+    func outputFinished() {}
     
 }

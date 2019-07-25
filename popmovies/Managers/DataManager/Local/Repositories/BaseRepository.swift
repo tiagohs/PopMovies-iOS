@@ -58,7 +58,7 @@ class BaseRepository<T: NSManagedObject> {
             return
         }
         
-        complationHandler?(DefaultError(message: "Não foi possível remover o filme."))
+        complationHandler?(DefaultError(message: R.string.localizable.dataManagerMovieSaveError()))
     }
     
 }

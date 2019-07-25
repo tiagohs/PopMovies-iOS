@@ -29,11 +29,7 @@ extension PersonDetailsInteractor: PersonDetailsInteractorInputInterface {
     
     func outputDidLoad() {}
     
-    func outputFinished() {
-        disposibles.dispose()
-        
-        self.output = nil
-    }
+    func outputFinished() {}
 }
 
 // MARK: HomeInteractorInputInterface - Fetch methods
@@ -41,7 +37,11 @@ extension PersonDetailsInteractor: PersonDetailsInteractorInputInterface {
 extension PersonDetailsInteractor {
     
     func fetchPersonDetails(_ personId: Int) {
-        let appendToResponse = ["tagged_images", "images", "movie_credits", "external_ids"]
+        let appendToResponse = [
+            TMDB.Parameters.tagged_images,
+            TMDB.Parameters.images,
+            TMDB.Parameters.movie_credits,
+            TMDB.Parameters.external_ids]
         
         add(personService.getDetails(personId: personId, appendToResponse: appendToResponse, language: "en,pt_BR,null")
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
@@ -49,7 +49,7 @@ extension PersonDetailsInteractor {
             .subscribe(onNext: { (person) in
                 self.output?.personDetailsDidFetch(person)
             }, onError: { (error) in
-                self.output?.personDetailsDidError(DefaultError(message: "Erro ao buscar mais informações sobre essa pessoa."))
+                self.output?.personDetailsDidError(DefaultError(message: R.string.localizable.personsDetailsNotFound()))
             })
         )
     }

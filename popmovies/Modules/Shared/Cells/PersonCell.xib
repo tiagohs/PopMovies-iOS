@@ -39,6 +39,9 @@
                                 <constraint firstAttribute="width" constant="60" id="G1V-s6-0ZQ"/>
                                 <constraint firstAttribute="height" constant="60" id="TNh-uy-vCv"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmS-Cr-ZA3" userLabel="Name">
                             <rect key="frame" x="10" y="70" width="96" height="16.5"/>

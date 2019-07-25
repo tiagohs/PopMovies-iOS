@@ -61,11 +61,11 @@ private extension PersonDetailsOverviewCell {
         
         switch genderId {
         case 1:
-            return "Female"
+            return R.string.localizable.female()
         case 2:
-            return "Male"
+            return R.string.localizable.male()
         default:
-            return "Unknown"
+            return R.string.localizable.unknown()
         }
     }
     

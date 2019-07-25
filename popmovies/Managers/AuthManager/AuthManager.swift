@@ -138,7 +138,7 @@ extension AuthManager: FacebookAuthDelegate {
     }
     
     func didSignCancelled() {
-        self.signInCompletion?(nil, DefaultError(message: "Processo de login com o Facebook cancelado."))
+        self.signInCompletion?(nil, DefaultError(message:  R.string.localizable.loginUnknownError()))
     }
     
 }
@@ -162,7 +162,7 @@ extension AuthManager {
     func signUp(with email: String, _ password: String, _ name: String, signUpCompletionHandler: @escaping (UserLocal?, DefaultError?) -> Void) {
         firebaseAuth.createUser(withEmail: email, password: password) { (authDataResult, error) in
             if error != nil {
-                let message = error?.localizedDescription ?? "Error during the register, try again."
+                let message = error?.localizedDescription ?? R.string.localizable.registerUnknownError()
                 
                 signUpCompletionHandler(nil, DefaultError(message: message))
                 return

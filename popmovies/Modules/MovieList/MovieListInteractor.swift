@@ -60,7 +60,7 @@ extension MovieListInteractor {
         )
     }
     
-    private func onError(message: String = "Houve um erro ou não encontramos nenhum filme.") {
+    private func onError(message: String = R.string.localizable.moviesNotFound()) {
         self.output?.moviesDidError(MovieListNotFoundError(message: message))
     }
 }

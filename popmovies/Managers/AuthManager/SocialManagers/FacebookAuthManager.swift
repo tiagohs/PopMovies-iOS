@@ -32,7 +32,7 @@ extension FacebookAuthManager {
                     self.delegate?.didSignCancelled()
                 }
                 
-                self.delegate?.didSignFinished(with: DefaultError(message: "Houve um erro ao tentar o login com o facebook."))
+                self.delegate?.didSignFinished(with: DefaultError(message: R.string.localizable.loginFacebookUnknownError()))
                 return
             }
             

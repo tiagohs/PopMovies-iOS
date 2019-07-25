@@ -54,6 +54,8 @@ extension ProfilePresenter: ProfilePresenterInterface {
     
 }
 
+// MARK: ProfilePresenterInterface - User Click methods
+
 extension ProfilePresenter {
     
     func didSingUpClicked() {

@@ -125,7 +125,6 @@
                         <outlet property="selectDaysLabel" destination="1wa-aD-xCJ" id="cac-Zd-ZiB"/>
                         <outlet property="selectMonthAndYearLabel" destination="q77-KH-v33" id="qqZ-cS-EF8"/>
                         <outlet property="weekMoviesCollectionView" destination="ni3-Xq-kYB" id="tRd-p7-NIh"/>
-                        <outlet property="weekMoviesCollectionViewViewFlow" destination="bJ5-hs-jNG" id="tXX-Nh-IXe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dA6-zG-EIT" userLabel="First Responder" sceneMemberID="firstResponder"/>

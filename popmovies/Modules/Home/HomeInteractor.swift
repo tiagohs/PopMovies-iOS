@@ -46,13 +46,13 @@ extension HomeInteractor {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (results) in
                 guard let movies = results.results else {
-                    self.output?.popularMoviesDidError(MovieListNotFoundError(message: "Não há nenhum filme disponível."))
+                    self.output?.popularMoviesDidError(MovieListNotFoundError(message: R.string.localizable.moviesNotFound()))
                     return
                 }
                 
                 self.output?.popularMoviesDidFetch(movies)
             }, onError: { (error) in
-                self.output?.popularMoviesDidError(MovieListNotFoundError(message: "Houve um erro inesperado ao buscar os filmes, tente novamente."))
+                self.output?.popularMoviesDidError(MovieListNotFoundError(message: R.string.localizable.moviesNotFound()))
             })
         )
     }
@@ -63,13 +63,13 @@ extension HomeInteractor {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (results) in
                 guard let movies = results.results else {
-                    self.output?.nowPlayingMoviesDidError(MovieListNotFoundError(message: "Não há nenhum filme disponível."))
+                    self.output?.nowPlayingMoviesDidError(MovieListNotFoundError(message: R.string.localizable.moviesNotFound()))
                     return
                 }
                 
                 self.output?.nowPlayingMoviesDidFetch(movies)
             }, onError: { (error) in
-                self.output?.nowPlayingMoviesDidError(MovieListNotFoundError(message: "Houve um erro inesperado ao buscar os filmes, tente novamente."))
+                self.output?.nowPlayingMoviesDidError(MovieListNotFoundError(message: R.string.localizable.moviesNotFound()))
             })
         )
     }
@@ -80,13 +80,13 @@ extension HomeInteractor {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (results) in
                 guard let movies = results.results else {
-                    self.output?.topRatedMoviesDidError(MovieListNotFoundError(message: "Não há nenhum filme disponível."))
+                    self.output?.topRatedMoviesDidError(MovieListNotFoundError(message: R.string.localizable.moviesNotFound()))
                     return
                 }
                 
                 self.output?.topRatedMoviesDidFetch(movies)
             }, onError: { (error) in
-                self.output?.topRatedMoviesDidError(MovieListNotFoundError(message: "Houve um erro inesperado ao buscar os filmes, tente novamente."))
+                self.output?.topRatedMoviesDidError(MovieListNotFoundError(message: R.string.localizable.moviesNotFound()))
             })
         )
     }
@@ -97,13 +97,13 @@ extension HomeInteractor {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (results) in
                 guard let movies = results.results else {
-                    self.output?.upcomingMoviesDidError(MovieListNotFoundError(message: "Não há nenhum filme disponível."))
+                    self.output?.upcomingMoviesDidError(MovieListNotFoundError(message: R.string.localizable.moviesNotFound()))
                     return
                 }
                 
                 self.output?.upcomingMoviesDidFetch(movies)
             }, onError: { (error) in
-                self.output?.upcomingMoviesDidError(MovieListNotFoundError(message: "Houve um erro inesperado ao buscar os filmes, tente novamente."))
+                self.output?.upcomingMoviesDidError(MovieListNotFoundError(message: R.string.localizable.moviesNotFound()))
             })
         )
     }
