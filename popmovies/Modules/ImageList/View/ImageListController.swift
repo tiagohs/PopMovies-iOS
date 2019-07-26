@@ -129,6 +129,15 @@ extension ImageListController: ImageListViewInterface {
     }
 }
 
+extension ImageListController {
+    
+    func showImages(from images: [Image]) {
+        self.allImages = images
+        
+        self.imageListCollectionView.reloadData()
+    }
+}
+
 // MARK: HeroViewControllerDelegate
 
 extension ImageListController: HeroViewControllerDelegate {

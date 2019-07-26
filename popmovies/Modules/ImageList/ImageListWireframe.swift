@@ -15,7 +15,7 @@ class ImageListWireframe: ImageListWireframaInterface {
     weak var viewController: UIViewController?
     
     func presentImageViewer(for image: Image, _ allImages: [Image], _ movie: Movie?,_ person: Person?, indexPath: IndexPath) {
-        let imageListModule = ImageListWireframe.buildModule(allImages, person: person, movie)
+        let imageListModule = ImageViewerWireframe.buildModule(image, allImages: allImages, indexPath, movie, person)
         
         imageListModule.hero.modalAnimationType = .fade
         self.viewController?.present(imageListModule, animated: true, completion: nil)
@@ -34,6 +34,16 @@ extension ImageListWireframe {
         module.allImages = allImages
         
         presenter.allImages = allImages
+        presenter.person = person
+        presenter.movie = movie
+        
+        return module
+    }
+    
+    static func buildModule(person: Person?, _ movie: Movie?) -> UIViewController {
+        let module = ImageListWireframe.buildModule() as! ImageListController
+        let presenter = module.presenter as! ImageListPresenter
+        
         presenter.person = person
         presenter.movie = movie
         

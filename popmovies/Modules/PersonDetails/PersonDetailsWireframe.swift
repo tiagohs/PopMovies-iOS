@@ -46,7 +46,7 @@ class PersonDetailsWireframe: PersonDetailsWireframsInterface {
     }
     
     func pushToImageList(_ allImages: [Image], _ person: Person) {
-        let imageListModule = ImageListWireframe.buildModule(allImages, person: person, nil)
+        let imageListModule = ImageListWireframe.buildModule(person: person, nil)
         
         imageListModule.hero.modalAnimationType = .fade
         self.viewController?.present(imageListModule, animated: true, completion: nil)

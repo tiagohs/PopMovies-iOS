@@ -35,6 +35,16 @@ extension VideoListWireframe {
         return module
     }
     
+    static func buildModule(_ movie: Movie?, _ person: Person?) -> UIViewController {
+        let module = VideoListWireframe.buildModule() as! VideoListController
+        let presenter = module.presenter as! VideoListPresenter
+        
+        presenter.movie = movie
+        presenter.person = person
+        
+        return module
+    }
+    
     static func buildModule() -> UIViewController {
         let wireframe = VideoListWireframe()
         let view = R.storyboard.videoList.videoListController()

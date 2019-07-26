@@ -35,6 +35,16 @@ extension ImageListPresenter: ImageListPresenterInterface {
     func viewDidLoad() {
         self.view?.setupUI()
         
+        if allImages.isEmpty && self.movie != nil {
+            self.fetchMovieImages()
+            return
+        }
+        
+        if allImages.isEmpty && self.person != nil {
+            self.fetchPersonImages()
+            return
+        }
+        
         self.prepareUI()
     }
     
@@ -52,8 +62,10 @@ extension ImageListPresenter: ImageListPresenterInterface {
 
 extension ImageListPresenter {
     
-    func prepareUI() {
-        let imageQuantity = "\(allImages.count) \(R.string.localizable.imageListTitle())"
+    func prepareUI(_ imagesDTO: ImageResultDTO? = nil) {
+        let imageQuantity = imagesDTO == nil ?
+                        "\(allImages.count) \(R.string.localizable.imageListTitle())" :
+                        "\(imagesDTO!.images.count) \(R.string.localizable.imageListTitle()) / \(imagesDTO!.translations.count) \(R.string.localizable.languages())"
         
         if let movie = self.movie {
             let posterPath = movie.posterPath
@@ -81,8 +93,43 @@ extension ImageListPresenter {
     }
 }
 
+extension ImageListPresenter {
+    
+    func fetchMovieImages() {
+        guard let id = self.movie?.id else {
+            return
+        }
+        
+        self.view?.showActivityIndicator()
+        self.interactor?.fetchImages(fromMovie: id)
+    }
+    
+    func fetchPersonImages() {
+        guard let id = self.movie?.id else {
+            return
+        }
+        
+        self.view?.showActivityIndicator()
+        self.interactor?.fetchImages(fromPerson: id)
+    }
+}
+
 // MARK: ImageListInteractorOutputInterface
 
 extension ImageListPresenter: ImageListInteractorOutputInterface {
     
+    func didImagesFetch(with imagesDTO: ImageResultDTO) {
+        self.allImages = imagesDTO.images
+        
+        self.view?.hideActivityIndicator()
+        
+        self.prepareUI(imagesDTO)
+        self.view?.showImages(from: self.allImages)
+    }
+    
+    func didImagesFetch(with error: DefaultError) {
+        self.view?.hideActivityIndicator()
+        
+        self.view?.onError(message: error.message)
+    }
 }

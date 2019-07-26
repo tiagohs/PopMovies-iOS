@@ -12,6 +12,9 @@ import RxSwift
 protocol VideoListViewInterface: BaseViewInterface {
     var presenter: VideoListPresenterInterface? { get set }
     
+    func bindUI(_ posterPath: String?, _ quantityContent: String, _ title: String?) 
+    
+    func showVideos(with videos: [Video])
 }
 
 protocol VideoListPresenterInterface: BasePresenterInterface {
@@ -21,15 +24,20 @@ protocol VideoListPresenterInterface: BasePresenterInterface {
     var wireframe: VideoListWireframeInterface? { get set }
     
     func didSelectVideo(_ video: Video, indexPath: IndexPath)
+    
+    func fetchVideos(_ movieId: Int?)
 }
 
 protocol VideoListInteractorInputInterface: BaseInteractorInterface {
     var output: VideoListInteractorOutputInterface? { get set }
     
+    func fetchVideos(_ movieId: Int)
 }
 
 protocol VideoListInteractorOutputInterface {
     
+    func didVideosFetch(with videos: VideoResultDTO)
+    func didVideosFetch(with error: Error)
 }
 
 protocol VideoListWireframeInterface: BaseWireframeInterface {

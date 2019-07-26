@@ -16,6 +16,7 @@ protocol ImageListViewInterface: BaseViewInterface {
     var presenter: ImageListPresenterInterface? { get set }
     
     func bindUI(_ posterPath: String?, _ imageQuantity: String, _ title: String)
+    func showImages(from images: [Image])
 }
 
 protocol ImageListPresenterInterface: BasePresenterInterface {
@@ -30,11 +31,14 @@ protocol ImageListPresenterInterface: BasePresenterInterface {
 protocol ImageListInteractorInputInterface: BaseInteractorInterface {
     var output: ImageListInteractorOutputInterface? { get set }
     
-    
+    func fetchImages(fromMovie id: Int)
+    func fetchImages(fromPerson id: Int)
 }
 
 protocol ImageListInteractorOutputInterface {
     
+    func didImagesFetch(with imagesDTO: ImageResultDTO)
+    func didImagesFetch(with error: DefaultError)
 }
 
 protocol ImageListWireframaInterface: BaseWireframeInterface {

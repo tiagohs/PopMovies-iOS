@@ -84,6 +84,12 @@ struct TMDB {
                 return "\(movieDetailsUrl)/similar"
             }
             
+            static func buildTranslationsMoviesUrl(movieId: Int) -> String {
+                let movieDetailsUrl = buidMovieDetailsUrl(movieId: movieId)
+                
+                return "\(movieDetailsUrl)/translations"
+            }
+            
             static func buildSearchParameters(_ query: String, _ region: String = "BR",_ page: Int = 1,_ language: String = "pt_BR") -> [String : String] {
                 return [
                     Parameters.apiKey: API_KEY,
@@ -153,10 +159,31 @@ struct TMDB {
                 ]
             }
             
+            static func buildTranslationsParameters() -> [String : String] {
+                return [
+                    Parameters.apiKey: API_KEY
+                ]
+            }
+            
             static func buildImagesParameters(_ includeImageLanguage: [String],_ language: String?) -> [String : String] {
                 var parameters = [
                     Parameters.apiKey: API_KEY,
                     Parameters.include_image_language: URL.buildParameterListValue(includeImageLanguage)
+                ]
+                
+                if language != nil {
+                    parameters.append(with: [
+                        Parameters.language: language!
+                        ]
+                    )
+                }
+                
+                return parameters
+            }
+            
+            static func buildImagesParameters(_ language: String?) -> [String : String] {
+                var parameters = [
+                    Parameters.apiKey: API_KEY
                 ]
                 
                 if language != nil {
@@ -199,6 +226,24 @@ struct TMDB {
                 return "\(personDetailsUrl)/movie_credits"
             }
             
+            static func buildTranslationsPersonUrl(personId: Int) -> String {
+                let personDetailsUrl = buidPersonDetailsUrl(personId: personId)
+                
+                return "\(personDetailsUrl)/translations"
+            }
+            
+            static func buildImagesUrl(personId: Int) -> String {
+                let personDetailsUrl = buidPersonDetailsUrl(personId: personId)
+                
+                return "\(personDetailsUrl)/images"
+            }
+            
+            static func buildTaggedImagesUrl(personId: Int) -> String {
+                let personDetailsUrl = buidPersonDetailsUrl(personId: personId)
+                
+                return "\(personDetailsUrl)/tagged_images"
+            }
+            
             static func buildPersonDetailsParameters(_ appendToResponse: [String],_ language: String) -> [String : String] {
                 return [
                     Parameters.apiKey: API_KEY,
@@ -206,6 +251,34 @@ struct TMDB {
                     Parameters.append_to_response: URL.buildParameterListValue(appendToResponse)
                 ]
             }
+            
+            static func buildTranslationsParameters() -> [String : String] {
+                return [
+                    Parameters.apiKey: API_KEY
+                ]
+            }
+            
+            static func buildImagesParameters() -> [String : String] {
+                return [
+                    Parameters.apiKey: API_KEY
+                ]
+            }
+            
+            static func buildTaggedImagesParameters(_ language: String?) -> [String : String] {
+                var parameters = [
+                    Parameters.apiKey: API_KEY,
+                ]
+                
+                if language != nil {
+                    parameters.append(with: [
+                        Parameters.language: language!
+                        ]
+                    )
+                }
+                
+                return parameters
+            }
+            
         }
         
         struct GENRES {

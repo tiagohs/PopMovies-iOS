@@ -11,6 +11,7 @@
 "Female"    = "Feminino";
 "Male"      = "Masculino";
 "Unknown"   = "Não definido";
+"Languages"  = "Idiomas";
 
 // MARK: Error Messages
 
@@ -27,6 +28,8 @@
 "LoginFacebookUnknownError" = "Houve um erro ao tentar o login com o facebook.";
 "RegisterUnknownError" = "Houve um erro ao finalizar o registro, tente novamente.";
 "DataManagerMovieSaveError" = "Não foi possível remover o filme.";
+"VideosNotFound" = "Não há nenhum video disponível.";
+"ImagesNotFound" = "Não há nenhuma imagem disponível.";
 
 // MARK: Buttons
 
@@ -109,6 +112,10 @@
 // MARK: ImageList Module
 
 "ImageList:Title" = "Imagens";
+
+// MARK: VideoList Module
+
+"VideoList:Title" = "Videos";
 
 // MARK: PersonDetails Module
 

@@ -49,3 +49,7 @@ class Images: BaseModel {
     }
 }
 
+class ImageResultDTO {
+    var images: [Image] = []
+    var translations: [Translation] = []
+}

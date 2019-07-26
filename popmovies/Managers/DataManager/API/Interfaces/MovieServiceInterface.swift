@@ -15,7 +15,10 @@ protocol MovieServiceInterface {
     func getDetails(movieId: Int, appendToResponse: [String], language: String) -> Observable<Movie>
     
     func getImages(movieId: Int, includeImageLanguage: [String], language: String?) -> Observable<Images>
+    func getAllImages(movieId: Int, language: String) -> Observable<ImageResultDTO>
     func getVideos(movieId: Int, language: String?) -> Observable<Results<Video>>
+    func getAllVideos(movieId: Int, language: String) -> Observable<VideoResultDTO>
+    func getTranslations(movieId: Int) -> Observable<TranslationResults>
     
     func searchMovie(with query: String, page: Int, language: String, region: String) -> Observable<Results<Movie>> 
     

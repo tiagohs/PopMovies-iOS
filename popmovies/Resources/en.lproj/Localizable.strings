@@ -11,6 +11,7 @@
 "Female"    = "Female";
 "Male"      = "Male";
 "Unknown"   = "Unknown";
+"Languages"  = "Languages";
 
 // MARK: Error Messages
 
@@ -20,13 +21,15 @@
 "LoginUnknownError" = "Error during the login.";
 "PersonsNotFound" = "No one person found.";
 "CastOrCrewNotFound" = "No one cast or crew found.";
-"VideoViewerUnknownError" = "An unknown error occured.";
+"UnknownError" = "Houve um erro inesperado.";
 "PersonsDetailsNotFound" = "No informations about this persons was founded.";
 "PersonsImagesNotFound" = "No images from this person was founded.";
 "LoginFacebookCancelled" = "Login with Facebook cancelled.";
 "LoginFacebookUnknownError" = "Error during the login with facebook.";
 "RegisterUnknownError" = "Error during the register, try again.";
 "DataManagerMovieSaveError" = "An error occurred during the save.";
+"VideosNotFound" = "No one video found.";
+"ImagesNotFound" = "No one image found.";
 
 // MARK: Buttons
 
@@ -53,6 +56,7 @@
 
 // MARK: Welcome Module
 
+"Welcome:Title" = "PopMovies";
 "Welcome:Description1" = "Welcome to the best discover movies app, PopMovies.";
 "Welcome:Description2" = "Find and create lists with your favorite movies.";
 
@@ -104,6 +108,10 @@
 // MARK: MovieList Module
 
 "MovieList:Title" = "Movies";
+
+// MARK: VideoList Module
+
+"VideoList:Title" = "Videos";
 
 // MARK: ImageList Module
 

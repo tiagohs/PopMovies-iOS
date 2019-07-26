@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Video List Controller-->
         <scene sceneID="p2u-8J-ZSd">
@@ -18,23 +26,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XPz-Zk-Bls">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d3w-SB-IBx">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                                <connections>
-                                    <outlet property="dataSource" destination="8ra-8S-pJ0" id="44H-0q-pB3"/>
-                                    <outlet property="delegate" destination="8ra-8S-pJ0" id="P2f-e2-rCx"/>
-                                </connections>
-                            </collectionView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IB9-46-Oyo">
-                                <rect key="frame" x="30" y="50" width="35" height="35"/>
+                                <rect key="frame" x="349" y="50" width="35" height="35"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Tlr-dX-dCE"/>
@@ -42,7 +35,7 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                <state key="normal" image="BackIcon">
+                                <state key="normal" image="Close">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -57,14 +50,59 @@
                                     <action selector="hero_dismissViewController" destination="8ra-8S-pJ0" eventType="touchUpInside" id="Jkm-fE-P3K"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toy Story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvv-3f-1t1">
+                                <rect key="frame" x="78" y="48" width="263" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40 videos / 50 Idiomas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bH0-ys-1qj">
+                                <rect key="frame" x="78" y="72" width="146" height="19.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ogg-NS-DLp">
+                                <rect key="frame" x="30" y="50" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="H2k-Wo-LAv"/>
+                                    <constraint firstAttribute="height" constant="40" id="z5p-3M-44i"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XPz-Zk-Bls">
+                                <rect key="frame" x="20" y="111.5" width="374" height="784.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d3w-SB-IBx">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8ra-8S-pJ0" id="44H-0q-pB3"/>
+                                    <outlet property="delegate" destination="8ra-8S-pJ0" id="P2f-e2-rCx"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="XPz-Zk-Bls" firstAttribute="leading" secondItem="9dB-0L-Vdb" secondAttribute="leading" id="2tg-xu-3BB"/>
-                            <constraint firstItem="XPz-Zk-Bls" firstAttribute="top" secondItem="MkU-9M-CLO" secondAttribute="top" id="DML-Gz-lMF"/>
-                            <constraint firstItem="XPz-Zk-Bls" firstAttribute="trailing" secondItem="9dB-0L-Vdb" secondAttribute="trailing" id="Gxt-of-lkR"/>
-                            <constraint firstItem="IB9-46-Oyo" firstAttribute="leading" secondItem="MkU-9M-CLO" secondAttribute="leading" constant="30" id="PsO-zB-rgj"/>
+                            <constraint firstItem="XPz-Zk-Bls" firstAttribute="top" secondItem="bH0-ys-1qj" secondAttribute="bottom" constant="20" id="03G-1A-8PD"/>
+                            <constraint firstItem="9dB-0L-Vdb" firstAttribute="trailing" secondItem="XPz-Zk-Bls" secondAttribute="trailing" constant="20" id="8IB-Al-Xsz"/>
+                            <constraint firstItem="XPz-Zk-Bls" firstAttribute="leading" secondItem="9dB-0L-Vdb" secondAttribute="leading" constant="20" id="D4B-1P-wrc"/>
+                            <constraint firstItem="qvv-3f-1t1" firstAttribute="leading" secondItem="ogg-NS-DLp" secondAttribute="trailing" constant="8" id="DE7-HM-RAs"/>
+                            <constraint firstItem="bH0-ys-1qj" firstAttribute="leading" secondItem="ogg-NS-DLp" secondAttribute="trailing" constant="8" id="PyC-aa-1cd"/>
+                            <constraint firstItem="IB9-46-Oyo" firstAttribute="leading" secondItem="qvv-3f-1t1" secondAttribute="trailing" constant="8" id="Qg5-kN-M7f"/>
                             <constraint firstItem="IB9-46-Oyo" firstAttribute="top" secondItem="MkU-9M-CLO" secondAttribute="top" constant="50" id="Sbw-GS-dK3"/>
+                            <constraint firstItem="ogg-NS-DLp" firstAttribute="leading" secondItem="9dB-0L-Vdb" secondAttribute="leading" constant="30" id="UP8-cb-CuB"/>
+                            <constraint firstItem="qvv-3f-1t1" firstAttribute="top" secondItem="9dB-0L-Vdb" secondAttribute="top" constant="4" id="Yxv-uu-fju"/>
+                            <constraint firstItem="9dB-0L-Vdb" firstAttribute="trailing" secondItem="IB9-46-Oyo" secondAttribute="trailing" constant="30" id="a7R-WX-seV"/>
+                            <constraint firstItem="bH0-ys-1qj" firstAttribute="top" secondItem="qvv-3f-1t1" secondAttribute="bottom" constant="2" id="eaX-Ve-sIS"/>
+                            <constraint firstItem="qvv-3f-1t1" firstAttribute="leading" secondItem="ogg-NS-DLp" secondAttribute="trailing" constant="8" id="f6O-6R-s5b"/>
+                            <constraint firstItem="ogg-NS-DLp" firstAttribute="top" secondItem="MkU-9M-CLO" secondAttribute="top" constant="50" id="j1o-ja-k3s"/>
                             <constraint firstAttribute="bottom" secondItem="XPz-Zk-Bls" secondAttribute="bottom" id="t8O-Wh-E0K"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9dB-0L-Vdb"/>
@@ -74,16 +112,19 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="backButton" destination="IB9-46-Oyo" id="iT1-kc-T7G"/>
+                        <outlet property="nameLabel" destination="qvv-3f-1t1" id="AFD-Vx-epn"/>
+                        <outlet property="posterImage" destination="ogg-NS-DLp" id="n88-1w-Xk4"/>
+                        <outlet property="quantityLabel" destination="bH0-ys-1qj" id="fVj-xB-cpb"/>
                         <outlet property="videoListCollectionView" destination="XPz-Zk-Bls" id="I2H-I3-D2x"/>
                         <outlet property="videoListCollectionViewFlow" destination="d3w-SB-IBx" id="sgu-2H-gvJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXv-Jf-B7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3724" y="-1627"/>
+            <point key="canvasLocation" x="3723.188405797102" y="-1627.2321428571429"/>
         </scene>
     </scenes>
     <resources>
-        <image name="BackIcon" width="30" height="30"/>
+        <image name="Close" width="30" height="30"/>
     </resources>
 </document>

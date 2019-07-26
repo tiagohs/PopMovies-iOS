@@ -20,6 +20,6 @@ class BaseInteractor {
     func add(_ d: Disposable?) {
         if (d == nil) { return }
         
-        disposibles.insert(d!)
+        _ = disposibles.insert(d!)
     }
 }

@@ -35,6 +35,10 @@ extension VideoListPresenter: VideoListPresenterInterface {
     
     func viewDidLoad() {
         self.view?.setupUI()
+        
+        if self.allVideos.isEmpty {
+            self.fetchVideos(movie?.id)
+        }
     }
     
     func viewDidDisappear(_ animated: Bool) {
@@ -56,8 +60,37 @@ extension VideoListPresenter {
     
 }
 
+extension VideoListPresenter {
+    
+    func fetchVideos(_ movieId: Int?) {
+        guard let id = movieId else {
+            self.view?.onError(message: R.string.localizable.unknownError())
+            return
+        }
+        
+        self.view?.showActivityIndicator()
+        self.interactor?.fetchVideos(id)
+    }
+}
+
 // MARK: VideoListInteractorOutputInterface
 
 extension VideoListPresenter: VideoListInteractorOutputInterface {
     
+    func didVideosFetch(with videoResultDTO: VideoResultDTO) {
+        let videoQuantity = videoResultDTO.videos.count
+        let languageQuantity = videoResultDTO.translations.count
+        let quantityContent = "\(String(describing: videoQuantity)) \(R.string.localizable.videoListTitle()) / \(String(describing: languageQuantity)) \(R.string.localizable.languages()) "
+        
+        self.allVideos = videoResultDTO.videos
+        
+        self.view?.hideActivityIndicator()
+        self.view?.bindUI(movie?.posterPath, quantityContent, movie?.title)
+        self.view?.showVideos(with: allVideos)
+    }
+    
+    func didVideosFetch(with error: Error) {
+        self.view?.hideActivityIndicator()
+        self.view?.onError(message: error.localizedDescription)
+    }
 }

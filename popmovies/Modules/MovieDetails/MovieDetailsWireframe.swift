@@ -81,14 +81,14 @@ class MovieDetailsWireframe: MovieDetailsWireframeInterface {
     }
     
     func pushToVideoList(_ allVideos: [Video], _ movie: Movie) {
-        let videoListModule = VideoListWireframe.buildModule(allVideos, movie, nil)
+        let videoListModule = VideoListWireframe.buildModule(movie, nil)
         
         videoListModule.hero.modalAnimationType = .slide(direction: .left)
         self.viewController?.present(videoListModule, animated: true, completion: nil)
     }
     
     func pushToImageList(_ allImages: [Image], _ movie: Movie) {
-        let imageListModule = ImageListWireframe.buildModule(allImages, person: nil, movie)
+        let imageListModule = ImageListWireframe.buildModule(person: nil, movie)
         
         imageListModule.hero.modalAnimationType = .slide(direction: .left)
         self.viewController?.present(imageListModule, animated: true, completion: nil)

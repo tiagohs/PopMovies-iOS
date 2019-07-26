@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 // MARK: ImageListInteractor: BaseInteractor
 
@@ -31,4 +32,43 @@ extension ImageListInteractor: ImageListInteractorInputInterface {
     
     func outputFinished() {}
     
+}
+
+extension ImageListInteractor {
+    
+    func fetchImages(fromMovie id: Int) {
+        var imageFinalDTO: ImageResultDTO?
+        
+        add(self.movieService.getAllImages(movieId: id, language: "pt_BR")
+                        .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+                        .observeOn(MainScheduler.instance)
+                        .subscribe(onNext: { (imageDTO) in
+                            imageFinalDTO = imageDTO
+                        }, onError: { (error) in
+                            self.onError()
+                        }, onCompleted: {
+                            self.output?.didImagesFetch(with: imageFinalDTO!)
+                        })
+        )
+    }
+    
+    func fetchImages(fromPerson id: Int) {
+        var imageFinalDTO: ImageResultDTO?
+        
+        add(self.personService.getAllImages(personId: id, language: "pt_BR")
+                            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+                            .observeOn(MainScheduler.instance)
+                            .subscribe(onNext: { (imageDTO) in
+                                imageFinalDTO = imageDTO
+                            }, onError: { (error) in
+                                self.onError()
+                            }, onCompleted: {
+                                self.output?.didImagesFetch(with: imageFinalDTO!)
+                            })
+        )
+    }
+    
+    private func onError(message: String = R.string.localizable.imagesNotFound()) {
+        self.output?.didImagesFetch(with: DefaultError(message: message))
+    }
 }

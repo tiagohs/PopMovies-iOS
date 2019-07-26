@@ -37,3 +37,8 @@ class VideoResult: BaseModel {
         videoResults <- map["results"]
     }
 }
+
+class VideoResultDTO {
+    var videos: [Video] = []
+    var translations: [Translation] = []
+}
