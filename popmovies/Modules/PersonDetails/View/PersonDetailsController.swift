@@ -39,6 +39,8 @@ class PersonDetailsController: BaseViewController {
     
     var presenter: PersonDetailsPresenterInterface?
     var person: Person?
+    
+    var filmographyList: [FilmographyDTO] = []
 }
 
 // MARK: Lifecycle Methods
@@ -174,6 +176,8 @@ extension PersonDetailsController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.bindFilmography(filmographyList)
+        
         return cell
     }
 }
@@ -188,6 +192,14 @@ extension PersonDetailsController: PersonDetailsViewInterface {
         isFromServer = true
         
         self.tableView.reloadData()
+    }
+    
+    func showPersonFilmography(with filmographyList: [FilmographyDTO]) {
+        self.filmographyList = filmographyList
+        
+        let index = IndexPath(item: 3, section: 0)
+        
+        self.tableView.reloadRows(at: [index], with: .none)
     }
 }
 

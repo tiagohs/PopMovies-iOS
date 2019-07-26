@@ -30,6 +30,63 @@ extension PersonDetailsInteractor: PersonDetailsInteractorInputInterface {
     func outputDidLoad() {}
     
     func outputFinished() {}
+    
+    func buildPersonFilmography(_ person: Person) {
+        add(self.createFilmographyDTO(person)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (listOfFilmographyDTO) in
+                self.output?.personFilmographyBuilded(with: listOfFilmographyDTO)
+            }, onError: { (error) in
+                self.output?.personFilmographyBuilded(with: DefaultError(message: R.string.localizable.unknownError()))
+            })
+        )
+    }
+    
+    private func createFilmographyDTO(_ person: Person) -> Observable<[FilmographyDTO]> {
+        return Observable<[FilmographyDTO]>.create { (observer) -> Disposable in
+            let allCredits = self.mergeAllCredits(person.movieCredits)
+            let creditsByMovie = Dictionary(grouping: allCredits, by: { $0.movieId })
+            let listOfFilmographyDTO = creditsByMovie.map { (dictionary) -> FilmographyDTO in
+                return FilmographyDTO(dictionary)
+            }
+            
+            observer.onNext(listOfFilmographyDTO)
+            observer.onCompleted()
+            
+            return Disposables.create()
+        }
+    }
+    
+    private func mergeAllCredits(_ movieCredits: MovieCredits?) -> [FilmographyMovieItem] {
+        let castItems = movieCredits?.cast?.map({ (creditCast) -> FilmographyMovieItem in
+            let department = "\(R.string.localizable.acting()) (\(String(describing: creditCast.character ?? "")))"
+            let movie = Movie()
+            
+            movie.id = creditCast.id
+            movie.title = creditCast.title
+            movie.posterPath = creditCast.posterPath
+            movie.backdropPath = creditCast.backdropPath
+            movie.releaseDate = creditCast.releaseDate
+            
+            return FilmographyMovieItem(creditCast.id, movie, department)
+        }) ?? []
+        let crewItems = movieCredits?.crew?.map({ (creditCrew) -> FilmographyMovieItem in
+            let department = "\(String(describing: creditCrew.department ?? ""))"
+            let movie = Movie()
+            
+            movie.id = creditCrew.id
+            movie.title = creditCrew.title
+            movie.posterPath = creditCrew.posterPath
+            movie.backdropPath = creditCrew.backdropPath
+            movie.releaseDate = creditCrew.releaseDate
+            
+            return FilmographyMovieItem(creditCrew.id, movie, department)
+        }) ?? []
+        
+        return Array(castItems + crewItems)
+    }
+    
 }
 
 // MARK: HomeInteractorInputInterface - Fetch methods

@@ -592,13 +592,57 @@
                                             <outlet property="knownForCollectionViewViewFlow" destination="uHc-Jz-Iyz" id="F82-CI-NVv"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonDetailsFilmographyCellIdentifier" id="XsF-Lq-r3D" customClass="PersonDetailsFilmographyCell" customModule="popmovies" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonDetailsFilmographyCellIdentifier" rowHeight="567" id="XsF-Lq-r3D" customClass="PersonDetailsFilmographyCell" customModule="popmovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1328" width="414" height="567"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XsF-Lq-r3D" id="QKp-F8-hni">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="567"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filmografia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUH-zL-bKN">
+                                                    <rect key="frame" x="16" y="5" width="382" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="E2V-tw-xbd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="PersonDetails:Filmography"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T2J-11-Alt">
+                                                    <rect key="frame" x="0.0" y="37" width="414" height="529.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="529.5" id="xnO-Y4-pHi"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wus-NU-LeY">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="XsF-Lq-r3D" id="bnD-qZ-nxu"/>
+                                                        <outlet property="delegate" destination="XsF-Lq-r3D" id="eVP-B3-fX0"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="T2J-11-Alt" firstAttribute="leading" secondItem="QKp-F8-hni" secondAttribute="leading" id="4xR-5s-mTW"/>
+                                                <constraint firstAttribute="bottom" secondItem="T2J-11-Alt" secondAttribute="bottom" id="6oP-ce-qa9"/>
+                                                <constraint firstAttribute="trailing" secondItem="CUH-zL-bKN" secondAttribute="trailing" constant="16" id="JwN-mU-7Z8"/>
+                                                <constraint firstItem="CUH-zL-bKN" firstAttribute="leading" secondItem="QKp-F8-hni" secondAttribute="leading" constant="16" id="Tlc-IM-JD7"/>
+                                                <constraint firstAttribute="trailing" secondItem="T2J-11-Alt" secondAttribute="trailing" id="VNw-r6-rSm"/>
+                                                <constraint firstItem="CUH-zL-bKN" firstAttribute="top" secondItem="QKp-F8-hni" secondAttribute="top" constant="5" id="WUU-YR-cJg"/>
+                                                <constraint firstItem="T2J-11-Alt" firstAttribute="top" secondItem="CUH-zL-bKN" secondAttribute="bottom" constant="10" id="t2p-vp-NHe"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="collectionViewView" destination="T2J-11-Alt" id="fSJ-Ud-oks"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -681,7 +725,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4668" y="-952"/>
+            <point key="canvasLocation" x="4666.666666666667" y="-952.23214285714278"/>
         </scene>
     </scenes>
     <resources>

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,29 +22,41 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FilmographyItemCell" customModule="popmovies" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="335" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="335" height="93"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHy-Ix-WBG">
-                    <rect key="frame" x="0.0" y="0.0" width="335" height="60"/>
+                    <rect key="frame" x="0.0" y="0.0" width="335" height="93"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MovieProjectorIcon" translatesAutoresizingMaskIntoConstraints="NO" id="2GB-xY-v79">
-                            <rect key="frame" x="16" y="10" width="40" height="40"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2GB-xY-v79">
+                            <rect key="frame" x="16" y="6.5" width="80" height="80"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="bjS-tD-aCp"/>
-                                <constraint firstAttribute="width" constant="40" id="wzN-O8-two"/>
+                                <constraint firstAttribute="height" constant="80" id="bjS-tD-aCp"/>
+                                <constraint firstAttribute="width" constant="80" id="wzN-O8-two"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbz-QR-IWb">
-                            <rect key="frame" x="66" y="5" width="253" height="25"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toy Story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbz-QR-IWb">
+                            <rect key="frame" x="106" y="8" width="213" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="LH7-Ac-JSx"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yl-2K-6y7">
-                            <rect key="frame" x="66" y="33" width="253" height="20"/>
-                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1998 | The Lion King" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yl-2K-6y7">
+                            <rect key="frame" x="106" y="33" width="213" height="16.5"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="highlightedColor" name="PrimaryColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Atuação (Simba), Produtor, Diretor" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UrI-LH-WLW">
+                            <rect key="frame" x="106" y="55.5" width="213" height="18"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -52,12 +65,17 @@
                     <constraints>
                         <constraint firstItem="6Yl-2K-6y7" firstAttribute="leading" secondItem="2GB-xY-v79" secondAttribute="trailing" constant="10" id="0IA-0y-qFT"/>
                         <constraint firstItem="2GB-xY-v79" firstAttribute="leading" secondItem="RHy-Ix-WBG" secondAttribute="leading" constant="16" id="2IX-dv-3hz"/>
+                        <constraint firstItem="2GB-xY-v79" firstAttribute="top" secondItem="RHy-Ix-WBG" secondAttribute="top" constant="6.5" id="40Y-QZ-OUL"/>
                         <constraint firstAttribute="trailing" secondItem="6Yl-2K-6y7" secondAttribute="trailing" constant="16" id="Dga-0Y-zn8"/>
-                        <constraint firstItem="2GB-xY-v79" firstAttribute="centerY" secondItem="RHy-Ix-WBG" secondAttribute="centerY" id="Fk2-6w-j8x"/>
-                        <constraint firstItem="Zbz-QR-IWb" firstAttribute="top" secondItem="RHy-Ix-WBG" secondAttribute="top" constant="5" id="Kf0-bo-gPj"/>
+                        <constraint firstItem="UrI-LH-WLW" firstAttribute="leading" secondItem="2GB-xY-v79" secondAttribute="trailing" constant="10" id="I3T-c2-iUq"/>
+                        <constraint firstAttribute="trailing" secondItem="UrI-LH-WLW" secondAttribute="trailing" constant="16" id="JhL-3l-K6C"/>
+                        <constraint firstItem="Zbz-QR-IWb" firstAttribute="top" secondItem="RHy-Ix-WBG" secondAttribute="top" constant="8" id="Kf0-bo-gPj"/>
+                        <constraint firstAttribute="height" constant="93" id="OF7-Pi-Xd4"/>
                         <constraint firstItem="Zbz-QR-IWb" firstAttribute="leading" secondItem="2GB-xY-v79" secondAttribute="trailing" constant="10" id="PgU-bE-Syx"/>
+                        <constraint firstAttribute="bottom" secondItem="2GB-xY-v79" secondAttribute="bottom" constant="6.5" id="ZCk-eM-2qY"/>
                         <constraint firstAttribute="trailing" secondItem="Zbz-QR-IWb" secondAttribute="trailing" constant="16" id="btu-ir-rQ5"/>
-                        <constraint firstItem="6Yl-2K-6y7" firstAttribute="top" secondItem="Zbz-QR-IWb" secondAttribute="bottom" constant="3" id="h8D-KM-prV"/>
+                        <constraint firstItem="6Yl-2K-6y7" firstAttribute="top" secondItem="Zbz-QR-IWb" secondAttribute="bottom" id="h8D-KM-prV"/>
+                        <constraint firstItem="UrI-LH-WLW" firstAttribute="top" secondItem="6Yl-2K-6y7" secondAttribute="bottom" constant="6" id="laF-iw-d1W"/>
                     </constraints>
                 </view>
             </subviews>
@@ -70,10 +88,18 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="16.666666666666668" y="342.85714285714283"/>
+            <connections>
+                <outlet property="depatmentsView" destination="UrI-LH-WLW" id="z7q-Ix-OOM"/>
+                <outlet property="posterMovieView" destination="2GB-xY-v79" id="3Ey-Vo-eE4"/>
+                <outlet property="subtitleView" destination="6Yl-2K-6y7" id="tNP-xb-vA9"/>
+                <outlet property="titleView" destination="Zbz-QR-IWb" id="HwX-l2-np0"/>
+            </connections>
+            <point key="canvasLocation" x="16.666666666666668" y="345.20089285714283"/>
         </view>
     </objects>
     <resources>
-        <image name="MovieProjectorIcon" width="30" height="30"/>
+        <namedColor name="PrimaryColor">
+            <color red="0.40392156862745099" green="0.22745098039215686" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

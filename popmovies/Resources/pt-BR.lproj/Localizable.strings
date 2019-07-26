@@ -12,6 +12,7 @@
 "Male"      = "Masculino";
 "Unknown"   = "Não definido";
 "Languages"  = "Idiomas";
+"Acting"     = "Atuação";
 
 // MARK: Error Messages
 
@@ -126,6 +127,7 @@
 "PersonDetails:Birthday" = "Nascimento";
 "PersonDetails:KnownFor" = "Conhecido por";
 "PersonDetails:PosterWallpaper" = "Posters e Wallpapers";
+"PersonDetails:Filmography" = "Filmografia";
 
 // MARK: MovieDetails Module
 

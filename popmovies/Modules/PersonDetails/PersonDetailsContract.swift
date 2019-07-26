@@ -14,6 +14,7 @@ protocol PersonDetailsViewInterface: BaseViewInterface {
     var presenter: PersonDetailsPresenterInterface? { get set }
 
     func showPerson(with person: Person)
+    func showPersonFilmography(with filmographyList: [FilmographyDTO])
 }
 
 protocol PersonDetailsPresenterInterface: BasePresenterInterface {
@@ -35,13 +36,15 @@ protocol PersonDetailsInteractorInputInterface: BaseInteractorInterface {
     var output: PersonDetailsInteractorOutputInterface? { get set }
 
     func fetchPersonDetails(_ personId: Int)
+    func buildPersonFilmography(_ person: Person)
 }
 
 protocol PersonDetailsInteractorOutputInterface {
     
     func personDetailsDidFetch(_ person: Person)
-    
     func personDetailsDidError(_ error: DefaultError)
+    func personFilmographyBuilded(with filmographyMovies: [FilmographyDTO])
+    func personFilmographyBuilded(with error: DefaultError)
 }
 
 protocol PersonDetailsWireframsInterface: BaseWireframeInterface {

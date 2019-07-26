@@ -60,6 +60,14 @@ extension PersonDetailsPresenter {
         self.interactor?.fetchPersonDetails(personId)
     }
     
+    func buildPersonFilmography() {
+        guard let person = self.person else {
+            return
+        }
+        
+        self.interactor?.buildPersonFilmography(person)
+    }
+    
 }
 
 // MARK: PersonDetailsPresenter - User click methods
@@ -110,10 +118,23 @@ extension PersonDetailsPresenter: PersonDetailsInteractorOutputInterface {
         self.person = person
         
         self.view?.showPerson(with: person)
+        
+        self.buildPersonFilmography()
     }
     
     func personDetailsDidError(_ error: DefaultError) {
         self.view?.onError(message: error.message)
     }
+    
+    func personFilmographyBuilded(with filmographyMovies: [FilmographyDTO]) {
+        self.view?.showPersonFilmography(with: filmographyMovies)
+    }
+    
+    func personFilmographyBuilded(with error: DefaultError) {
+        self.view?.onError(message: error.message)
+    }
+}
+
+extension PersonDetailsPresenter {
     
 }
