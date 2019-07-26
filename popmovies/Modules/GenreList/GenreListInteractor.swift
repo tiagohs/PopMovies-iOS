@@ -41,9 +41,7 @@ extension GenreListIntractor: GenreListInteractorInputInterface {
 extension GenreListIntractor {
     
     func fetchGenres() {
-        let language = "pt_BR"
-        
-        add(service.getGenres(language: language)
+        add(service.getGenres(language: Locale.getCurrentAppLangAndRegion())
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (genres) in

@@ -50,6 +50,11 @@ struct TMDB {
         static let images                   = "images"
         static let movie_credits            = "movie_credits"
         static let external_ids             = "external_ids"
+        static let videos                   = "videos"
+        static let keywords                 = "keywords"
+        static let releases                 = "releases"
+        static let similar_movies           = "similar_movies"
+        static let credits                  = "credits"
     }
     
     struct URL {
@@ -90,7 +95,7 @@ struct TMDB {
                 return "\(movieDetailsUrl)/translations"
             }
             
-            static func buildSearchParameters(_ query: String, _ region: String = "BR",_ page: Int = 1,_ language: String = "pt_BR") -> [String : String] {
+            static func buildSearchParameters(_ query: String, _ region: String = Locale.getCurrentAppRegion(),_ page: Int = 1,_ language: String = Locale.getCurrentAppLangAndRegion()) -> [String : String] {
                 return [
                     Parameters.apiKey: API_KEY,
                     Parameters.language: language,
@@ -100,7 +105,7 @@ struct TMDB {
                 ]
             }
             
-            static func buildMovieListParameters(_ region: String = "BR",_ page: Int = 1,_ language: String = "pt_BR") -> [String : String] {
+            static func buildMovieListParameters(_ region: String = Locale.getCurrentAppRegion(),_ page: Int = 1,_ language: String = Locale.getCurrentAppLangAndRegion()) -> [String : String] {
                 return [
                     Parameters.apiKey: API_KEY,
                     Parameters.language: language,
@@ -109,7 +114,7 @@ struct TMDB {
                 ]
             }
             
-            static func buildMovieDiscoverParameters(_ discoverModel: DiscoverMovie,_ page: Int = 1, _ language: String = "pt_BR") -> [ String : String ] {
+            static func buildMovieDiscoverParameters(_ discoverModel: DiscoverMovie,_ page: Int = 1, _ language: String = Locale.getCurrentAppLangAndRegion()) -> [ String : String ] {
                 var parameters = [
                     Parameters.apiKey: API_KEY,
                     Parameters.language: language,
@@ -151,7 +156,7 @@ struct TMDB {
                 return parameters
             }
             
-            static func buildMovieDetailsParameters(_ appendToResponse: [String],_ language: String) -> [String : String] {
+            static func buildMovieDetailsParameters(_ appendToResponse: [String],_ language: String = Locale.getCurrentAppLangAndRegion()) -> [String : String] {
                 return [
                     Parameters.apiKey: API_KEY,
                     Parameters.language: language,
@@ -165,7 +170,7 @@ struct TMDB {
                 ]
             }
             
-            static func buildImagesParameters(_ includeImageLanguage: [String],_ language: String?) -> [String : String] {
+            static func buildImagesParameters(_ includeImageLanguage: [String],_ language: String? = Locale.getCurrentAppLangAndRegion()) -> [String : String] {
                 var parameters = [
                     Parameters.apiKey: API_KEY,
                     Parameters.include_image_language: URL.buildParameterListValue(includeImageLanguage)
@@ -181,7 +186,7 @@ struct TMDB {
                 return parameters
             }
             
-            static func buildImagesParameters(_ language: String?) -> [String : String] {
+            static func buildImagesParameters(_ language: String? = Locale.getCurrentAppLangAndRegion()) -> [String : String] {
                 var parameters = [
                     Parameters.apiKey: API_KEY
                 ]
@@ -196,7 +201,7 @@ struct TMDB {
                 return parameters
             }
             
-            static func buildVideosParameters(_ language: String?) -> [String : String] {
+            static func buildVideosParameters(_ language: String? = Locale.getCurrentAppLangAndRegion()) -> [String : String] {
                 var parameters = [
                     Parameters.apiKey: API_KEY,
                 ]
@@ -244,7 +249,7 @@ struct TMDB {
                 return "\(personDetailsUrl)/tagged_images"
             }
             
-            static func buildPersonDetailsParameters(_ appendToResponse: [String],_ language: String) -> [String : String] {
+            static func buildPersonDetailsParameters(_ appendToResponse: [String],_ language: String = Locale.getCurrentAppLangAndRegion()) -> [String : String] {
                 return [
                     Parameters.apiKey: API_KEY,
                     Parameters.language: language,
@@ -264,7 +269,7 @@ struct TMDB {
                 ]
             }
             
-            static func buildTaggedImagesParameters(_ language: String?) -> [String : String] {
+            static func buildTaggedImagesParameters(_ language: String? = Locale.getCurrentAppLangAndRegion()) -> [String : String] {
                 var parameters = [
                     Parameters.apiKey: API_KEY,
                 ]

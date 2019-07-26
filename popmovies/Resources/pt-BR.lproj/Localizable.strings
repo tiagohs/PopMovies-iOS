@@ -31,6 +31,7 @@
 "DataManagerMovieSaveError" = "Não foi possível remover o filme.";
 "VideosNotFound" = "Não há nenhum video disponível.";
 "ImagesNotFound" = "Não há nenhuma imagem disponível.";
+"WeekUnknownError" = "Erro ao buscar os filmes na semana selecionada.";
 
 // MARK: Buttons
 

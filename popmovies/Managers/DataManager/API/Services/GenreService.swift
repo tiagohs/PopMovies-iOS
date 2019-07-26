@@ -14,7 +14,7 @@ import RxAlamofire
 
 class GenreService: GenreServiceInterface {
     
-    func getGenres(language: String) -> Observable<[Genre]> {
+    func getGenres(language: String = Locale.getCurrentAppLangAndRegion()) -> Observable<[Genre]> {
         let url = TMDB.URL.GENRES.GENRES_LIST_URL
         let parameters = TMDB.URL.GENRES.buildPersonDetailsParameters(language)
         
@@ -26,7 +26,7 @@ class GenreService: GenreServiceInterface {
     
     func getMoviesByGenre(genreId: Int, page: Int, language: String) -> Observable<Results<Movie>> {
         let url = TMDB.URL.GENRES.buildMovieListByGenreUrl(genreId)
-        let parameters = TMDB.URL.GENRES.buildMovieListByGenreParameters("BR", page, language)
+        let parameters = TMDB.URL.GENRES.buildMovieListByGenreParameters(Locale.getCurrentAppRegion(), page, language)
         
         return requestJSON(.get, url, parameters: parameters)
             .debug()

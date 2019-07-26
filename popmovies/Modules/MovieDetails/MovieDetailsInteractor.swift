@@ -47,8 +47,15 @@ extension MovieDetailsInteractor {
             return
         }
 
-        let languages = "en,pt_BR,\(String(describing: movie.originalLanguage)),null"
-        let appendToResponse = ["videos", "images", "keywords", "releases", "similar_movies", "credits"]
+        let languages = "\(Locale.getCurrentAppLangAndRegion()),\(String(describing: movie.originalLanguage)),en,null"
+        let appendToResponse = [
+            TMDB.Parameters.videos,
+            TMDB.Parameters.images,
+            TMDB.Parameters.keywords,
+            TMDB.Parameters.releases,
+            TMDB.Parameters.similar_movies,
+            TMDB.Parameters.credits
+        ]
         
         add(movieService.getDetails(movieId: movieId, appendToResponse: appendToResponse, language: languages)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
@@ -62,7 +69,7 @@ extension MovieDetailsInteractor {
                 
                 self.fetchMovieRankings(imdbId: movieResult.imdbID)
             }, onError: { (error) in
-                self.output?.movieDetailsDidError(DefaultError(message: "Houve um erro ao buscar mais informações sobre esse filme"))
+                self.output?.movieDetailsDidError(DefaultError(message: R.string.localizable.moviesFetchUnknownError()))
             })
         )
     }
@@ -78,7 +85,7 @@ extension MovieDetailsInteractor {
             .subscribe(onNext: { (movie) in
                 self.output?.movieRankingsDidFetch(movie)
             }, onError: { (error) in
-                self.output?.movieRankingsDidFetch(DefaultError(message: "Houve um erro ao buscar mais informações sobre esse filme"))
+                self.output?.movieRankingsDidFetch(DefaultError(message: R.string.localizable.moviesFetchUnknownError()))
             })
         )
     }

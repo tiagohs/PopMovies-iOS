@@ -93,7 +93,7 @@ class Person: BaseModel {
             
             return image
         }) ?? []
-        let profileImages = images?.profile ?? []
+        let profileImages = images?.profiles ?? []
         
         return Array(Set(taggedImages + profileImages))
     }

@@ -36,7 +36,7 @@ extension VideoListInteractor {
     func fetchVideos(_ movieId: Int) {
         var videoDTOFinal: VideoResultDTO?
         
-        add(movieService.getAllVideos(movieId: movieId, language: "pt_BR")
+        add(movieService.getAllVideos(movieId: movieId, language: Locale.getCurrentAppLangAndRegion())
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (videoDTO) in

@@ -34,6 +34,7 @@ extension ImageListPresenter: ImageListPresenterInterface {
     
     func viewDidLoad() {
         self.view?.setupUI()
+        self.prepareUI()
         
         if allImages.isEmpty && self.movie != nil {
             self.fetchMovieImages()
@@ -45,7 +46,6 @@ extension ImageListPresenter: ImageListPresenterInterface {
             return
         }
         
-        self.prepareUI()
     }
     
     func viewDidDisappear(_ animated: Bool) {
@@ -105,7 +105,7 @@ extension ImageListPresenter {
     }
     
     func fetchPersonImages() {
-        guard let id = self.movie?.id else {
+        guard let id = self.person?.id else {
             return
         }
         

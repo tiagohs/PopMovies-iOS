@@ -45,13 +45,13 @@ extension WeekInteractor {
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { (moviesResult) in
                         guard let movies = moviesResult.results else {
-                            self.output?.moviesFromCurrentWeekDidError(DefaultError(message: "Erro ao buscar os filmes na semana selecionada."))
+                            self.output?.moviesFromCurrentWeekDidError(DefaultError(message: R.string.localizable.weekUnknownError()))
                             return
                         }
                         
                         self.output?.moviesFromCurrentWeekDidFetch(movies)
                     }, onError: { (error) in
-                        self.output?.moviesFromCurrentWeekDidError(DefaultError(message: "Erro ao buscar os filmes na semana selecionada."))
+                        self.output?.moviesFromCurrentWeekDidError(DefaultError(message: R.string.localizable.weekUnknownError()))
                     })
         )
     }

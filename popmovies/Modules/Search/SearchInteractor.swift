@@ -38,7 +38,7 @@ extension SearchInteractor: SearchInteractorInputInterface {
 extension SearchInteractor {
     
     func searchMovie(with query: String, page: Int) {
-        add(movieService.searchMovie(with: query, page: page, language: "pt_BR", region: "BR")
+        add(movieService.searchMovie(with: query, page: page, region: Locale.getCurrentAppRegion())
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (moviesResult) in

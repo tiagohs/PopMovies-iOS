@@ -41,7 +41,7 @@ extension HomeInteractor: HomeInteractorInputInterface {
 extension HomeInteractor {
     
     func fetchPopularMovies() {
-        add(movieService.getPopularMovies(page: 1, region: "BR")
+        add(movieService.getPopularMovies(page: 1, region: Locale.getCurrentAppRegion())
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (results) in
@@ -58,7 +58,7 @@ extension HomeInteractor {
     }
     
     func fetchNowPlayingMovies() {
-        add(movieService.getNowPlaying(page: 1, region: "BR")
+        add(movieService.getNowPlaying(page: 1, region: Locale.getCurrentAppRegion())
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (results) in
@@ -75,7 +75,7 @@ extension HomeInteractor {
     }
     
     func fetchTopRatedMovies() {
-        add(movieService.getTopRated(page: 1, region: "BR")
+        add(movieService.getTopRated(page: 1, region: Locale.getCurrentAppRegion())
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (results) in
@@ -92,7 +92,7 @@ extension HomeInteractor {
     }
     
     func fetchUpcomingMovies() {
-        add(movieService.getUpcoming(page: 1, region: "US")
+        add(movieService.getUpcoming(page: 1, region: Locale.getCurrentAppRegion())
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (results) in

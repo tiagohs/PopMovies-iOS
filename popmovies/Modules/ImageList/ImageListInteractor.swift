@@ -39,7 +39,7 @@ extension ImageListInteractor {
     func fetchImages(fromMovie id: Int) {
         var imageFinalDTO: ImageResultDTO?
         
-        add(self.movieService.getAllImages(movieId: id, language: "pt_BR")
+        add(self.movieService.getAllImages(movieId: id, language: Locale.getCurrentAppLangAndRegion())
                         .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
                         .observeOn(MainScheduler.instance)
                         .subscribe(onNext: { (imageDTO) in
@@ -55,7 +55,7 @@ extension ImageListInteractor {
     func fetchImages(fromPerson id: Int) {
         var imageFinalDTO: ImageResultDTO?
         
-        add(self.personService.getAllImages(personId: id, language: "pt_BR")
+        add(self.personService.getAllImages(personId: id, language: Locale.getCurrentAppLangAndRegion())
                             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
                             .observeOn(MainScheduler.instance)
                             .subscribe(onNext: { (imageDTO) in

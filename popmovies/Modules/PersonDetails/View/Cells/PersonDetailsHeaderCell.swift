@@ -50,7 +50,7 @@ extension PersonDetailsHeaderCell {
             
             if let taggedImages = person.taggedImages?.results, taggedImages.count > 0 {
                 backdropPath = taggedImages[0].filePath
-            } else if let profileImages = person.images?.profile, profileImages.count > 0 {
+            } else if let profileImages = person.images?.profiles, profileImages.count > 0 {
                 backdropPath = profileImages[0].filePath
             } else {
                 backdropPath = person.profilePath

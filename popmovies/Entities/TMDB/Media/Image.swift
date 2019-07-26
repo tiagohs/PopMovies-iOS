@@ -40,12 +40,22 @@ class Image: BaseModel, Hashable {
 class Images: BaseModel {
     var backdrops : [Image]?
     var posters : [Image]?
-    var profile : [Image]?
+    var profiles : [Image]?
     
     override func mapping(map: Map) {
         backdrops       <- map["backdrops"]
         posters         <- map["posters"]
-        profile         <- map["profile"]
+        profiles         <- map["profiles"]
+    }
+}
+
+class ImageResults: BaseModel {
+    var id: Int?
+    var profiles: [Image]?
+    
+    override func mapping(map: Map) {
+        id              <- map["id"]
+        profiles         <- map["profiles"]
     }
 }
 

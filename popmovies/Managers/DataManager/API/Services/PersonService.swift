@@ -30,13 +30,13 @@ class PersonService: PersonServiceInterface {
             .mapObject(type: Results<Person>.self)
     }
     
-    func getImages(personId: Int) -> Observable<Results<Image>> {
+    func getImages(personId: Int) -> Observable<ImageResults> {
         let url = TMDB.URL.PERSON.buildImagesUrl(personId: personId)
         let parameters = TMDB.URL.PERSON.buildImagesParameters()
         
         return requestJSON(.get, url, parameters: parameters)
             .debug()
-            .mapObject(type: Results<Image>.self)
+            .mapObject(type: ImageResults.self)
     }
     
     func getTaggedImages(_ personId: Int, language: String) -> Observable<TaggedImages> {
@@ -66,11 +66,13 @@ class PersonService: PersonServiceInterface {
         return
             getImages(personId: personId)
                 .flatMap({ (imageResult) -> Observable<TranslationResults> in
-                    imageResultDTO.images += imageResult.results ?? []
+                    imageResultDTO.images += imageResult.profiles ?? []
                     
                     return self.getTranslations(personId)
                 })
                 .concatMap({ (translationResult) -> Observable<TaggedImages> in
+                    imageResultDTO.translations = translationResult.translationList ?? []
+                    
                     let translationDefault = Translation()
                     translationDefault.iso_639_1 = "null"
                     
@@ -82,7 +84,7 @@ class PersonService: PersonServiceInterface {
                                         
                                         return self.getTaggedImages(personId, language: language)
                                                     .do(onNext: { (taggedImages) in
-                                                        imageResultDTO.images += self.mergeImages(taggedImages)
+                                                        imageResultDTO.images = Array(Set(imageResultDTO.images + self.mergeImages(taggedImages)))
                                                     })
                                     })
                     })

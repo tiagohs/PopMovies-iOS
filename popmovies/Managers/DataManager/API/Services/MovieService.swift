@@ -23,7 +23,7 @@ class MovieService: MovieServiceInterface {
             .mapObject(type: MovieOMDB.self)
     }
     
-    func getDetails(movieId: Int, appendToResponse: [String], language: String = "pt_BR") -> Observable<Movie> {
+    func getDetails(movieId: Int, appendToResponse: [String], language: String = Locale.getCurrentAppLangAndRegion()) -> Observable<Movie> {
         let url = TMDB.URL.MOVIES.buidMovieDetailsUrl(movieId: movieId)
         let parameters = TMDB.URL.MOVIES.buildMovieDetailsParameters(appendToResponse, language)
         
@@ -136,9 +136,9 @@ class MovieService: MovieServiceInterface {
             .mapObject(type: TranslationResults.self)
     }
     
-    func searchMovie(with query: String, page: Int, language: String, region: String = "BR") -> Observable<Results<Movie>> {
+    func searchMovie(with query: String, page: Int, region: String = Locale.getCurrentAppRegion()) -> Observable<Results<Movie>> {
         let url = TMDB.URL.MOVIES.SEARCH_MOVIES_URL
-        let parameters = TMDB.URL.MOVIES.buildSearchParameters(query, region, page, language)
+        let parameters = TMDB.URL.MOVIES.buildSearchParameters(query, region, page)
         
         return requestJSON(.get, url, parameters: parameters)
             .debug()
@@ -154,31 +154,31 @@ class MovieService: MovieServiceInterface {
             .mapObject(type: Results<Movie>.self)
     }
     
-    func getSimilarMovies(movieId: Int, page: Int, region: String = "BR") -> Observable<Results<Movie>> {
+    func getSimilarMovies(movieId: Int, page: Int, region: String = Locale.getCurrentAppRegion()) -> Observable<Results<Movie>> {
         let url = TMDB.URL.MOVIES.buildSimilarMoviesUrl(movieId: movieId)
         
         return buildMovieList(url: url, region: region, page: page)
     }
     
-    func getNowPlaying(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
+    func getNowPlaying(page: Int, region: String = Locale.getCurrentAppRegion()) -> Observable<Results<Movie>> {
         let url = TMDB.URL.MOVIES.NOW_PLAYING_MOVIES_URL
         
         return buildMovieList(url: url, region: region, page: page)
     }
     
-    func getTopRated(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
+    func getTopRated(page: Int, region: String = Locale.getCurrentAppRegion()) -> Observable<Results<Movie>> {
         let url = TMDB.URL.MOVIES.TOP_RATED_MOVIES_URL
         
         return buildMovieList(url: url, region: region, page: page)
     }
     
-    func getUpcoming(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
+    func getUpcoming(page: Int, region: String = Locale.getCurrentAppRegion()) -> Observable<Results<Movie>> {
         let url = TMDB.URL.MOVIES.UPCOMING_MOVIES_URL
         
         return buildMovieList(url: url, region: region, page: page)
     }
     
-    func getPopularMovies(page: Int, region: String = "BR") -> Observable<Results<Movie>> {
+    func getPopularMovies(page: Int, region: String = Locale.getCurrentAppRegion()) -> Observable<Results<Movie>> {
         let url = TMDB.URL.MOVIES.POPULAR_MOVIES_URL
         
         return buildMovieList(url: url, region: region, page: page)

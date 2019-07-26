@@ -22,7 +22,7 @@
 "LoginUnknownError" = "Error during the login.";
 "PersonsNotFound" = "No one person found.";
 "CastOrCrewNotFound" = "No one cast or crew found.";
-"UnknownError" = "Houve um erro inesperado.";
+"UnknownError" = "An unknown error occurred.";
 "PersonsDetailsNotFound" = "No informations about this persons was founded.";
 "PersonsImagesNotFound" = "No images from this person was founded.";
 "LoginFacebookCancelled" = "Login with Facebook cancelled.";
@@ -31,6 +31,7 @@
 "DataManagerMovieSaveError" = "An error occurred during the save.";
 "VideosNotFound" = "No one video found.";
 "ImagesNotFound" = "No one image found.";
+"WeekUnknownError" = "Error to get the current week movies.";
 
 // MARK: Buttons
 
