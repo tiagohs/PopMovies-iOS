@@ -12,6 +12,7 @@ protocol WeekViewInterface: BaseViewInterface {
     var presenter: WeekPresenterInterface? { get set }
         
     func showMovies(_ movies: [Movie])
+    func updateDates(_ startDate: Date, _ endDate: Date)
     
     func formatDates(_ startDateFormat: String, _ endDateFormat: String, _ monthAndYear : String)
 }
@@ -22,9 +23,9 @@ protocol WeekPresenterInterface: BasePresenterInterface {
     var interactor: WeekInteractorInputInterface? { get set }
     var wireframe: WeekWireframeInterface? { get set }
     
-    func fetchMoviesFromCurrentWeek(startDate: Date, endDate: Date)
+    func fetchMoviesFromCurrentWeek(startDate: Date, endDate: Date, _ locale: LocaleDTO?)
     
-    func didSelectNewDate(_ startDate: Date, _ endDate: Date)
+    func didSelectNewDate(_ startDate: Date, _ endDate: Date, _ locale: LocaleDTO?)
     func didSelectDateFromCalendarClicked()
     func didSelectMovie(_ movie: Movie)
     func didNextClicked()
@@ -34,7 +35,7 @@ protocol WeekPresenterInterface: BasePresenterInterface {
 protocol WeekInteractorInputInterface: BaseInteractorInterface {
     var output: WeekInteractorOutputInterface? { get set }
     
-    func fetchMoviesFromCurrentWeek(discoverModel: DiscoverMovie, page: Int)
+    func fetchMoviesFromCurrentWeek(discoverModel: DiscoverMovie, page: Int, language: LocaleDTO)
 }
 
 protocol WeekInteractorOutputInterface {

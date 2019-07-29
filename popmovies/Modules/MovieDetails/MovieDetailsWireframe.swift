@@ -71,7 +71,7 @@ class MovieDetailsWireframe: MovieDetailsWireframeInterface {
         }
         
         let url = TMDB.URL.GENRES.buildMovieListByGenreUrl(id)
-        let parameters = TMDB.URL.GENRES.buildMovieListByGenreParameters("BR", 1, "pt_BR")
+        let parameters = TMDB.URL.GENRES.buildMovieListByGenreParameters(Locale.getCurrentAppRegion(), 1, Locale.getCurrentAppLangAndRegion())
         let title = genre.name ?? R.string.localizable.movieListTitle()
         
         let movieListModule = MovieListWireframe.buildModuleFromUINavigation(url: url, parameters: parameters, title: title)

@@ -39,8 +39,10 @@ extension WeekInteractor: WeekInteractorInputInterface {
 
 extension WeekInteractor {
     
-    func fetchMoviesFromCurrentWeek(discoverModel: DiscoverMovie, page: Int) {
-        add(movieService.getMovieDiscover(page: page, discoverMovie: discoverModel)
+    func fetchMoviesFromCurrentWeek(discoverModel: DiscoverMovie, page: Int, language: LocaleDTO) {
+        let languageFormat = Locale.getCurrentAppLangAndRegion()
+        
+        add(movieService.getMovieDiscover(page: page, discoverMovie: discoverModel, language: languageFormat)
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { (moviesResult) in

@@ -41,6 +41,8 @@
 "Button:LoginGoogle" = "Login with Google";
 "Button:Register" = "Register";
 "Button:SeeAll" = "See all";
+"Button:Cancel" = "Cancel";
+"Button:Done" = "Done";
 
 // MARK: TextFields
 

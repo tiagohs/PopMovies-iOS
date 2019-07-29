@@ -20,6 +20,7 @@ class WeekPresenter {
     
     var startDate: Date?
     var endDate: Date?
+    var locale: LocaleDTO?
     
     init(view: WeekViewInterface?) {
         self.view = view
@@ -37,10 +38,13 @@ extension WeekPresenter: WeekPresenterInterface {
         self.view?.setupUI()
         startDate = today.startOfWeek
         endDate = today.endOfWeek
+        locale = Locale.getCurrentAppLocale()
         
         if  let startDate = startDate,
-            let endDate = endDate {
-            didSelectNewDate(startDate, endDate)
+            let endDate = endDate,
+            let locale = self.locale {
+            self.view?.updateDates(startDate, endDate)
+            didSelectNewDate(startDate, endDate, locale)
         }
         
     }
@@ -59,16 +63,16 @@ extension WeekPresenter: WeekPresenterInterface {
 
 extension WeekPresenter {
     
-    func fetchMoviesFromCurrentWeek(startDate: Date, endDate: Date) {
+    func fetchMoviesFromCurrentWeek(startDate: Date, endDate: Date, _ locale: LocaleDTO?) {
         let discoverModel = DiscoverMovie()
         
         discoverModel.withReleaseType = "2|3"
         discoverModel.releaseDateGte = startDate.formatDate(pattner: "yyyy-MM-dd")
         discoverModel.releaseDateLte = endDate.formatDate(pattner: "yyyy-MM-dd")
-        discoverModel.region = "US"
+        discoverModel.region = locale?.isoCountry
         discoverModel.appendToResponse = ["credits"]
         
-        interactor?.fetchMoviesFromCurrentWeek(discoverModel: discoverModel, page: 1)
+        interactor?.fetchMoviesFromCurrentWeek(discoverModel: discoverModel, page: 1, language: locale!)
     }
     
 }
@@ -98,23 +102,26 @@ extension WeekPresenter {
         if  let startDate = startDate,
             let endDate = endDate,
             let newStartDate = startDate.dateFrom(numberOfDays: numberOfDates),
-            let newEndDate = endDate.dateFrom(numberOfDays: numberOfDates){
+            let newEndDate = endDate.dateFrom(numberOfDays: numberOfDates) {
             
-            didSelectNewDate(newStartDate, newEndDate)
+            self.view?.updateDates(startDate, endDate)
+            didSelectNewDate(newStartDate, newEndDate, self.locale)
         }
     }
     
-    func didSelectNewDate(_ startDate: Date, _ endDate: Date) {
+    func didSelectNewDate(_ startDate: Date, _ endDate: Date, _ locale: LocaleDTO?) {
+        self.locale = locale
         self.startDate = startDate
         self.endDate = endDate
         
         let startDateFormat = startDate.formatDate(pattner: "dd MMMM")
         let endDateFormat = endDate.formatDate(pattner: "dd MMMM")
         let monthAndYear = startDate.formatDate(pattner: "MMMM yyyy")
+        let subtitleFormat = "\(monthAndYear) - \(self.locale!.displayName)"
         
-        self.view?.formatDates(startDateFormat, endDateFormat, monthAndYear)
+        self.view?.formatDates(startDateFormat, endDateFormat, subtitleFormat)
         self.view?.showActivityIndicator()
-        self.fetchMoviesFromCurrentWeek(startDate: startDate, endDate: endDate)
+        self.fetchMoviesFromCurrentWeek(startDate: startDate, endDate: endDate, locale)
     }
 }
 

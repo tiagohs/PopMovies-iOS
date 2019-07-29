@@ -22,7 +22,7 @@ protocol MovieServiceInterface {
     
     func searchMovie(with query: String, page: Int, region: String) -> Observable<Results<Movie>> 
     
-    func getMovieDiscover(page: Int, discoverMovie: DiscoverMovie) -> Observable<Results<Movie>>
+    func getMovieDiscover(page: Int, discoverMovie: DiscoverMovie, language: String) -> Observable<Results<Movie>>
     func getPopularMovies(page: Int, region: String) -> Observable<Results<Movie>>
     func getNowPlaying(page: Int, region: String) -> Observable<Results<Movie>>
     func getTopRated(page: Int, region: String) -> Observable<Results<Movie>>

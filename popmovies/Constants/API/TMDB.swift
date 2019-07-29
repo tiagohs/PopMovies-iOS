@@ -301,7 +301,7 @@ struct TMDB {
                 ]
             }
             
-            static func buildMovieListByGenreParameters(_ region: String = "BR",_ page: Int = 1,_ language: String = "pt_BR") -> [ String : String ] {
+            static func buildMovieListByGenreParameters(_ region: String = Locale.getCurrentAppRegion(),_ page: Int = 1,_ language: String = Locale.getCurrentAppLangAndRegion()) -> [ String : String ] {
                 return MOVIES.buildMovieListParameters(region, page, language)
             }
         }

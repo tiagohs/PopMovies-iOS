@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +19,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Week-->
+        <!--Title-->
         <scene sceneID="7zs-Hb-mLX">
             <objects>
                 <viewController storyboardIdentifier="WeekController" id="6Wb-S2-HlG" customClass="WeekController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
@@ -93,35 +94,91 @@
                                     <outlet property="delegate" destination="6Wb-S2-HlG" id="xdF-UN-KvD"/>
                                 </connections>
                             </collectionView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DeO-sC-PpI">
+                                <rect key="frame" x="0.0" y="465" width="414" height="348"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29d-Wb-P2A">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="304"/>
+                                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" name="PrimaryDarkColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="6Wb-S2-HlG" id="5Pf-w8-yfi"/>
+                                            <outlet property="delegate" destination="6Wb-S2-HlG" id="whK-Vi-XG5"/>
+                                        </connections>
+                                    </pickerView>
+                                    <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Nuc-KF-epf">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="2o6-H5-upq"/>
+                                        </constraints>
+                                        <items>
+                                            <barButtonItem title="Cancel" id="IFu-rI-7ZE">
+                                                <color key="tintColor" name="PrimaryColor"/>
+                                                <connections>
+                                                    <action selector="didTapCancel" destination="6Wb-S2-HlG" id="fWB-pt-AvE"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem systemItem="flexibleSpace" id="vFZ-ZQ-oYv"/>
+                                            <barButtonItem title="Done" id="zk3-cl-N0f">
+                                                <color key="tintColor" name="PrimaryColor"/>
+                                                <connections>
+                                                    <action selector="didTapDone" destination="6Wb-S2-HlG" id="Qua-he-e54"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                        <color key="barTintColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </toolbar>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="29d-Wb-P2A" firstAttribute="leading" secondItem="DeO-sC-PpI" secondAttribute="leading" id="1V9-wL-rps"/>
+                                    <constraint firstItem="Nuc-KF-epf" firstAttribute="leading" secondItem="DeO-sC-PpI" secondAttribute="leading" id="8Mv-B9-hA0"/>
+                                    <constraint firstItem="29d-Wb-P2A" firstAttribute="top" secondItem="Nuc-KF-epf" secondAttribute="bottom" id="B5N-Sq-X16"/>
+                                    <constraint firstAttribute="trailing" secondItem="29d-Wb-P2A" secondAttribute="trailing" id="MH4-IX-bhG"/>
+                                    <constraint firstItem="Nuc-KF-epf" firstAttribute="top" secondItem="DeO-sC-PpI" secondAttribute="top" id="OZh-HS-ecF"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nuc-KF-epf" secondAttribute="trailing" id="ldU-LR-UGE"/>
+                                    <constraint firstAttribute="height" constant="348" id="r6a-Su-8Q8"/>
+                                    <constraint firstAttribute="bottom" secondItem="29d-Wb-P2A" secondAttribute="bottom" id="vcT-nS-H5b"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="DeO-sC-PpI" firstAttribute="leading" secondItem="VhM-Cc-bom" secondAttribute="leading" id="3fP-hc-OJQ"/>
                             <constraint firstItem="PHf-1F-38R" firstAttribute="leading" secondItem="Mb6-eg-95y" secondAttribute="trailing" constant="30" id="Ad4-7Y-1Ix"/>
                             <constraint firstItem="Gai-no-73M" firstAttribute="top" secondItem="VhM-Cc-bom" secondAttribute="top" id="FoN-E0-Cjm"/>
                             <constraint firstItem="ni3-Xq-kYB" firstAttribute="trailing" secondItem="VhM-Cc-bom" secondAttribute="trailing" id="GdQ-Qt-Gbs"/>
                             <constraint firstItem="Mb6-eg-95y" firstAttribute="top" secondItem="VhM-Cc-bom" secondAttribute="top" constant="35" id="O12-ym-vUV"/>
+                            <constraint firstItem="DeO-sC-PpI" firstAttribute="bottom" secondItem="VhM-Cc-bom" secondAttribute="bottom" id="UMS-VR-leD"/>
                             <constraint firstItem="ni3-Xq-kYB" firstAttribute="top" secondItem="Gai-no-73M" secondAttribute="bottom" constant="8" id="ax0-eg-bLV"/>
                             <constraint firstItem="PHf-1F-38R" firstAttribute="top" secondItem="VhM-Cc-bom" secondAttribute="top" constant="35" id="dbI-9h-bvu"/>
                             <constraint firstItem="Gai-no-73M" firstAttribute="leading" secondItem="VhM-Cc-bom" secondAttribute="leading" id="ddp-A0-qrY"/>
                             <constraint firstAttribute="bottom" secondItem="ni3-Xq-kYB" secondAttribute="bottom" id="eTz-wK-CPM"/>
                             <constraint firstItem="ni3-Xq-kYB" firstAttribute="leading" secondItem="VhM-Cc-bom" secondAttribute="leading" id="slN-eO-Dnt"/>
                             <constraint firstItem="VhM-Cc-bom" firstAttribute="trailing" secondItem="PHf-1F-38R" secondAttribute="trailing" constant="16" id="tCo-VE-ry6"/>
+                            <constraint firstItem="DeO-sC-PpI" firstAttribute="trailing" secondItem="VhM-Cc-bom" secondAttribute="trailing" id="yqv-tI-55p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VhM-Cc-bom"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Week" id="Pmc-lD-Vf5">
-                        <barButtonItem key="rightBarButtonItem" id="W5E-es-QHD">
-                            <color key="tintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <navigationItem key="navigationItem" title="Title" id="ewp-nn-rfJ">
+                        <barButtonItem key="rightBarButtonItem" image="LocationIcon" id="8ZV-Rn-8ga">
+                            <color key="tintColor" name="PrimaryColor"/>
+                            <connections>
+                                <action selector="didChangeCountryClicked:" destination="6Wb-S2-HlG" id="ApW-ol-cae"/>
+                            </connections>
                         </barButtonItem>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="xibPlaceholderLocKey" value="Week:Title"/>
-                        </userDefinedRuntimeAttributes>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="countryPicker" destination="29d-Wb-P2A" id="qho-Mk-jSJ"/>
+                        <outlet property="pickerContainer" destination="DeO-sC-PpI" id="XQz-Z9-2uv"/>
                         <outlet property="selectDaysLabel" destination="1wa-aD-xCJ" id="cac-Zd-ZiB"/>
                         <outlet property="selectMonthAndYearLabel" destination="q77-KH-v33" id="qqZ-cS-EF8"/>
                         <outlet property="weekMoviesCollectionView" destination="ni3-Xq-kYB" id="tRd-p7-NIh"/>
@@ -159,7 +216,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LocationIcon" width="30" height="30"/>
         <image name="NextIcon" width="30" height="30"/>
         <image name="PreviousIcon" width="30" height="30"/>
+        <namedColor name="PrimaryColor">
+            <color red="0.40392156862745099" green="0.22745098039215686" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryDarkColor">
+            <color red="0.27058823529411763" green="0.15294117647058825" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

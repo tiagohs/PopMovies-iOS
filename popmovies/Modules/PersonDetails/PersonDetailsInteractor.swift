@@ -100,7 +100,7 @@ extension PersonDetailsInteractor {
             TMDB.Parameters.movie_credits,
             TMDB.Parameters.external_ids]
         
-        add(personService.getDetails(personId: personId, appendToResponse: appendToResponse, language: "en,pt_BR,null")
+        add(personService.getDetails(personId: personId, appendToResponse: appendToResponse, language: "\(Locale.getCurrentAppLangAndRegion()),en-US,null")
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { (person) in
