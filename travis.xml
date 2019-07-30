@@ -1,0 +1,10 @@
+language: swift
+xcode_project: popmovies.xcodeproj
+xcode_scheme: popmovies
+xcode_sdk: iphonesimulator
+osx_image: xcode11
+cache:
+- bundler
+#before_script:
+#- "./scripts/install-swift.sh"
+install: bundle install --jobs=3 --retry=3 --deployment --path=${BUNDLE_PATH:-vendor/bundle}
