@@ -6,6 +6,9 @@
 
 <p>PopMovies is an iOS Movie app builded with Swift, usign all the best practices with ViPER architecture and i18n.</p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/app_gif.gif" width="320" height="640">
+</p>
 
 ### Movie Database:
 
@@ -19,6 +22,10 @@
 <ul>
   <li><a href="http://antonioleiva.com/mvp-android">VIPER Design Pattern</a> - VIPER is an application of Clean Architecture to iOS apps. The word VIPER is a backronym for View, Interactor, Presenter, Entity, and Routing.</li>
 </ul>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/ViPER.png" width="800" height="600">
+</p>
 
 ### Libaries:
 
@@ -39,6 +46,38 @@
   <li><a href="https://developers.facebook.com/docs/facebook-login/ios/">FacebookLogin</a> - Facebook Login to iOS. </li>
   <li><a href="https://github.com/twitter-archive/twitter-kit-ios">TwitterKit</a> - Twitter Kit is a native SDK to include Twitter content inside mobile apps. </li>
 </ul>
+
+
+## Screens
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen1.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen2.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen3.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen4.png" width="190" height="390">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen5.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen6.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen10.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen12.png" width="190" height="390"> 
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen16.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen18.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen20.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen22.png" width="190" height="390">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen24.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen26.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen28.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen14.png" width="190" height="390">
+</p>
+</p>
 
 
 ### Developed by:
