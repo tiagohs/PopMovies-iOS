@@ -21,10 +21,12 @@ class LoginController: BaseViewController {
     @IBOutlet weak var loginFaceIDButton: UIButton!
     @IBOutlet weak var loginFacebookButton: UIButton!
     @IBOutlet weak var loginTwitterButton: UIButton!
-    @IBOutlet weak var loginGoogleButton: GIDSignInButton!
+    @IBOutlet weak var loginGoogleButton: UIButton!
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: Properties
 
@@ -63,7 +65,9 @@ extension LoginController: GIDSignInUIDelegate {
 
 extension LoginController: LoginViewInterface {
     
-    func setupUI() {}
+    func setupUI() {
+        self.scrollView.contentSize = CGSize(width: 375, height: 1000)
+    }
     
     func setupGoogleAuthUI() {
         GoogleAuthManager.shared.setupUI(delegate: self)

@@ -19,7 +19,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Title-->
+        <!--Week-->
         <scene sceneID="7zs-Hb-mLX">
             <objects>
                 <viewController storyboardIdentifier="WeekController" id="6Wb-S2-HlG" customClass="WeekController" customModule="popmovies" customModuleProvider="target" sceneMemberID="viewController">
@@ -164,13 +164,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VhM-Cc-bom"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="ewp-nn-rfJ">
+                    <navigationItem key="navigationItem" title="Week" id="ewp-nn-rfJ">
                         <barButtonItem key="rightBarButtonItem" image="LocationIcon" id="8ZV-Rn-8ga">
                             <color key="tintColor" name="PrimaryColor"/>
                             <connections>
                                 <action selector="didChangeCountryClicked:" destination="6Wb-S2-HlG" id="ApW-ol-cae"/>
                             </connections>
                         </barButtonItem>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="xibPlaceholderLocKey" value="Week:Title"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <userDefinedRuntimeAttributes>
