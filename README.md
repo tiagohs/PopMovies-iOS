@@ -6,6 +6,9 @@
 
 <p>PopMovies is an iOS Movie app builded with Swift, usign all the best practices with ViPER architecture and i18n.</p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/app_gif.gif" width="320" height="640">
+</p>
 
 ### Movie Database:
 
@@ -39,6 +42,16 @@
   <li><a href="https://developers.facebook.com/docs/facebook-login/ios/">FacebookLogin</a> - Facebook Login to iOS. </li>
   <li><a href="https://github.com/twitter-archive/twitter-kit-ios">TwitterKit</a> - Twitter Kit is a native SDK to include Twitter content inside mobile apps. </li>
 </ul>
+
+
+## Screens
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen2.png" width="300" height="340"> <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen4.png" width="300" height="340">
+<img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen6.png" width="300" height="340">
+</p>
+
+</p>
 
 
 ### Developed by:
