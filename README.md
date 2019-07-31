@@ -47,8 +47,7 @@
 ## Screens
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen2.png" width="300" height="340"> <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen4.png" width="300" height="340">
-<img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen6.png" width="300" height="340">
+<img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen1.png" width="230" height="430"> <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen2.png" width="230" height="430"> <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen3.png" width="230" height="430">
 </p>
 
 </p>
