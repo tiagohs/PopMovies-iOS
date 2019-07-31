@@ -23,6 +23,10 @@
   <li><a href="http://antonioleiva.com/mvp-android">VIPER Design Pattern</a> - VIPER is an application of Clean Architecture to iOS apps. The word VIPER is a backronym for View, Interactor, Presenter, Entity, and Routing.</li>
 </ul>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/ViPER.png" width="800" height="600">
+</p>
+
 ### Libaries:
 
 <ul>
