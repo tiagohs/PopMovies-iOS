@@ -21,7 +21,11 @@ extension Locale {
         let preferredLanguages = Locale.preferredLanguages[0]
         let arr = preferredLanguages.components(separatedBy: "-")
         
-        return (arr[0], arr[1])
+        if arr.count > 1 {
+            return (arr[0], arr[1])
+        }
+        
+        return ("en", "US")
     }
     
     static func getCurrentAppLocale() -> LocaleDTO {
