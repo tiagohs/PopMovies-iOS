@@ -47,9 +47,32 @@
 ## Screens
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen1.png" width="230" height="430"> <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen2.png" width="230" height="430"> <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen3.png" width="230" height="430">
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen1.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen2.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen3.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen4.png" width="190" height="390">
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen5.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen6.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen10.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen12.png" width="190" height="390"> 
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen16.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen18.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen20.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen22.png" width="190" height="390">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen24.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen26.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen28.png" width="190" height="390"> 
+  <img src="https://raw.githubusercontent.com/tiagohs/PopMovies-iOS/master/screenshots/mockup/screen14.png" width="190" height="390">
+</p>
 </p>
 
 
